@@ -1,0 +1,25 @@
+@import "../../scss/variables";
+
+.barra-navegacion {
+   background-color: $color-primario-barra-nav;
+
+   ul {
+      display: flex;
+      flex-direction: row;
+
+      li {
+         padding: 1rem 1rem;
+         list-style-type: none;
+      }
+   }
+
+   #{&}-enlace {
+      text-decoration: none;
+      font-weight: bold;
+      color: $color-secundario-barra-nav;
+
+      &:hover {
+         color: darken($color-secundario-barra-nav, 30%);
+      }
+   }
+}

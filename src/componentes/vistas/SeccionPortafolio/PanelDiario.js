@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 
 import ModalRegistroEntrada from "./ModalRegistroEntrada.js";
+import ModalFiltroEntradas from "./ModalFiltroEntradas.js";
 
 import "./estilos/panelDiario.scss";
 
@@ -12,6 +13,10 @@ const PanelDiario = (props) => {
       setRegistrandoEntrada(true);
    };
 
+   const iniciarFiltroEntradas = () => {
+      setFiltrandoEntradas(true);
+   };
+
    return (
       <div>
          <button onClick={iniciarRegistroNuevaEntrada}>Nueva Entrada</button>
@@ -20,7 +25,7 @@ const PanelDiario = (props) => {
                cambiarEstadoRegDeEntrada={setRegistrandoEntrada}
             />
          )}
-         <button>Filtrar Entradas</button>
+         <button onClick={iniciarFiltroEntradas}>Filtrar Entradas</button>
          {filtrandoEntradas && (
             <ModalFiltroEntradas
                cambiarEstadoFiltroEntradas={setFiltrandoEntradas}

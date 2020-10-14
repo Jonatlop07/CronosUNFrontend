@@ -34,9 +34,7 @@ const ModalRegistroEntrada = (props) => {
                autoFocus
                required
             ></input>
-            <input type="submit" onClick={}>
-               Registrar
-            </input>
+            <input type="submit" onClick={registrarEntradaDeDiario} />
             <button onClick={terminarRegistroEntrada}>Cancelar</button>
          </form>
       </div>

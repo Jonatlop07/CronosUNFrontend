@@ -31,6 +31,8 @@ const PanelDiario = (props) => {
                cambiarEstadoFiltroEntradas={setFiltrandoEntradas}
             />
          )}
+         {/* Aquí va un popover */}
+         <button>Inf</button>
       </div>
    );
 };

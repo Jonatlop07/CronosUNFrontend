@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 
 import "./estilos/modalRegistroEntrada.scss";
+import {
+   obtenerFechaActual,
+   obtenerHoraActual,
+} from "../../../utilidad/funcionesFechaYHora.js";
 
 const ModalRegistroEntrada = (props) => {
    const [textoEntrada, setTextoEntrada] = useState("");
@@ -17,6 +21,8 @@ const ModalRegistroEntrada = (props) => {
    };
 
    const registrarEntradaDeDiario = () => {
+      const fechaActual = obtenerFechaActual(),
+         horaActual = obtenerHoraActual();
       /*Se ingresa la entrada en la base de datos*/
 
       terminarRegistroEntrada();

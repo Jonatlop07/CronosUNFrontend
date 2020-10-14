@@ -8,7 +8,7 @@ import {
 } from "../../../utilidad/funcionesFechaYHora.js";
 
 const ModalFiltroEntradas = (props) => {
-   const [opcionSeleccionada, setOpcionSeleccionada] = useState("");
+   const [filtroPorRango, setFiltroPorRango] = useState(true);
    const [datosFiltro, setDatosFiltro] = useState({
       horas: {
          horaInicial: obtenerHoraActual(),
@@ -22,8 +22,11 @@ const ModalFiltroEntradas = (props) => {
       },
    });
 
+   const CRITERIO_FILTRO_1 = "rango";
+   const CRITERIO_FILTRO_2 = "especifico";
+
    const manejarCambioSeleccion = (evento) => {
-      setOpcionSeleccionada(evento.target.value);
+      setFiltroPorRango(evento.target.value === CRITERIO_FILTRO_1);
    };
 
    const manejarCambioDatosFiltro = (evento) => {
@@ -57,81 +60,87 @@ const ModalFiltroEntradas = (props) => {
                type="radio"
                name="opciones-filtro"
                defaultChecked
-               value="rango"
+               value={CRITERIO_FILTRO_1}
                onChange={manejarCambioSeleccion}
             />
             Por rango de tiempo:
          </label>
+         {filtroPorRango && (
+            <React.Fragment>
+               <label>
+                  Fecha inicial:
+                  <input
+                     type="date"
+                     name="fechaInicial"
+                     value={datosFiltro.fechas.fechaInicial}
+                     onChange={manejarCambioDatosFiltro}
+                  />
+               </label>
 
-         <label>
-            Fecha inicial:
-            <input
-               type="date"
-               name="fechaInicial"
-               value={datosFiltro.fechas.fechaInicial}
-               onChange={manejarCambioDatosFiltro}
-            />
-         </label>
+               <label>
+                  Fecha final:
+                  <input
+                     type="date"
+                     name="fechaFinal"
+                     value={datosFiltro.fechas.fechaFinal}
+                     onChange={manejarCambioDatosFiltro}
+                  />
+               </label>
 
-         <label>
-            Fecha final:
-            <input
-               type="date"
-               name="fechaFinal"
-               value={datosFiltro.fechas.fechaFinal}
-               onChange={manejarCambioDatosFiltro}
-            />
-         </label>
+               <label>
+                  Hora inicial:
+                  <input
+                     type="time"
+                     name="horaInicial"
+                     value={datosFiltro.horas.horaInicial}
+                     onChange={manejarCambioDatosFiltro}
+                  />
+               </label>
 
-         <label>
-            Hora inicial:
-            <input
-               type="time"
-               name="horaInicial"
-               value={datosFiltro.horas.horaInicial}
-               onChange={manejarCambioDatosFiltro}
-            />
-         </label>
-
-         <label>
-            Hora final:
-            <input
-               type="time"
-               name="horaFinal"
-               value={datosFiltro.horas.horaFinal}
-               onChange={manejarCambioDatosFiltro}
-            />
-         </label>
+               <label>
+                  Hora final:
+                  <input
+                     type="time"
+                     name="horaFinal"
+                     value={datosFiltro.horas.horaFinal}
+                     onChange={manejarCambioDatosFiltro}
+                  />
+               </label>
+            </React.Fragment>
+         )}
 
          <label>
             <input
                type="radio"
                name="opciones-filtro"
-               value="especifico"
+               value={CRITERIO_FILTRO_2}
                onChange={manejarCambioSeleccion}
             />
             Por fecha y hora especificas:
          </label>
+         {!filtroPorRango && (
+            <React.Fragment>
+               <label>
+                  Fecha:
+                  <input
+                     type="date"
+                     name="fechaEspecifica"
+                     value={datosFiltro.fechas.fechaEspecifica}
+                     onChange={manejarCambioDatosFiltro}
+                  />
+               </label>
 
-         <label>
-            Fecha:
-            <input
-               type="date"
-               name="fechaEspecifica"
-               value={datosFiltro.fechas.fechaEspecifica}
-               onChange={manejarCambioDatosFiltro}
-            />
-         </label>
-
-         <label>
-            Hora:
-            <input
-               type="time"
-               name="horaEspecifica"
-               value={datosFiltro.horas.horaEspecifica}
-               onChange={manejarCambioDatosFiltro}
-            />
-         </label>
+               <label>
+                  Hora:
+                  <input
+                     type="time"
+                     name="horaEspecifica"
+                     value={datosFiltro.horas.horaEspecifica}
+                     onChange={manejarCambioDatosFiltro}
+                  />
+               </label>
+            </React.Fragment>
+         )}
 
          <button onClick={realizarFiltroEntradas}>Confirmar</button>
          <button onClick={terminarFiltroEntradas}>Cancelar</button>

@@ -19,6 +19,8 @@ const Registro = (props) => {
           <input type="password" placeholder="Contraseña"/>
           <br />
           <input type="submit" value="Finalizar registro" />
+          <br />
+          <p>¿Ya posees una cuenta? <a>Inicia sesión</a></p>
         </form>
       </center>
     </React.Fragment>

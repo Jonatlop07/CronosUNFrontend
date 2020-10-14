@@ -5,7 +5,7 @@ import "./estilos/modalFiltroEntradas.scss";
 import {
    obtenerFechaActual,
    obtenerHoraActual,
-} from "./funcionesUtilidad/funcionesFechaYHora.js";
+} from "../../../utilidad/funcionesFechaYHora.js";
 
 const ModalFiltroEntradas = (props) => {
    const [opcionSeleccionada, setOpcionSeleccionada] = useState("");

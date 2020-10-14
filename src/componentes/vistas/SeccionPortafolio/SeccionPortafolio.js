@@ -1,15 +1,15 @@
 import React from "react";
 
-import PanelPortafolio from "./PanelPortafolio.js";
-import SubseccionDiario from "./SubseccionDiario.js";
-import SubseccionPortafolio from "./SubseccionPortafolio.js";
+import PanelGeneralPortafolio from "./PanelGeneralPortafolio.js";
+import SubseccionDiario from "./ComponentesDiario/SubseccionDiario.js";
+import SubseccionPortafolio from "./ComponentesPortafolio/SubseccionPortafolio.js";
 
 import "./estilos/seccionPortafolio.scss";
 
 const SeccionPortafolio = (props) => {
    return (
       <div className="seccion-portafolio">
-         <PanelPortafolio />
+         <PanelGeneralPortafolio />
          <div className="seccion-portafolio-subsecciones">
             <SubseccionDiario />
             <SubseccionPortafolio />

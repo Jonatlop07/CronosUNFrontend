@@ -3,9 +3,9 @@ import React, { useState } from "react";
 import ModalRegistroEntrada from "./ModalRegistroEntrada.js";
 import ModalFiltroEntradas from "./ModalFiltroEntradas.js";
 
-import "./estilos/panelDiario.scss";
+import "./estilos/panelOpcionesDiario.scss";
 
-const PanelDiario = (props) => {
+const PanelOpcionesDiario = (props) => {
    const [registrandoEntrada, setRegistrandoEntrada] = useState(false);
    const [filtrandoEntradas, setFiltrandoEntradas] = useState(false);
 
@@ -37,4 +37,4 @@ const PanelDiario = (props) => {
    );
 };
 
-export default PanelDiario;
+export default PanelOpcionesDiario;

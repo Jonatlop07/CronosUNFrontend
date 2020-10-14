@@ -1,12 +1,12 @@
 import React from "react";
 
-import PanelDiario from "./PanelDiario.js";
+import PanelOpcionesDiario from "./PanelOpcionesDiario.js";
 import ContenedorDiario from "./ContenedorDiario.js";
 
 const SubseccionDiario = (props) => {
    return (
       <div>
-         <PanelDiario />
+         <PanelOpcionesDiario />
          <ContenedorDiario />
       </div>
    );

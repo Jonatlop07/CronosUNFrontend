@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 import EntradaDiario from "./EntradaDiario.js";
-import BotonResultadoEntradas from "./BotonResultadoEntradas.js";
+import BotonResultadoEntradas from "../BotonResultadoEntradas.js";
 
 import "./estilos/contenedorDiario.scss";
 

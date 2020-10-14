@@ -4,7 +4,7 @@ import "./estilos/modalRegistroEntrada.scss";
 import {
    obtenerFechaActual,
    obtenerHoraActual,
-} from "../../../utilidad/funcionesFechaYHora.js";
+} from "../../../../utilidad/funcionesFechaYHora.js";
 
 const ModalRegistroEntrada = (props) => {
    const [textoEntrada, setTextoEntrada] = useState("");
@@ -13,7 +13,7 @@ const ModalRegistroEntrada = (props) => {
       "Este espacio es para que ingreses el texto de tu entrada.";
 
    const actualizarTexto = (evento) => {
-      setTextoEntrada(evento.value);
+      setTextoEntrada(evento.currentTarget.value);
    };
 
    const terminarRegistroEntrada = () => {
@@ -40,7 +40,11 @@ const ModalRegistroEntrada = (props) => {
                autoFocus
                required
             ></input>
-            <input type="submit" onClick={registrarEntradaDeDiario} />
+            <input
+               type="submit"
+               onClick={registrarEntradaDeDiario}
+               value="Registrar"
+            />
             <button onClick={terminarRegistroEntrada}>Cancelar</button>
          </form>
       </div>

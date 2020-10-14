@@ -1,7 +1,12 @@
 import React from "react";
 
-const SubSeccionDiario = (props) => {
-   return <div></div>;
+const SubseccionDiario = (props) => {
+   return (
+      <div>
+         <PanelDiario cambiarEstadoRegDeEntrada={setRegistrandoEntrada} />
+         <ContenedorDiario />
+      </div>
+   );
 };
 
-export default SubSeccionDiario;
+export default SubseccionDiario;

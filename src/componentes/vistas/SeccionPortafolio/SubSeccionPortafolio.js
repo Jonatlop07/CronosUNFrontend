@@ -1,7 +1,9 @@
 import React from "react";
 
-const SubSeccionPortafolio = (props) => {
+import "./estilos/subseccionPortafolio.scss";
+
+const SubseccionPortafolio = (props) => {
    return <div></div>;
 };
 
-export default SubSeccionPortafolio;
+export default SubseccionPortafolio;

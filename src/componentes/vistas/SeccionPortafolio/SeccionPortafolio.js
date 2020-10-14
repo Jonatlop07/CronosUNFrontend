@@ -1,8 +1,8 @@
 import React from "react";
 
 import PanelPortafolio from "./PanelPortafolio.js";
-import SubSeccionDiario from "./SubseccionDiario.js";
-import SubSeccionPortafolio from "./SubseccionPortafolio.js";
+import SubseccionDiario from "./SubseccionDiario.js";
+import SubseccionPortafolio from "./SubseccionPortafolio.js";
 
 import "./estilos/seccionPortafolio.scss";
 
@@ -11,8 +11,8 @@ const SeccionPortafolio = (props) => {
       <div className="seccion-portafolio">
          <PanelPortafolio />
          <div className="seccion-portafolio-subsecciones">
-            <SubSeccionDiario />
-            <SubSeccionPortafolio />
+            <SubseccionDiario />
+            <SubseccionPortafolio />
          </div>
       </div>
    );

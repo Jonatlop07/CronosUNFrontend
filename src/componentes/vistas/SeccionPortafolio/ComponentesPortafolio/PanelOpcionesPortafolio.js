@@ -26,21 +26,33 @@ const PanelOpcionesPortafolio = (props) => {
    };
 
    return (
-      <div>
-         <button onClick={iniciarRegistroNuevoProyecto}>Nuevo Proyecto</button>
-         {creandoNuevoProyecto && (
-            <ModalNuevoProyecto
-               terminarRegistroNuevoProyecto={terminarRegistroNuevoProyecto}
-            />
-         )}
-         <button onClick={iniciarFiltroProyectos}>Filtrar Proyectos</button>
-         {filtrandoProyectos && (
-            <ModalFiltroProyectos
-               terminarFiltroProyectos={terminarFiltroProyectos}
-            />
-         )}
-         {/* Aquí va un popover */}
-         <button>Inf</button>
+      <div className="panel-opciones-portafolio">
+         <center>
+            <button
+               className="panel-opciones-portafolio-btn"
+               onClick={iniciarRegistroNuevoProyecto}
+            >
+               Nuevo Proyecto
+            </button>
+            {creandoNuevoProyecto && (
+               <ModalNuevoProyecto
+                  terminarRegistroNuevoProyecto={terminarRegistroNuevoProyecto}
+               />
+            )}
+            <button
+               className="panel-opciones-portafolio-btn"
+               onClick={iniciarFiltroProyectos}
+            >
+               Filtrar Proyectos
+            </button>
+            {filtrandoProyectos && (
+               <ModalFiltroProyectos
+                  terminarFiltroProyectos={terminarFiltroProyectos}
+               />
+            )}
+            {/* Aquí va un popover */}
+            <button className="panel-opciones-portafolio-btn">Inf</button>
+         </center>
       </div>
    );
 };

@@ -1,0 +1,31 @@
+.entrada-diario {
+   padding: 1rem;
+   margin: 1rem 1rem;
+   border: 0.1rem solid rgba(147, 214, 243, 0.89);
+
+   #{&}-tiempo,
+   #{&}-borrar {
+      display: inline;
+   }
+
+   #{&}-tiempo {
+      font-weight: bold;
+      margin-right: 1rem;
+   }
+
+   #{&}-btn-borrar {
+      padding: 0.25rem;
+      color: white;
+      background: red;
+
+      &:hover {
+         cursor: pointer;
+         background-color: lighten(red, 15%);
+      }
+   }
+
+   #{&}-contenido {
+      margin-top: 0.5rem;
+      justify-content: baseline;
+   }
+}

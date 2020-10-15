@@ -1,62 +1,79 @@
-/* The switch - the box around the slider */
-.switch {
-   position: relative;
-   display: inline-block;
-   width: 2rem;
-   height: 1rem;
-}
-
-/* Hide default HTML checkbox */
-.switch input {
-   opacity: 0;
-   width: 0;
-   height: 0;
-}
-
-/* The slider */
-.slider {
+@mixin deslizador($color-fondo, $radio-borde) {
    position: absolute;
-   cursor: pointer;
-   top: 0;
-   left: 0;
-   right: 0;
-   bottom: 0;
-   background-color: #ccc;
-   -webkit-transition: 0.4s;
+   background-color: $color-fondo;
+   border-radius: $radio-borde;
    transition: 0.4s;
 }
 
-.slider:before {
-   position: absolute;
-   content: "";
-   height: 0.87rem;
-   width: 0.75rem;
-   left: 0.13rem;
-   bottom: 0.1rem;
-   background-color: white;
-   -webkit-transition: 0.4s;
-   transition: 0.4s;
-}
+.proyecto {
+   display: flex;
+   flex-direction: column;
+   height: 15rem;
+   max-height: 15rem;
+   overflow: auto;
+   padding: 1rem;
+   margin: 1rem 1rem;
+   font-size: 0.8rem;
+   border: 0.1rem solid rgba(147, 214, 243, 0.89);
 
-input:checked + .slider {
-   background-color: #2196f3;
-}
+   #{&}-titulo,
+   #{&}-descripcion {
+      margin: 0.5rem 1rem;
+      text-align: center;
+   }
 
-input:focus + .slider {
-   box-shadow: 0 0 1px #2196f3;
-}
+   #{&}-titulo {
+      font-weight: bold;
+      font-size: medium;
+   }
 
-input:checked + .slider:before {
-   -webkit-transform: translateX(1rem);
-   -ms-transform: translateX(1rem);
-   transform: translateX(1rem);
-}
+   #{&}-editar,
+   #{&}-estado,
+   #{&}-label-privacidad {
+      margin: 0.5rem auto;
+   }
 
-/* Rounded sliders */
-.slider.round {
-   border-radius: 2rem;
-}
+   #{&}-privacidad {
+      position: relative;
+      display: inline-block;
+      width: 2rem;
+      height: 1rem;
+      margin: auto;
 
-.slider.round:before {
-   border-radius: 50%;
+      &-caja-seleccion {
+         opacity: 0;
+         width: 0;
+         height: 0;
+      }
+
+      &-deslizador {
+         @include deslizador(#ccc, 2rem);
+         cursor: pointer;
+         top: 0;
+         left: 0;
+         right: 0;
+         bottom: 0;
+
+         &:before {
+            @include deslizador(white, 50%);
+            content: "";
+            height: 0.87rem;
+            width: 0.75rem;
+            left: 0.13rem;
+            bottom: 0.1rem;
+         }
+      }
+   }
+
+   #{&}-privacidad-caja-seleccion:checked + #{&}-privacidad-deslizador {
+      background-color: #2196f3;
+   }
+
+   #{&}-privacidad-caja-seleccion:focus + #{&}-privacidad-deslizador {
+      box-shadow: 0 0 1px #2196f3;
+   }
+
+   #{&}-privacidad-caja-seleccion:checked + #{&}-privacidad-deslizador:before {
+      transform: translateX(1rem);
+   }
 }

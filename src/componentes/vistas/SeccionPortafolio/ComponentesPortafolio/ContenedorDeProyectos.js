@@ -33,7 +33,7 @@ const ContenedorDeProyectos = (props) => {
    };
 
    return (
-      <div>
+      <div className="contenedor-proyectos">
          <div>
             {proyectos.map((proyecto, indice) => (
                <Proyecto

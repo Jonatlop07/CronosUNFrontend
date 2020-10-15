@@ -20,12 +20,17 @@ const EntradaDiario = (props) => {
    };
 
    return (
-      <div>
-         <p>
+      <div className="entrada-diario">
+         <p className="entrada-diario-tiempo">
             {props.fecha}-{props.hora}
          </p>
-         <button onClick={ejecutarConfirmacionDeEliminacion}>Borrar</button>
-         <p>{props.texto}</p>
+         <button
+            className="entrada-diario-btn-borrar"
+            onClick={ejecutarConfirmacionDeEliminacion}
+         >
+            Borrar
+         </button>
+         <p className="entrada-diario-contenido">{props.texto}</p>
 
          {eliminandoEntrada && (
             <ModalEliminacionEntrada

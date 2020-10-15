@@ -27,13 +27,13 @@ const ModalNuevoProyecto = (props) => {
             <input id="edicion-descripcion-proyecto" />
             <label>Privacidad:</label>
             <label>{esPublico ? "Público" : "Privado"}</label>
-            <label class="switch">
+            <label className="switch">
                <input
                   type="checkbox"
                   onChange={manejarSeleccionPrivacidad}
                   defaultChecked={esPublico}
                />
-               <span class="slider round"></span>
+               <span className="slider round"></span>
             </label>
          </fieldset>
 

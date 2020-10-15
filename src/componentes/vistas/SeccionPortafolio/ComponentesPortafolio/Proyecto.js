@@ -21,13 +21,13 @@ const Proyecto = (props) => {
                <option>Incompleto</option>
             </select>
             <label>{esPublico ? "Público" : "Privado"}</label>
-            <label class="switch">
+            <label className="switch">
                <input
                   type="checkbox"
                   onChange={manejarSeleccionPrivacidad}
                   defaultChecked={esPublico}
                />
-               <span class="slider round"></span>
+               <span className="slider round"></span>
             </label>
          </div>
       </div>

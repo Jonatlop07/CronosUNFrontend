@@ -1,6 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
+
+import "./estilos/proyecto.scss";
 
 const Proyecto = (props) => {
+   const [esPublico, setEsPublico] = useState(false);
+
+   const manejarSeleccionPrivacidad = () => {
+      setEsPublico(!esPublico);
+   };
+
    return (
       <div>
          <div>
@@ -9,7 +17,18 @@ const Proyecto = (props) => {
             <button>Editar</button>
             <select>
                <option>Finalizado</option>
+               <option>En Progreso</option>
+               <option>Incompleto</option>
             </select>
+            <label>{esPublico ? "Público" : "Privado"}</label>
+            <label class="switch">
+               <input
+                  type="checkbox"
+                  onChange={manejarSeleccionPrivacidad}
+                  defaultChecked={esPublico}
+               />
+               <span class="slider round"></span>
+            </label>
          </div>
       </div>
    );

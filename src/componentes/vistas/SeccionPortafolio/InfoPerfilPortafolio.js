@@ -4,8 +4,10 @@ import "./estilos/infoPerfilPortafolio.scss";
 
 const InfoPerfilPortafolio = (props) => {
    return (
-      <div>
-         <p>Información del perfil</p>
+      <div className="info-perfil-portafolio">
+         <h4 className="info-perfil-portafolio-titulo">
+            Información del perfil
+         </h4>
       </div>
    );
 };

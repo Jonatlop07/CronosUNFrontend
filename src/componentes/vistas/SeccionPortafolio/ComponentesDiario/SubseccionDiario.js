@@ -1,13 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 
 import PanelOpcionesDiario from "./PanelOpcionesDiario.js";
 import ContenedorDiario from "./ContenedorDiario.js";
+import ContenedorBotonesResultado from "../ContenedorBotonesResultado.js";
+
+import "./estilos/subseccionDiario.scss";
 
 const SubseccionDiario = (props) => {
    return (
-      <div>
-         <PanelOpcionesDiario />
-         <ContenedorDiario />
+      <div className="subseccion-diario">
+         <h5 className="subseccion-diario-nombre">Tu Diario</h5>
+         <div className="subseccion-diario-principal">
+            <PanelOpcionesDiario />
+            <ContenedorDiario />
+            <ContenedorBotonesResultado />
+         </div>
       </div>
    );
 };

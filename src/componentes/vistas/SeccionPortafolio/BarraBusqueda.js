@@ -4,10 +4,17 @@ import "./estilos/barraBusqueda.scss";
 
 const BarraBusqueda = (props) => {
    return (
-      <div>
+      <div className="barra-busqueda">
          <form>
-            <input type="submit" value="Buscar" />
-            <input placeholder="Nombre de usuario o dirección de correo" />
+            <input
+               className="barra-busqueda-campo"
+               placeholder="Nombre de usuario o dirección de correo"
+            />
+            <input
+               className="barra-busqueda-boton"
+               type="submit"
+               value="Buscar"
+            />
          </form>
       </div>
    );

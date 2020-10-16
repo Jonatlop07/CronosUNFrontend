@@ -1,0 +1,18 @@
+@mixin boton-general($color-fondo) {
+   padding: 0.5rem 1rem;
+   background: $color-fondo;
+   border-radius: 15%;
+   cursor: pointer;
+
+   &:hover {
+      background: darken($color-fondo, 25%);
+      color: lighten($color-fondo, 75%);
+   }
+}
+
+@mixin deslizador($color-fondo, $radio-borde) {
+   position: absolute;
+   background-color: $color-fondo;
+   border-radius: $radio-borde;
+   transition: 0.4s;
+}

@@ -1,0 +1,22 @@
+@import "../../../../../scss/variables";
+
+.subseccion-diario {
+   display: flex;
+   flex-direction: column;
+   width: 24%;
+   margin-right: 5%;
+   margin-left: 9%;
+   margin-bottom: 5rem;
+
+   #{&}-nombre {
+      font-size: 2rem;
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 1rem;
+   }
+
+   #{&}-principal {
+      border: 0.1rem solid rgba(27, 110, 148, 0.89);
+      background: $color-dos;
+   }
+}

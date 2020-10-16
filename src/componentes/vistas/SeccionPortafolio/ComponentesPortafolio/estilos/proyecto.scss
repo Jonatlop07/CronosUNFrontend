@@ -1,60 +1,73 @@
-@mixin deslizador($color-fondo, $radio-borde) {
-   position: absolute;
-   background-color: $color-fondo;
-   border-radius: $radio-borde;
-   transition: 0.4s;
-}
+@import "../../../../../scss/variables";
+@import "../../estilos/mixins";
 
 .proyecto {
    display: flex;
    flex-direction: column;
-   height: 15rem;
-   max-height: 15rem;
+   height: 20rem;
+   max-height: 20rem;
    overflow: auto;
-   padding: 1rem;
+   padding: 1rem 0.5rem;
    margin: 1rem 1rem;
    font-size: 0.8rem;
    border: 0.1rem solid rgba(147, 214, 243, 0.89);
-
-   #{&}-titulo,
-   #{&}-descripcion {
-      margin: 0.5rem 1rem;
-      text-align: center;
-   }
+   background: lighten($color-uno, 100%);
 
    #{&}-titulo {
       font-weight: bold;
       font-size: medium;
    }
 
-   #{&}-editar,
-   #{&}-estado,
-   #{&}-label-privacidad {
-      margin: 0.5rem auto;
+   #{&}-titulo,
+   #{&}-descripcion {
+      margin: 0.5rem 0.25rem;
+      text-align: center;
    }
 
-   #{&}-privacidad {
-      position: relative;
-      display: inline-block;
-      width: 2rem;
-      height: 1rem;
-      margin: auto;
+   #{&}-opciones {
+      display: flex;
+      flex-direction: row;
 
-      &-caja-seleccion {
-         opacity: 0;
-         width: 0;
-         height: 0;
+      &-editar,
+      &-estado,
+      &-privacidad {
+         margin: 0.5rem 2.5%;
       }
 
-      &-deslizador {
-         @include deslizador(#ccc, 2rem);
-         cursor: pointer;
-         top: 0;
-         left: 0;
-         right: 0;
-         bottom: 0;
+      &-editar {
+         margin-left: 5%;
+         width: 25%;
+         @include boton-general($color-dos);
+         padding: 0.125rem;
+      }
 
-         &:before {
+      &-estado {
+         width: 35%;
+      }
+
+      &-privacidad {
+         position: relative;
+         display: inline-block;
+         width: 2rem;
+         height: 1rem;
+         margin-right: 5%;
+
+         &-caja-seleccion {
+            opacity: 0;
+            width: 0;
+            height: 0;
+         }
+
+         &-deslizador {
+            @include deslizador(#ccc, 2rem);
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+         }
+
+         &-deslizador:before {
             @include deslizador(white, 50%);
             content: "";
             height: 0.87rem;
@@ -62,18 +75,119 @@
             left: 0.13rem;
             bottom: 0.1rem;
          }
+
+         &-etiqueta {
+            margin-top: 0.5rem;
+         }
+
+         &-caja-seleccion:checked {
+            + .proyecto-opciones-privacidad-deslizador {
+               background-color: $color-cuatro;
+            }
+         }
+
+         &-caja-seleccion:focus {
+            + .proyecto-opciones-privacidad-deslizador {
+               box-shadow: 0 0 1px $color-cuatro;
+            }
+         }
+
+         &-caja-seleccion:checked {
+            + .proyecto-opciones-privacidad-deslizador:before {
+               transform: translateX(1rem);
+            }
+         }
       }
    }
-
-   #{&}-privacidad-caja-seleccion:checked + #{&}-privacidad-deslizador {
-      background-color: #2196f3;
-   }
-
-   #{&}-privacidad-caja-seleccion:focus + #{&}-privacidad-deslizador {
-      box-shadow: 0 0 1px #2196f3;
-   }
-
-   #{&}-privacidad-caja-seleccion:checked + #{&}-privacidad-deslizador:before {
-      transform: translateX(1rem);
-   }
 }
+
+/* .proyecto {
+   display: flex;
+   flex-direction: column;
+   height: 20rem;
+   max-height: 20rem;
+   overflow: auto;
+   padding: 1rem 0.5rem;
+   margin: 1rem 1rem;
+   font-size: 0.8rem;
+   border: 0.1rem solid rgba(147, 214, 243, 0.89);
+   background: lighten($color-uno, 100%);
+
+   #{&}-titulo {
+      font-weight: bold;
+      font-size: medium;
+   }
+
+   #{&}-titulo,
+   #{&}-descripcion {
+      margin: 0.5rem 0.25rem;
+      text-align: center;
+   }
+   #{&}-opciones {
+      display: flex;
+      flex-direction: row;
+
+      &-editar,
+      &-estado,
+      &-privacidad {
+         margin: 0.5rem 2.5%;
+         width: 25%;
+      }
+
+      &-estado {
+         width: 35%;
+      }
+
+      &-editar {
+         @include boton-general($color-cuatro);
+         padding: 0.125rem;
+      }
+
+      &-privacidad {
+         position: relative;
+         display: inline-block;
+         width: 2rem;
+         height: 1rem;
+
+         &-caja-seleccion {
+            opacity: 0;
+            width: 0;
+            height: 0;
+         }
+
+         &-deslizador {
+            @include deslizador(#ccc, 2rem);
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+
+            &:before {
+               @include deslizador(white, 50%);
+               content: "";
+               height: 0.87rem;
+               width: 0.75rem;
+               left: 0.13rem;
+               bottom: 0.1rem;
+            }
+         }
+
+         &-caja-seleccion:checked + &-deslizador {
+            background-color: #2196f3;
+         }
+
+         &-caja-seleccion:focus + &-deslizador {
+            box-shadow: 0 0 1px #2196f3;
+         }
+
+         &-caja-seleccion:checked + &-deslizador:before {
+            transform: translateX(1rem);
+         }
+
+         &-etiqueta {
+            margin-top: 0.5rem;
+         }
+      }
+   }
+} */

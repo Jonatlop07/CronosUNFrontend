@@ -6,7 +6,13 @@ const BotonResultadoEntradas = (props) => {
    };
 
    return (
-      <button disabled={props.bloquearClick} onClick={manejarClickBoton}>
+      <button
+         className={`boton-seleccionado ${
+            !props.bloquearClick && "boton-resultado"
+         }`}
+         disabled={props.bloquearClick}
+         onClick={manejarClickBoton}
+      >
          {props.numeroSeccion}
       </button>
    );

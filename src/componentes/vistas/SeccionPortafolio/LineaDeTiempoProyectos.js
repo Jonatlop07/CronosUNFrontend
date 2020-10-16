@@ -4,8 +4,10 @@ import "./estilos/lineaDeTiempoProyectos.scss";
 
 const LineaDeTiempoProyectos = (props) => {
    return (
-      <div>
-         <p>Línea de tiempo de proyectos</p>
+      <div className="linea-tiempo-proyectos">
+         <h4 className="linea-tiempo-proyectos-titulo">
+            Línea de tiempo de proyectos
+         </h4>
       </div>
    );
 };

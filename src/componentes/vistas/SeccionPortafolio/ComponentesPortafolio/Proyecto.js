@@ -13,24 +13,27 @@ const Proyecto = (props) => {
       <div className="proyecto">
          <p className="proyecto-titulo">{props.titulo}</p>
          <p className="proyecto-descripcion">{props.descripcion}</p>
-         <button className="proyecto-editar">Editar</button>
-         <select className="proyecto-estado">
-            <option>Finalizado</option>
-            <option>En Progreso</option>
-            <option>Incompleto</option>
-         </select>
-         <label className="proyecto-label-privacidad">
-            {esPublico ? "Público" : "Privado"}
-         </label>
-         <label className="proyecto-privacidad">
-            <input
-               className="proyecto-privacidad-caja-seleccion"
-               type="checkbox"
-               onChange={manejarSeleccionPrivacidad}
-               defaultChecked={esPublico}
-            />
-            <span className="proyecto-privacidad-deslizador"></span>
-         </label>
+         <div className="proyecto-opciones">
+            <i className="fas fa-edit proyecto-opciones-editar"></i>
+            <select className="proyecto-opciones-estado">
+               <option>Finalizado</option>
+               <option>En Progreso</option>
+               <option>Incompleto</option>
+            </select>
+
+            <label className="proyecto-opciones-privacidad">
+               <input
+                  className="proyecto-opciones-privacidad-caja-seleccion"
+                  type="checkbox"
+                  onChange={manejarSeleccionPrivacidad}
+                  defaultChecked={esPublico}
+               />
+               <span className="proyecto-opciones-privacidad-deslizador"></span>
+               <label className="proyecto-opciones-privacidad-etiqueta">
+                  {esPublico ? "Público" : "Privado"}
+               </label>
+            </label>
+         </div>
       </div>
    );
 };

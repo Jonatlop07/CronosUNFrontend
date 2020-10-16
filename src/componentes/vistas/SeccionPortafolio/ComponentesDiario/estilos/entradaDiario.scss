@@ -1,7 +1,11 @@
+@import "../../../../../scss/variables";
+@import "../../estilos/mixins";
+
 .entrada-diario {
    padding: 1rem;
    margin: 1rem 1rem;
    border: 0.1rem solid rgba(147, 214, 243, 0.89);
+   background: lighten($color-uno, 100%);
 
    #{&}-tiempo,
    #{&}-borrar {
@@ -14,14 +18,7 @@
    }
 
    #{&}-btn-borrar {
-      padding: 0.25rem;
-      color: white;
-      background: red;
-
-      &:hover {
-         cursor: pointer;
-         background-color: lighten(red, 15%);
-      }
+      @include boton-general($color-cuatro);
    }
 
    #{&}-contenido {

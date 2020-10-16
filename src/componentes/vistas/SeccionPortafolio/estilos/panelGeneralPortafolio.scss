@@ -1,0 +1,30 @@
+@import "../../../../scss/variables";
+@import "./mixins";
+
+.panel-general-portafolio {
+   width: 50%;
+   margin: 0 auto;
+   text-align: center;
+
+   #{&}-contenedor {
+      margin: 2rem auto 0 auto;
+      width: 100%;
+      height: 15rem;
+      border: 0.1rem solid rgba(27, 110, 148, 0.89);
+      background: $color-dos;
+      color: $color-uno;
+      border-radius: 10% 10% 0 0;
+   }
+
+   #{&}-direccion {
+      color: darken($color-uno, 60%);
+      background: lighten($color-dos, 25%);
+
+      & button {
+         margin: 0.5rem 1rem;
+         padding: 0.5rem 1rem;
+         border: 0.1rem solid $color-dos;
+         @include boton-general($color-tres);
+      }
+   }
+}

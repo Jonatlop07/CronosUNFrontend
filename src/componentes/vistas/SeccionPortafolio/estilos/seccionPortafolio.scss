@@ -1,2 +1,13 @@
+@import "../../../../scss/variables";
+
 .seccion-portafolio {
+   display: flex;
+   flex-direction: column;
+   width: 100%;
+   background: $color-uno;
+
+   #{&}-subsecciones {
+      display: flex;
+      flex-direction: row;
+   }
 }

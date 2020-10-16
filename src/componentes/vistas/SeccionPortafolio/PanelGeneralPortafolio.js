@@ -37,18 +37,13 @@ const PanelGeneralPortafolio = (props) => {
    };
 
    return (
-      <div>
-         {renderizarVistaPorIndice()}
-
-         <div>
-            <div onClick={irASeccionAnterior}>
-               Ant
-               <i></i>
-            </div>
-            <div onClick={irASeccionSiguiente}>
-               Sig
-               <i></i>
-            </div>
+      <div className="panel-general-portafolio">
+         <div className="panel-general-portafolio-contenedor">
+            {renderizarVistaPorIndice()}
+         </div>
+         <div className="panel-general-portafolio-direccion">
+            <button onClick={irASeccionAnterior}>Ant</button>
+            <button onClick={irASeccionSiguiente}>Sig</button>
          </div>
       </div>
    );

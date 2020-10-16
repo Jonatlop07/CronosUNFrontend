@@ -18,21 +18,33 @@ const PanelOpcionesDiario = (props) => {
    };
 
    return (
-      <div>
-         <button onClick={iniciarRegistroNuevaEntrada}>Nueva Entrada</button>
-         {registrandoEntrada && (
-            <ModalRegistroEntrada
-               cambiarEstadoRegDeEntrada={setRegistrandoEntrada}
-            />
-         )}
-         <button onClick={iniciarFiltroEntradas}>Filtrar Entradas</button>
-         {filtrandoEntradas && (
-            <ModalFiltroEntradas
-               cambiarEstadoFiltroEntradas={setFiltrandoEntradas}
-            />
-         )}
-         {/* Aquí va un popover */}
-         <button>Inf</button>
+      <div className="panel-opciones-diario">
+         <center>
+            <button
+               className="panel-opciones-diario-btn"
+               onClick={iniciarRegistroNuevaEntrada}
+            >
+               Nueva Entrada
+            </button>
+            {registrandoEntrada && (
+               <ModalRegistroEntrada
+                  cambiarEstadoRegDeEntrada={setRegistrandoEntrada}
+               />
+            )}
+            <button
+               className="panel-opciones-diario-btn"
+               onClick={iniciarFiltroEntradas}
+            >
+               Filtrar Entradas
+            </button>
+            {filtrandoEntradas && (
+               <ModalFiltroEntradas
+                  cambiarEstadoFiltroEntradas={setFiltrandoEntradas}
+               />
+            )}
+            {/* Aquí va un popover */}
+            <button className="panel-opciones-diario-btn">Inf</button>
+         </center>
       </div>
    );
 };

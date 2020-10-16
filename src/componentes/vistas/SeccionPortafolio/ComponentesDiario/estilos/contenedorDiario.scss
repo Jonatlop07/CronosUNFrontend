@@ -1,0 +1,11 @@
+@import "../../../../../scss/variables";
+
+.contenedor-diario {
+   display: flex;
+   flex-wrap: wrap;
+   flex-direction: column;
+   max-height: 40rem;
+   overflow: auto;
+   margin: 1rem;
+   border: 0.1rem solid rgba(46, 178, 240, 0.89);
+}

@@ -1,0 +1,11 @@
+@import "../../../../../scss/variables";
+@import "../../estilos/mixins";
+
+.panel-opciones-diario {
+   margin: 0.5rem auto;
+
+   #{&}-btn {
+      @include boton-general($color-tres);
+      margin: 0.5rem 1rem;
+   }
+}

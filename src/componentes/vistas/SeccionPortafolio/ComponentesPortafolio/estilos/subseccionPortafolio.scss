@@ -1,19 +1,22 @@
+@import "../../../../../scss/variables";
+
 .subseccion-portafolio {
-   max-width: 60%;
-   margin-left: 1rem;
    display: flex;
    flex-direction: column;
-   flex-grow: 3;
+   width: 48%;
+   margin-right: 10%;
+   margin-left: 4%;
+   margin-bottom: 5rem;
 
    #{&}-nombre {
-      font-size: 3rem;
+      font-size: 2rem;
       font-weight: bold;
       text-align: center;
       margin-bottom: 1rem;
    }
 
    #{&}-principal {
-      margin: 0.5rem 1rem;
       border: 0.1rem solid rgba(27, 110, 148, 0.89);
+      background: $color-dos;
    }
 }

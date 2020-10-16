@@ -4,8 +4,10 @@ import "./estilos/estadisticasDePortafolio.scss";
 
 const EstadisticasDePortafolio = (props) => {
    return (
-      <div>
-         <p>Estadísticas del portafolio</p>
+      <div className="estadisticas-portafolio">
+         <h4 className="estadisticas-portafolio-titulo">
+            Estadísticas del portafolio
+         </h4>
       </div>
    );
 };

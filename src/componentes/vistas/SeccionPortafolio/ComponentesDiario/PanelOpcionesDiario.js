@@ -19,32 +19,46 @@ const PanelOpcionesDiario = (props) => {
 
    return (
       <div className="panel-opciones-diario">
-         <center>
-            <button
-               className="panel-opciones-diario-btn"
-               onClick={iniciarRegistroNuevaEntrada}
-            >
-               Nueva Entrada
-            </button>
-            {registrandoEntrada && (
-               <ModalRegistroEntrada
-                  cambiarEstadoRegDeEntrada={setRegistrandoEntrada}
-               />
-            )}
-            <button
-               className="panel-opciones-diario-btn"
-               onClick={iniciarFiltroEntradas}
-            >
-               Filtrar Entradas
-            </button>
-            {filtrandoEntradas && (
-               <ModalFiltroEntradas
-                  cambiarEstadoFiltroEntradas={setFiltrandoEntradas}
-               />
-            )}
-            {/* Aquí va un popover */}
-            <button className="panel-opciones-diario-btn">Inf</button>
-         </center>
+         <div className="panel-opciones-diario-grupo">
+            <div className="panel-opciones-diario-grupo-opciones">
+               <div className="panel-opciones-diario-grupo-opciones-btn">
+                  <i
+                     className="panel-opciones-diario-grupo-opciones-btn-icono fas fa-plus-circle"
+                     onClick={iniciarRegistroNuevaEntrada}
+                  >
+                     <label className="panel-opciones-diario-grupo-opciones-btn-icono-etiqueta">
+                        Nueva Entrada
+                     </label>
+                  </i>
+               </div>
+               <div className="panel-opciones-diario-grupo-opciones-btn">
+                  <i
+                     className="panel-opciones-diario-grupo-opciones-btn-icono fas fa-filter"
+                     onClick={iniciarFiltroEntradas}
+                  >
+                     <label className="panel-opciones-diario-grupo-opciones-btn-icono-etiqueta">
+                        Filtrar Entradas
+                     </label>
+                  </i>
+               </div>
+            </div>
+            <div className="panel-opciones-diario-grupo-info">
+               <i className="panel-opciones-diario-grupo-info-btn fas fa-info-circle"></i>
+            </div>
+         </div>
+
+         {registrandoEntrada && (
+            <ModalRegistroEntrada
+               cambiarEstadoRegDeEntrada={setRegistrandoEntrada}
+            />
+         )}
+
+         {filtrandoEntradas && (
+            <ModalFiltroEntradas
+               cambiarEstadoFiltroEntradas={setFiltrandoEntradas}
+            />
+         )}
+         {/* Aquí va un popover */}
       </div>
    );
 };

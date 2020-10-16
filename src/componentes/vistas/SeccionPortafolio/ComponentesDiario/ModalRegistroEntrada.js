@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 import "./estilos/modalRegistroEntrada.scss";
+
 import {
    obtenerFechaActual,
    obtenerHoraActual,
@@ -11,10 +12,6 @@ const ModalRegistroEntrada = (props) => {
 
    const INSTRUCCIONES_TEXTAREA =
       "Este espacio es para que ingreses el texto de tu entrada.";
-
-   const actualizarTexto = (evento) => {
-      setTextoEntrada(evento.currentTarget.value);
-   };
 
    const terminarRegistroEntrada = () => {
       props.cambiarEstadoRegDeEntrada(false);
@@ -29,23 +26,38 @@ const ModalRegistroEntrada = (props) => {
    };
 
    return (
-      <div>
+      <div className="modal-registro-entrada">
          <h5>Nueva entrada</h5>
          <form>
+            <div className="modal-registro-entrada-formulario">
+               <textarea
+                  className="modal-registro-entrada-formulario-texto"
+                  rows="5"
+                  name="entrada"
+                  value={textoEntrada}
+                  onChange={(e) => {
+                     setTextoEntrada(e.currentTarget.value);
+                  }}
+                  placeholder={INSTRUCCIONES_TEXTAREA}
+                  autoFocus
+                  required
+               >
+                  Enter details here...
+               </textarea>
+            </div>
+
             <input
-               name="entrada"
-               value={textoEntrada}
-               onChange={actualizarTexto}
-               placeholder={INSTRUCCIONES_TEXTAREA}
-               autoFocus
-               required
-            ></input>
-            <input
+               className="modal-registro-entrada-formulario-registrar"
                type="submit"
                onClick={registrarEntradaDeDiario}
                value="Registrar"
             />
-            <button onClick={terminarRegistroEntrada}>Cancelar</button>
+            <button
+               className="modal-registro-entrada-formulario-cancelar"
+               onClick={terminarRegistroEntrada}
+            >
+               Cancelar
+            </button>
          </form>
       </div>
    );

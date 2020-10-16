@@ -42,8 +42,14 @@ const PanelGeneralPortafolio = (props) => {
             {renderizarVistaPorIndice()}
          </div>
          <div className="panel-general-portafolio-direccion">
-            <button onClick={irASeccionAnterior}>Ant</button>
-            <button onClick={irASeccionSiguiente}>Sig</button>
+            <i
+               className="fa-arrow-circle-left"
+               onClick={irASeccionAnterior}
+            ></i>
+            <i
+               className="fa-arrow-circle-right"
+               onClick={irASeccionSiguiente}
+            ></i>
          </div>
       </div>
    );

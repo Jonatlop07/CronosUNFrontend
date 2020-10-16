@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import FiltroPorRango from "./FiltroPorRango";
 import FiltroEspecifico from "./FiltroEspecifico";
 
-import "./estilos/modalFiltroEntradas.scss";
+import "../estilos/modalFiltro.scss";
 
 const ModalFiltroEntradas = (props) => {
    const [configurandoFiltro, setConfigurandoFiltro] = useState(false);
@@ -47,7 +47,7 @@ const ModalFiltroEntradas = (props) => {
    };
 
    return (
-      <div>
+      <div className="modal-filtro">
          <h5>Filtrar Entradas del Diario</h5>
          {configurandoFiltro ? (
             filtrandoPorRango ? (
@@ -63,12 +63,14 @@ const ModalFiltroEntradas = (props) => {
             )
          ) : (
             <React.Fragment>
-               <button onClick={seleccionarFiltroPorRango}>
-                  Por rango de fecha y hora
-               </button>
-               <button onClick={seleccionarFiltroEspecifico}>
-                  Por fecha y hora específicas
-               </button>
+               <div className="modal-filtro-opciones">
+                  <button onClick={seleccionarFiltroPorRango}>
+                     Por rango de fecha y hora
+                  </button>
+                  <button onClick={seleccionarFiltroEspecifico}>
+                     Por fecha y hora específicas
+                  </button>
+               </div>
                <button onClick={terminarFiltroEntradas}>Cancelar</button>
             </React.Fragment>
          )}

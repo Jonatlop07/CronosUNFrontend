@@ -1,0 +1,117 @@
+@import "../../../../scss/variables";
+@import "./mixins";
+
+.modal-filtro {
+   border: 0.1rem solid $color-tres;
+   border-radius: 10%;
+   background-color: $color-dos;
+   text-align: center;
+
+   h5 {
+      margin: 1rem 1rem;
+      color: $color-uno;
+      font-weight: bold;
+   }
+
+   button {
+      @include boton-general($color-tres);
+      margin: 1rem 0.25rem;
+      padding: 0.25rem 0.5rem;
+      font-weight: bold;
+   }
+
+   #{&}-opciones,
+   #{&}-seleccion {
+      margin: 0 1rem;
+      padding: 0 1rem;
+      background: $color-uno;
+   }
+
+   #{&}-seleccion {
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+
+      &-etiqueta,
+      &-etiqueta-parametro {
+         margin: 0.5rem 2rem;
+      }
+
+      &-etiqueta-parametro {
+         font-weight: bold;
+      }
+
+      &-caja-seleccion {
+         margin-top: 1rem;
+         margin-right: 0.5rem;
+      }
+
+      &-radio {
+         margin: 0 1rem;
+         background-color: $color-tres;
+      }
+
+      &-fecha,
+      &-hora {
+         margin-left: 0.5rem;
+         padding: 0 0.25rem;
+         color: $color-uno;
+         background: $color-dos;
+      }
+
+      &-texto,
+      &-selector {
+         margin-left: 0.5rem;
+         width: 50%;
+         color: $color-tres;
+         background: $color-dos;
+      }
+
+      &-selector {
+         width: 20%;
+      }
+
+      &-categorias {
+         display: flex;
+         flex-direction: row;
+         &-btn {
+            @include boton-general-alt($color-dos, darken($color-cuatro, 40%));
+            margin: 0.5rem 2rem;
+            padding: 0.3rem;
+            font-style: normal;
+            font-size: 1rem;
+            font-family: fontAwesome;
+         }
+      }
+
+      &-fecha {
+         &::-webkit-datetime-edit-text {
+            color: darken($color-cuatro, 30%);
+            padding: 0 0.2em;
+         }
+         &::-webkit-datetime-edit-month-field,
+         &::-webkit-datetime-edit-day-field,
+         &::-webkit-datetime-edit-year-field {
+            color: lighten($color-tres, 10%);
+         }
+         &::-webkit-inner-spin-button {
+            display: none;
+         }
+         &::-webkit-calendar-picker-indicator {
+            filter: invert(0.9);
+         }
+      }
+
+      &-hora {
+         margin-bottom: 1rem;
+         &::-webkit-datetime-edit-hour-field,
+         &::-webkit-datetime-edit-minute-field,
+         &::-webkit-datetime-edit-ampm-field {
+            color: lighten($color-tres, 10%);
+         }
+         &::-webkit-calendar-picker-indicator {
+            filter: invert(1);
+         }
+      }
+   }
+}

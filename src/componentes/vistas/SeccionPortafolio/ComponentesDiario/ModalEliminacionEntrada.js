@@ -1,15 +1,24 @@
 import React from "react";
 
-const ModalEliminacionEntrada = (props) => {
-   const eliminarEntrada = () => {};
+import "./estilos/modalEliminacionEntrada.scss";
 
-   const cancelarEliminacion = () => {};
+const ModalEliminacionEntrada = (props) => {
+   const eliminarEntrada = () => {
+      props.eliminarEntrada();
+   };
+
+   const cancelarEliminacion = () => {
+      props.cancelarEliminacion();
+   };
 
    return (
-      <div>
+      <div className="modal-eliminacion-entrada">
          <h5>Eliminación de entrada</h5>
-         <button>Confirmar</button>
-         <button>Cancelar</button>
+         <p className="modal-eliminacion-entrada-mensaje">
+            ¿Estás seguro que deseas eliminar esta entrada?
+         </p>
+         <button onClick={eliminarEntrada}>Confirmar</button>
+         <button onClick={cancelarEliminacion}>Cancelar</button>
       </div>
    );
 };

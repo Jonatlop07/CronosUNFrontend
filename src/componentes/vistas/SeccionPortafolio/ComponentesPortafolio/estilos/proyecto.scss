@@ -5,13 +5,13 @@
    display: flex;
    flex-direction: column;
    height: 20rem;
-   max-height: 20rem;
    overflow: auto;
-   padding: 1rem 0.5rem;
+   padding: 1rem;
    margin: 1rem 1rem;
-   font-size: 0.8rem;
+   font-size: 0.9rem;
    border: 0.1rem solid rgba(147, 214, 243, 0.89);
-   background: lighten($color-uno, 100%);
+   border-radius: 3%;
+   background: lighten($color-uno, 5%);
 
    #{&}-titulo {
       font-weight: bold;
@@ -19,9 +19,19 @@
    }
 
    #{&}-titulo,
-   #{&}-descripcion {
+   #{&}-descripcion,
+   #{&}-imagen {
       margin: 0.5rem 0.25rem;
       text-align: center;
+   }
+
+   #{&}-imagen {
+      min-height: 6rem;
+      max-height: 6rem;
+      margin-bottom: 0.5rem;
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
    }
 
    #{&}-opciones {
@@ -35,14 +45,18 @@
       }
 
       &-editar {
-         margin-left: 5%;
-         width: 25%;
-         @include boton-general($color-dos);
+         width: 10%;
+         margin-left: 10%;
+         @include boton-general-alt($color-uno, $color-tres);
+         background-color: $color-dos;
          padding: 0.125rem;
+         font-size: 1.25rem; /* Set a font size */
+         font-family: fontAwesome;
       }
 
       &-estado {
-         width: 35%;
+         width: 40%;
+         background: lighten($color-uno, 1%);
       }
 
       &-privacidad {
@@ -50,7 +64,7 @@
          display: inline-block;
          width: 2rem;
          height: 1rem;
-         margin-right: 5%;
+         margin-right: 10%;
 
          &-caja-seleccion {
             opacity: 0;
@@ -65,6 +79,8 @@
             left: 0;
             right: 0;
             bottom: 0;
+            box-shadow: 0 0 1px $color-tres;
+            background-color: $color-tres;
          }
 
          &-deslizador:before {
@@ -101,93 +117,22 @@
    }
 }
 
-/* .proyecto {
-   display: flex;
-   flex-direction: column;
-   height: 20rem;
-   max-height: 20rem;
-   overflow: auto;
-   padding: 1rem 0.5rem;
-   margin: 1rem 1rem;
-   font-size: 0.8rem;
-   border: 0.1rem solid rgba(147, 214, 243, 0.89);
-   background: lighten($color-uno, 100%);
+.proyecto::-webkit-scrollbar {
+   width: 0.625rem;
+}
 
-   #{&}-titulo {
-      font-weight: bold;
-      font-size: medium;
-   }
+.proyecto::-webkit-scrollbar-track {
+   box-shadow: inset 0 0 0.5rem darken($color-uno, 40%);
+}
 
-   #{&}-titulo,
-   #{&}-descripcion {
-      margin: 0.5rem 0.25rem;
-      text-align: center;
-   }
-   #{&}-opciones {
-      display: flex;
-      flex-direction: row;
+.proyecto::-webkit-scrollbar-thumb {
+   background-color: $color-uno;
+   box-shadow: inset 0 0 0.5rem darken($color-dos, 50%);
+   outline: 1px solid slategrey;
+}
 
-      &-editar,
-      &-estado,
-      &-privacidad {
-         margin: 0.5rem 2.5%;
-         width: 25%;
-      }
-
-      &-estado {
-         width: 35%;
-      }
-
-      &-editar {
-         @include boton-general($color-cuatro);
-         padding: 0.125rem;
-      }
-
-      &-privacidad {
-         position: relative;
-         display: inline-block;
-         width: 2rem;
-         height: 1rem;
-
-         &-caja-seleccion {
-            opacity: 0;
-            width: 0;
-            height: 0;
-         }
-
-         &-deslizador {
-            @include deslizador(#ccc, 2rem);
-            cursor: pointer;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-
-            &:before {
-               @include deslizador(white, 50%);
-               content: "";
-               height: 0.87rem;
-               width: 0.75rem;
-               left: 0.13rem;
-               bottom: 0.1rem;
-            }
-         }
-
-         &-caja-seleccion:checked + &-deslizador {
-            background-color: #2196f3;
-         }
-
-         &-caja-seleccion:focus + &-deslizador {
-            box-shadow: 0 0 1px #2196f3;
-         }
-
-         &-caja-seleccion:checked + &-deslizador:before {
-            transform: translateX(1rem);
-         }
-
-         &-etiqueta {
-            margin-top: 0.5rem;
-         }
-      }
-   }
-} */
+.proyecto::-webkit-scrollbar,
+.proyecto::-webkit-scrollbar-track,
+.proyecto::-webkit-scrollbar-thumb {
+   border-radius: 0.5rem;
+}

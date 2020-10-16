@@ -11,20 +11,26 @@
       margin-left: 5%;
       margin-right: 1.25%;
       padding-left: 2.5%;
+      background: lighten($color-uno, 5%);
    }
 
    #{&}-boton {
-      height: 2rem;
-      width: 10%;
-      margin-right: 5%;
-      color: $color-uno;
-      background: $color-dos;
-      border-radius: 5%;
-      cursor: pointer;
+      padding: 0.35rem;
+      color: $color-dos;
+      background-color: $color-uno;
+      border: none;
+
+      i {
+         font-style: normal;
+         font-family: fontAwesome;
+         font-size: 1.25rem;
+      }
 
       &:hover {
-         background: darken($color-dos, 25%);
-         color: lighten($color-dos, 100%);
+         cursor: pointer;
+         color: $color-uno;
+         background-color: $color-dos;
+         border-radius: 15%;
       }
    }
 }

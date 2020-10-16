@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 
+import "../estilos/modalFiltro.scss";
+
 import {
    obtenerFechaActual,
    obtenerHoraActual,
@@ -26,45 +28,51 @@ const FiltroPorRango = (props) => {
 
    return (
       <React.Fragment>
-         <label>
-            Fecha inicial:
-            <input
-               type="date"
-               name="fechaInicial"
-               value={fechaInicial}
-               onChange={(e) => setFechaInicial(e.currentTarget.value)}
-            />
-         </label>
+         <div className="modal-filtro-seleccion">
+            <label className="modal-filtro-seleccion-etiqueta">
+               Fecha inicial:
+               <input
+                  className="modal-filtro-seleccion-fecha"
+                  type="date"
+                  name="fechaInicial"
+                  value={fechaInicial}
+                  onChange={(e) => setFechaInicial(e.currentTarget.value)}
+               />
+            </label>
 
-         <label>
-            Fecha final:
-            <input
-               type="date"
-               name="fechaFinal"
-               value={fechaFinal}
-               onChange={(e) => setFechaFinal(e.currentTarget.value)}
-            />
-         </label>
+            <label className="modal-filtro-seleccion-etiqueta">
+               Fecha final:
+               <input
+                  className="modal-filtro-seleccion-fecha"
+                  type="date"
+                  name="fechaFinal"
+                  value={fechaFinal}
+                  onChange={(e) => setFechaFinal(e.currentTarget.value)}
+               />
+            </label>
 
-         <label>
-            Hora inicial:
-            <input
-               type="time"
-               name="horaInicial"
-               value={horaInicial}
-               onChange={(e) => setHoraInicial(e.currentTarget.value)}
-            />
-         </label>
+            <label className="modal-filtro-seleccion-etiqueta">
+               Hora inicial:
+               <input
+                  className="modal-filtro-seleccion-hora"
+                  type="time"
+                  name="horaInicial"
+                  value={horaInicial}
+                  onChange={(e) => setHoraInicial(e.currentTarget.value)}
+               />
+            </label>
 
-         <label>
-            Hora final:
-            <input
-               type="time"
-               name="horaFinal"
-               value={horaFinal}
-               onChange={(e) => setHoraFinal(e.currentTarget.value)}
-            />
-         </label>
+            <label className="modal-filtro-seleccion-etiqueta">
+               Hora final:
+               <input
+                  className="modal-filtro-seleccion-hora"
+                  type="time"
+                  name="horaFinal"
+                  value={horaFinal}
+                  onChange={(e) => setHoraFinal(e.currentTarget.value)}
+               />
+            </label>
+         </div>
 
          <button onClick={realizarFiltroPorRango}>Confirmar</button>
          <button onClick={terminarFiltroPorRango}>Cancelar</button>

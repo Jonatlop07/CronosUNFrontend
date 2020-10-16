@@ -1,0 +1,94 @@
+@import "../../../../../scss/variables";
+@import "../../estilos/mixins";
+
+.modal-nuevo-proyecto {
+   border: 0.1rem solid $color-tres;
+   border-radius: 10%;
+   background-color: $color-dos;
+   text-align: center;
+
+   h5 {
+      margin: 1rem 1rem;
+      color: $color-uno;
+      font-weight: bold;
+   }
+
+   #{&}-formulario {
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+      margin: 1rem 1rem;
+      padding: 2rem 3rem;
+      background: $color-uno;
+
+      &-texto {
+         margin: 1rem 0;
+         padding: 0.5rem;
+      }
+
+      &-botones {
+         display: flex;
+         flex-direction: row;
+      }
+
+      &-registrar,
+      &-cancelar {
+         @include boton-general($color-tres);
+         margin: 1rem 0.25rem;
+         padding: 0.25rem 0.5rem;
+         font-weight: bold;
+      }
+
+      &-privacidad {
+         position: relative;
+         display: inline-block;
+         width: 2rem;
+         height: 1rem;
+         margin: 1rem 0;
+
+         &-caja-seleccion {
+            opacity: 0;
+            width: 0;
+            height: 0;
+         }
+
+         &-deslizador {
+            @include deslizador(#ccc, 2rem);
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            box-shadow: 0 0 1px $color-tres;
+            background-color: $color-tres;
+         }
+
+         &-deslizador:before {
+            @include deslizador(white, 50%);
+            content: "";
+            height: 0.87rem;
+            width: 0.75rem;
+            left: 0.13rem;
+            bottom: 0.1rem;
+         }
+
+         &-caja-seleccion:checked {
+            + .modal-nuevo-proyecto-formulario-privacidad-deslizador {
+               background-color: $color-cuatro;
+            }
+         }
+
+         &-caja-seleccion:focus {
+            + .modal-nuevo-proyecto-formulario-privacidad-deslizador {
+               box-shadow: 0 0 1px $color-cuatro;
+            }
+         }
+
+         &-caja-seleccion:checked {
+            + .modal-nuevo-proyecto-formulario-privacidad-deslizador:before {
+               transform: translateX(1rem);
+            }
+         }
+      }
+   }
+}

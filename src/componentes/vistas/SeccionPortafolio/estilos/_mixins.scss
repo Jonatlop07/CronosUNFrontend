@@ -2,11 +2,23 @@
    padding: 0.5rem 1rem;
    background: $color-fondo;
    border-radius: 15%;
-   cursor: pointer;
 
    &:hover {
+      cursor: pointer;
       background: darken($color-fondo, 25%);
       color: lighten($color-fondo, 75%);
+   }
+}
+
+@mixin boton-general-alt($color-predeterminado, $color-hover) {
+   padding: 0.5rem 1rem;
+   color: $color-predeterminado;
+   border-radius: 15%;
+   font-style: normal;
+
+   &:hover {
+      cursor: pointer;
+      color: $color-hover;
    }
 }
 

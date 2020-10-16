@@ -1,0 +1,29 @@
+@import "../../../../../scss/variables";
+@import "../../estilos/mixins";
+
+.modal-eliminacion-entrada {
+   border: 0.1rem solid $color-tres;
+   border-radius: 10%;
+   background-color: $color-dos;
+   text-align: center;
+
+   h5 {
+      margin: 1rem 1rem;
+      color: $color-uno;
+      font-weight: bold;
+   }
+
+   #{&}-mensaje {
+      margin: 0 1rem;
+      padding: 1rem;
+      color: $color-dos;
+      background: $color-uno;
+   }
+
+   button {
+      @include boton-general($color-tres);
+      margin: 1rem 0.25rem;
+      padding: 0.25rem 0.5rem;
+      font-weight: bold;
+   }
+}

@@ -13,8 +13,14 @@ const Proyecto = (props) => {
       <div className="proyecto">
          <p className="proyecto-titulo">{props.titulo}</p>
          <p className="proyecto-descripcion">{props.descripcion}</p>
+         <div
+            className="proyecto-imagen"
+            style={{ backgroundImage: `url(${props.imagenFondo})` }}
+         >
+            <img />
+         </div>
          <div className="proyecto-opciones">
-            <i className="fas fa-edit proyecto-opciones-editar"></i>
+            <i className="proyecto-opciones-editar fad fa-edit"></i>
             <select className="proyecto-opciones-estado">
                <option>Finalizado</option>
                <option>En Progreso</option>

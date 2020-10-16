@@ -19,12 +19,14 @@
    #{&}-direccion {
       color: darken($color-uno, 60%);
       background: lighten($color-dos, 25%);
+      padding: 0.5rem 0;
 
-      & button {
-         margin: 0.5rem 1rem;
-         padding: 0.5rem 1rem;
-         border: 0.1rem solid $color-dos;
-         @include boton-general($color-tres);
+      & i {
+         margin: 0 5%;
+         @include boton-general-alt($color-dos, $color-uno);
+         font-size: 2rem; /* Set a font size */
+         font-family: fontAwesome;
+         font-style: normal;
       }
    }
 }

@@ -13,6 +13,7 @@ const EntradaDiario = (props) => {
 
    const eliminarEntrada = () => {
       props.eliminarEntrada(props.key);
+      cancelarEliminacion();
    };
 
    const cancelarEliminacion = () => {
@@ -21,16 +22,17 @@ const EntradaDiario = (props) => {
 
    return (
       <div className="entrada-diario">
-         <p className="entrada-diario-tiempo">
-            {props.fecha}-{props.hora}
-         </p>
-         <button
-            className="entrada-diario-btn-borrar"
-            onClick={ejecutarConfirmacionDeEliminacion}
-         >
-            Borrar
-         </button>
-         <p className="entrada-diario-contenido">{props.texto}</p>
+         <div className="entrada-diario-barra">
+            <div className="entrada-diario-barra-tiempo">
+               {props.fecha}-{props.hora}
+            </div>
+            <div className="entrada-diario-barra-borrar">
+               <i
+                  className="entrada-diario-barra-borrar-btn fas fa-minus-circle"
+                  onClick={ejecutarConfirmacionDeEliminacion}
+               ></i>
+            </div>
+         </div>
 
          {eliminandoEntrada && (
             <ModalEliminacionEntrada
@@ -38,6 +40,8 @@ const EntradaDiario = (props) => {
                eliminarEntrada={eliminarEntrada}
             />
          )}
+
+         <p className="entrada-diario-contenido">{props.texto}</p>
       </div>
    );
 };

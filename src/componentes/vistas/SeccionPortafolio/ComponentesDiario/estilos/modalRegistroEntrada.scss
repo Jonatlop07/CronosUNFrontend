@@ -1,0 +1,47 @@
+@import "../../../../../scss/variables";
+@import "../../estilos/mixins";
+
+.modal-registro-entrada {
+   border: 0.1rem solid $color-tres;
+   border-radius: 10%;
+   background-color: $color-dos;
+   text-align: center;
+
+   h5 {
+      margin: 1rem 1rem;
+      color: $color-uno;
+      font-weight: bold;
+   }
+
+   #{&}-formulario {
+      margin: 1rem 1rem;
+      padding: 1rem;
+      background: $color-uno;
+
+      &-texto {
+         margin: 0.5rem auto;
+         padding: 0.5rem;
+         width: 100%;
+         height: 10rem;
+         color: $color-tres;
+         background: $color-dos;
+
+         &::placeholder {
+            color: $color-tres;
+         }
+      }
+      &-registrar {
+         @include boton-general($color-tres);
+         margin: 1rem 0.25rem;
+         padding: 0.25rem 0.5rem;
+         font-weight: bold;
+      }
+
+      &-cancelar {
+         @include boton-general($color-tres);
+         margin: 1rem 0.25rem;
+         padding: 0.25rem 0.5rem;
+         font-weight: bold;
+      }
+   }
+}

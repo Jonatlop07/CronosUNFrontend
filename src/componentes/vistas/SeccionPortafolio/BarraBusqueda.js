@@ -10,11 +10,9 @@ const BarraBusqueda = (props) => {
                className="barra-busqueda-campo"
                placeholder="Nombre de usuario o dirección de correo"
             />
-            <input
-               className="barra-busqueda-boton"
-               type="submit"
-               value="Buscar"
-            />
+            <button type="submit" class="barra-busqueda-boton">
+               <i class="fas fa-search"></i> Buscar
+            </button>
          </form>
       </div>
    );

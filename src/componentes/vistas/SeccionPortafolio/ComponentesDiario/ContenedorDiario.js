@@ -15,7 +15,7 @@ const ContenedorDiario = (props) => {
             key="e1"
             fecha="10/10/2020"
             hora="15:15"
-            texto="Hoy estuve probando mi texto"
+            texto="Hoy estuve probando mi texto. Hoy estuve probando mi texto. Hoy estuve probando mi texto. Hoy estuve probando mi texto"
             eliminarEntrada={eliminarEntrada}
          />
 

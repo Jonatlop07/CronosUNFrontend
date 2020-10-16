@@ -3,11 +3,12 @@ import React, { useState } from "react";
 import "./estilos/modalNuevoProyecto.scss";
 
 const ModalNuevoProyecto = (props) => {
+   const [titulo, setTitulo] = useState("");
+   const [descripcion, setDescripcion] = useState("");
    const [esPublico, setEsPublico] = useState(false);
 
-   const manejarSeleccionPrivacidad = () => {
-      setEsPublico(!esPublico);
-   };
+   const INSTRUCCIONES_DESCRIPCION =
+      "Este espacio es para que ingreses una breve descripción de tu nuevo proyecto.";
 
    const crearContenidoNuevoProyecto = () => {};
 
@@ -16,29 +17,73 @@ const ModalNuevoProyecto = (props) => {
    };
 
    return (
-      <div>
+      <div className="modal-nuevo-proyecto">
          <h5>Nuevo Proyecto</h5>
-         <fieldset>
-            <label for="edicion-titulo-proyecto">Título del proyecto:</label>
-            <input id="edicion-titulo-proyecto" />
-            <label for="edicion-descripcion-proyecto">
-               Descripción del proyecto:
-            </label>
-            <input id="edicion-descripcion-proyecto" />
-            <label>Privacidad:</label>
-            <label>{esPublico ? "Público" : "Privado"}</label>
-            <label className="switch">
+         <form>
+            <div className="modal-nuevo-proyecto-formulario">
+               <label
+                  className="modal-nuevo-proyecto-formulario-etiqueta"
+                  for="edicion-titulo-proyecto"
+               >
+                  Título del proyecto:
+               </label>
                <input
-                  type="checkbox"
-                  onChange={manejarSeleccionPrivacidad}
-                  defaultChecked={esPublico}
+                  className="modal-nuevo-proyecto-formulario-texto"
+                  id="edicion-titulo-proyecto"
+                  onChange={(e) => {
+                     setTitulo(e.currentTarget.value);
+                  }}
+                  required
                />
-               <span className="slider round"></span>
-            </label>
-         </fieldset>
+               <label
+                  className="modal-nuevo-proyecto-formulario-etiqueta"
+                  for="edicion-descripcion-proyecto"
+               >
+                  Descripción del proyecto:
+               </label>
+               <textarea
+                  className="modal-nuevo-proyecto-formulario-texto"
+                  id="edicion-descripcion-proyecto"
+                  rows="3"
+                  name="entrada"
+                  value={descripcion}
+                  onChange={(e) => {
+                     setDescripcion(e.currentTarget.value);
+                  }}
+                  placeholder={INSTRUCCIONES_DESCRIPCION}
+                  required
+               ></textarea>
+               <label className="modal-nuevo-proyecto-formulario-etiqueta">
+                  Privacidad:
+               </label>
 
-         <button onClick={crearContenidoNuevoProyecto}>Continuar</button>
-         <button onClick={terminarRegistroNuevoProyecto}>Cancelar</button>
+               <label className="modal-nuevo-proyecto-formulario-privacidad">
+                  <input
+                     className="modal-nuevo-proyecto-formulario-privacidad-caja-seleccion"
+                     type="checkbox"
+                     onChange={() => setEsPublico(!esPublico)}
+                     defaultChecked={esPublico}
+                  />
+                  <span className="modal-nuevo-proyecto-formulario-privacidad-deslizador"></span>
+                  {esPublico ? "Público" : "Privado"}
+               </label>
+            </div>
+         </form>
+
+         <div>
+            <input
+               className="modal-nuevo-proyecto-formulario-registrar"
+               type="submit"
+               value="Continuar"
+               onClick={crearContenidoNuevoProyecto}
+            />
+            <button
+               className="modal-nuevo-proyecto-formulario-cancelar"
+               onClick={terminarRegistroNuevoProyecto}
+            >
+               Cancelar
+            </button>
+         </div>
       </div>
    );
 };

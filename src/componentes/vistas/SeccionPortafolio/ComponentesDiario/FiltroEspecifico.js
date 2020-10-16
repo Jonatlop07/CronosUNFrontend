@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 
+import "../estilos/modalFiltro.scss";
+
 import {
    obtenerFechaActual,
    obtenerHoraActual,
@@ -21,11 +23,12 @@ const FiltroEspecifico = (props) => {
    };
 
    return (
-      <div>
-         <React.Fragment>
-            <label>
+      <React.Fragment>
+         <div className="modal-filtro-seleccion">
+            <label className="modal-filtro-seleccion-etiqueta">
                Fecha:
                <input
+                  className="modal-filtro-seleccion-fecha"
                   type="date"
                   name="fechaEspecifica"
                   value={fechaEspecifica}
@@ -33,20 +36,21 @@ const FiltroEspecifico = (props) => {
                />
             </label>
 
-            <label>
+            <label className="modal-filtro-seleccion-etiqueta">
                Hora:
                <input
+                  className="modal-filtro-seleccion-hora"
                   type="time"
                   name="horaEspecifica"
                   value={horaEspecifica}
                   onChange={(e) => setHoraEspecifica(e.currentTarget.value)}
                />
             </label>
+         </div>
 
-            <button onClick={realizarFiltroEspecifico}>Confirmar</button>
-            <button onClick={terminarFiltroEspecifico}>Cancelar</button>
-         </React.Fragment>
-      </div>
+         <button onClick={realizarFiltroEspecifico}>Confirmar</button>
+         <button onClick={terminarFiltroEspecifico}>Cancelar</button>
+      </React.Fragment>
    );
 };
 

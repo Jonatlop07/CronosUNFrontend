@@ -27,32 +27,43 @@ const PanelOpcionesPortafolio = (props) => {
 
    return (
       <div className="panel-opciones-portafolio">
-         <center>
-            <button
-               className="panel-opciones-portafolio-btn"
-               onClick={iniciarRegistroNuevoProyecto}
-            >
-               Nuevo Proyecto
-            </button>
-            {creandoNuevoProyecto && (
-               <ModalNuevoProyecto
-                  terminarRegistroNuevoProyecto={terminarRegistroNuevoProyecto}
-               />
-            )}
-            <button
-               className="panel-opciones-portafolio-btn"
-               onClick={iniciarFiltroProyectos}
-            >
-               Filtrar Proyectos
-            </button>
-            {filtrandoProyectos && (
-               <ModalFiltroProyectos
-                  terminarFiltroProyectos={terminarFiltroProyectos}
-               />
-            )}
-            {/* Aquí va un popover */}
-            <button className="panel-opciones-portafolio-btn">Inf</button>
-         </center>
+         <div className="panel-opciones-portafolio-grupo">
+            <div className="panel-opciones-portafolio-grupo-opciones">
+               <i
+                  className="panel-opciones-portafolio-grupo-opciones-btn fas fa-plus-circle"
+                  onClick={iniciarRegistroNuevoProyecto}
+               >
+                  <label className="panel-opciones-portafolio-grupo-opciones-btn-etiqueta">
+                     Nuevo Proyecto
+                  </label>
+               </i>
+            </div>
+            <div className="panel-opciones-portafolio-grupo-opciones">
+               <i
+                  className="panel-opciones-portafolio-grupo-opciones-btn fas fa-filter"
+                  onClick={iniciarFiltroProyectos}
+               >
+                  <label className="panel-opciones-portafolio-grupo-opciones-btn-etiqueta">
+                     Filtrar Proyectos
+                  </label>
+               </i>
+            </div>
+            <div className="panel-opciones-portafolio-grupo-info">
+               <i className="panel-opciones-portafolio-grupo-info-btn fas fa-info-circle"></i>
+            </div>
+         </div>
+
+         {creandoNuevoProyecto && (
+            <ModalNuevoProyecto
+               terminarRegistroNuevoProyecto={terminarRegistroNuevoProyecto}
+            />
+         )}
+
+         {filtrandoProyectos && (
+            <ModalFiltroProyectos
+               terminarFiltroProyectos={terminarFiltroProyectos}
+            />
+         )}
       </div>
    );
 };

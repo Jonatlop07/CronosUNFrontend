@@ -1,0 +1,34 @@
+@import './mixins';
+@import "../../../../scss/variables";
+
+.recuperacion-clave{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 50%;
+    text-align: center;
+    background: $color-dos;
+    margin: 10rem auto ;
+    
+    #{&}-boton-enviar{
+        @include boton-general($color-cuatro);
+        width: 25%;
+        margin: 1rem auto;
+        color: $color-dos;
+        font-size: 1.5rem;
+    }
+    #{&}-titulo{
+        font-size: 5rem;
+        color: $color-uno;
+    }
+    #{&}-etiqueta{
+        font-size: 2rem;
+        color: $color-uno;
+        padding-bottom: 1rem;
+    }
+    #{&}-entrada{
+        width: 80%;
+        margin: 1rem auto;
+        font-size: 2rem;
+    }
+}

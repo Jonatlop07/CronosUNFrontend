@@ -5,9 +5,11 @@ import "./estilos/modalEliminacionEntrada.scss";
 const ModalEliminacionEntrada = (props) => {
    const eliminarEntrada = () => {
       props.eliminarEntrada();
+
+      finalizarEliminacion();
    };
 
-   const cancelarEliminacion = () => {
+   const finalizarEliminacion = () => {
       props.cancelarEliminacion();
    };
 
@@ -18,7 +20,7 @@ const ModalEliminacionEntrada = (props) => {
             ¿Estás seguro que deseas eliminar esta entrada?
          </p>
          <button onClick={eliminarEntrada}>Confirmar</button>
-         <button onClick={cancelarEliminacion}>Cancelar</button>
+         <button onClick={finalizarEliminacion}>Cancelar</button>
       </div>
    );
 };

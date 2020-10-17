@@ -9,16 +9,8 @@ const PanelOpcionesPortafolio = (props) => {
    const [creandoNuevoProyecto, setCreandoNuevoProyecto] = useState(false);
    const [filtrandoProyectos, setFiltrandoProyectos] = useState(false);
 
-   const iniciarRegistroNuevoProyecto = () => {
-      setCreandoNuevoProyecto(true);
-   };
-
    const terminarRegistroNuevoProyecto = () => {
       setCreandoNuevoProyecto(false);
-   };
-
-   const iniciarFiltroProyectos = () => {
-      setFiltrandoProyectos(true);
    };
 
    const terminarFiltroProyectos = () => {
@@ -31,7 +23,9 @@ const PanelOpcionesPortafolio = (props) => {
             <div className="panel-opciones-portafolio-grupo-opciones">
                <i
                   className="panel-opciones-portafolio-grupo-opciones-btn fas fa-plus-circle"
-                  onClick={iniciarRegistroNuevoProyecto}
+                  onClick={() => {
+                     setCreandoNuevoProyecto(true);
+                  }}
                >
                   <label className="panel-opciones-portafolio-grupo-opciones-btn-etiqueta">
                      Nuevo Proyecto
@@ -41,7 +35,9 @@ const PanelOpcionesPortafolio = (props) => {
             <div className="panel-opciones-portafolio-grupo-opciones">
                <i
                   className="panel-opciones-portafolio-grupo-opciones-btn fas fa-filter"
-                  onClick={iniciarFiltroProyectos}
+                  onClick={() => {
+                     setFiltrandoProyectos(true);
+                  }}
                >
                   <label className="panel-opciones-portafolio-grupo-opciones-btn-etiqueta">
                      Filtrar Proyectos

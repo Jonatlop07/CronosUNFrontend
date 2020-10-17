@@ -30,6 +30,8 @@ const ModalNuevoProyecto = (props) => {
                <input
                   className="modal-nuevo-proyecto-formulario-texto"
                   id="edicion-titulo-proyecto"
+                  placeholder="Espacio para ingresar el título de tu proyecto."
+                  value={titulo}
                   onChange={(e) => {
                      setTitulo(e.currentTarget.value);
                   }}
@@ -46,11 +48,11 @@ const ModalNuevoProyecto = (props) => {
                   id="edicion-descripcion-proyecto"
                   rows="3"
                   name="entrada"
+                  placeholder={INSTRUCCIONES_DESCRIPCION}
                   value={descripcion}
                   onChange={(e) => {
                      setDescripcion(e.currentTarget.value);
                   }}
-                  placeholder={INSTRUCCIONES_DESCRIPCION}
                   required
                ></textarea>
                <label className="modal-nuevo-proyecto-formulario-etiqueta">

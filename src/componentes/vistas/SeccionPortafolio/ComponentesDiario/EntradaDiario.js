@@ -7,10 +7,6 @@ import "./estilos/entradaDiario.scss";
 const EntradaDiario = (props) => {
    const [eliminandoEntrada, setEliminandoEntrada] = useState(false);
 
-   const ejecutarConfirmacionDeEliminacion = () => {
-      setEliminandoEntrada(true);
-   };
-
    const eliminarEntrada = () => {
       props.eliminarEntrada(props.key);
       cancelarEliminacion();
@@ -29,7 +25,7 @@ const EntradaDiario = (props) => {
             <div className="entrada-diario-barra-borrar">
                <i
                   className="entrada-diario-barra-borrar-btn fas fa-minus-circle"
-                  onClick={ejecutarConfirmacionDeEliminacion}
+                  onClick={() => setEliminandoEntrada(true)}
                ></i>
             </div>
          </div>

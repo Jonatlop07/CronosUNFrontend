@@ -12,34 +12,17 @@ const ModalFiltroProyectos = (props) => {
    const [filtroPorCategoria, setFiltroPorCategoria] = useState(false);
 
    const [nombreProyecto, setNombreProyecto] = useState("");
-
    const [fechaInicial, setFechaInicial] = useState(obtenerFechaActual());
    const [fechaFinal, setFechaFinal] = useState(obtenerFechaActual());
-
    const [estadoProyecto, setEstadoProyecto] = useState("");
-
    const [esPublico, setEsPublico] = useState(false);
-
    const [categorias, setCategorias] = useState([]);
 
-   const manejarFiltroPorNombre = () => {
-      setFiltroPorNombre(!filtroPorNombre);
-   };
+   const confirmarFiltroProyectos = () => {
+      /* Modificar estado del componente superior correspondiente para mostrar
+      los proyectos filtrados */
 
-   const manejarFiltroPorFecha = () => {
-      setFiltroPorFecha(!filtroPorFecha);
-   };
-
-   const manejarFiltroPorEstado = () => {
-      setFiltroPorEstado(!filtroPorEstado);
-   };
-
-   const manejarFiltroPorPrivacidad = () => {
-      setFiltroPorPrivacidad(!filtroPorPrivacidad);
-   };
-
-   const manejarFiltroPorCategoria = () => {
-      setFiltroPorCategoria(!filtroPorCategoria);
+      terminarFiltroProyectos();
    };
 
    const terminarFiltroProyectos = () => {
@@ -54,7 +37,9 @@ const ModalFiltroProyectos = (props) => {
                <input
                   className="modal-filtro-seleccion-caja-seleccion"
                   type="checkbox"
-                  onChange={manejarFiltroPorNombre}
+                  onChange={() => {
+                     setFiltroPorNombre(!filtroPorNombre);
+                  }}
                />
                Por nombre:
             </label>
@@ -71,7 +56,7 @@ const ModalFiltroProyectos = (props) => {
                <input
                   className="modal-filtro-seleccion-caja-seleccion"
                   type="checkbox"
-                  onChange={manejarFiltroPorFecha}
+                  onChange={() => setFiltroPorFecha(!filtroPorFecha)}
                />
                Por fecha:
             </label>
@@ -98,16 +83,20 @@ const ModalFiltroProyectos = (props) => {
                <input
                   className="modal-filtro-seleccion-caja-seleccion"
                   type="checkbox"
-                  onChange={manejarFiltroPorEstado}
+                  onChange={() => setFiltroPorEstado(!filtroPorEstado)}
                />
                Por estado:
             </label>
             <label className="modal-filtro-seleccion-etiqueta">
                Estado:
-               <select className="modal-filtro-seleccion-selector">
-                  <option>Finalizado</option>
-                  <option>En progreso</option>
-                  <option>Incompleto</option>
+               <select
+                  className="modal-filtro-seleccion-selector"
+                  value={estadoProyecto}
+                  onChange={(e) => setEstadoProyecto(e.currentTarget.value)}
+               >
+                  <option value="finalizado">Finalizado</option>
+                  <option value="enProgreso">En Progreso</option>
+                  <option value="incompleto">Incompleto</option>
                </select>
             </label>
             <hr />
@@ -115,7 +104,7 @@ const ModalFiltroProyectos = (props) => {
                <input
                   className="modal-filtro-seleccion-caja-seleccion"
                   type="checkbox"
-                  onChange={manejarFiltroPorPrivacidad}
+                  onChange={() => setFiltroPorPrivacidad(!filtroPorPrivacidad)}
                />
                Por privacidad:
             </label>
@@ -145,18 +134,21 @@ const ModalFiltroProyectos = (props) => {
                <input
                   className="modal-filtro-seleccion-caja-seleccion"
                   type="checkbox"
-                  onChange={manejarFiltroPorCategoria}
+                  onChange={() => setFiltroPorCategoria(!filtroPorCategoria)}
                />
                Por categoría:
             </label>
             <div className="modal-filtro-seleccion-categorias">
-               <i className="modal-filtro-seleccion-categorias-btn fas fa-plus-square">
+               <i
+                  className="modal-filtro-seleccion-categorias-btn fas fa-plus-square"
+                  onClick={(e) => {}}
+               >
                   Añadir categoría
                </i>
             </div>
          </div>
 
-         <button>Confirmar filtro</button>
+         <button onClick={confirmarFiltroProyectos}>Confirmar filtro</button>
          <button onClick={terminarFiltroProyectos}>Cancelar</button>
       </div>
    );

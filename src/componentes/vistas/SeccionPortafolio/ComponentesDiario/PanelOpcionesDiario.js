@@ -9,14 +9,6 @@ const PanelOpcionesDiario = (props) => {
    const [registrandoEntrada, setRegistrandoEntrada] = useState(false);
    const [filtrandoEntradas, setFiltrandoEntradas] = useState(false);
 
-   const iniciarRegistroNuevaEntrada = () => {
-      setRegistrandoEntrada(true);
-   };
-
-   const iniciarFiltroEntradas = () => {
-      setFiltrandoEntradas(true);
-   };
-
    return (
       <div className="panel-opciones-diario">
          <div className="panel-opciones-diario-grupo">
@@ -24,7 +16,7 @@ const PanelOpcionesDiario = (props) => {
                <div className="panel-opciones-diario-grupo-opciones-btn">
                   <i
                      className="panel-opciones-diario-grupo-opciones-btn-icono fas fa-plus-circle"
-                     onClick={iniciarRegistroNuevaEntrada}
+                     onClick={() => setRegistrandoEntrada(true)}
                   >
                      <label className="panel-opciones-diario-grupo-opciones-btn-icono-etiqueta">
                         Nueva Entrada
@@ -34,7 +26,7 @@ const PanelOpcionesDiario = (props) => {
                <div className="panel-opciones-diario-grupo-opciones-btn">
                   <i
                      className="panel-opciones-diario-grupo-opciones-btn-icono fas fa-filter"
-                     onClick={iniciarFiltroEntradas}
+                     onClick={() => setFiltrandoEntradas(true)}
                   >
                      <label className="panel-opciones-diario-grupo-opciones-btn-icono-etiqueta">
                         Filtrar Entradas
@@ -58,7 +50,6 @@ const PanelOpcionesDiario = (props) => {
                cambiarEstadoFiltroEntradas={setFiltrandoEntradas}
             />
          )}
-         {/* Aquí va un popover */}
       </div>
    );
 };

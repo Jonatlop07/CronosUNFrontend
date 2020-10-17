@@ -1,0 +1,34 @@
+@import './mixins';
+@import "../../../../scss/variables";
+
+.inicio-sesion{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 40%;
+    text-align: center;
+    background: $color-dos;
+    margin: 5rem auto ;
+    padding: 2%;
+    
+    #{&}-boton-enviar{
+        @include boton-general($color-cuatro);
+        width: 25%;
+        margin: 1rem auto;
+        color: $color-dos;
+        font-size: 1rem;
+    }
+    #{&}-titulo{
+        font-size: 5rem;
+        color: $color-uno;
+    }
+    #{&}-entrada{
+        width: 80%;
+        margin: 1rem auto;
+        font-size: 1.6rem;
+    }
+    #{&}-link{
+        color: $color-uno;
+        font-size: 1rem;
+    }
+}

@@ -1,0 +1,44 @@
+@import "../../../../scss/variables";
+@import './mixins';
+
+.contenedor-horario {
+    display: flex;
+    flex-direction: column;
+    max-height: 50rem;
+    overflow: auto;
+    margin: 1rem;
+    border: 0.1rem solid black;
+    border-radius: 1%;
+ 
+    #{&}-principal {
+       display: grid;
+       grid-template-columns: repeat(8, 1fr);
+       grid-column-gap: 0.25rem;
+       grid-row-gap: 0.25rem;
+    }
+    #{&}-contenido {
+        display: flex;
+        flex-direction: column;
+        max-height: 50rem;
+        overflow: auto;
+        margin: 1rem;
+        border: 0.1rem solid black;
+        border-radius: 1%;
+        &-hora{
+            padding: 1%;;
+        }
+    }
+    #{&}-boton-agregar {
+        @include boton-general($color-uno);
+        width: 15%;
+    }
+    #{&}-materias {
+        display: flex;
+        flex-direction: column;
+        max-height: 50rem;
+        overflow: auto;
+        border: 0.1rem solid black;
+        border-radius: 1%;
+        padding: 5%;
+    }
+ }

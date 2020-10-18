@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import ReactDOM from "react-dom";
 
 import "./estilos/modalRegistroEntrada.scss";
 
@@ -25,41 +26,44 @@ const ModalRegistroEntrada = (props) => {
       terminarRegistroEntrada();
    };
 
-   return (
-      <div className="modal-registro-entrada">
-         <h5>Nueva entrada</h5>
-         <form>
-            <div className="modal-registro-entrada-formulario">
-               <textarea
-                  className="modal-registro-entrada-formulario-texto"
-                  rows="5"
-                  name="entrada"
-                  value={textoEntrada}
-                  onChange={(e) => {
-                     setTextoEntrada(e.currentTarget.value);
-                  }}
-                  placeholder={INSTRUCCIONES_TEXTAREA}
-                  autoFocus
-                  required
-               >
-                  Enter details here...
-               </textarea>
-            </div>
+   return ReactDOM.createPortal(
+      <div className="contenedor-modal-registro-entrada">
+         <div className="modal-registro-entrada">
+            <h5>Nueva entrada</h5>
+            <form>
+               <div className="modal-registro-entrada-formulario">
+                  <textarea
+                     className="modal-registro-entrada-formulario-texto"
+                     rows="5"
+                     name="entrada"
+                     value={textoEntrada}
+                     onChange={(e) => {
+                        setTextoEntrada(e.currentTarget.value);
+                     }}
+                     placeholder={INSTRUCCIONES_TEXTAREA}
+                     autoFocus
+                     required
+                  >
+                     Enter details here...
+                  </textarea>
+               </div>
 
-            <input
-               className="modal-registro-entrada-formulario-registrar"
-               type="submit"
-               onClick={registrarEntradaDeDiario}
-               value="Registrar"
-            />
-            <button
-               className="modal-registro-entrada-formulario-cancelar"
-               onClick={terminarRegistroEntrada}
-            >
-               Cancelar
-            </button>
-         </form>
-      </div>
+               <input
+                  className="modal-registro-entrada-formulario-registrar"
+                  type="submit"
+                  onClick={registrarEntradaDeDiario}
+                  value="Registrar"
+               />
+               <button
+                  className="modal-registro-entrada-formulario-cancelar"
+                  onClick={terminarRegistroEntrada}
+               >
+                  Cancelar
+               </button>
+            </form>
+         </div>
+      </div>,
+      document.getElementById("modal")
    );
 };
 

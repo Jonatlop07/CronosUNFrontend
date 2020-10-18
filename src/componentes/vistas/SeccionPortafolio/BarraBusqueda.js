@@ -16,7 +16,7 @@ const BarraBusqueda = (props) => {
                required
             />
             <button type="submit" class="barra-busqueda-boton">
-               <i class="fas fa-search"></i> Buscar
+               <i className="fas fa-search"></i> Buscar
             </button>
          </form>
       </div>

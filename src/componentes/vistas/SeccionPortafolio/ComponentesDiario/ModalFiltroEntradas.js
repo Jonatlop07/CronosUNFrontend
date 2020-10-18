@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import ReactDOM from "react-dom";
 
 import FiltroPorRango from "./FiltroPorRango";
 import FiltroEspecifico from "./FiltroEspecifico";
@@ -46,35 +47,38 @@ const ModalFiltroEntradas = (props) => {
       setConfigurandoFiltro(false);
    };
 
-   return (
-      <div className="modal-filtro">
-         <h5>Filtrar Entradas del Diario</h5>
-         {configurandoFiltro ? (
-            filtrandoPorRango ? (
-               <FiltroPorRango
-                  realizarFiltroPorRango={realizarFiltroPorRango}
-                  cancelarConfiguracionFiltro={cancelarConfiguracionFiltro}
-               />
+   return ReactDOM.createPortal(
+      <div className="contenedor-modal-filtro-entradas">
+         <div className="modal-filtro">
+            <h5>Filtrar Entradas del Diario</h5>
+            {configurandoFiltro ? (
+               filtrandoPorRango ? (
+                  <FiltroPorRango
+                     realizarFiltroPorRango={realizarFiltroPorRango}
+                     cancelarConfiguracionFiltro={cancelarConfiguracionFiltro}
+                  />
+               ) : (
+                  <FiltroEspecifico
+                     realizarFiltroEspecifico={realizarFiltroEspecifico}
+                     cancelarConfiguracionFiltro={cancelarConfiguracionFiltro}
+                  />
+               )
             ) : (
-               <FiltroEspecifico
-                  realizarFiltroEspecifico={realizarFiltroEspecifico}
-                  cancelarConfiguracionFiltro={cancelarConfiguracionFiltro}
-               />
-            )
-         ) : (
-            <React.Fragment>
-               <div className="modal-filtro-opciones">
-                  <button onClick={seleccionarFiltroPorRango}>
-                     Por rango de fecha y hora
-                  </button>
-                  <button onClick={seleccionarFiltroEspecifico}>
-                     Por fecha y hora específicas
-                  </button>
-               </div>
-               <button onClick={terminarFiltroEntradas}>Cancelar</button>
-            </React.Fragment>
-         )}
-      </div>
+               <React.Fragment>
+                  <div className="modal-filtro-opciones">
+                     <button onClick={seleccionarFiltroPorRango}>
+                        Por rango de fecha y hora
+                     </button>
+                     <button onClick={seleccionarFiltroEspecifico}>
+                        Por fecha y hora específicas
+                     </button>
+                  </div>
+                  <button onClick={terminarFiltroEntradas}>Cancelar</button>
+               </React.Fragment>
+            )}
+         </div>
+      </div>,
+      document.getElementById("modal")
    );
 };
 

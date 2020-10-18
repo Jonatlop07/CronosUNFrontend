@@ -44,7 +44,6 @@ const PanelOpcionesDiario = (props) => {
                cambiarEstadoRegDeEntrada={setRegistrandoEntrada}
             />
          )}
-
          {filtrandoEntradas && (
             <ModalFiltroEntradas
                cambiarEstadoFiltroEntradas={setFiltrandoEntradas}

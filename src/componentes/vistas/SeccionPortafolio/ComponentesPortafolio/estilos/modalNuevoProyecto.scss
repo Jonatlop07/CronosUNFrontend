@@ -1,6 +1,17 @@
 @import "../../../../../scss/variables";
 @import "../../estilos/mixins";
 
+.contenedor-modal-nuevo-proyecto {
+   width: 100%;
+   height: 100%;
+   position: fixed;
+   top: 0;
+   left: 0;
+   z-index: 10;
+   padding: 4rem 30%;
+   background-color: rgba($color-dos, 0.5);
+}
+
 .modal-nuevo-proyecto {
    border: 0.1rem solid $color-tres;
    border-radius: 10%;
@@ -24,6 +35,11 @@
       &-texto {
          margin: 1rem 0;
          padding: 0.5rem;
+         color: $color-tres;
+         background: $color-dos;
+         &::placeholder {
+            color: rgba($color-tres, 0.75);
+         }
       }
 
       &-botones {

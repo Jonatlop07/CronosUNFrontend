@@ -1,6 +1,17 @@
 @import "../../../../../scss/variables";
 @import "../../estilos/mixins";
 
+.contenedor-modal-registro-entrada {
+   width: 100%;
+   height: 100%;
+   position: fixed;
+   top: 0;
+   left: 0;
+   z-index: 10;
+   padding: 7.5rem 30%;
+   background-color: rgba($color-dos, 0.5);
+}
+
 .modal-registro-entrada {
    border: 0.1rem solid $color-tres;
    border-radius: 10%;
@@ -27,7 +38,7 @@
          background: $color-dos;
 
          &::placeholder {
-            color: $color-tres;
+            color: rgba($color-tres, 0.75);
          }
       }
       &-registrar {

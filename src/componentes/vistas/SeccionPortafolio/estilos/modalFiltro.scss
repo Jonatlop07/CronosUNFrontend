@@ -1,11 +1,37 @@
 @import "../../../../scss/variables";
 @import "./mixins";
 
+.contenedor-modal-filtro-entradas {
+   width: 100%;
+   height: 100%;
+   position: fixed;
+   top: 0;
+   left: 0;
+   z-index: 10;
+   padding: 7.5rem 30%;
+   background-color: rgba($color-dos, 0.5);
+}
+
+.contenedor-modal-filtro-proyectos {
+   width: 100%;
+   height: 100%;
+   position: fixed;
+   top: 0;
+   left: 0;
+   z-index: 10;
+   padding: 0 25%;
+   background-color: rgba($color-dos, 0.5);
+}
+
 .modal-filtro {
+   height: fit-content;
+   max-height: 95%;
+   margin: 2.5% auto;
    border: 0.1rem solid $color-tres;
-   border-radius: 10%;
+   border-radius: 1rem;
    background-color: $color-dos;
    text-align: center;
+   overflow: auto;
 
    h5 {
       margin: 1rem 1rem;
@@ -22,8 +48,9 @@
 
    #{&}-opciones,
    #{&}-seleccion {
+      height: auto;
       margin: 0 1rem;
-      padding: 0 1rem;
+      padding: 2rem 1rem;
       background: $color-uno;
    }
 
@@ -114,4 +141,25 @@
          }
       }
    }
+}
+
+.modal-filtro::-webkit-scrollbar {
+   margin-top: 1rem;
+   width: 0.625rem;
+}
+
+.modal-filtro::-webkit-scrollbar-track {
+   box-shadow: inset 0 0 0.5rem darken($color-uno, 40%);
+}
+
+.modal-filtro::-webkit-scrollbar-thumb {
+   background-color: $color-uno;
+   box-shadow: inset 0 0 0.5rem darken($color-dos, 50%);
+   outline: 1px solid slategrey;
+}
+
+.modal-filtro::-webkit-scrollbar,
+.modal-filtro::-webkit-scrollbar-track,
+.modal-filtro::-webkit-scrollbar-thumb {
+   border-radius: 0.5rem;
 }

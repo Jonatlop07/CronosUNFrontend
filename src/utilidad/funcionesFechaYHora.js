@@ -4,7 +4,7 @@ export const obtenerFechaActual = () => {
       mes = `0${fechaActual.getMonth()}`.slice(-2),
       dia = `0${fechaActual.getDate()}`.slice(-2);
 
-   return `${anio}/${mes}/${dia}`;
+   return `${anio}-${mes}-${dia}`;
 };
 
 export const obtenerHoraActual = () => {

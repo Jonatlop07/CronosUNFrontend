@@ -2,9 +2,9 @@ export const obtenerFechaActual = () => {
    const fechaActual = new Date();
    const anio = fechaActual.getFullYear(),
       mes = `0${fechaActual.getMonth()}`.slice(-2),
-      dia = `0${fechaActual.getDay()}`.slice(-2);
+      dia = `0${fechaActual.getDate()}`.slice(-2);
 
-   return `${anio}/${mes}/${dia}`;
+   return `${anio}-${mes}-${dia}`;
 };
 
 export const obtenerHoraActual = () => {

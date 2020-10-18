@@ -6,8 +6,8 @@
    max-height: 50rem;
    overflow: auto;
    margin: 1rem;
-   border: 0.1rem solid rgba(46, 178, 240, 0.89);
    border-radius: 1%;
+   box-shadow: 0 0 0.75rem lighten($color-dos, 20%);
 
    #{&}-principal {
       display: grid;

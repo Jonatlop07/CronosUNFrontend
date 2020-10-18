@@ -27,11 +27,11 @@
    height: fit-content;
    max-height: 95%;
    margin: 2.5% auto;
-   border: 0.1rem solid $color-tres;
    border-radius: 1rem;
    background-color: $color-dos;
    text-align: center;
    overflow: auto;
+   box-shadow: -0.2rem -0.2rem 0.05rem lighten($color-dos, 20%);
 
    h5 {
       margin: 1rem 1rem;

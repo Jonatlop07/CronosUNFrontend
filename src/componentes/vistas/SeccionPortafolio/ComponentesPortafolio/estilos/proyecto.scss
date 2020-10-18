@@ -12,6 +12,7 @@
    border: 0.1rem solid rgba(147, 214, 243, 0.89);
    border-radius: 3%;
    background: lighten($color-uno, 5%);
+   box-shadow: -0.2rem -0.15rem 0.1rem darken($color-uno, 30%);
 
    #{&}-titulo {
       font-weight: bold;

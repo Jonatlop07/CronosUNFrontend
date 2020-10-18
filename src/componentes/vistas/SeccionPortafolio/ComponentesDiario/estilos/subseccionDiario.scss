@@ -18,5 +18,6 @@
    #{&}-principal {
       border: 0.1rem solid rgba(27, 110, 148, 0.89);
       background: $color-dos;
+      box-shadow: -0.5rem -0.5rem 0.05rem lighten($color-dos, 20%);
    }
 }

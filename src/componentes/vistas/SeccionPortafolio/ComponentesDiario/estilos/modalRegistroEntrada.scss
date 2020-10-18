@@ -13,10 +13,10 @@
 }
 
 .modal-registro-entrada {
-   border: 0.1rem solid $color-tres;
    border-radius: 10%;
    background-color: $color-dos;
    text-align: center;
+   box-shadow: -0.2rem -0.2rem 0.05rem lighten($color-dos, 20%);
 
    h5 {
       margin: 1rem 1rem;

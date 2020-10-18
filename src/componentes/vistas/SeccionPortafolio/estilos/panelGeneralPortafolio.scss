@@ -14,12 +14,15 @@
       background: $color-dos;
       color: $color-uno;
       border-radius: 10% 10% 0 0;
+      box-shadow: -0.3rem -0.2rem 0.05rem darken($color-uno, 20%);
    }
 
    #{&}-direccion {
       color: darken($color-uno, 60%);
       background: lighten($color-dos, 25%);
       padding: 0.5rem 0;
+
+      box-shadow: -0.3rem 0.01rem 0.05rem darken($color-uno, 20%);
 
       & i {
          margin: 0 5%;

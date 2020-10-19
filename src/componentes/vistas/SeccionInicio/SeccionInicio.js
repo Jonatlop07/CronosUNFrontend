@@ -8,7 +8,7 @@ const SeccionInicio = (props) => {
         <div>
            <header>
                 <div class = "header-Inicio">           
-                    <img class = "header-Inicio__imagen" src="https://storage.pixteller.com/designs/designs-images/2020-10-19/12/thereal-1-5f8caf77ad4a8.png" alt ="Logo CronosUN" />
+                    <img class = "header-Inicio__imagen" src="https://storage.pixteller.com/designs/designs-images/2020-10-19/04/thereal-1-5f8cefce152e4.png" alt ="Logo CronosUN" />
                </div>
            </header>
 

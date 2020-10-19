@@ -1,0 +1,32 @@
+@import "../../../../scss/variables";
+@import "../../../../scss/resets";
+
+.seccion-registro {
+  width: 35%;
+  margin: 2.5rem auto 0 auto;
+  padding: 0.8rem;
+  text-align: center;
+  background-color: rgba(34, 64, 65, 0.1);
+
+  #{&}-titulo {
+    padding: 0 0 1.5rem 0;
+  }
+
+  #{&}-input {
+    width: 85%;
+    margin: 0.3rem;
+    padding: 0.5rem;
+    outline: none;
+    font-size: 1rem;
+  }
+
+  #{&}-boton {
+    padding: 0.5rem;
+    margin: 1rem 0 1rem 0;
+    font-size: 1rem;
+  }
+
+  #{&}-info {
+      padding: 0;
+  }
+}

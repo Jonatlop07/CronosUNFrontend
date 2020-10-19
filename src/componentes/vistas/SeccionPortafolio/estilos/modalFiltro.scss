@@ -111,6 +111,24 @@
          }
       }
 
+      &-fechas {
+         margin: 0.5rem 3rem;
+
+         li {
+            display: flex;
+            flex-direction: row;
+
+            i {
+               @include boton-general-alt($color-dos, $color-cuatro);
+               padding: 0.125rem;
+               margin-left: 0.5rem;
+               font-size: 1.25rem; /* Set a font size */
+               font-family: fontAwesome;
+               font-style: normal;
+            }
+         }
+      }
+
       &-fecha {
          &::-webkit-datetime-edit-text {
             color: darken($color-cuatro, 30%);

@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 
+import FechaFiltroEspecifico from "./FechaFiltroEspecifico.js";
+
 import "../estilos/modalFiltro.scss";
 
 import {
@@ -8,14 +10,30 @@ import {
 } from "../../../../utilidad/funcionesFechaYHora.js";
 
 const FiltroEspecifico = (props) => {
-   const [fechaEspecifica, setFechaEspecifica] = useState(obtenerFechaActual());
-   const [horaEspecifica, setHoraEspecifica] = useState(obtenerHoraActual());
+   const [fecha, setFecha] = useState(obtenerFechaActual());
+   const [fechasSeleccionadas, setFechasSeleccionadas] = useState([]);
+
+   const agregarFecha = () => {
+      if (!fechasSeleccionadas.includes(fecha)) {
+         const nuevasFechasSeleccionadas = fechasSeleccionadas.concat(fecha);
+         setFechasSeleccionadas(nuevasFechasSeleccionadas);
+      }
+   };
+
+   const removerFecha = (fechaARemover) => {
+      const fechas = [...fechasSeleccionadas];
+
+      for (let i = 0; i < fechas.length; i++) {
+         if (fechas[i] === fechaARemover) {
+            fechas.splice(i, 1);
+         }
+      }
+
+      setFechasSeleccionadas(fechas);
+   };
 
    const realizarFiltroEspecifico = () => {
-      props.realizarFiltroEspecifico({
-         fechaEspecifica,
-         horaEspecifica,
-      });
+      props.realizarFiltroEspecifico(fechasSeleccionadas);
    };
 
    const terminarFiltroEspecifico = () => {
@@ -26,26 +44,29 @@ const FiltroEspecifico = (props) => {
       <React.Fragment>
          <div className="modal-filtro-seleccion">
             <label className="modal-filtro-seleccion-etiqueta">
-               Fecha:
+               Selecciona una fecha:
                <input
                   className="modal-filtro-seleccion-fecha"
                   type="date"
                   name="fechaEspecifica"
-                  value={fechaEspecifica}
-                  onChange={(e) => setFechaEspecifica(e.currentTarget.value)}
+                  value={fecha}
+                  onChange={(e) => setFecha(e.currentTarget.value)}
                />
+               <i onClick={agregarFecha}>Añadir fecha</i>
             </label>
 
             <label className="modal-filtro-seleccion-etiqueta">
-               Hora:
-               <input
-                  className="modal-filtro-seleccion-hora"
-                  type="time"
-                  name="horaEspecifica"
-                  value={horaEspecifica}
-                  onChange={(e) => setHoraEspecifica(e.currentTarget.value)}
-               />
+               Fechas añadidas:
             </label>
+            <ul className="modal-filtro-seleccion-fechas">
+               {fechasSeleccionadas.map((fechaSeleccionada, indice) => (
+                  <FechaFiltroEspecifico
+                     key={`fe${indice}`}
+                     fecha={fechaSeleccionada}
+                     removerFecha={removerFecha}
+                  />
+               ))}
+            </ul>
          </div>
 
          <button onClick={realizarFiltroEspecifico}>Confirmar</button>

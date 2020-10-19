@@ -70,7 +70,7 @@ const ModalFiltroEntradas = (props) => {
                         Por rango de fecha y hora
                      </button>
                      <button onClick={seleccionarFiltroEspecifico}>
-                        Por fecha y hora específicas
+                        Por fecha específica
                      </button>
                   </div>
                   <button onClick={terminarFiltroEntradas}>Cancelar</button>

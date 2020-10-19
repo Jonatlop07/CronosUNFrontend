@@ -15,7 +15,7 @@ const BarraBusqueda = (props) => {
                onChange={(e) => setTextoBusqueda(e.currentTarget.value)}
                required
             />
-            <button type="submit" class="barra-busqueda-boton">
+            <button type="submit" className="barra-busqueda-boton">
                <i className="fas fa-search"></i> Buscar
             </button>
          </form>

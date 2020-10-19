@@ -1,0 +1,16 @@
+.contenedor-asignaturas{
+    display: flex;
+    flex-direction: column;
+    max-height: 50rem;
+    overflow: auto;
+    margin: 1rem;
+    #{&}-materias {
+        display: flex;
+        flex-direction: column;
+        max-height: 45rem;
+        overflow: auto;
+        border: 0.1rem solid black;
+        border-radius: 1%;
+        padding: 5%;
+    }
+}

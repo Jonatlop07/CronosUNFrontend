@@ -1,0 +1,30 @@
+.contenedor-horario{
+    display: flex;
+    flex-direction: column;
+    max-height: 50rem;
+    overflow: auto;
+    margin: 1rem;
+    border: 0.1rem solid black;
+    border-radius: 1%;
+ 
+    #{&}-principal {
+       display: grid;
+       grid-template-columns: repeat(7, 1fr);
+       grid-column-gap: 0.25rem;
+       grid-row-gap: 0.25rem;
+    }
+    #{&}-contenido {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        grid-column-gap: 0.25rem;
+        grid-row-gap: 0.25rem;
+        max-height: 50rem;
+        overflow: auto;
+        margin: 1rem;
+        border: 0.1rem solid black;
+        border-radius: 1%;
+        &-hora{
+            padding: 0.5%;;
+        }
+    }
+}

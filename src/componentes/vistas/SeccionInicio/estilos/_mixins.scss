@@ -1,0 +1,12 @@
+@mixin boton-general($color-fondo){
+
+    padding: 1rem;
+    background: $color-fondo;
+ 
+    &:hover {
+       cursor: pointer;
+       background: darken($color-fondo, 25%);
+       color: lighten($color-fondo, 75%);
+    }
+    
+}

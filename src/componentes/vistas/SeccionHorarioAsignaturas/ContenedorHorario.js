@@ -2,23 +2,32 @@ import React from 'react';
 
 import "./estilos/contenedorHorario.scss";
 const Dias = ['Hora','Lunes','Martes','Miercoles','Jueves','Viernes','Sabado']
-const Horas =['7','8','9','10','11','12','1','2','3','4','5','6','7','8']
-const Materias7 =[{titulo:'7'},NaN,NaN,{titulo:'Algebra Lineal', creditos:4},{titulo:'Calculo Diferencial', creditos:4},{titulo:'Estructuras de datos',creditos:3},NaN]
-const Materias8 = [{titulo:'8'},NaN,NaN,{titulo:'Algebra Lineal', creditos:4},{titulo:'Calculo Diferencial', creditos:4},{titulo:'Estructuras de datos',creditos:3},NaN]
-const Materias9 = [{titulo:'9'},{titulo:'Algebra Lineal', creditos:4},{titulo:'Calculo Diferencial', creditos:4},NaN,NaN,NaN,NaN]
-const Materias10 = [{titulo:'10'},{titulo:'Algebra Lineal', creditos:4},{titulo:'Calculo Diferencial', creditos:4},NaN,NaN,NaN,NaN]
-const Materias11 = [{titulo:'11'},NaN,NaN,NaN,{titulo:'Estructuras de datos',creditos:3},NaN,NaN]
-const Materias12 = [{titulo:'12'},NaN,NaN,NaN,{titulo:'Estructuras de datos',creditos:3},NaN,NaN]
-const Materias1 = [{titulo:'1'},NaN,NaN,NaN,NaN,NaN,NaN]
-const Materias2 = [{titulo:'2'},NaN,NaN,{titulo:'Matematicas Discretas', creditos:4},{titulo:'Ingles', creditos:4},NaN,NaN]
-const Materias3 = [{titulo:'3'},NaN,NaN,{titulo:'Matematicas Discretas', creditos:4},{titulo:'Ingles', creditos:4},NaN,NaN]
-const Materias4 = [{titulo:'4'},NaN,NaN,NaN,NaN,NaN,NaN]
-const Materias5 = [{titulo:'5'},NaN,NaN,NaN,NaN,NaN,NaN]
-const Materias6 = [{titulo:'6'},NaN,NaN,NaN,NaN,NaN,NaN]
-const Materiasf = [{titulo:'7'},NaN,NaN,NaN,NaN,NaN,NaN]
+const Materias7 =[{materia:'7'},NaN,NaN,NaN,NaN,NaN,NaN]
+const Materias8 = [{materia:'8'},NaN,NaN,NaN,NaN,NaN,NaN]
+const Materias9 = [{materia:'9'},NaN,NaN,NaN,NaN,NaN,NaN]
+const Materias10 = [{materia:'10'},NaN,NaN,NaN,NaN,NaN,NaN]
+const Materias11 = [{materia:'11'},NaN,NaN,NaN,NaN,NaN,NaN]
+const Materias12 = [{materia:'12'},NaN,NaN,NaN,NaN,NaN,NaN]
+const Materias1 = [{materia:'1'},NaN,NaN,NaN,NaN,NaN,NaN]
+const Materias2 = [{materia:'2'},NaN,NaN,NaN,NaN,NaN,NaN]
+const Materias3 = [{materia:'3'},NaN,NaN,NaN,NaN,NaN,NaN]
+const Materias4 = [{materia:'4'},NaN,NaN,NaN,NaN,NaN,NaN]
+const Materias5 = [{materia:'5'},NaN,NaN,NaN,NaN,NaN,NaN]
+const Materias6 = [{materia:'6'},NaN,NaN,NaN,NaN,NaN,NaN]
+const Materiasf = [{materia:'7'},NaN,NaN,NaN,NaN,NaN,NaN]
 const Materias =[Materias7,Materias8,Materias9,Materias10,Materias11,Materias12,Materias1,Materias2,Materias3,Materias4,Materias5,Materias6,Materiasf]
 
 const ContenedorHorario = (props) =>{
+    props.horarioActualizado.forEach(element => {
+        if (element.grupo.hora == '7-9'){
+            element.grupo.dias.forEach(dia => {
+                if (dia == 'Jueves'){
+                    Materias7[4]=element
+                    console.log(Materias7)
+                }
+            });
+        }
+    });
     return(
         <div className="contenedor-horario">
             <div className='contenedor-horario-principal'>
@@ -29,7 +38,7 @@ const ContenedorHorario = (props) =>{
             <div className='contenedor-horario-contenido'>
                 {Materias.map((materias) => (
                     materias.map((materia) =>(
-                        <p className='contenedor-horario-contenido-hora'>{materia.titulo}</p>
+                        <p className='contenedor-horario-contenido-hora'>{materia.materia}</p>
                     ))
                 ))}
             </div>

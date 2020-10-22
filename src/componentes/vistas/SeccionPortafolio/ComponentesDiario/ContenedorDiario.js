@@ -2,8 +2,6 @@ import React, { useState } from "react";
 
 import EntradaDiario from "./EntradaDiario.js";
 
-import "./estilos/contenedorDiario.scss";
-
 const ContenedorDiario = (props) => {
    const eliminarEntrada = (idEntrada) => {
       /*Código para eliminar la entrada*/

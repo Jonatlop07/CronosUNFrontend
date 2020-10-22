@@ -4,8 +4,6 @@ import PanelOpcionesDiario from "./PanelOpcionesDiario.js";
 import ContenedorDiario from "./ContenedorDiario.js";
 import ContenedorBotonesResultado from "../ContenedorBotonesResultado.js";
 
-import "./estilos/subseccionDiario.scss";
-
 const SubseccionDiario = (props) => {
    return (
       <div className="subseccion-diario">

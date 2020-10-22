@@ -1,0 +1,37 @@
+.barra-busqueda {
+   @include dimensiones(50%, auto, 2rem auto, 0);
+
+   #{&}-campo {
+      @include dimensiones(76%, 2rem, 0 1.25% 0 5%, 0 0 0 2.5%);
+      background: lighten($color-uno, 5%);
+   }
+
+   #{&}-boton {
+      border: none;
+      @include boton-icono-etiqueta(
+         $color-dos,
+         $color-uno,
+         1.25rem,
+         $cambio-fondo: true
+      );
+      padding: 0.35rem;
+
+      &:hover {
+         animation: giro-boton 0.25s;
+      }
+
+      @keyframes giro-boton {
+         from {
+            transform: rotate(5deg);
+         }
+
+         50% {
+            transform: rotate(-10deg);
+         }
+
+         to {
+            transform: rotate(5deg);
+         }
+      }
+   }
+}

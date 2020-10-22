@@ -1,0 +1,61 @@
+@import "./infoPerfilPortafolio";
+@import "./lineaDeTiempoProyectos";
+@import "./estadisticasDePortafolio";
+
+$anchos-panel: (
+   "escritorio": 50%,
+   "tablet": 60%,
+   "celular": 80%,
+);
+
+$alturas-panel: (
+   "escritorio": 40vh,
+   "tablet": 60vh,
+   "celular": 35vh,
+);
+
+.panel-general-portafolio {
+   @include centrado-contenido();
+   width: map-get($anchos-panel, escritorio);
+   animation: estiramiento-panel 0.5s;
+
+   #{&}-contenedor {
+      @include dimensiones(
+         100%,
+         map-get($alturas-panel, escritorio),
+         2rem auto 0 auto,
+         0
+      );
+      border: 0.1rem solid rgba(27, 110, 148, 0.89);
+      background: $color-dos;
+      color: $color-uno;
+      border-radius: 10% 10% 0 0;
+      box-shadow: -0.3rem -0.2rem 0.05rem darken($color-uno, 20%);
+   }
+
+   #{&}-direccion {
+      padding: 0.75rem 0;
+      color: darken($color-uno, 60%);
+      background: lighten($color-dos, 25%);
+      box-shadow: -0.3rem 0.01rem 0.05rem darken($color-uno, 20%);
+
+      & i {
+         margin: 0 5%;
+         @include boton-icono($color-dos, $color-uno, 1.5rem);
+      }
+   }
+
+   @include pantalla-tablet {
+      width: map-get($anchos-panel, tablet);
+      #{&}-contenedor {
+         height: map-get($alturas-panel, tablet);
+      }
+   }
+
+   @include pantalla-celular {
+      width: map-get($anchos-panel, celular);
+      #{&}-contenedor {
+         height: map-get($alturas-panel, celular);
+      }
+   }
+}

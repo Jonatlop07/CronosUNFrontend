@@ -1,74 +1,44 @@
-@import "../../../../scss/variables";
 @import "../../../../scss/resets";
+@import "../../../../scss/variables";
+@import "../../../../scss/mixins";
+@import "./animaciones";
+
+$sombra-borde-subsecciones: -0.5rem -0.5rem 0.05rem lighten($color-dos, 20%);
+
+@import "./panelGeneralPortafolio";
+@import "./barraBusqueda";
+@import "../ComponentesDiario/estilos/subseccionDiario";
+@import "../ComponentesPortafolio/estilos/subseccionPortafolio";
+@import "./contenedorBotonesResultado";
 
 .seccion-portafolio {
-   display: flex;
-   flex-direction: column;
+   @include disposicion-flex(column);
    width: 100%;
    background: $color-uno;
 
    #{&}-subsecciones {
-      display: flex;
-      flex-direction: row;
+      @include disposicion-flex(row);
+   }
+
+   @include pantalla-tablet {
+      width: 100%;
+   }
+
+   @include pantalla-celular {
+      width: 100%;
    }
 }
 
-@media screen and (max-width: 800px) {
-   * {
-      font-size: 14px;
-   }
+.remover {
+   animation: transicion-remover 2s;
 
-   .seccion-portafolio {
-      #{&}-subsecciones {
-         flex-direction: column;
+   @keyframes transicion-remover {
+      from {
+         transform: translateY(0vh);
       }
-   }
-}
 
-@media screen and (max-width: 800px) {
-   * {
-      font-size: 12px;
-   }
-
-   .seccion-portafolio {
-      #{&}-subsecciones {
-         flex-direction: column;
-      }
-   }
-}
-
-@media screen and (max-width: 600px) {
-   * {
-      font-size: 10px;
-   }
-
-   .seccion-portafolio {
-      #{&}-subsecciones {
-         flex-direction: column;
-      }
-   }
-}
-
-@media screen and (max-width: 400px) {
-   * {
-      font-size: 8px;
-   }
-
-   .seccion-portafolio {
-      #{&}-subsecciones {
-         flex-direction: column;
-      }
-   }
-}
-
-@media screen and (max-width: 200px) {
-   * {
-      font-size: 6px;
-   }
-
-   .seccion-portafolio {
-      #{&}-subsecciones {
-         flex-direction: column;
+      to {
+         transform: translateY(100vh);
       }
    }
 }

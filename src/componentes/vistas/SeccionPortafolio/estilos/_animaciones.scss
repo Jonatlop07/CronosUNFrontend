@@ -1,0 +1,111 @@
+@keyframes estiramiento-panel {
+   from {
+      width: 0%;
+   }
+
+   to {
+      width: 50%;
+   }
+}
+
+@keyframes aparicion-subseccion {
+   from {
+      opacity: 0;
+   }
+
+   to {
+      opacity: 1;
+   }
+}
+
+@keyframes divergencia-modal-filtro {
+   @include transicion-modal();
+}
+
+@keyframes divergencia-modal-eliminacion-entrada {
+   @include transicion-modal();
+}
+
+@keyframes divergencia-modal-registro-entrada {
+   @include transicion-modal();
+}
+
+@keyframes divergencia-modal-nuevo-proyecto {
+   @include transicion-modal();
+}
+
+@keyframes transicion-ventana-interna {
+   from {
+      opacity: 0;
+   }
+
+   to {
+      opacity: 1;
+   }
+}
+
+@keyframes gradiente {
+   0% {
+      @include gradiente-seccion(0, 25%);
+   }
+   5% {
+      @include gradiente-seccion(2.5%, 22.5%);
+   }
+   10% {
+      @include gradiente-seccion(5%, 20%);
+   }
+   15% {
+      @include gradiente-seccion(7.5%, 17.5%);
+   }
+   20% {
+      @include gradiente-seccion(10%, 15%);
+   }
+   25% {
+      @include gradiente-seccion(12.5%, 12.5%);
+   }
+   30% {
+      @include gradiente-seccion(15%, 10%);
+   }
+   35% {
+      @include gradiente-seccion(17.5%, 7.5%);
+   }
+   40% {
+      @include gradiente-seccion(20%, 5%);
+   }
+   45% {
+      @include gradiente-seccion(22.5%, 2.5%);
+   }
+   50% {
+      @include gradiente-seccion(25%, 0);
+   }
+   55% {
+      @include gradiente-seccion(22.5%, 2.5%);
+   }
+   60% {
+      @include gradiente-seccion(20%, 5%);
+   }
+   65% {
+      @include gradiente-seccion(17.5%, 7.5%);
+   }
+   70% {
+      @include gradiente-seccion(15%, 10%);
+   }
+   75% {
+      @include gradiente-seccion(12.5%, 12.5%);
+   }
+   80% {
+      @include gradiente-seccion(10%, 15%);
+   }
+   85% {
+      @include gradiente-seccion(7.5%, 17.5%);
+   }
+   90% {
+      @include gradiente-seccion(5%, 20%);
+   }
+   95% {
+      @include gradiente-seccion(2.5%, 22.5%);
+   }
+   100% {
+      @include gradiente-seccion(0, 25%);
+   }
+}

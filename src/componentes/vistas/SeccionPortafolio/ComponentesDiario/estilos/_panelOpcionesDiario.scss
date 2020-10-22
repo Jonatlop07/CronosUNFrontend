@@ -1,0 +1,38 @@
+@import "./modalEliminacionEntrada";
+@import "./modalRegistroEntrada";
+@import "../../estilos/modalFiltro";
+
+.panel-opciones-diario {
+   #{&}-grupo {
+      @include disposicion-flex(row);
+      align-items: center;
+
+      &-opciones {
+         @include disposicion-flex(column);
+         width: 80%;
+         padding: 0.5rem 10%;
+
+         &-btn {
+            margin: 0.5rem 0 0 0;
+            cursor: pointer;
+
+            &-icono {
+               @include icono-etiqueta(
+                  darken($color-uno, 5%),
+                  lighten($color-uno, 5%),
+                  1.15rem
+               );
+               padding: 0.3rem;
+            }
+         }
+      }
+
+      &-info {
+         margin: auto;
+
+         &-btn {
+            @include boton-icono($color-tres, $color-uno, 1.5rem);
+         }
+      }
+   }
+}

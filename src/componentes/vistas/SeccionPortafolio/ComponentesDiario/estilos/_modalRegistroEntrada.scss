@@ -1,0 +1,38 @@
+.contenedor-modal-registro-entrada {
+   @include contenedor-ventana-modal();
+   @include dimensiones(100%, 100%, 0, 25vh 30%);
+}
+
+.modal-registro-entrada {
+   @include estilo-ventana-modal();
+   animation: divergencia-modal-registro-entrada 1s;
+
+   h5 {
+      margin: 1rem 1rem;
+      color: $color-uno;
+      font-weight: bold;
+   }
+
+   #{&}-formulario {
+      margin: 1rem 1rem;
+      padding: 1rem;
+      background: $color-uno;
+      animation: transicion-ventana-interna 2s;
+
+      &-texto {
+         @include dimensiones(100%, 10rem, 0.5rem auto, 0.5rem);
+         color: $color-tres;
+         background: $color-dos;
+
+         &::placeholder {
+            color: rgba($color-tres, 0.75);
+         }
+      }
+
+      &-registrar,
+      &-cancelar {
+         @include boton-general($color-tres);
+         @include enunciado-ventana-modal();
+      }
+   }
+}

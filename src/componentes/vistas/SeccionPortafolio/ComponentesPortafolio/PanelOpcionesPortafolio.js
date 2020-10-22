@@ -3,8 +3,6 @@ import React, { useState } from "react";
 import ModalNuevoProyecto from "./ModalNuevoProyecto.js";
 import ModalFiltroProyectos from "./ModalFiltroProyectos.js";
 
-import "./estilos/panelOpcionesPortafolio.scss";
-
 const PanelOpcionesPortafolio = (props) => {
    const [creandoNuevoProyecto, setCreandoNuevoProyecto] = useState(false);
    const [filtrandoProyectos, setFiltrandoProyectos] = useState(false);

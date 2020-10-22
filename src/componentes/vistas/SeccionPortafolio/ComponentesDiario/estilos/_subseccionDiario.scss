@@ -1,0 +1,23 @@
+@import "./panelOpcionesDiario";
+@import "./contenedorDiario";
+
+.subseccion-diario {
+   @include disposicion-flex(column);
+   @include dimensiones(24%, auto, 0 5% 5rem 9%, 0);
+
+   #{&}-nombre {
+      @include titulo-subseccion();
+   }
+
+   #{&}-principal {
+      background: linear-gradient(
+         to left top,
+         $color-tres,
+         $color-cuatro,
+         $color-dos
+      );
+      /*animation: gradiente 3s ease infinite;*/
+      box-shadow: $sombra-borde-subsecciones;
+      animation: aparicion-subseccion 1s;
+   }
+}

@@ -4,14 +4,18 @@ import ReactDOM from "react-dom";
 import FiltroPorRango from "./FiltroPorRango";
 import FiltroEspecifico from "./FiltroEspecifico";
 
-import "../estilos/modalFiltro.scss";
-
 const ModalFiltroEntradas = (props) => {
    const [configurandoFiltro, setConfigurandoFiltro] = useState(false);
    const [filtrandoPorRango, setFiltrandoPorRango] = useState(false);
+   const [nombreClaseContenedor, setNombreClaseContenedor] = useState(
+      "modal-filtro"
+   );
 
    const terminarFiltroEntradas = () => {
-      props.cambiarEstadoFiltroEntradas(false);
+      setNombreClaseContenedor(nombreClaseContenedor.concat(" remover"));
+      setTimeout(() => {
+         props.terminarFiltroEntradas();
+      }, 1500);
    };
 
    const seleccionarFiltroPorRango = () => {
@@ -49,7 +53,7 @@ const ModalFiltroEntradas = (props) => {
 
    return ReactDOM.createPortal(
       <div className="contenedor-modal-filtro-entradas">
-         <div className="modal-filtro">
+         <div className={nombreClaseContenedor}>
             <h5>Filtrar Entradas del Diario</h5>
             {configurandoFiltro ? (
                filtrandoPorRango ? (

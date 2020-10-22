@@ -1,0 +1,32 @@
+@import "./modalNuevoProyecto";
+@import "../../estilos/modalFiltro";
+
+.panel-opciones-portafolio {
+   #{&}-grupo {
+      @include disposicion-flex(row);
+      align-items: center;
+
+      &-opciones {
+         width: 40%;
+         margin: 1.25rem auto;
+         @include disposicion-flex(row);
+         justify-content: center;
+
+         &-btn {
+            @include icono-etiqueta(
+               darken($color-uno, 5%),
+               lighten($color-uno, 5%),
+               1.15rem
+            );
+         }
+      }
+
+      &-info {
+         margin: auto;
+
+         &-btn {
+            @include boton-icono($color-tres, $color-uno, 1.5rem);
+         }
+      }
+   }
+}

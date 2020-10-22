@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom";
 
-import "../estilos/modalFiltro.scss";
-
 import { obtenerFechaActual } from "../../../../utilidad/funcionesFechaYHora.js";
 
 const ModalFiltroProyectos = (props) => {
@@ -19,6 +17,10 @@ const ModalFiltroProyectos = (props) => {
    const [esPublico, setEsPublico] = useState(false);
    const [categorias, setCategorias] = useState([]);
 
+   const [nombreClaseContenedor, setNombreClaseContenedor] = useState(
+      "modal-filtro"
+   );
+
    const confirmarFiltroProyectos = () => {
       /* Modificar estado del componente superior correspondiente para mostrar
       los proyectos filtrados */
@@ -27,12 +29,15 @@ const ModalFiltroProyectos = (props) => {
    };
 
    const terminarFiltroProyectos = () => {
-      props.terminarFiltroProyectos();
+      setNombreClaseContenedor(nombreClaseContenedor.concat(" remover"));
+      setTimeout(() => {
+         props.terminarFiltroProyectos();
+      }, 1500);
    };
 
    return ReactDOM.createPortal(
       <div className="contenedor-modal-filtro-proyectos">
-         <div className="modal-filtro">
+         <div className={nombreClaseContenedor}>
             <h5>Filtrar Proyectos del Portafolio</h5>
             <div className="modal-filtro-seleccion">
                <label className="modal-filtro-seleccion-etiqueta-parametro">

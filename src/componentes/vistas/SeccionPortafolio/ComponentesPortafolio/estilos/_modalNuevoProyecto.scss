@@ -1,22 +1,11 @@
-@import "../../../../../scss/variables";
-@import "../../estilos/mixins";
-
 .contenedor-modal-nuevo-proyecto {
-   width: 100%;
-   height: 100%;
-   position: fixed;
-   top: 0;
-   left: 0;
-   z-index: 10;
-   padding: 4rem 30%;
-   background-color: rgba($color-dos, 0.5);
+   @include contenedor-ventana-modal();
+   @include dimensiones(100%, 100%, 0, 18vh 30%);
 }
 
 .modal-nuevo-proyecto {
-   border-radius: 10%;
-   background-color: $color-dos;
-   text-align: center;
-   box-shadow: -0.2rem -0.2rem 0.05rem lighten($color-dos, 20%);
+   @include estilo-ventana-modal();
+   animation: divergencia-modal-nuevo-proyecto 1s;
 
    h5 {
       margin: 1rem 1rem;
@@ -25,12 +14,12 @@
    }
 
    #{&}-formulario {
-      display: flex;
-      flex-direction: column;
+      @include disposicion-flex(column);
       text-align: left;
       margin: 1rem 1rem;
       padding: 2rem 3rem;
       background: $color-uno;
+      animation: transicion-ventana-interna 2s;
 
       &-texto {
          margin: 1rem 0;
@@ -43,24 +32,19 @@
       }
 
       &-botones {
-         display: flex;
-         flex-direction: row;
+         @include disposicion-flex(row);
       }
 
       &-registrar,
       &-cancelar {
          @include boton-general($color-tres);
-         margin: 1rem 0.25rem;
-         padding: 0.25rem 0.5rem;
-         font-weight: bold;
+         @include enunciado-ventana-modal();
       }
 
       &-privacidad {
          position: relative;
          display: inline-block;
-         width: 2rem;
-         height: 1rem;
-         margin: 1rem 0;
+         @include dimensiones(2rem, 1rem, 1rem 0, 0);
 
          &-caja-seleccion {
             opacity: 0;

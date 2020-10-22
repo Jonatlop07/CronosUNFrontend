@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 
-import "./estilos/proyecto.scss";
-
 const Proyecto = (props) => {
    const [estadoProyecto, setEstadoProyecto] = useState("enProgreso");
    const [esPublico, setEsPublico] = useState(false);

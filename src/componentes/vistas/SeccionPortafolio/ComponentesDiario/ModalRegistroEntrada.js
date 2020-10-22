@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom";
 
-import "./estilos/modalRegistroEntrada.scss";
-
 import {
    obtenerFechaActual,
    obtenerHoraActual,
@@ -10,12 +8,18 @@ import {
 
 const ModalRegistroEntrada = (props) => {
    const [textoEntrada, setTextoEntrada] = useState("");
+   const [nombreClaseContenedor, setNombreClaseContenedor] = useState(
+      "modal-registro-entrada"
+   );
 
    const INSTRUCCIONES_TEXTAREA =
       "Este espacio es para que ingreses el texto de tu entrada.";
 
    const terminarRegistroEntrada = () => {
-      props.cambiarEstadoRegDeEntrada(false);
+      setNombreClaseContenedor(nombreClaseContenedor.concat(" remover"));
+      setTimeout(() => {
+         props.terminarRegistroEntrada();
+      }, 1500);
    };
 
    const registrarEntradaDeDiario = () => {
@@ -28,7 +32,7 @@ const ModalRegistroEntrada = (props) => {
 
    return ReactDOM.createPortal(
       <div className="contenedor-modal-registro-entrada">
-         <div className="modal-registro-entrada">
+         <div className={nombreClaseContenedor}>
             <h5>Nueva entrada</h5>
             <form>
                <div className="modal-registro-entrada-formulario">

@@ -1,0 +1,8 @@
+@import "./entradaDiario";
+
+.contenedor-diario {
+   display: flex;
+   flex-wrap: wrap;
+   @include configuracion-contenedor(50rem);
+   @include barra-scroll(10%, 0);
+}

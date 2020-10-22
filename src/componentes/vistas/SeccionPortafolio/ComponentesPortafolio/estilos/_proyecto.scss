@@ -1,18 +1,12 @@
-@import "../../../../../scss/variables";
-@import "../../estilos/mixins";
-
 .proyecto {
-   display: flex;
-   flex-direction: column;
-   height: 20rem;
-   overflow: auto;
-   padding: 1rem;
-   margin: 1rem 1rem;
+   @include disposicion-flex(column);
+   @include dimensiones(auto, 22.5rem, 1rem, 1rem);
+   @include configuracion-contenedor(22.5rem);
    font-size: 0.9rem;
    border: 0.1rem solid rgba(147, 214, 243, 0.89);
-   border-radius: 3%;
    background: lighten($color-uno, 5%);
    box-shadow: -0.2rem -0.15rem 0.1rem darken($color-uno, 30%);
+   @include barra-scroll(0, 20%);
 
    #{&}-titulo {
       font-weight: bold;
@@ -36,23 +30,18 @@
    }
 
    #{&}-opciones {
-      display: flex;
-      flex-direction: row;
-
-      &-editar,
-      &-estado,
-      &-privacidad {
-         margin: 0.5rem 2.5%;
-      }
+      margin: auto 0;
+      @include disposicion-flex(row);
 
       &-editar {
-         width: 10%;
-         margin-left: 10%;
-         @include boton-general-alt($color-uno, $color-tres);
-         background-color: $color-dos;
-         padding: 0.125rem;
-         font-size: 1.25rem; /* Set a font size */
-         font-family: fontAwesome;
+         @include boton-icono($color-uno, $color-tres, 1.25rem);
+         @include dimensiones(
+            10%,
+            fit-content,
+            0.5rem 2.5% 0.5rem 10%,
+            0.125rem
+         );
+         background: $color-dos;
       }
 
       &-estado {
@@ -63,9 +52,7 @@
       &-privacidad {
          position: relative;
          display: inline-block;
-         width: 2rem;
-         height: 1rem;
-         margin-right: 10%;
+         @include dimensiones(2rem, 1rem, 0 10% 0 0, 0);
 
          &-caja-seleccion {
             opacity: 0;
@@ -115,25 +102,10 @@
             }
          }
       }
+
+      &-estado,
+      &-privacidad {
+         margin: 0.5rem 2.5%;
+      }
    }
-}
-
-.proyecto::-webkit-scrollbar {
-   width: 0.625rem;
-}
-
-.proyecto::-webkit-scrollbar-track {
-   box-shadow: inset 0 0 0.5rem darken($color-uno, 40%);
-}
-
-.proyecto::-webkit-scrollbar-thumb {
-   background-color: $color-uno;
-   box-shadow: inset 0 0 0.5rem darken($color-dos, 50%);
-   outline: 1px solid slategrey;
-}
-
-.proyecto::-webkit-scrollbar,
-.proyecto::-webkit-scrollbar-track,
-.proyecto::-webkit-scrollbar-thumb {
-   border-radius: 0.5rem;
 }

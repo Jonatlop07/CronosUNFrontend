@@ -2,8 +2,6 @@ import React, { useState } from "react";
 
 import Proyecto from "./Proyecto.js";
 
-import "./estilos/contenedorDeProyectos.scss";
-
 const proyectos = [
    {
       titulo: "Mi proyecto1",
@@ -42,8 +40,7 @@ const proyectos = [
    },
    {
       titulo: "Mi proyecto 6",
-      descripcion:
-         "Both ideas have implications over the teaching process and as the author wants to highlight his own method, he uses different advantage of both ideas to explain his own. Doing it, the author clarifies that even if the book is directed to all draftsmen his main focus is on animation drawing.",
+      descripcion: "Both",
       imagenFondo:
          "https://images.pexels.com/photos/5327007/pexels-photo-5327007.jpeg?cs=srgb&dl=pexels-matt-hardy-5327007.jpg&fm=jpg",
    },

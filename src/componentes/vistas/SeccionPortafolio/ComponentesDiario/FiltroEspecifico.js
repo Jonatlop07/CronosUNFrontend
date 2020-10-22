@@ -2,8 +2,6 @@ import React, { useState } from "react";
 
 import FechaFiltroEspecifico from "./FechaFiltroEspecifico.js";
 
-import "../estilos/modalFiltro.scss";
-
 import {
    obtenerFechaActual,
    obtenerHoraActual,
@@ -52,11 +50,18 @@ const FiltroEspecifico = (props) => {
                   value={fecha}
                   onChange={(e) => setFecha(e.currentTarget.value)}
                />
-               <i onClick={agregarFecha}>Añadir fecha</i>
+               <i
+                  className="modal-filtro-seleccion-agregar fas fa-plus"
+                  onClick={agregarFecha}
+               >
+                  Añadir fecha
+               </i>
             </label>
 
             <label className="modal-filtro-seleccion-etiqueta">
-               Fechas añadidas:
+               {fechasSeleccionadas.length > 0
+                  ? "Fechas añadidas:"
+                  : "No hay fechas añadidas hasta el momento."}
             </label>
             <ul className="modal-filtro-seleccion-fechas">
                {fechasSeleccionadas.map((fechaSeleccionada, indice) => (

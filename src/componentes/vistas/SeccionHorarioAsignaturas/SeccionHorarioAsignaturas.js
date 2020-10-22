@@ -1,13 +1,7 @@
-import React from 'react';
-
-import "./estilos/seccionHorarioAsignaturas.scss";
+import React from "react";
 
 const SeccionHorarioAsignaturas = (props) => {
-    return ( 
-        <div>
-            
-        </div>
-     );
-}
- 
+   return <div></div>;
+};
+
 export default SeccionHorarioAsignaturas;

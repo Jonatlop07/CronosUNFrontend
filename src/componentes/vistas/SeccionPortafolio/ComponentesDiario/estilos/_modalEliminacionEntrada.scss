@@ -1,22 +1,11 @@
-@import "../../../../../scss/variables";
-@import "../../estilos/mixins";
-
 .contenedor-modal-eliminacion-entrada {
-   width: 100%;
-   height: 100%;
-   position: fixed;
-   top: 0;
-   left: 0;
-   z-index: 10;
-   padding: 7.5rem 30%;
-   background-color: rgba($color-dos, 0.5);
+   @include contenedor-ventana-modal();
+   @include dimensiones(100%, 100%, 0, 30vh 30%);
 }
 
 .modal-eliminacion-entrada {
-   border-radius: 10%;
-   background-color: $color-dos;
-   text-align: center;
-   box-shadow: -0.2rem -0.2rem 0.05rem lighten($color-dos, 20%);
+   @include estilo-ventana-modal();
+   animation: divergencia-modal-eliminacion-entrada 1s;
 
    h5 {
       margin: 1rem 1rem;

@@ -1,7 +1,5 @@
 import React from "react";
 
-import "./estilos/estadisticasDePortafolio.scss";
-
 const EstadisticasDePortafolio = (props) => {
    return (
       <div className="estadisticas-portafolio">

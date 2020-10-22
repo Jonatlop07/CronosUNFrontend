@@ -3,11 +3,17 @@ import React, { useState } from "react";
 import ModalRegistroEntrada from "./ModalRegistroEntrada.js";
 import ModalFiltroEntradas from "./ModalFiltroEntradas.js";
 
-import "./estilos/panelOpcionesDiario.scss";
-
 const PanelOpcionesDiario = (props) => {
    const [registrandoEntrada, setRegistrandoEntrada] = useState(false);
    const [filtrandoEntradas, setFiltrandoEntradas] = useState(false);
+
+   const terminarRegistroEntrada = () => {
+      setRegistrandoEntrada(false);
+   };
+
+   const terminarFiltroEntradas = () => {
+      setFiltrandoEntradas(false);
+   };
 
    return (
       <div className="panel-opciones-diario">
@@ -41,12 +47,12 @@ const PanelOpcionesDiario = (props) => {
 
          {registrandoEntrada && (
             <ModalRegistroEntrada
-               cambiarEstadoRegDeEntrada={setRegistrandoEntrada}
+               terminarRegistroEntrada={terminarRegistroEntrada}
             />
          )}
          {filtrandoEntradas && (
             <ModalFiltroEntradas
-               cambiarEstadoFiltroEntradas={setFiltrandoEntradas}
+               terminarFiltroEntradas={terminarFiltroEntradas}
             />
          )}
       </div>

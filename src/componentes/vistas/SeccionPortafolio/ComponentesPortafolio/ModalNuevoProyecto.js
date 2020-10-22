@@ -1,12 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
-
-import "./estilos/modalNuevoProyecto.scss";
 
 const ModalNuevoProyecto = (props) => {
    const [titulo, setTitulo] = useState("");
    const [descripcion, setDescripcion] = useState("");
    const [esPublico, setEsPublico] = useState(false);
+   const [nombreClaseContenedor, setNombreClaseContenedor] = useState(
+      "modal-nuevo-proyecto"
+   );
 
    const INSTRUCCIONES_DESCRIPCION =
       "Este espacio es para que ingreses una breve descripción de tu nuevo proyecto.";
@@ -14,12 +15,15 @@ const ModalNuevoProyecto = (props) => {
    const crearContenidoNuevoProyecto = () => {};
 
    const terminarRegistroNuevoProyecto = () => {
-      props.terminarRegistroNuevoProyecto();
+      setNombreClaseContenedor(nombreClaseContenedor.concat(" remover"));
+      setTimeout(() => {
+         props.terminarRegistroNuevoProyecto();
+      }, 1500);
    };
 
    return ReactDOM.createPortal(
       <div className="contenedor-modal-nuevo-proyecto">
-         <div className="modal-nuevo-proyecto">
+         <div className={nombreClaseContenedor}>
             <h5>Nuevo Proyecto</h5>
             <form>
                <div className="modal-nuevo-proyecto-formulario">

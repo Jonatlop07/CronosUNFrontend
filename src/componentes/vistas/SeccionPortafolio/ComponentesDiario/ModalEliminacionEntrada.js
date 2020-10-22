@@ -1,7 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
 import ReactDOM from "react-dom";
-
-import "./estilos/modalEliminacionEntrada.scss";
 
 const ModalEliminacionEntrada = (props) => {
    const eliminarEntrada = () => {
@@ -10,13 +8,20 @@ const ModalEliminacionEntrada = (props) => {
       finalizarEliminacion();
    };
 
+   const [nombreClaseContenedor, setNombreClaseContenedor] = useState(
+      "modal-eliminacion-entrada"
+   );
+
    const finalizarEliminacion = () => {
-      props.cancelarEliminacion();
+      setNombreClaseContenedor(nombreClaseContenedor.concat(" remover"));
+      setTimeout(() => {
+         props.cancelarEliminacion();
+      }, 1500);
    };
 
    return ReactDOM.createPortal(
       <div className="contenedor-modal-eliminacion-entrada">
-         <div className="modal-eliminacion-entrada">
+         <div className={nombreClaseContenedor}>
             <h5>Eliminación de entrada</h5>
             <p className="modal-eliminacion-entrada-mensaje">
                ¿Estás seguro que deseas eliminar esta entrada?

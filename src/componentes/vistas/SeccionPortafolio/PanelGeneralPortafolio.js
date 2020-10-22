@@ -4,8 +4,6 @@ import InfoPerfilPortafolio from "./InfoPerfilPortafolio.js";
 import LineaDeTiempoProyectos from "./LineaDeTiempoProyectos.js";
 import EstadisticasDePortafolio from "./EstadisticasDePortafolio.js";
 
-import "./estilos/panelGeneralPortafolio.scss";
-
 const indices = {
    INFO_PERFIL: 0,
    LINEA_TIEMPO: 1,

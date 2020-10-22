@@ -4,8 +4,6 @@ import PanelOpcionesPortafolio from "./PanelOpcionesPortafolio.js";
 import ContenedorDeProyectos from "./ContenedorDeProyectos.js";
 import ContenedorBotonesResultado from "../ContenedorBotonesResultado.js";
 
-import "./estilos/subseccionPortafolio.scss";
-
 const SubseccionPortafolio = (props) => {
    return (
       <div className="subseccion-portafolio">

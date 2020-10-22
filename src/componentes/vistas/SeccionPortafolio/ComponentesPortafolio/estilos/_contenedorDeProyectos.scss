@@ -1,0 +1,15 @@
+@import "./proyecto";
+
+.contenedor-proyectos {
+   @include disposicion-flex(column);
+   @include configuracion-contenedor(50rem);
+   @include barra-scroll(10%, 0);
+
+   #{&}-principal {
+      @include cuadricula(2, 1rem, 0rem);
+      @include pantalla-tablet {
+         display: flex;
+         flex-direction: column;
+      }
+   }
+}

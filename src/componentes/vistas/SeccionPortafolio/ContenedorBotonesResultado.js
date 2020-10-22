@@ -2,8 +2,6 @@ import React, { useState } from "react";
 
 import BotonResultado from "./BotonResultado.js";
 
-import "./estilos/contenedorBotonesResultado.scss";
-
 const seccionesDiario = [1, 2, 3, 4];
 
 const ContenedorBotonesResultado = (props) => {

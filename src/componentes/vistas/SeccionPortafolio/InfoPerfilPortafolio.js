@@ -1,7 +1,5 @@
 import React from "react";
 
-import "./estilos/infoPerfilPortafolio.scss";
-
 const InfoPerfilPortafolio = (props) => {
    return (
       <div className="info-perfil-portafolio">

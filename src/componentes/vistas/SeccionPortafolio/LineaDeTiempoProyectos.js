@@ -1,7 +1,5 @@
 import React from "react";
 
-import "./estilos/lineaDeTiempoProyectos.scss";
-
 const LineaDeTiempoProyectos = (props) => {
    return (
       <div className="linea-tiempo-proyectos">

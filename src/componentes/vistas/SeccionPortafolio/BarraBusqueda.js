@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 
-import "./estilos/barraBusqueda.scss";
-
 const BarraBusqueda = (props) => {
    const [textoBusqueda, setTextoBusqueda] = useState("");
 

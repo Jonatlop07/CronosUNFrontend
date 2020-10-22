@@ -2,8 +2,6 @@ import React, { useState } from "react";
 
 import ModalEliminacionEntrada from "./ModalEliminacionEntrada.js";
 
-import "./estilos/entradaDiario.scss";
-
 const EntradaDiario = (props) => {
    const [eliminandoEntrada, setEliminandoEntrada] = useState(false);
 

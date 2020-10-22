@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 
-import "../estilos/modalFiltro.scss";
-
 import {
    obtenerFechaActual,
    obtenerHoraActual,

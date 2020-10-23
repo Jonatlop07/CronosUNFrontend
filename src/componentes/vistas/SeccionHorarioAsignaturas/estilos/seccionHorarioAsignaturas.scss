@@ -3,7 +3,7 @@
 
 .contenedor-seccion {
     #{&}-boton-agregar {
-        @include boton-general($color-tres);
+        @include boton-general( #08FFFF);
         width: 15%;
         margin-bottom: 1%;;
         margin-left: 42%;

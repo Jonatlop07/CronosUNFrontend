@@ -36,7 +36,8 @@ const SeccionHorarioAsignaturas = (props) => {
         const horariosAux = [...horarioActualizado]
         for (let i =0; i<horariosAux.length;i++){
             if(horariosAux[i].materia === materia && horariosAux[i].grupo === grupo){
-                 horariosAux[i]=NaN            }
+                 horariosAux[i]=NaN           
+            }
         }
         setHorarioActualizado(horariosAux)
     }

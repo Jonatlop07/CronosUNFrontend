@@ -12,44 +12,48 @@ const materiasSabado = [NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN]
 const materias = [materiasLunes,materiasMartes,materiasMiercoles,materiasJueves,materiasViernes,materiasSabado]
 
 const ContenedorHorario = (props) =>{
-    props.horarioActualizado.forEach(materia => {
-        const horainicial = parseInt(materia.grupo.hora.split("-")[0])
-        const horafinal = parseInt(materia.grupo.hora.split("-")[1])
-        for (let i =0 ; i<materia.grupo.dias.length;i++){
-            switch(materia.grupo.dias[i]){
-                case 'Lunes': 
-                    for(let j=horainicial; j<horafinal;j++){
-                        materiasLunes[j-7]=materia; 
-                    }
-                    break; 
-                case 'Martes': 
-                    for(let j=horainicial; j<horafinal;j++){
-                        materiasMartes[j-7]=materia; 
-                    }
-                    break; 
-                case 'Miercoles':
-                    for(let j=horainicial; j<horafinal;j++){
-                        materiasMiercoles[j-7]=materia; 
-                    }
-                    break; 
-                case 'Jueves':  
-                    for(let j=horainicial; j<horafinal;j++){
-                        materiasJueves[j-7]=materia; 
-                    }
-                    break; 
-                case 'Viernes': 
-                    for(let j=horainicial; j<horafinal;j++){
-                        materiasViernes[j-7]=materia; 
-                    }
-                    break; 
-                case 'Sabado': 
-                    for(let j=horainicial; j<horafinal;j++){
-                        materiasSabado[j-7]=materia; 
-                    }
-                    break
+    const [horarioActualizado,setHorarioActualizado] = useState(props.horarioActualizado)
+    const actualizarHorario = () => {
+        props.horarioActualizado.forEach(materia => {
+            const horainicial = parseInt(materia.grupo.hora.split("-")[0])
+            const horafinal = parseInt(materia.grupo.hora.split("-")[1])
+            for (let i =0 ; i<materia.grupo.dias.length;i++){
+                switch(materia.grupo.dias[i]){
+                    case 'Lunes': 
+                        for(let j=horainicial; j<horafinal;j++){
+                            materiasLunes[j-7]=materia; 
+                        }
+                        break; 
+                    case 'Martes': 
+                        for(let j=horainicial; j<horafinal;j++){
+                            materiasMartes[j-7]=materia; 
+                        }
+                        break; 
+                    case 'Miercoles':
+                        for(let j=horainicial; j<horafinal;j++){
+                            materiasMiercoles[j-7]=materia; 
+                        }
+                        break; 
+                    case 'Jueves':  
+                        for(let j=horainicial; j<horafinal;j++){
+                            materiasJueves[j-7]=materia; 
+                        }
+                        break; 
+                    case 'Viernes': 
+                        for(let j=horainicial; j<horafinal;j++){
+                            materiasViernes[j-7]=materia; 
+                        }
+                        break; 
+                    case 'Sabado': 
+                        for(let j=horainicial; j<horafinal;j++){
+                            materiasSabado[j-7]=materia; 
+                        }
+                        break
+                }
             }
-        }
-    })
+        })
+    }
+    useEffect(actualizarHorario,[])
     return(
         <div className="contenedor-horario">
             <div className='contenedor-horario-principal'>

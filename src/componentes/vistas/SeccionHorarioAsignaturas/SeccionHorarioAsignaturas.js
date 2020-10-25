@@ -14,6 +14,21 @@ const SeccionHorarioAsignaturas = (props) => {
     const [horarioActualizado,setHorarioActualizado] = useState([])
     const agregarAsignatura = (materia,grupo) => {
         const horarioAux = [...horarioActualizado];
+        /* let booleanAux = false; 
+        let j; 
+        for (let i =0; i<horarioAux.length;i++){
+            if (horarioAux[i].materia === materia){
+                booleanAux=true 
+                j=i 
+            }
+        }
+        if(booleanAux){
+            console.log('entra')
+            horarioAux[j]=horarioAux.push({materia,grupo})
+        }else{
+            console.log('entra')
+            horarioAux.push({materia,grupo})
+        } */ 
         horarioAux.push({materia,grupo})
         setHorarioActualizado(horarioAux)
     }
@@ -21,8 +36,7 @@ const SeccionHorarioAsignaturas = (props) => {
         const horariosAux = [...horarioActualizado]
         for (let i =0; i<horariosAux.length;i++){
             if(horariosAux[i].materia === materia && horariosAux[i].grupo === grupo){
-                // horariosAux[i]=NaN
-            }
+                 horariosAux[i]=NaN            }
         }
         setHorarioActualizado(horariosAux)
     }

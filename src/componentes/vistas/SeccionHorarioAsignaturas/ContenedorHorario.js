@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState,useEffect} from 'react';
 
 import "./estilos/contenedorHorario.scss";
 const dias = ['Hora','Lunes','Martes','Miercoles','Jueves','Viernes','Sabado']
@@ -11,32 +11,15 @@ const materiasViernes = [NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN]
 const materiasSabado = [NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN]
 const materias = [materiasLunes,materiasMartes,materiasMiercoles,materiasJueves,materiasViernes,materiasSabado]
 
-/* const Materias7 =[{materia:'7'},NaN,NaN,NaN,NaN,NaN,NaN]
-const Materias8 = [{materia:'8'},NaN,NaN,NaN,NaN,NaN,NaN]
-const Materias9 = [{materia:'9'},NaN,NaN,NaN,NaN,NaN,NaN]
-const Materias10 = [{materia:'10'},NaN,NaN,NaN,NaN,NaN,NaN]
-const Materias11 = [{materia:'11'},NaN,NaN,NaN,NaN,NaN,NaN]
-const Materias12 = [{materia:'12'},NaN,NaN,NaN,NaN,NaN,NaN]
-const Materias1 = [{materia:'1'},NaN,NaN,NaN,NaN,NaN,NaN]
-const Materias2 = [{materia:'2'},NaN,NaN,NaN,NaN,NaN,NaN]
-const Materias3 = [{materia:'3'},NaN,NaN,NaN,NaN,NaN,NaN]
-const Materias4 = [{materia:'4'},NaN,NaN,NaN,NaN,NaN,NaN]
-const Materias5 = [{materia:'5'},NaN,NaN,NaN,NaN,NaN,NaN]
-const Materias6 = [{materia:'6'},NaN,NaN,NaN,NaN,NaN,NaN]
-const Materiasf = [{materia:'7'},NaN,NaN,NaN,NaN,NaN,NaN]
-const Materias =[Materias7,Materias8,Materias9,Materias10,Materias11,Materias12,Materias1,Materias2,Materias3,Materias4,Materias5,Materias6,Materiasf] */
-
 const ContenedorHorario = (props) =>{
     props.horarioActualizado.forEach(materia => {
-        const horainicial = materia.grupo.hora.split("-")[0]
-        const horafinal = materia.grupo.hora.split("-")[1]
-        const diferenciahoras = horafinal-horainicial
+        const horainicial = parseInt(materia.grupo.hora.split("-")[0])
+        const horafinal = parseInt(materia.grupo.hora.split("-")[1])
         for (let i =0 ; i<materia.grupo.dias.length;i++){
             switch(materia.grupo.dias[i]){
                 case 'Lunes': 
-                    for(let j= horainicial; j<horafinal;j++){
+                    for(let j=horainicial; j<horafinal;j++){
                         materiasLunes[j-7]=materia; 
-                        console.log(materia)
                     }
                     break; 
                 case 'Martes': 
@@ -66,39 +49,7 @@ const ContenedorHorario = (props) =>{
                     break
             }
         }
-    });
-    /* if(props.horarioActualizado.length!=0){
-        props.horarioActualizado.forEach(materia => {
-            const horainicial = materia.grupo.hora.split("-")[0];
-            const horafinal = materia.grupo.hora.split("-")[1]
-            switch(horainicial){
-                case '7': 
-                for(let i =0; i<materia.grupo.dias.length;i++){
-                    switch (materia.grupo.dias[i]){
-                        case 'Lunes': 
-                            Materias7[1]=materia;
-                            break; 
-                        case 'Miercoles':
-                            
-                            break; 
-                    }
-                }
-            }
-            for(let i =0; i<materia.grupo.dias.length;i++){
-                switch (materia.grupo.dias[i]){
-                    case 'Lunes': 
-                        Materias7[1]=materia;
-                        break; 
-                    case 'Miercoles':
-                        
-                        break; 
-                }
-            }
-        });
-    } */ 
-    const materiaNaN = () => {
-
-    }
+    })
     return(
         <div className="contenedor-horario">
             <div className='contenedor-horario-principal'>

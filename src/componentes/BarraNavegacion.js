@@ -87,7 +87,7 @@ const BarraNavegacion = (props) => {
                <Link
                   className="barra-navegacion-enlace"
                   to={RUTA_SEC_INSCRIPCION_MATERIAS}>
-                  Seccion Inscripcion Materias
+                   Inscripcion 
                </Link>
             </li>
          </ul>

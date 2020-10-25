@@ -2,41 +2,134 @@
 @import "./mixins";
 
 
-.header-Inicio{
+.seccion-inicio{
 
-    position: relative;
-    width: 100%;
-    padding : 1rem;
-    background: linear-gradient(
-      to bottom,
-      rgba($color_uno, 1),
-      rgba($color_cuatro, 0.3)
-    );
-    //background: linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,.5)), url("https://ak.picdn.net/shutterstock/videos/30442567/thumb/1.jpg?ip=x480");
-    background-image: url("https://ak.picdn.net/shutterstock/videos/30442567/thumb/1.jpg?ip=x480");
-    background-color: rgba(255,255,255,0.5);
-    background-blend-mode: lighten;
-    background-size: 400%;
-    animation: moverback 40s infinite alternate;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(../../../../imagenes/52237_1_miscellaneous_digital_art_blue_black_blue_black_pattern.jpg);
+    background-size: 200%;
+    background-attachment: fixed;
 
+    animation: moverback 5s infinite alternate ease-in-out;
+    
     @keyframes moverback{
         0%{
             background-position: left;
         }
         100%{
-            background-position: right;
+            background-position: top;
         }
     }
 
+    @include pantalla-celular{
+            background-size: cover;
+    }
+    @include pantalla-tablet{
+        background-size: cover;
+    }
+}
+
+
+.header-Inicio{
+
+    position: relative;
+    width: 100%;
+    height: 100vh;
+
     #{&}__imagen{
 
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-        width: auto;
-        height: auto;
-              
+        position: absolute;
+        margin: auto;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+      
     }
+
+    #{&}__scroller{
+
+        width: 2.5rem;
+        height: 4rem;
+        border: 2px solid  white;
+        border-radius: 20px;
+        position: absolute;
+        bottom: 5rem;
+        left: 50%;
+        cursor: pointer;
+
+        &::before,&::after{
+            content: '';
+            position: absolute;
+            top: 30%;
+            left: 50%;
+            border: 2px solid white;
+            height: 1rem;
+            width: 1rem;
+            transform: translate(-50%, -100%) rotate(45deg);
+            border-top: transparent;
+            border-left: transparent;
+            animation: scrollerino 1.5s ease-in-out infinite; 
+            
+        }
+        &::after{
+            top: 40%;
+            animation-delay: 0.5s;
+        }
+        
+        @keyframes scrollerino {
+            0%{
+                opacity: 0;
+            }
+            33%{
+                opacity: 1;
+            }
+            66%{
+               opacity: 1; 
+            }
+            100%{
+                opacity: 0;
+                top: 90%;
+            }
+        }           
+    }
+
+    @include pantalla-celular{
+
+        #{&}__imagen{
+
+            position: absolute;
+            margin: auto;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            width: 20rem;
+            height: 10rem;
+        }
+
+        #{&}__scroller{
+
+            width: 2rem;
+            height: 3rem;
+            left: 47%;
+        }
+    }
+
+    @include pantalla-tablet{
+
+        #{&}__imagen{
+
+            position: absolute;
+            margin: auto;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            width: 30rem;
+            height: 15rem;
+        }
+    }
+
+
 
 }
 
@@ -44,17 +137,14 @@
 
     display: flex;
     flex-direction: row;
-    text-align: start;
-    border-top: solid 2px rgba($color-dos, $alpha: 0.1);
-    height: 100%;
+    height: 35rem;
     width: 100%;
     background: linear-gradient(
         to bottom,
-        rgba($color_cuatro, 0.1),
+        rgba($color_dos, 0.1),
         rgba($color-dos, 0.5)
     );
-    padding: 2rem; 
-    
+
     &:hover{
 
         background: linear-gradient(
@@ -63,62 +153,92 @@
         rgba($color-dos, 0.5)
         );
     }
-   
-    #{&}__img{
+    
+    
+    .inicio__contenedor1{
 
-        border: 0.5rem solid rgba($color-uno, 0.4);
-        width: 35rem;
-        height: 25rem;
-        border-radius: 10%; 
+        display: flex;
+        width: 100%;
+        height: 100%;
+        justify-content: center;
+        align-items: center;
+        transition: transform 1s;
+
+            &:hover{
+                transform: scale(1.2);
    
+                }
+        
+        &__p{
+             
+            text-align: justify;
+            flex: 0 0 60%;
+            font-family: $fuente_principal;
+            font-weight: 400;
+            font-size: 1.8vw;
+            color : $color_uno;
+            
+        }
+    }
+    .inicio__contenedor2{
+
+        display: block;
+        width: 80%;
+        height: 100%;      
+
+        &__img{
+
+            width: 100%;
+            height: 100%;
+            opacity: 0.9;
+            background-color: white;
+
+        }
+
     }
 
-    #{&}__p{
+    @include pantalla-celular {
 
-        padding-right: 8rem;
-        padding-top: 6rem;
-        text-align: center;
-        font-family: $fuente_principal;
-        font-weight: 400;
-        font-size: 2rem;
-        color : $color_dos;
-        transition: transform 0.5s;
+        height: 20rem;
+        .inicio__contenedor1{
 
-        &:hover{
-            transform: scale(1.1);
-            padding-left: 2rem;
- 
+            &__p{
+                flex: 0 0 70%;
+                font-size: 3vw;
+            }
+
+            &:hover{
+                transform: scale(1);
+            }
         }
     }
 
-    #{&}__UN{
+    @include pantalla-tablet{
 
-        font-weight: bold;
-        color: hsl(140, 85%, 22%);
-    } 
-    #{&}__CronosW{
+        height: 25rem;
 
-        font-weight: bold;
-        color: $color-dos;
-    }    
-
+        .inicio__contenedor1{
+            &__p{
+            flex: 0 0 73%;
+            font-size: 2.5vw;
+            }
+        }
+    }
 }
-
 
 .inicio2{
 
     display: flex;
     flex-direction: row-reverse;
-    text-align: center;
-    border-top: solid 2px rgba($color-dos, $alpha: 0.1);
-    height: 100%;
+    border-top: solid 3rem rgba($color-uno, $alpha: 0.6);
+    border-bottom: solid 3rem rgba($color-uno, $alpha: 0.6);
+    height: 43rem;
     width: 100%;
     background: linear-gradient(
         to bottom,
-        rgba($color_cuatro, 0.1),
+        rgba($color_dos, 0.1),
         rgba($color-dos, 0.5)
-    );
-    padding: 2rem;   
+    ); 
 
     &:hover{
 
@@ -129,127 +249,162 @@
     );
     }
 
-    #{&}__img{
+    .inicio2__contenedor1{
 
-        border: 0.5rem solid rgba($color-dos, 0.4);
-        width: 25rem;
-        height: auto;
-        border-radius: 10%; 
-   
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        transition: transform 1s;
+        &:hover{
+            
+            transform: scale(1.2);
+                        
+        }
+        
+        &__par{
+
+            text-align: justify;
+            flex: 0 0 60%;
+            font-family: $fuente_principal;
+            font-weight: 400;
+            font-size: 1.8vw;
+            color : $color_uno;
+        
+        }
+
     }
 
-    #{&}__p{
+    .inicio2__contenedor2{
 
-        padding-left: 5rem;
-        padding-top: 6rem;
-        text-align: center;
-        font-family: $fuente_principal;
-        font-weight: 400;
-        font-size: 2rem;
-        color : $color_dos;
-        transition: transform 1s;
+        display: block; 
+        width: 80%; 
+        height: 100%; 
 
-        &:hover{
 
-            transform: scale(1.1);
+        &__imag{
+       
+            width: 100%;
+            height: 100%;
+            background-color: white;
+            opacity: 0.9;
+    
         }
     }
 
-    #{&}__UN{
+    @include pantalla-celular {
 
-        font-weight: bold;
-        color: hsl(140, 85%, 22%);
-    } 
-    #{&}__CronosW{
+        height: 20rem;
+        border-top: solid 1rem rgba($color-uno, $alpha: 0.6);
+        border-bottom: solid 1rem rgba($color-uno, $alpha: 0.6);
+        .inicio2__contenedor1{
+            &:hover{
+                transform: scale(1);
+            }
+            &__par{
+                flex: 0 0 70%;
+                font-size: 3vw;
+            }
+        }
+    }
 
-        font-weight: bold;
-        color: $color-dos;
-    }   
+    @include pantalla-tablet{
+
+        height: 25rem;
+        border-top: solid 2rem rgba($color-uno, $alpha: 0.6);
+        border-bottom: solid 2rem rgba($color-uno, $alpha: 0.6);
+        .inicio2__contenedor1{
+            &__par{
+            flex: 0 0 73%;
+            font-size: 2.5vw;
+            }
+        }
+    }  
 }
 
 .empieza-ya{
 
     position: relative;
-    --gradient: linear-gradient(
-    90deg, 
-    #fafafa,
-    #2ba5c0,
-    #378cad,
-    #2ba5c0,
-    #fafafa);
-    background-image: var(--gradient);
-    background-size: 300%;
     height: 100%;
     text-align: center;
     border-top: solid 1px $color-uno;
     padding: 0.5rem;
-    animation: movebg 10s infinite alternate;
-    @keyframes movebg {
-        0%{
-            background-position: left;
-        }
-        100%{
-            background-position: right;
-        }
-    }
+    overflow: hidden;
 
     #{&}__prueba{
 
         text-decoration: none;
         font-weight: bold;
         
-        color: $color_dos;
+        color: $color_uno;
         text-align: center;
         font-size: 2.2rem;
         font-family: $fuente_principal;
 
         &:hover{
 
-            color: $color_tres;
-            -webkit-text-stroke: 0.1px $color_uno;
-            font-size: 2.3rem;
+            color: $color_uno;
+            -webkit-text-stroke: 1px $color_uno;
+            font-size: 2.4rem;
         }
 
     }
 
     #{&}__span{
+        
         font-size: 3rem;
-        -webkit-text-stroke: 2px $color-dos;
+        -webkit-text-stroke: 2px rgba(white, $alpha: .8);
         display: inline-block;
         width: 100%;
-        animation: bounce 3s ease infinite;
+        animation: clock 3s ease infinite;
         margin-top: 25px;
         i{
             font-style: normal;
             font-family: fontAwesome; 
-            color:white;
+            color: transparent;
         }
     }
     
-    @keyframes bounce{
-        0%, 25%, 75%, 100%{
-            transform: translateY(0);
+    @keyframes clock{
+        0%{
+            transform: rotate(0deg);
         }
-        45%{
-            transform: translateY(-1rem);
-            transform: rotate(180deg);
-            
+        50%{
+            transform: rotate(0deg);
         }
-        55%{
-            transform: rotate(179deg);
-
+        100%{
+            transform: rotate(360deg);
         }
-        65%{
-            transform: translateY(-0.5rem);
-            
-        }
-        85%{
-            transform: translateY(-0.25rem);
-        }
-        
-
     }
 
+
+    @include pantalla-celular {
+
+        #{&}__prueba{
+            font-size: 1.2rem;
+            &:hover{
+                font-size: 1.3rem;
+            }
+        }
+        #{&}__span{
+            font-size: 2rem;
+        }
+    }
+
+    @include pantalla-tablet{
+
+        #{&}__prueba{
+            font-size: 1.5rem;
+            &:hover{
+                font-size: 1.6rem;
+            }
+        }
+        #{&}__span{
+            font-size: 2.5rem;
+        }
+    }
+    
 }
 
 .footer{
@@ -272,14 +427,12 @@
     #{&}__texto-secundario{
 
         text-decoration: none;
-        text-align: center;
         font-size: 1rem;
-        font-weight: bold;
-        color : $color-dos;
+        color : $color-uno;
         margin-top: 0.25rem;
          
         &:hover{
-            color: $color-uno;
+            color: rgba($color_uno, $alpha: 0.6);
         }
     }
 
@@ -287,7 +440,7 @@
 
         font-size: 1.5rem;
         font-weight: bolder;
-        color: $color-dos;
+        color: $color-uno;
     
     }
     #{&}__contacto{
@@ -314,6 +467,30 @@
                 font-family: fontAwesome; 
             }
         }
+    }
+
+    @include pantalla-celular{
+
+        font-size: 0.8rem;
+        #{&}__contactanos{
+            font-size: 1.2rem;
+        }
+        #{&}__texto-secundario{
+            font-size: 0.9rem;
+        }
+
+    }
+
+    @include pantalla-tablet{
+
+        font-size: 1rem;
+        #{&}__contactanos{
+            font-size: 1.5rem;
+        }
+        #{&}__texto-secundario{
+            font-size: 1rem;
+        }
+
     }
 
 }

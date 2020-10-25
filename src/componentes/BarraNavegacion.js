@@ -13,6 +13,7 @@ import {
    RUTA_SEC_HORARIO_PERSONAL,
    RUTA_SEC_PORTAFOLIO,
    RUTA_SEC_PROYECTOS_PUBLICOS,
+   RUTA_SEC_INSCRIPCION_MATERIAS,
 } from "../utilidad/rutas.js";
 
 const BarraNavegacion = (props) => {
@@ -80,6 +81,13 @@ const BarraNavegacion = (props) => {
                   to={RUTA_SEC_PROYECTOS_PUBLICOS}
                >
                   Proyecto público
+               </Link>
+            </li>
+            <li>
+               <Link
+                  className="barra-navegacion-enlace"
+                  to={RUTA_SEC_INSCRIPCION_MATERIAS}>
+                  Seccion Inscripcion Materias
                </Link>
             </li>
          </ul>

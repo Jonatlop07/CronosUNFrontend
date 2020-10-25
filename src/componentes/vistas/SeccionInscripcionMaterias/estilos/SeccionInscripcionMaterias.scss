@@ -1,0 +1,30 @@
+@import "../../../../scss/variables";
+@import './mixins';
+
+.contenedor-seccion {
+    #{&}-tutorial{
+        &-titulo{
+            font-size: 400%;
+            text-align: center;
+            margin-bottom: 1%;
+        }
+        &-texto{
+            max-height: 50rem;
+            overflow: auto;
+            margin: 1rem;
+            border: 0.1rem solid black;
+            border-radius: 1%;
+            font-size:150%;
+            text-align: left;
+            margin-bottom: 1%;
+        }
+    }
+    #{&}-boton-agregar {
+        @include boton-general( #08FFFF);
+        width: 15%;
+        margin-bottom: 1%;;
+        margin-left: 42%;
+        margin-right: 42%;
+        text-align: center;
+    }
+ }

@@ -8,3 +8,29 @@
        color: lighten($color-fondo, 75%);
     }
  }
+ @mixin contenedor-ventana-modal() {
+   position: fixed;
+   top: 0;
+   left: 0;
+   z-index: 10;
+   background-color: rgba($color-tres, 0.5);
+}
+
+@mixin enunciado-ventana-modal() {
+   margin: 1rem 0.25rem;
+   padding: 0.25rem 0.5rem;
+   font-weight: bold;
+}
+
+@mixin estilo-ventana-modal() {
+   border-radius: 10%;
+   background-color: $color-tres;
+   text-align: center;
+   box-shadow: -0.2rem -0.2rem 0.05rem lighten($color-tres, 20%);
+}
+@mixin dimensiones($ancho, $alto, $margen-externo, $margen-interno) {
+   width: $ancho;
+   height: $alto;
+   margin: $margen-externo;
+   padding: $margen-interno;
+}

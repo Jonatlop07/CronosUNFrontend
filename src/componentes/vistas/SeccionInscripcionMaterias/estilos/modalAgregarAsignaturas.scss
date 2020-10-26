@@ -1,2 +1,29 @@
 @import "../../../../scss/variables";
 @import './mixins'; 
+@import "./animaciones";
+
+.contenedor-modal-agregar-asignatura {
+    @include contenedor-ventana-modal();
+    @include dimensiones(60%, 60%, 10% 17% , 3%);
+    @include estilo-ventana-modal();
+    #{&}-formulario{
+        height: 70%;
+        animation: trancision-ventana-interna 2s;
+        &-campotexto{
+            @include dimensiones(80%,100%,5%,3%);
+            text-align: top;   
+        }
+        &-botones{
+            &-finalizar{
+                color: $color-uno;
+                @include boton-general($color-dos);
+                margin: 1%;
+            }
+            &-nueva-asignatura{
+                color: $color-uno;
+                @include boton-general($color-dos);
+                margin: 1%;
+            }
+        }
+    }
+}

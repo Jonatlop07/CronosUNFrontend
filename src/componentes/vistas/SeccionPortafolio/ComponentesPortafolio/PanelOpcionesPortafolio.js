@@ -19,28 +19,30 @@ const PanelOpcionesPortafolio = (props) => {
       <div className="panel-opciones-portafolio">
          <div className="panel-opciones-portafolio-grupo">
             <div className="panel-opciones-portafolio-grupo-opciones">
-               <i
-                  className="panel-opciones-portafolio-grupo-opciones-btn fas fa-plus-circle"
-                  onClick={() => {
-                     setCreandoNuevoProyecto(true);
-                  }}
-               >
-                  <label className="panel-opciones-portafolio-grupo-opciones-btn-etiqueta">
-                     Nuevo Proyecto
-                  </label>
-               </i>
-            </div>
-            <div className="panel-opciones-portafolio-grupo-opciones">
-               <i
-                  className="panel-opciones-portafolio-grupo-opciones-btn fas fa-filter"
-                  onClick={() => {
-                     setFiltrandoProyectos(true);
-                  }}
-               >
-                  <label className="panel-opciones-portafolio-grupo-opciones-btn-etiqueta">
-                     Filtrar Proyectos
-                  </label>
-               </i>
+               <div className="panel-opciones-portafolio-grupo-opciones-btn">
+                  <i
+                     className="panel-opciones-portafolio-grupo-opciones-btn-icono fas fa-plus-circle"
+                     onClick={() => {
+                        setCreandoNuevoProyecto(true);
+                     }}
+                  >
+                     <label className="panel-opciones-portafolio-grupo-opciones-btn-icono-etiqueta">
+                        Nuevo Proyecto
+                     </label>
+                  </i>
+               </div>
+               <div className="panel-opciones-portafolio-grupo-opciones-btn">
+                  <i
+                     className="panel-opciones-portafolio-grupo-opciones-btn-icono fas fa-filter"
+                     onClick={() => {
+                        setFiltrandoProyectos(true);
+                     }}
+                  >
+                     <label className="panel-opciones-portafolio-grupo-opciones-btn-icono-etiqueta">
+                        Filtrar Proyectos
+                     </label>
+                  </i>
+               </div>
             </div>
             <div className="panel-opciones-portafolio-grupo-info">
                <i className="panel-opciones-portafolio-grupo-info-btn fas fa-info-circle"></i>

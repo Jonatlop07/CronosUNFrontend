@@ -24,6 +24,46 @@ const ContenedorDiario = (props) => {
             texto="Hoy estuve probando mi texto"
             eliminarEntrada={eliminarEntrada}
          />
+
+         <EntradaDiario
+            key="e3"
+            fecha="10/10/2020"
+            hora="15:15"
+            texto="Hoy estuve probando mi texto"
+            eliminarEntrada={eliminarEntrada}
+         />
+
+         <EntradaDiario
+            key="e4"
+            fecha="10/10/2020"
+            hora="15:15"
+            texto="Hoy estuve probando mi texto"
+            eliminarEntrada={eliminarEntrada}
+         />
+
+         <EntradaDiario
+            key="e5"
+            fecha="10/10/2020"
+            hora="15:15"
+            texto="Hoy estuve probando mi texto"
+            eliminarEntrada={eliminarEntrada}
+         />
+
+         <EntradaDiario
+            key="e6"
+            fecha="10/10/2020"
+            hora="15:15"
+            texto="Hoy estuve probando mi texto"
+            eliminarEntrada={eliminarEntrada}
+         />
+
+         <EntradaDiario
+            key="e7"
+            fecha="10/10/2020"
+            hora="15:15"
+            texto="Hoy estuve probando mi texto"
+            eliminarEntrada={eliminarEntrada}
+         />
       </div>
    );
 };

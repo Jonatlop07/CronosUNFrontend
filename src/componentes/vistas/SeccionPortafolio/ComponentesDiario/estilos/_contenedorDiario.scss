@@ -5,4 +5,8 @@
    flex-wrap: wrap;
    @include configuracion-contenedor(50rem);
    @include barra-scroll(10%, 0);
+
+   @include pantalla-celular {
+      @include configuracion-contenedor(30rem);
+   }
 }

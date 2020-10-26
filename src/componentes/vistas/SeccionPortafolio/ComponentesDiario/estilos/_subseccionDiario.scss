@@ -3,7 +3,7 @@
 
 .subseccion-diario {
    @include disposicion-flex(column);
-   @include dimensiones(24%, auto, 0 5% 5rem 9%, 0);
+   @include dimensiones(24%, auto, 0 4% 5rem 10%, 0);
 
    #{&}-nombre {
       @include titulo-subseccion();
@@ -19,5 +19,13 @@
       /*animation: gradiente 3s ease infinite;*/
       box-shadow: $sombra-borde-subsecciones;
       animation: aparicion-subseccion 1s;
+   }
+
+   @include pantalla-tablet {
+      @include dimensiones(38vw, auto, 0 3vw 5rem 7vw, 0);
+   }
+
+   @include pantalla-celular {
+      @include dimensiones(85vw, auto, 0 7.5vw 5rem 7.5vw, 0);
    }
 }

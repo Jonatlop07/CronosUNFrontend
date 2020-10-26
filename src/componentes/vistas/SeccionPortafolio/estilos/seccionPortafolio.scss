@@ -20,12 +20,10 @@ $sombra-borde-subsecciones: -0.5rem -0.5rem 0.05rem lighten($color-dos, 20%);
       @include disposicion-flex(row);
    }
 
-   @include pantalla-tablet {
-      width: 100%;
-   }
-
    @include pantalla-celular {
-      width: 100%;
+      #{&}-subsecciones {
+         @include disposicion-flex(column);
+      }
    }
 }
 

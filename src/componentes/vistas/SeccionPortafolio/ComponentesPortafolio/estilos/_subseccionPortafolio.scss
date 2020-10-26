@@ -20,4 +20,12 @@
       box-shadow: $sombra-borde-subsecciones;
       animation: aparicion-subseccion 2s;
    }
+
+   @include pantalla-tablet {
+      @include dimensiones(44vw, auto, 0 7% 5rem 3%, 0);
+   }
+
+   @include pantalla-celular {
+      @include dimensiones(85vw, auto, 0 7.5% 5rem 7.5%, 0);
+   }
 }

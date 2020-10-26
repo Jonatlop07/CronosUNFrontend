@@ -5,19 +5,23 @@
    #{&}-grupo {
       @include disposicion-flex(row);
       align-items: center;
+      margin-top: 1rem;
 
       &-opciones {
-         width: 40%;
-         margin: 1.25rem auto;
+         width: 100%;
          @include disposicion-flex(row);
-         justify-content: center;
 
          &-btn {
-            @include icono-etiqueta(
-               darken($color-uno, 5%),
-               lighten($color-uno, 5%),
-               1.15rem
-            );
+            margin: 1rem auto;
+            cursor: pointer;
+
+            &-icono {
+               @include icono-etiqueta(
+                  darken($color-uno, 5%),
+                  lighten($color-uno, 5%),
+                  1.15rem
+               );
+            }
          }
       }
 
@@ -26,6 +30,27 @@
 
          &-btn {
             @include boton-icono($color-tres, $color-uno, 1.5rem);
+         }
+      }
+
+      @include pantalla-tablet {
+         &-opciones {
+            &-btn {
+               &-icono {
+                  font-size: 0.9rem;
+               }
+            }
+         }
+      }
+
+      @include pantalla-celular {
+         &-opciones {
+            &-btn {
+               margin: 1.5rem auto;
+               &-icono {
+                  font-size: 0.9rem;
+               }
+            }
          }
       }
    }

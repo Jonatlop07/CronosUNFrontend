@@ -47,6 +47,11 @@
       &-estado {
          width: 40%;
          background: lighten($color-uno, 1%);
+         min-height: 1.7rem;
+
+         &:hover {
+            cursor: pointer;
+         }
       }
 
       &-privacidad {
@@ -106,6 +111,69 @@
       &-estado,
       &-privacidad {
          margin: 0.5rem 2.5%;
+      }
+   }
+
+   @include pantalla-tablet {
+      @include dimensiones(auto, 22.5rem, 1rem, 1rem);
+      @include configuracion-contenedor(22.5rem);
+
+      #{&}-imagen {
+         margin: 0.5rem 10%;
+         min-height: 9rem;
+         max-height: 9rem;
+      }
+
+      #{&}-opciones {
+         @include disposicion-flex(column);
+
+         &-editar {
+            @include boton-icono($color-uno, $color-tres, 1.25rem);
+            @include dimensiones(fit-content, auto, 0, 0.125rem);
+            background: $color-dos;
+         }
+
+         &-estado {
+            width: fit-content;
+         }
+
+         &-editar,
+         &-estado,
+         &-privacidad {
+            margin: 0.5rem auto;
+         }
+      }
+   }
+
+   @include pantalla-celular {
+      @include dimensiones(auto, 28rem, 1rem, 1rem);
+      @include configuracion-contenedor(28rem);
+
+      #{&}-imagen {
+         margin: 0.5rem 15%;
+         min-height: 9rem;
+         max-height: 9rem;
+      }
+
+      #{&}-opciones {
+         @include disposicion-flex(column);
+         align-items: center;
+
+         &-editar {
+            @include boton-icono($color-uno, $color-tres, 1.25rem);
+            @include dimensiones(fit-content, auto, 0, 0.125rem);
+            background: $color-dos;
+         }
+
+         &-estado {
+            width: fit-content;
+         }
+
+         &-editar,
+         &-estado,
+         &-privacidad {
+            margin: 0.5rem auto;
+         }
       }
    }
 }

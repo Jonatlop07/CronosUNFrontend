@@ -7,6 +7,12 @@
             font-size: 300%;
             text-align: center;
             margin-bottom: 1%;
+            @include pantalla-celular{
+                font-size: 200%;
+            }
+            @include pantalla-tablet {
+                font-size: 250%;
+            }
         }
         &-texto{
             max-height: 50rem;
@@ -17,16 +23,27 @@
             font-size:150%;
             text-align: left;
             margin-bottom: 1%;
+            @include pantalla-celular{
+                font-size: 100%;
+            }
+            @include pantalla-tablet{
+                font-size: 125%;
+            }
         }
     }
     #{&}-boton-agregar {
         @include boton-general( #08FFFF);
         @include pantalla-celular{
-            margin-left: 37%;
-            margin-right: 34%;
-            width: 27%;
+            margin-left: 30%;
+            margin-right: 30%;
+            width: 40%;
+            font-size: 80%;
         }
         @include pantalla-tablet{
+            width: 40%;
+            margin-right: 30%;
+            margin-left: 30%;
+            font-size: 100%;
         }
         width: 15%;
         margin-bottom: 1%;;

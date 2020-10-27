@@ -13,8 +13,9 @@ const SeccionCuentaUsuario = (props) => {
             Actualizar Imagen
           </button>
         </div>
+
         <form className="editar-cuenta">
-          <p>
+          <p className="editar-cuenta-parametro">
             <label>Nombre</label>
             <input
               type="text"
@@ -22,7 +23,7 @@ const SeccionCuentaUsuario = (props) => {
               className="editar-cuenta-entrada"
             />
           </p>
-          <p>
+          <p className="editar-cuenta-parametro">
             <label>Apellido</label>
             <input
               type="text"
@@ -30,7 +31,7 @@ const SeccionCuentaUsuario = (props) => {
               className="editar-cuenta-entrada"
             />
           </p>
-          <p>
+          <p className="editar-cuenta-parametro">
             <label>Nombre de Usuario</label>
             <input
               type="text"
@@ -38,7 +39,7 @@ const SeccionCuentaUsuario = (props) => {
               className="editar-cuenta-entrada"
             />
           </p>
-          <p>
+          <p className="editar-cuenta-parametro">
             <label>Correo</label>
             <input
               type="text"
@@ -46,11 +47,11 @@ const SeccionCuentaUsuario = (props) => {
               className="editar-cuenta-entrada"
             />
           </p>
-          <p>
+          <p className="editar-cuenta-parametro">
             <label>Contraseña</label>
             <input type="text" name="clave" className="editar-cuenta-entrada" />
           </p>
-          <p>
+          <p className="editar-cuenta-parametro">
             <label>Biografia</label>
             <input
               type="text"
@@ -58,13 +59,11 @@ const SeccionCuentaUsuario = (props) => {
               className="editar-cuenta-entrada"
             />
           </p>
-          <p>
-            <input
-              type="submit"
-              value="Guardar"
-              className="editar-cuenta-boton-enviar"
-            />
-          </p>
+          <input
+            type="submit"
+            value="Guardar"
+            className="editar-cuenta-boton-enviar"
+          />
         </form>
       </div>
       <div className="eliminar-perfil">

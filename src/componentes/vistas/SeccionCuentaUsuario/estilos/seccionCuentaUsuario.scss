@@ -4,36 +4,65 @@
 .contenedor{
     background-color: aqua;
     display: flex;
+    justify-content: center;
     
 
     .vista-cuenta{
+        display: flex;
+        flex-direction: column;
+
+        background-color: blueviolet;
+        padding: 3%;
+        margin: 3%;
+
         .vista-cuenta-imagen{
             width: 10rem;
             height: 10rem;
             justify-content: center;
             margin-bottom: 10%;
-            background-color: rgb(235, 97, 5);
+            
         }
         .vista-cuenta-nombreUsuario{
-            margin-bottom: 7%;
+            text-align: center;
+            margin-bottom: 15%;
         }
         .vista-cuenta-boton{
+            align-items: center;
+            color: $color-uno;
+            @include boton-general($color-dos);
         }
-        background-color: blueviolet;
-        padding: 3%;
-        margin: 10%;
     }
     .editar-cuenta{
+        border-radius: 10%;
         color: $color-uno;
+        margin-top: 2%;
+        margin-bottom: 2%;
         background-color: $color-dos;
         padding: 2%;
+        .editar-cuenta-parametro{
+            background-color: burlywood;
+            padding: 3%;
+            display: flex;
+            .editar-cuenta-entrada{
+                
+                background-color: crimson;
+            }
+        }
+        .editar-cuenta-boton-enviar{
+            @include boton-general($color-cuatro);
+            
+            padding: 4%;
+            margin-left: 40%;
+        }
+
     }
+    
 }
 .eliminar-perfil{
+    
     #{&}-boton{
-        @include boton-general($color-cuatro);
-        position: relative;
+        @include boton-general($color-tres);
+        margin-left: 60%;
     }
-    background-color: rgb(124, 178, 185);
     
 }

@@ -21,6 +21,13 @@
     }
     #{&}-boton-agregar {
         @include boton-general( #08FFFF);
+        @include pantalla-celular{
+            margin-left: 37%;
+            margin-right: 34%;
+            width: 27%;
+        }
+        @include pantalla-tablet{
+        }
         width: 15%;
         margin-bottom: 1%;;
         margin-left: 42%;

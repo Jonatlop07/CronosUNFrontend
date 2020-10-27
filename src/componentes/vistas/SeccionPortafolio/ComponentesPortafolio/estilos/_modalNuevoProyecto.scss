@@ -1,16 +1,33 @@
 .contenedor-modal-nuevo-proyecto {
    @include contenedor-ventana-modal();
    @include dimensiones(100%, 100%, 0, 18vh 30%);
+
+   @include pantalla-tablet {
+      font-size: 14px;
+      @include dimensiones(100%, 100%, 0, 0vh 20%);
+   }
+
+   @include pantalla-celular {
+      font-size: 12px;
+      @include dimensiones(100%, 100%, 0, 0 10%);
+      @media (min-width: 500px) and (max-width: 800px) {
+         @include dimensiones(100%, 100%, 0, 0 10%);
+      }
+   }
 }
 
 .modal-nuevo-proyecto {
    @include estilo-ventana-modal();
    animation: divergencia-modal-nuevo-proyecto 1s;
+   @media (min-height: 200px) and (max-height: 400px) {
+      height: 95vh;
+   }
 
    h5 {
       margin: 1rem 1rem;
       color: $color-uno;
       font-weight: bold;
+      font-size: 1.15rem;
    }
 
    #{&}-formulario {
@@ -20,14 +37,26 @@
       padding: 2rem 3rem;
       background: $color-uno;
       animation: transicion-ventana-interna 2s;
+      @media (min-height: 200px) and (max-height: 400px) {
+         height: 220px;
+         overflow: auto;
+      }
 
       &-texto {
+         min-height: max-content;
          margin: 1rem 0;
          padding: 0.5rem;
          color: $color-tres;
          background: $color-dos;
          &::placeholder {
             color: rgba($color-tres, 0.75);
+            @include pantalla-tablet {
+               font-size: 14px;
+            }
+
+            @include pantalla-celular {
+               font-size: 12px;
+            }
          }
       }
 

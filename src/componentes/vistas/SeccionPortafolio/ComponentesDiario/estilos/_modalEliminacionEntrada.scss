@@ -1,6 +1,19 @@
 .contenedor-modal-eliminacion-entrada {
    @include contenedor-ventana-modal();
    @include dimensiones(100%, 100%, 0, 30vh 30%);
+
+   @include pantalla-tablet {
+      font-size: 14px;
+      @include dimensiones(100%, 100%, 0, 30vh 20%);
+   }
+
+   @include pantalla-celular {
+      font-size: 12px;
+      @include dimensiones(100%, 100%, 0, 20vh 10%);
+      @media (min-width: 500px) and (max-width: 800px) {
+         @include dimensiones(100%, 100%, 0, 20vh 20%);
+      }
+   }
 }
 
 .modal-eliminacion-entrada {
@@ -11,6 +24,7 @@
       margin: 1rem 1rem;
       color: $color-uno;
       font-weight: bold;
+      font-size: 1.15rem;
    }
 
    #{&}-mensaje {

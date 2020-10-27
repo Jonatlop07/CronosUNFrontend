@@ -194,22 +194,3 @@
       @content;
    }
 }
-
-@mixin color-claro-u-oscuro($sombra, $color, $porcentaje, $aclarar: true) {
-}
-
-@mixin sombra-clara-u-oscura($color, $porcentaje, $aclarar: true) {
-   @if $aclarar {
-      box-shadow: $sombra lighten($color, $porcentaje);
-   } @else {
-      box-shadow: $sombra darken($color, $porcentaje);
-   }
-}
-
-@mixin fondo-claro-u-oscuro($color, $porcentaje, $aclarar: true) {
-   @if $aclarar {
-      background: ligthen($color, $porcentaje);
-   } @else {
-      background: darken($color, $porcentaje);
-   }
-}

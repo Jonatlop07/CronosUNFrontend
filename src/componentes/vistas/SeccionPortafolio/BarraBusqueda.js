@@ -5,10 +5,10 @@ const BarraBusqueda = (props) => {
 
    return (
       <div className="barra-busqueda">
-         <form>
+         <form className="barra-busqueda-formulario">
             <input
                className="barra-busqueda-campo"
-               placeholder="Nombre de usuario o dirección de correo"
+               placeholder="Nombre o correo de usuario"
                value={textoBusqueda}
                onChange={(e) => setTextoBusqueda(e.currentTarget.value)}
                required

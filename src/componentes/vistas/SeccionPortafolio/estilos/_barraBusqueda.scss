@@ -1,6 +1,10 @@
 .barra-busqueda {
    @include dimensiones(50%, auto, 2rem auto, 0);
 
+   #{&}-formulario {
+      width: 100%;
+   }
+
    #{&}-campo {
       @include dimensiones(76%, 2rem, 0 1.25% 0 5%, 0 0 0 2.5%);
       background: lighten($color-uno, 5%);
@@ -36,17 +40,26 @@
    }
 
    @include pantalla-tablet {
-   }
-
-   @include pantalla-celular {
-      width: auto;
       #{&}-campo {
-         width: 70%;
-         margin: 0;
-         paddin: 0;
+         @include dimensiones(70%, 2rem, 0 1.25% 0 5%, 0 0 0 2.5%);
       }
 
       #{&}-boton {
+         margin-left: 5%;
+      }
+   }
+
+   @include pantalla-celular {
+      @include dimensiones(80%, auto, 1rem auto, 0);
+
+      #{&}-campo {
+         @include dimensiones(70%, 2rem, 0 1.25% 0 5%, 0 0 0 2.5%);
+         font-size: 0.8rem;
+         margin-left: 5%;
+      }
+
+      #{&}-boton {
+         font-size: 0.8rem;
       }
    }
 }

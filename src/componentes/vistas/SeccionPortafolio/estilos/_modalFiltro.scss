@@ -1,11 +1,36 @@
 .contenedor-modal-filtro-entradas {
    @include contenedor-ventana-modal();
    @include dimensiones(100%, 100%, 0, 10vh 29%);
+   @include pantalla-tablet {
+      font-size: 14px;
+      @include dimensiones(100%, 100%, 0, 5vh 20%);
+   }
+
+   @include pantalla-celular {
+      font-size: 12px;
+      @include dimensiones(100%, 100%, 0, 10vh 10%);
+      @media (min-width: 500px) and (max-width: 800px) {
+         @include dimensiones(100%, 100%, 0, 10vh 20%);
+      }
+   }
 }
 
 .contenedor-modal-filtro-proyectos {
    @include contenedor-ventana-modal();
    @include dimensiones(100%, 100%, 0, 10vh 22.5%);
+
+   @include pantalla-tablet {
+      font-size: 14px;
+      @include dimensiones(100%, 100%, 0, 5vh 20%);
+   }
+
+   @include pantalla-celular {
+      font-size: 12px;
+      @include dimensiones(100%, 100%, 0, 10vh 10%);
+      @media (min-width: 500px) and (max-width: 800px) {
+         @include dimensiones(100%, 100%, 0, 10vh 15%);
+      }
+   }
 }
 
 .modal-filtro {
@@ -95,8 +120,27 @@
          background: $color-dos;
       }
 
+      &-texto {
+         @include pantalla-celular {
+            width: 50%;
+            @media (min-width: 500px) and (max-width: 800px) {
+               width: 50%;
+            }
+         }
+      }
+
       &-selector {
          width: 20%;
+         @include pantalla-tablet {
+            width: 40%;
+         }
+
+         @include pantalla-celular {
+            width: 60%;
+            @media (min-width: 500px) and (max-width: 800px) {
+               width: 35%;
+            }
+         }
       }
 
       &-categorias {

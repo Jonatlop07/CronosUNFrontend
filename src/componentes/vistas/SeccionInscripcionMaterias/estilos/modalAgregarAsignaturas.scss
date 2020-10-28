@@ -17,11 +17,17 @@
             &-finalizar{
                 color: $color-uno;
                 @include boton-general($color-dos);
+                @include pantalla-celular{
+                    width: 50%;
+                }
                 margin: 1%;
             }
             &-nueva-asignatura{
                 color: $color-uno;
                 @include boton-general($color-dos);
+                @include pantalla-celular{
+                    width: 100%;
+                }
                 margin: 1%;
             }
         }

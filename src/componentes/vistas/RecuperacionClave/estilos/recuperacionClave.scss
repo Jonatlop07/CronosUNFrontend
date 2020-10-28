@@ -46,6 +46,8 @@
         padding-bottom: 1rem;
         @include pantalla-celular{
             font-size: 1.5rem;
+            padding-right: 5%;
+            padding-left: 5%;
         }
     }
     #{&}-entrada{

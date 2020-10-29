@@ -24,10 +24,7 @@
    }
 
    h5 {
-      margin: 1rem 1rem;
-      color: $color-uno;
-      font-weight: bold;
-      font-size: 1.15rem;
+      @include estilo-titulo-modal();
    }
 
    #{&}-formulario {
@@ -35,7 +32,9 @@
       text-align: left;
       margin: 1rem 1rem;
       padding: 2rem 3rem;
-      background: $color-uno;
+      background: darken($color-uno, 0.5%);
+      box-shadow: 2px 2px 10px darken($color-uno, 15%),
+         -2px -2px 10px darken($color-uno, 15%);
       animation: transicion-ventana-interna 2s;
       @media (min-height: 200px) and (max-height: 400px) {
          height: 220px;
@@ -46,10 +45,14 @@
          min-height: max-content;
          margin: 1rem 0;
          padding: 0.5rem;
-         color: $color-tres;
-         background: $color-dos;
+         color: $color-dos;
+         background: $color-uno;
+         border: none;
+         box-shadow: 2px 2px 7px darken($color-uno, 15%),
+            -2px -2px 7px darken($color-uno, 15%);
+
          &::placeholder {
-            color: rgba($color-tres, 0.75);
+            color: darken($color-uno, 50%);
             @include pantalla-tablet {
                font-size: 14px;
             }
@@ -57,6 +60,12 @@
             @include pantalla-celular {
                font-size: 12px;
             }
+         }
+
+         &:focus,
+         & select:focus {
+            outline: none;
+            border: none;
          }
       }
 
@@ -66,8 +75,11 @@
 
       &-registrar,
       &-cancelar {
-         @include boton-general($color-tres);
-         @include enunciado-ventana-modal();
+         $color-dos-modificado: #246e8b;
+         @include boton-general($color-dos-modificado);
+         color: $color-uno;
+         margin: 1.25rem 0.5rem;
+         padding: 0.35rem 0.75rem;
       }
 
       &-privacidad {

@@ -1,6 +1,6 @@
 .contenedor-modal-registro-entrada {
    @include contenedor-ventana-modal();
-   @include dimensiones(100%, 100%, 0, 25vh 30%);
+   @include dimensiones(100%, 100%, 0, 20vh 30%);
 
    @include pantalla-tablet {
       font-size: 14px;
@@ -21,25 +21,26 @@
    animation: divergencia-modal-registro-entrada 1s;
 
    h5 {
-      margin: 1rem 1rem;
-      color: $color-uno;
-      font-weight: bold;
-      font-size: 1.15rem;
+      @include estilo-titulo-modal();
    }
 
    #{&}-formulario {
-      margin: 1rem 1rem;
+      margin: 0.5rem 1rem;
       padding: 1rem;
-      background: $color-uno;
+      background: darken($color-uno, 0.5%);
+      box-shadow: 2px 2px 10px darken($color-uno, 15%),
+         -2px -2px 10px darken($color-uno, 15%);
       animation: transicion-ventana-interna 2s;
 
       &-texto {
-         @include dimensiones(100%, 10rem, 0.5rem auto, 0.5rem);
-         color: $color-tres;
-         background: $color-dos;
+         @include dimensiones(100%, 6rem, 0.5rem auto, 0);
+         color: $color-dos;
+         background: $color-uno;
+         border: none;
+         resize: none;
 
          &::placeholder {
-            color: rgba($color-tres, 0.75);
+            color: darken($color-uno, 50%);
             @include pantalla-tablet {
                font-size: 14px;
             }
@@ -48,12 +49,21 @@
                font-size: 12px;
             }
          }
+
+         &:focus,
+         & select:focus {
+            outline: none;
+            border: none;
+         }
       }
 
       &-registrar,
       &-cancelar {
-         @include boton-general($color-tres);
+         $color-dos-modificado: #246e8b;
+         @include boton-general($color-dos-modificado);
          @include enunciado-ventana-modal();
+         color: $color-uno;
+         margin-bottom: 1.25rem;
       }
    }
 }

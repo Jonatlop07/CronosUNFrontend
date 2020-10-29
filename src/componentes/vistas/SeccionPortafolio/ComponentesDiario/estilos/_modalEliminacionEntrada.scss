@@ -21,22 +21,23 @@
    animation: divergencia-modal-eliminacion-entrada 1s;
 
    h5 {
-      margin: 1rem 1rem;
-      color: $color-uno;
-      font-weight: bold;
-      font-size: 1.15rem;
+      @include estilo-titulo-modal();
    }
 
    #{&}-mensaje {
       margin: 0 1rem;
       padding: 2rem;
       color: $color-dos;
-      background: $color-uno;
+      background: darken($color-uno, 0.5%);
+      box-shadow: 2px 2px 10px darken($color-uno, 15%),
+         -2px -2px 10px darken($color-uno, 15%);
    }
 
    button {
-      @include boton-general($color-tres);
-      margin: 1rem 0.25rem;
+      $color-dos-modificado: #246e8b;
+      @include boton-general($color-dos-modificado);
+      color: $color-uno;
+      margin: 1.25rem 0.25rem;
       padding: 0.25rem 0.5rem;
       font-weight: bold;
    }

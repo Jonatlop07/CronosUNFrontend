@@ -1,8 +1,8 @@
 .linea-tiempo-proyectos {
+   padding-top: 1rem;
    animation: transicion-ventana-interna 3s;
 
    #{&}-titulo {
-      margin-top: 0.5rem;
-      font-size: 1.5rem;
+      font-size: 1.25rem;
    }
 }

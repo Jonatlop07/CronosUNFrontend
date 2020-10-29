@@ -48,9 +48,18 @@
          width: 40%;
          background: lighten($color-uno, 1%);
          min-height: 1.7rem;
+         border: none;
+         box-shadow: 2px 2px 7px darken($color-uno, 15%),
+            -2px -2px 7px darken($color-uno, 15%);
 
          &:hover {
             cursor: pointer;
+         }
+
+         &:focus,
+         & select:focus {
+            outline: none;
+            border: none;
          }
       }
 

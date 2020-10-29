@@ -19,6 +19,7 @@
          $cambio-fondo: true
       );
       padding: 0.35rem;
+      background-color: $color-uno;
 
       &:hover {
          animation: giro-boton 0.25s;

@@ -1,0 +1,66 @@
+@import "../../../../scss/variables";
+@import "../../../../scss/mixins";
+
+.editor {
+   @include dimensiones(auto, auto, 1.5rem 10%, 0);
+   min-height: 100px;
+   font-size: 1.5rem;
+
+   & > li {
+      list-style: square;
+      margin: initial;
+   }
+
+   &:empty:before {
+      content: attr(data-placeholder);
+      color: gray;
+   }
+
+   #{&}-barra-herramientas {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;
+      padding: 1rem;
+      background: $color-cuatro;
+      border: solid 1px #ddd;
+      border-radius: 3px;
+      box-shadow: 2px 2px 10px darken($color-uno, 15%),
+         -2px -2px 10px darken($color-uno, 15%);
+
+      & i {
+         @include boton-icono($color-uno, $color-tres, 1rem);
+         padding: 0;
+      }
+
+      & select:focus {
+         outline: none;
+      }
+   }
+
+   #{&}-contenido {
+      @include dimensiones(100%, 50vh, 0.5rem auto, 0.5rem);
+      font-size: 1rem;
+
+      box-shadow: 2px 2px 10px darken($color-uno, 15%),
+         -2px -2px 10px darken($color-uno, 15%);
+
+      &:focus {
+         outline: none;
+      }
+   }
+
+   .bloque-codigo {
+      background-color: rgb(21, 34, 75);
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 0;
+      margin-bottom: 0;
+      height: auto;
+      min-height: 39px;
+      font-family: "Courier New", Courier, monospace;
+      overflow: auto;
+      color: white;
+      padding: 8px;
+   }
+}

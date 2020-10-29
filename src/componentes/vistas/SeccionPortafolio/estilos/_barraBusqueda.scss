@@ -7,7 +7,17 @@
 
    #{&}-campo {
       @include dimensiones(76%, 2rem, 0 1.25% 0 5%, 0 0 0 2.5%);
+      color: $color-dos;
       background: lighten($color-uno, 5%);
+      border: none;
+      box-shadow: 1px 1px 7px darken($color-uno, 15%),
+         -1px -1px 7px darken($color-uno, 15%);
+
+      &:focus,
+      & select:focus {
+         outline: none;
+         border: none;
+      }
    }
 
    #{&}-boton {
@@ -23,6 +33,12 @@
 
       &:hover {
          animation: giro-boton 0.25s;
+      }
+
+      &:focus,
+      & select:focus {
+         outline: none;
+         border: none;
       }
 
       @keyframes giro-boton {

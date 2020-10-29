@@ -7,7 +7,9 @@ import ContenedorBotonesResultado from "../ContenedorBotonesResultado.js";
 const SubseccionDiario = (props) => {
    return (
       <div className="subseccion-diario">
-         <h5 className="subseccion-diario-nombre">Tu Diario</h5>
+         <label>
+            <h5 className="subseccion-diario-nombre">Tu Diario</h5>
+         </label>
          <div className="subseccion-diario-principal">
             <PanelOpcionesDiario />
             <ContenedorDiario />

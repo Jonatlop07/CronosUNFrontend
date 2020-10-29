@@ -7,7 +7,9 @@ import ContenedorBotonesResultado from "../ContenedorBotonesResultado.js";
 const SubseccionPortafolio = (props) => {
    return (
       <div className="subseccion-portafolio">
-         <h5 className="subseccion-portafolio-nombre">Tu Portafolio</h5>
+         <label>
+            <h5 className="subseccion-portafolio-nombre">Tu Portafolio</h5>
+         </label>
          <div className="subseccion-portafolio-principal">
             <PanelOpcionesPortafolio />
             <ContenedorDeProyectos />

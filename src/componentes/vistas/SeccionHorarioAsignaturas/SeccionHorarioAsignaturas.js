@@ -12,6 +12,7 @@ const ListaMaterias =[{nombre:'Algebra Lineal',creditos:4,grupos:[{hora:'7-9',di
                       }]
 const SeccionHorarioAsignaturas = (props) => {
     const [horarioActualizado,setHorarioActualizado] = useState([])
+    const [materiasEliminadas,setMateriasEliminadas] = useState([])
     const agregarAsignatura = (materia,grupo) => {
         const horarioAux = [...horarioActualizado];
         /* let booleanAux = false; 
@@ -33,19 +34,16 @@ const SeccionHorarioAsignaturas = (props) => {
         setHorarioActualizado(horarioAux)
     }
     const desagregarAsignatura = (materia,grupo) => {
-        const horariosAux = [...horarioActualizado]
-        for (let i =0; i<horariosAux.length;i++){
-            if(horariosAux[i].materia === materia && horariosAux[i].grupo === grupo){
-                 horariosAux[i]=NaN           
-            }
-        }
-        setHorarioActualizado(horariosAux)
+        const materiasAux = [...materiasEliminadas];
+        materiasAux.push({materia,grupo})
+        setMateriasEliminadas(materiasAux)
     }
     return ( 
         <div className="contenedor-seccion">
-            <ContenedorHorario horarioActualizado={horarioActualizado}/>
+            <h5 className="contenedor-seccion-titulo">Mi horario de Inscripción</h5>
+            <ContenedorHorario horarioActualizado={horarioActualizado} materiasEliminadas={materiasEliminadas}/>
             <input type="submit" value="Guardar Horario" className="contenedor-seccion-boton-agregar"/>
-            <ContenedorAsignaturas ListaMaterias={ListaMaterias} agregarAsignatura={agregarAsignatura} desagregarAsignatura={desagregarAsignatura}/>
+            <ContenedorAsignaturas ListaMaterias={ListaMaterias} agregarAsignatura={agregarAsignatura} desagregarAsignatura={desagregarAsignatura} />
         </div>
      );
 }

@@ -11,7 +11,7 @@ const ContenedorMateria = (props) =>{
     }
     return(
         <div className="contenedor-asignaturas-materia">
-            <p>{props.materia.nombre}</p>
+            <h5 className="contenedor-asignaturas-materia-nombre">{props.materia.nombre}</h5>
             {props.materia.grupos.map((grupo) =>(
                 <ContenedorGrupo grupo={grupo} agregarAsignatura={agregarAsignatura} desagregarAsignatura={desagregarAsignatura}/>
             ))}

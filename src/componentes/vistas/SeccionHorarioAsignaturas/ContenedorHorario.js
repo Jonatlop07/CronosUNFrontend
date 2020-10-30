@@ -1,85 +1,190 @@
-import React, {useState,useEffect} from 'react';
-
+import React, { useState, useEffect } from "react";
+import {horas,dias,materias} from "./materias.js";
 import "./estilos/contenedorHorario.scss";
-const dias = ['Hora','Lunes','Martes','Miercoles','Jueves','Viernes','Sabado']
-const horas = ['7','8','9','10','11','12','13','14','15','16','17','18','19']
-const materiasLunes = [NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN]
-const materiasMartes = [NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN]
-const materiasMiercoles = [NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN]
-const materiasJueves= [NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN]
-const materiasViernes = [NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN]
-const materiasSabado = [NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN]
-const materias = [materiasLunes,materiasMartes,materiasMiercoles,materiasJueves,materiasViernes,materiasSabado]
 
-const ContenedorHorario = (props) =>{
-    const [horarioActualizado,setHorarioActualizado] = useState(props.horarioActualizado)
-    const actualizarHorario = () => {
-        props.horarioActualizado.forEach(materia => {
-            const horainicial = parseInt(materia.grupo.hora.split("-")[0])
-            const horafinal = parseInt(materia.grupo.hora.split("-")[1])
-            for (let i =0 ; i<materia.grupo.dias.length;i++){
-                switch(materia.grupo.dias[i]){
-                    case 'Lunes': 
-                        for(let j=horainicial; j<horafinal;j++){
-                            materiasLunes[j-7]=materia; 
+const ContenedorHorario = (props) => {
+   const [materiasHorario, setMateriasHorario] = useState(materias);
+
+   const actualizarHorario = () => {
+      const nuevasMaterias = [...materiasHorario];
+      if(props.horarioActualizado!=null){
+        props.horarioActualizado.forEach((materia) => {
+            const horainicial = parseInt(materia.grupo.hora.split("-")[0]);
+            const horafinal = parseInt(materia.grupo.hora.split("-")[1]);
+
+            for (let i = 0; i < materia.grupo.dias.length; i++) {
+                switch (materia.grupo.dias[i]) {
+                case "Lunes":
+                    for (let j = horainicial; j < horafinal; j++) {
+                        nuevasMaterias[0][j - 7] = materia;
+                    }
+                    break;
+                case "Martes":
+                    for (let j = horainicial; j < horafinal; j++) {
+                        nuevasMaterias[1][j - 7] = materia;
+                        for(let k=0; k<props.horarioActualizado.length;k++){
+                            if(materia.materia == props.horarioActualizado[k].materia){
+                                props.horarioActualizado.splice(k,1)
+                            }
                         }
-                        break; 
-                    case 'Martes': 
-                        for(let j=horainicial; j<horafinal;j++){
-                            materiasMartes[j-7]=materia; 
+                    }
+                    break;
+                case "Miercoles":
+                    for (let j = horainicial; j < horafinal; j++) {
+                        nuevasMaterias[2][j - 7] = materia;
+                        for(let k=0; k<props.horarioActualizado.length;k++){
+                            if(materia.materia == props.horarioActualizado[k].materia){
+                                props.horarioActualizado.splice(k,1)
+                            }
                         }
-                        break; 
-                    case 'Miercoles':
-                        for(let j=horainicial; j<horafinal;j++){
-                            materiasMiercoles[j-7]=materia; 
+                    }
+                    break;
+                case "Jueves":
+                    for (let j = horainicial; j < horafinal; j++) {
+                        nuevasMaterias[3][j - 7] = materia;
+                        for(let k=0; k<props.horarioActualizado.length;k++){
+                            if(materia.materia == props.horarioActualizado[k].materia){
+                                props.horarioActualizado.splice(k,1)
+                            }
                         }
-                        break; 
-                    case 'Jueves':  
-                        for(let j=horainicial; j<horafinal;j++){
-                            materiasJueves[j-7]=materia; 
+                    }
+                    break;
+                case "Viernes":
+                    for (let j = horainicial; j < horafinal; j++) {
+                        nuevasMaterias[4][j - 7] = materia;
+                        for(let k=0; k<props.horarioActualizado.length;k++){
+                            if(materia.materia == props.horarioActualizado[k].materia){
+                                props.horarioActualizado.splice(k,1)
+                            }
                         }
-                        break; 
-                    case 'Viernes': 
-                        for(let j=horainicial; j<horafinal;j++){
-                            materiasViernes[j-7]=materia; 
+                    }
+                    break;
+                case "Sabado":
+                    for (let j = horainicial; j < horafinal; j++) {
+                        nuevasMaterias[5][j - 7] = materia;
+                        for(let k=0; k<props.horarioActualizado.length;k++){
+                            if(materia.materia == props.horarioActualizado[k].materia){
+                                props.horarioActualizado.splice(k,1)
+                            }
                         }
-                        break; 
-                    case 'Sabado': 
-                        for(let j=horainicial; j<horafinal;j++){
-                            materiasSabado[j-7]=materia; 
-                        }
-                        break
+                    }
+                    break;
                 }
             }
-        })
-    }
-    useEffect(actualizarHorario,[])
-    return(
-        <div className="contenedor-horario">
-            <div className='contenedor-horario-principal'>
-                {dias.map((dia) => (
-                    <p className="contenedor-horario-principal-dia">{dia}</p>
-                ))}
-            </div>
-            <div className='contenedor-horario-contenido'>
-                {horas.map((hora)=>(
-                    <p className='contenedor-horario-contenido-hora'>{hora}</p>
-                ))}
-                {materias.map((materias) => (
-                    materias.map((materia) =>(
-                        <div>
-                            { materia.materia != null ? 
-                            <div className='contenedor-horario-contenido-materia'>
-                                <p>{materia.materia}</p>
-                                <p>Profesor:{materia.grupo.profesor}</p>
-                            </div>
-                            : <div></div>}
-                        </div>
-                    ))
-                ))}
-            </div>
-        </div>
-    );
-}
+        });
+        setMateriasHorario(nuevasMaterias)
+      }
+      if(props.materiasEliminadas != null){
+        props.materiasEliminadas.forEach((materia) => {
+            const horainicial = parseInt(materia.grupo.hora.split("-")[0]);
+            const horafinal = parseInt(materia.grupo.hora.split("-")[1]);
+    
+            for (let i = 0; i < materia.grupo.dias.length; i++) {
+            switch (materia.grupo.dias[i]) {
+                case "Lunes":
+                    for (let j = horainicial; j < horafinal; j++) {
+                        nuevasMaterias[0][j - 7] = NaN;
+                        props.materiasEliminadas.splice(0,1)
+                        for(let k=0; k<props.horarioActualizado.length;k++){
+                            if(materia.materia == props.horarioActualizado[k].materia && materia.grupo == props.horarioActualizado[k].grupo){
+                                props.horarioActualizado.splice(k,1)
+                            }
+                        }
+                    }
+                    break;
+                case "Martes":
+                    for (let j = horainicial; j < horafinal; j++) {
+                        nuevasMaterias[1][j - 7] = NaN;
+                        props.materiasEliminadas.splice(0,1)
+                        for(let k=0; k<props.horarioActualizado.length;k++){
+                            if(materia.materia == props.horarioActualizado[k].materia && materia.grupo == props.horarioActualizado[k].grupo){
+                                props.horarioActualizado.splice(k,1)
+                            }
+                        }
+                    }
+                    break;
+                case "Miercoles":
+                    for (let j = horainicial; j < horafinal; j++) {
+                        nuevasMaterias[2][j - 7] = NaN;
+                        props.materiasEliminadas.splice(0,1)
+                        for(let k=0; k<props.horarioActualizado.length;k++){
+                            if(materia.materia == props.horarioActualizado[k].materia && materia.grupo == props.horarioActualizado[k].grupo){
+                                props.horarioActualizado.splice(k,1)
+                            }
+                        }
+                    }
+                    break;
+                case "Jueves":
+                    for (let j = horainicial; j < horafinal; j++) {
+                        nuevasMaterias[3][j - 7] = NaN;
+                        props.materiasEliminadas.splice(0,1)
+                        for(let k=0; k<props.horarioActualizado.length;k++){
+                            if(materia.materia == props.horarioActualizado[k].materia && materia.grupo == props.horarioActualizado[k].grupo){
+                                props.horarioActualizado.splice(k,1)
+                            }
+                        }
+                    }
+                    break;
+                case "Viernes":
+                    for (let j = horainicial; j < horafinal; j++) {
+                        nuevasMaterias[4][j - 7] = NaN;
+                        props.materiasEliminadas.splice(0,1)
+                        for(let k=0; k<props.horarioActualizado.length;k++){
+                            if(materia.materia == props.horarioActualizado[k].materia && materia.grupo == props.horarioActualizado[k].grupo){
+                                props.horarioActualizado.splice(k,1)
+                            }
+                        }
+                    }
+                    break;
+                case "Sabado":
+                    for (let j = horainicial; j < horafinal; j++) {
+                        nuevasMaterias[5][j - 7] = NaN;
+                        props.materiasEliminadas.splice(0,1)
+                        for(let k=0; k<props.horarioActualizado.length;k++){
+                            if(materia.materia == props.horarioActualizado[k].materia && materia.grupo == props.horarioActualizado[k].grupo){
+                                props.horarioActualizado.splice(k,1)
+                            }
+                        }
+                    }
+                    break;
+            }
+            }
+        });
+      }
+        setMateriasHorario(nuevasMaterias);
+    };
+    useEffect(actualizarHorario,[props.horarioActualizado])
+    useEffect(actualizarHorario,[props.materiasEliminadas])
 
-export default ContenedorHorario; 
+
+   return (
+      <div className="contenedor-horario">
+         <div className="contenedor-horario-principal">
+            {dias.map((dia) => (
+               <p className="contenedor-horario-principal-dia">{dia}</p>
+            ))}
+         </div>
+         <div className="contenedor-horario-contenido">
+            {horas.map((hora) => (
+               <p className="contenedor-horario-contenido-hora">{hora}</p>
+            ))}
+            {materiasHorario.map((materiasDia) =>
+               materiasDia.map((materiaDia) => (
+                  <div>
+                     {materiaDia.materia != null ? (
+                        <div className="contenedor-horario-contenido-materia">
+                           <p>{materiaDia.materia}</p>
+                           <p>Profesor:{materiaDia.grupo.profesor}</p>
+                        </div>
+                     ) : (
+                        <div></div>
+                     )}
+                  </div>
+               ))
+            )}
+         </div>
+      </div>
+   );
+};
+
+export default ContenedorHorario;

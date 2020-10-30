@@ -16,7 +16,7 @@ const ContenedorGrupo = (props) => {
             <p>Hora: {props.grupo.hora}</p>
             <p>Profesor: {props.grupo.profesor}</p>
             <p>Días: {props. grupo.dias}</p>
-            {botonDeseleccionar==false ? <input type="submit" value="Registrar" onClick={agregarAsignatura}/> : <input type="submit" value="Quitar" onClick={desagregarAsignatura}/>}
+            {botonDeseleccionar==false ? <input type="submit" className="contenedor-asignaturas-materia-grupo-boton" value="Registrar" onClick={agregarAsignatura}/> : <input type="submit" className="contenedor-asignaturas-materia-grupo-boton" value="Quitar" onClick={desagregarAsignatura} />}
         </div>
 )
 }

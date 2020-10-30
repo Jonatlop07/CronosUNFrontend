@@ -15,6 +15,7 @@
 .contenedor-seccion{
     display: flex;
     padding-left: 2rem;
+    height: 49rem;
 
     #{&}-funciones{
 
@@ -29,6 +30,30 @@
             text-align: justify;
             margin-top: 5rem;
             margin-bottom: 0.5rem;
+        }
+
+        &-tooltip-toggleA{
+                
+            @include tooltip(12rem, -6.3rem);
+
+            i{
+                font-style: normal;
+                font-family: fontAwesome; 
+                padding-left: 0.5rem;
+             }
+                
+        }
+
+        &-tooltip-toggleB{
+                
+            @include tooltip(12rem, -6.3rem);
+
+            i{
+                font-style: normal;
+                font-family: fontAwesome; 
+                padding-left: 0.5rem;
+             }
+                
         }
 
         &-descargar{

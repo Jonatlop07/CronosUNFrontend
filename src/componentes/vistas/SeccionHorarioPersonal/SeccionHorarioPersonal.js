@@ -34,14 +34,19 @@ const SeccionHorarioPersonal = (props) => {
                 <ContenedorHorario/>
                 </section>
                 <section className="contenedor-seccion-funciones">
-                    <h3 className = "contenedor-seccion-funciones-funcion"> Cambiar metodologia de estudio</h3>  
+                    <h3 className = "contenedor-seccion-funciones-funcion"> Cambiar metodologia de estudio 
+                    <a href="#" class="contenedor-seccion-funciones-tooltip-toggleA" aria-label="Cada metodologia genera un horario de estudio diferente. Escoge el que 
+                    mas te guste!" tabindex="0">
+                    <i class="fas fa-question-circle"></i></a></h3>  
                     <select>
                         <option value="" disabled="disabled" selected="selected">Escoge una metodologia</option>
                         <option value="creditos"> Por numero de creditos</option>
                         <option value="pomodoro">Pomodoro</option>
                         <option value="flowtime">Flowtime</option>
                     </select>
-                    <h3 className = "contenedor-seccion-funciones-funcion"> Establecer nuevos creditos para mis materias</h3>
+                    <h3 className = "contenedor-seccion-funciones-funcion"> Establecer nuevos creditos para mis materias
+                    <a href="#" class="contenedor-seccion-funciones-tooltip-toggleB" aria-label="Cambia tu horario de acuerdo a la complejidad de cada materia medida en creditos." tabindex="0">
+                    <i class="fas fa-question-circle"></i></a></h3> 
                     <div className = "contenedor-seccion-funciones-creditos"> 
                         <ul>
                             {materia.map((item) =>(

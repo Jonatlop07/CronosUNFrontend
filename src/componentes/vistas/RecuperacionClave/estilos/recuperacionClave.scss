@@ -9,6 +9,8 @@
     text-align: center;
     background: $color-dos;
     margin: 10rem auto ;
+    box-shadow: 2px 2px 10px darken($color-uno, 15%),
+    -2px -2px 10px darken($color-uno, 15%);
     @include pantalla-celular{
         display: flex;
         justify-content: center;
@@ -20,13 +22,13 @@
     }
     
     #{&}-boton-enviar{
-        @include boton-general($color-tres);
+        @include boton-general($color-cuatro);
         width: 22%;
         margin: 1rem auto;
         color: $color-uno;
-        font-size: 1.5rem;
+        font-size: 1.25rem;
         @include pantalla-celular{
-            @include boton-general($color-tres);
+            @include boton-general($color-cuatro);
             width: 30%;
             margin: 1rem auto;
             color: $color-uno;

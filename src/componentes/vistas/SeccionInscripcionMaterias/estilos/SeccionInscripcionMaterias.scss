@@ -6,6 +6,7 @@
         &-titulo{
             font-size: 300%;
             text-align: center;
+            color: $color-dos;
             margin-bottom: 1%;
             @include pantalla-celular{
                 font-size: 200%;
@@ -18,11 +19,13 @@
             max-height: 50rem;
             overflow: auto;
             margin: 1rem;
-            border: 0.1rem solid black;
+            box-shadow: 2px 2px 10px darken($color-uno, 15%),
+            -2px -2px 10px darken($color-uno, 15%);
             border-radius: 1%;
             font-size:150%;
-            text-align: left;
+            text-align:left;
             margin-bottom: 1%;
+
             @include pantalla-celular{
                 font-size: 100%;
             }
@@ -32,7 +35,9 @@
         }
     }
     #{&}-boton-agregar {
-        @include boton-general( #08FFFF);
+        @include boton-general($color-dos);
+        color: white;
+        font-size: 1rem;
         @include pantalla-celular{
             margin-left: 30%;
             margin-right: 30%;

@@ -6,6 +6,9 @@
     @include contenedor-ventana-modal();
     @include dimensiones(60%, 60%, 10% 17% , 3%);
     @include estilo-ventana-modal();
+    background-color: $color-dos;
+    box-shadow: 2px 2px 10px darken($color-uno, 15%),
+    -2px -2px 10px darken($color-uno, 15%);
     #{&}-formulario{
         height: 70%;
         animation: trancision-ventana-interna 2s;
@@ -16,7 +19,7 @@
         &-botones{
             &-finalizar{
                 color: $color-uno;
-                @include boton-general($color-dos);
+                @include boton-general($color-cuatro);
                 @include pantalla-celular{
                     width: 50%;
                 }
@@ -24,7 +27,7 @@
             }
             &-nueva-asignatura{
                 color: $color-uno;
-                @include boton-general($color-dos);
+                @include boton-general($color-cuatro);
                 @include pantalla-celular{
                     width: 100%;
                 }

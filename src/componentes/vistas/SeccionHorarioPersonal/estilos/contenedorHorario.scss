@@ -1,0 +1,22 @@
+@import "../../../../scss/variables";
+@import "../../../../scss/mixins";
+
+.contenedor-principal{
+
+--gradient: linear-gradient(
+    45deg,
+    rgb(106, 119, 119), 
+    rgba(255, 255, 255, 0.295),
+    rgb(122, 150, 147)
+    );
+
+    width: 90rem;
+    height: 45rem;
+    box-shadow: 2px 2px 10px darken($color-dos, 5%),
+        -2px -2px 10px darken($color-uno, 15%);
+    
+    background-image: var(--gradient);
+    background-size: 150%;
+    
+
+}

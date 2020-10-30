@@ -1,0 +1,74 @@
+@import "../../../../scss/variables";
+@import "../../../../scss/mixins";
+
+.titulo{
+
+    margin-top: 2.5rem;
+    margin-bottom: 2rem;
+    font-size: 5vh;
+    font-weight: bold;
+    text-align: center;
+    font-family: $fuente-principal;
+
+}
+
+.contenedor-seccion{
+    display: flex;
+    padding-left: 2rem;
+
+    #{&}-funciones{
+
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+
+        &-funcion{
+            font-size: 1rem;
+            font-weight: bold;
+            text-align: justify;
+            margin-top: 5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        &-descargar{
+            @include boton-general($color-cuatro);
+                color:$color-uno;
+                margin: 4rem auto;
+                border-radius: 20px;    
+        }
+
+        &-creditos{
+            width: 100%;
+            height: fit-content;
+            box-shadow: 1px 1px 7px darken($color-uno, 15%),
+            -1px -1px 7px darken($color-uno, 15%);
+            
+            &-materias{
+                padding: 0.5rem;
+                border: solid 1px $color-dos;
+                &-indiv{
+                    font-size: 0.9rem;
+                }
+                &-boton{
+                    display: inline-block;
+                    margin-left: 1rem;  
+                    border: 0.1rem solid $color-dos;
+                    color: black;
+                    padding: 0.1rem 0.5rem;
+                    text-align: center;
+                    border-radius: 5px;
+                    background: $color-uno;
+
+                    &:hover {
+                        background: $color-dos;
+                        color: white;
+                             
+                       }
+
+                }
+            }
+        }
+    }
+
+}

@@ -2,67 +2,111 @@
 @import "../../../../scss/variables";
 
 .contenedor{
-    background-color: aqua;
-    display: flex;
-    justify-content: center;
     
-
-    .vista-cuenta{
+    display: flex;
+    justify-content: flex-start;
+    margin:auto;
+    
+    
+}
+.vista{
+    width: 20%;
+    margin: 3%;
+    margin-left: 10%;
+    
+    #{&}-cuenta{
         display: flex;
         flex-direction: column;
-
-        background-color: blueviolet;
-        padding: 3%;
-        margin: 3%;
-
-        .vista-cuenta-imagen{
-            width: 10rem;
-            height: 10rem;
-            justify-content: center;
+        padding:10%;
+        margin: 0%;
+        background-color: $color-dos;
+        margin-left: auto;
+        margin-right: auto;
+        border-radius: 10%;
+        &-imagen{
+            background-color: $color-uno;
+            border-radius: 50%;
+            width: 70%;
+            height: 70%;
+            margin-left: auto;
+            margin-right: auto;
             margin-bottom: 10%;
             
         }
-        .vista-cuenta-nombreUsuario{
+        &-nombreUsuario{
             text-align: center;
-            margin-bottom: 15%;
-        }
-        .vista-cuenta-boton{
-            align-items: center;
             color: $color-uno;
-            @include boton-general($color-dos);
+            margin-bottom: 8%;
+        }
+        &-boton{
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 70%;
+            width: 60%;
+            
+            @include boton-general($color-tres);
         }
     }
-    .editar-cuenta{
-        border-radius: 10%;
-        color: $color-uno;
-        margin-top: 2%;
-        margin-bottom: 2%;
-        background-color: $color-dos;
-        padding: 2%;
-        .editar-cuenta-parametro{
-            background-color: burlywood;
-            padding: 3%;
+
+}
+.editar-cuenta{
+    border-radius: 2%;
+    width: 50%;
+    color: $color-uno;
+    margin-top: 2%;
+    margin-bottom: 1%;
+    background-color: $color-dos;
+    padding: 2%;
+
+    #{&}-contenedor{
+        display: flex;
+        align-items: baseline;
+        justify-content: center;
+        &-etiqueta{
+            padding: 2%;
+            width: 35%;
             display: flex;
-            .editar-cuenta-entrada{
-                
-                background-color: crimson;
+            flex-direction: column;
+            
+            
+            &-nombre{
+                margin: 8.75%;
+                font-size: 98%;
             }
         }
-        .editar-cuenta-boton-enviar{
-            @include boton-general($color-cuatro);
+        &-parametro{
+            display: flex;
+            flex-direction: column;
+            width: 65%;
+            padding: 2%;
             
-            padding: 4%;
-            margin-left: 40%;
+            &-entrada{
+                width: 90%;
+                margin: 4.34%;
+                margin-left: 0%;
+            }
         }
-
     }
-    
+    &-boton-enviar{
+        @include boton-general($color-tres);
+        padding: 1%;
+        margin-top: 2%;
+        margin-left: 45%;
+        font-size: 90%;
+        
+    }
+
 }
+    
+    
+
 .eliminar-perfil{
     
     #{&}-boton{
-        @include boton-general($color-tres);
-        margin-left: 60%;
+        @include boton-general(red);
+        margin-left: 72%;
+        font-size: 80%;
+       
     }
     
 }

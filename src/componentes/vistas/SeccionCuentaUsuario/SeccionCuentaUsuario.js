@@ -6,59 +6,77 @@ const SeccionCuentaUsuario = (props) => {
   return (
     <div>
       <div className="contenedor">
-        <div className="vista-cuenta">
-          <img className="vista-cuenta-imagen" src={ImagenCuentaPorDefecto} />
-          <p className="vista-cuenta-nombreUsuario">Nombre de Usuario</p>
-          <button className="vista-cuenta-boton" type="submit">
-            Actualizar Imagen
-          </button>
+        <div className="vista">
+          <div className="vista-cuenta">
+            <img className="vista-cuenta-imagen" src={ImagenCuentaPorDefecto} />
+            <p className="vista-cuenta-nombreUsuario">Nombre de Usuario</p>
+            <button className="vista-cuenta-boton" type="submit">
+              Actualizar Imagen
+            </button>
+          </div>
         </div>
 
         <form className="editar-cuenta">
-          <p className="editar-cuenta-parametro">
-            <label>Nombre</label>
-            <input
-              type="text"
-              name="Nombre"
-              className="editar-cuenta-entrada"
-            />
-          </p>
-          <p className="editar-cuenta-parametro">
-            <label>Apellido</label>
-            <input
-              type="text"
-              name="Apellido"
-              className="editar-cuenta-entrada"
-            />
-          </p>
-          <p className="editar-cuenta-parametro">
-            <label>Nombre de Usuario</label>
-            <input
-              type="text"
-              name="Nombre de Usuario"
-              className="editar-cuenta-entrada"
-            />
-          </p>
-          <p className="editar-cuenta-parametro">
-            <label>Correo</label>
-            <input
-              type="text"
-              name="Correo"
-              className="editar-cuenta-entrada"
-            />
-          </p>
-          <p className="editar-cuenta-parametro">
-            <label>Contraseña</label>
-            <input type="text" name="clave" className="editar-cuenta-entrada" />
-          </p>
-          <p className="editar-cuenta-parametro">
-            <label>Biografia</label>
-            <input
-              type="text"
-              name="Biografia"
-              className="editar-cuenta-entrada"
-            />
-          </p>
+          <div className="editar-cuenta-contenedor">
+            <div className="editar-cuenta-contenedor-etiqueta">
+              <label className="editar-cuenta-contenedor-etiqueta-nombre">
+                Nombre
+              </label>
+              <label className="editar-cuenta-contenedor-etiqueta-nombre">
+                Apellido
+              </label>
+              <label className="editar-cuenta-contenedor-etiqueta-nombre">
+                Nombre de Usuario
+              </label>
+              <label className="editar-cuenta-contenedor-etiqueta-nombre">
+                Correo
+              </label>
+              <label className="editar-cuenta-contenedor-etiqueta-nombre">
+                Contraseña
+              </label>
+              <label className="editar-cuenta-contenedor-etiqueta-nombre">
+                Biografia
+              </label>
+            </div>
+            <div className="editar-cuenta-contenedor-parametro">
+              <input
+                type="text"
+                name="Nombre"
+                placeholder="NombreEjemplo"
+                className="editar-cuenta-contenedor-parametro-entrada"
+              />
+              <input
+                type="text"
+                name="Apellido"
+                placeholder="ApellidoEjemplo"
+                className="editar-cuenta-contenedor-parametro-entrada"
+              />
+              <input
+                type="text"
+                name="Nombre de Usuario"
+                placeholder="Nombre1234ejemplo"
+                className="editar-cuenta-contenedor-parametro-entrada"
+              />
+              <input
+                type="text"
+                name="Correo"
+                placeholder="nombreEjemplo@correo.com"
+                className="editar-cuenta-contenedor-parametro-entrada"
+              />
+              <input
+                type="text"
+                name="clave"
+                placeholder="***********"
+                className="editar-cuenta-contenedor-parametro-entrada"
+              />
+              <input
+                type="text"
+                name="Biografia"
+                placeholder="Describete a ti mismo!"
+                className="editar-cuenta-contenedor-parametro-entrada"
+              />
+            </div>
+          </div>
           <input
             type="submit"
             value="Guardar"

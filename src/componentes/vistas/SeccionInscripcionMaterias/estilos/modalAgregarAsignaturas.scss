@@ -2,37 +2,78 @@
 @import './mixins'; 
 @import "./animaciones";
 
+
 .contenedor-modal-agregar-asignatura {
     @include contenedor-ventana-modal();
-    @include dimensiones(60%, 60%, 10% 17% , 3%);
-    @include estilo-ventana-modal();
-    background-color: $color-dos;
-    box-shadow: 2px 2px 10px darken($color-uno, 15%),
-    -2px -2px 10px darken($color-uno, 15%);
-    #{&}-formulario{
-        height: 70%;
-        animation: trancision-ventana-interna 2s;
-        &-campotexto{
-            @include dimensiones(80%,100%,5%,3%);
-            text-align: top;   
-        }
-        &-botones{
-            &-finalizar{
-                color: $color-uno;
-                @include boton-general($color-cuatro);
-                @include pantalla-celular{
-                    width: 50%;
-                }
-                margin: 1%;
-            }
-            &-nueva-asignatura{
-                color: $color-uno;
-                @include boton-general($color-cuatro);
-                @include pantalla-celular{
-                    width: 100%;
-                }
-                margin: 1%;
-            }
-        }
+    @include dimensiones(100%, 100%, 0, 20vh 30%);
+ 
+    @include pantalla-tablet {
+       font-size: 14px;
+       @include dimensiones(100%, 100%, 0, 5vh 20%);
     }
-}
+ 
+    @include pantalla-celular {
+       font-size: 12px;
+       @include dimensiones(100%, 100%, 0, 10vh 10%);
+       @media (min-width: 600px) and (max-width: 800px) {
+          @include dimensiones(100%, 100%, 0, 5vh 20%);
+       }
+    }
+ }
+ 
+ .modal-agregar-asignatura {
+    @include estilo-ventana-modal();
+    animation: divergencia-modal-registro-entrada 1s;
+    #{&}-titulo{
+       color: $color-dos;
+       padding: 0.35rem;
+    }
+    #{&}-formulario {
+       padding: 1rem 2rem;
+       background: darken($color-uno, 0.5%);
+       animation: transicion-ventana-interna 2s;
+       &-campotexto {
+          @include dimensiones(100%, 15rem, auto,auto);
+          color: $color-dos;
+          padding: 0.35rem;
+          background: $color-uno;
+          border: none;
+          resize: none;
+          box-shadow: 2px 2px 10px darken($color-uno, 15%),
+          -2px -2px 10px darken($color-uno, 15%);
+          &:placeholder {
+             color: darken($color-uno, 50%);
+             @include pantalla-tablet {
+                font-size: 14px;
+             }
+ 
+             @include pantalla-celular {
+                font-size: 12px;
+             }
+          }
+ 
+          &:focus,
+          & select:focus {
+             outline: none;
+             border: none;
+          }
+       }
+ 
+       &-botones {
+           &-nueva-asignatura{
+            $color-dos-modificado: #246e8b;
+            @include boton-general($color-dos-modificado);
+            @include enunciado-ventana-modal();
+            color: $color-uno;
+            margin-bottom: 1.25rem;
+           }
+           &-finalizar{
+            $color-dos-modificado: #246e8b;
+            @include boton-general($color-dos-modificado);
+            @include enunciado-ventana-modal();
+            color: $color-uno;
+            margin-bottom: 1.25rem;
+           }
+       }
+    }
+ }

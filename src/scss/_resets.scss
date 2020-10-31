@@ -1,5 +1,27 @@
+@import "./variables";
+@import "./mixins";
+@import url("https://fonts.googleapis.com/css2?family=Assistant&display=swap");
+
 * {
    box-sizing: border-box;
    margin: 0;
    padding: 0;
+   font-family: $fuente-principal;
+}
+html,
+body {
+   width: 100%;
+   margin: 0px;
+   padding: 0px;
+   overflow-x: hidden;
+}
+
+html {
+   @include pantalla-tablet {
+      font-size: 14px;
+   }
+
+   @include pantalla-celular {
+      font-size: 12px;
+   }
 }

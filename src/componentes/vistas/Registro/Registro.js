@@ -59,7 +59,7 @@ const Registro = (props) => {
             <br />
             <p className="seccion-registro-info">
               ¿Ya posees una cuenta?{" "}
-              <Link to={RUTA_INICIO_SESION}>Inicia sesión</Link>
+              <Link className="seccion-registro-info-link" to={RUTA_INICIO_SESION}>Inicia sesión</Link>
             </p>
           </form>
         </div>

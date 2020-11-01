@@ -128,7 +128,6 @@
 
 @mixin estilo-ventana-modal() {
    border-radius: 3px;
-   box-shadow: $sombra-borde-subsecciones;
    animation: gradiente 3s ease infinite;
    background-color: darken($color-uno, 0.5%);
    text-align: center;

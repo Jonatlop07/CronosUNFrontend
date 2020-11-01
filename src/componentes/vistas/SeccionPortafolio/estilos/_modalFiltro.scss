@@ -36,7 +36,6 @@
 .modal-filtro {
    height: fit-content;
    @include estilo-ventana-modal();
-   @include barra-scroll(5%, 5%);
    animation: divergencia-modal-filtro 1s forwards;
 
    h5 {
@@ -60,7 +59,7 @@
       border-radius: 0.2rem;
       background: darken($color-uno, 0.5%);
       animation: transicion-ventana-interna 2s;
-      @include barra-scroll(10%, 0);
+      @include barra-scroll(5%, 0%);
       box-shadow: 2px 2px 10px darken($color-uno, 15%),
          -2px -2px 10px darken($color-uno, 15%);
    }

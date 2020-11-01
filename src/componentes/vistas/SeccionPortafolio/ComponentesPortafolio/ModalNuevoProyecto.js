@@ -29,7 +29,7 @@ const ModalNuevoProyecto = (props) => {
                <div className="modal-nuevo-proyecto-formulario">
                   <label
                      className="modal-nuevo-proyecto-formulario-etiqueta"
-                     for="edicion-titulo-proyecto"
+                     htmlFor="edicion-titulo-proyecto"
                   >
                      Título del proyecto:
                   </label>

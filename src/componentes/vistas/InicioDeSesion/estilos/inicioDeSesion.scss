@@ -10,17 +10,16 @@
     background: $color-dos;
     margin: 5rem auto ;
     padding: 2%;
-    
+    #{&}-titulo{
+        font-size: 5rem;
+        color: $color-uno;
+    }
     #{&}-boton-enviar{
         @include boton-general($color-cuatro);
         width: 25%;
         margin: 1rem auto;
         color: $color-dos;
         font-size: 1rem;
-    }
-    #{&}-titulo{
-        font-size: 5rem;
-        color: $color-uno;
     }
     #{&}-entrada{
         width: 80%;

@@ -1,1 +1,25 @@
+@import "../../../../scss/variables";
+@import './mixins';
 
+.contenedor-seccion {
+    #{&}-titulo{
+        text-align: center;
+        font-size: 2rem;
+        color: $color-dos;
+        margin: 2rem auto;
+    }
+    #{&}-boton-agregar {
+        @include boton-general($color-cuatro);
+        margin: 0.5rem 42%;
+        width: 15%;
+        color: $color-uno;
+        font-size: 1.15rem;
+        @include pantalla-celular{
+            width: 37%;
+            margin:auto 35%;
+        }
+        @include pantalla-tablet{
+            width: 20%;
+        }
+    }
+ }

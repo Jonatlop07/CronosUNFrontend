@@ -14,6 +14,7 @@ import {
   RUTA_SEC_PORTAFOLIO,
   RUTA_SEC_PROYECTOS_PUBLICOS,
   RUTA_SEC_EDITOR,
+  RUTA_SEC_INSCRIPCION_MATERIAS,
 } from "../utilidad/rutas.js";
 
 const BarraNavegacion = (props) => {
@@ -75,6 +76,11 @@ const BarraNavegacion = (props) => {
           <Link className="barra-navegacion-enlace" to={RUTA_SEC_EDITOR}>
             Editor
           </Link>
+        </li>
+        <li>
+          <Link className="barra-navegacion-enlace" to={RUTA_SEC_INSCRIPCION_MATERIAS}>
+            Inscripcion 
+           </Link>
         </li>
       </ul>
     </nav>

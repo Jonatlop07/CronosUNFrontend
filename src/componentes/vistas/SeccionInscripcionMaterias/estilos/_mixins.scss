@@ -1,3 +1,4 @@
+$sombra-borde-subsecciones: -0.5rem -0.5rem 0.05rem lighten($color-dos, 20%);
 @mixin disposicion-flex($direccion) {
    display: flex;
    flex-direction: $direccion;
@@ -128,6 +129,7 @@
 
 @mixin estilo-ventana-modal() {
    border-radius: 3px;
+   box-shadow: $sombra-borde-subsecciones;
    animation: gradiente 3s ease infinite;
    background-color: darken($color-uno, 0.5%);
    text-align: center;
@@ -211,78 +213,4 @@
    @media (min-width: 800px) and (max-width: 1100px) {
       @content;
    }
-}
-
-@mixin color-claro-u-oscuro($sombra, $color, $porcentaje, $aclarar: true) {
-}
-
-@mixin sombra-clara-u-oscura($color, $porcentaje, $aclarar: true) {
-   @if $aclarar {
-      box-shadow: $sombra lighten($color, $porcentaje);
-   } @else {
-      box-shadow: $sombra darken($color, $porcentaje);
-   }
-}
-
-@mixin fondo-claro-u-oscuro($color, $porcentaje, $aclarar: true) {
-   @if $aclarar {
-      background: ligthen($color, $porcentaje);
-   } @else {
-      background: darken($color, $porcentaje);
-   }
-}
-
-@mixin tooltip($ancho, $distancia){
-
-   position: relative;
-   &::before {
-      background-color: #000;
-      border-radius: 5px;
-      color: #fff;
-      font-size: 0.9rem;
-      content: attr(aria-label); //This pulls in the text from the element with the tooltip
-      left: -80px; //This centers the container above the element
-      padding: 1rem;
-      position: absolute;
-      text-transform: none;
-      top: $distancia; //This places the container above the element that needs a tooltip
-      transition: all 0.3s ease;
-      width: $ancho;
-   }
-              
-                //Tooltip arrow
-                //You can adjust the position of this to align nicely with the element that
-                //needs a tooltip. You can also use `transform` to rotate it to make the
-                //tooltip work below or next to the element.
-   &::after {
-      border-left: 5px solid transparent;
-      border-right: 5px solid transparent;
-      border-top: 5px solid #000;
-      content: " ";
-      font-size: 0;
-      left: 13px; //This centers the arrow above the element with the tooltip
-      line-height: 0;
-      margin-left: -5px;
-      position: absolute;
-      top: -12px; //This positions the arrow at the bottom of the container
-      width: 0;
-    }
-              
-                //Setting up the transition
-    &::before,
-    &::after {
-      opacity: 0;
-      pointer-events: none;
-   }
-              
-                //Triggering the transition
-   &:focus::before,
-   &:focus::after,
-   &:hover::before,
-   &:hover::after {
-      opacity: 1;
-      transition: all 0.75s ease;
-   }
-
-
 }

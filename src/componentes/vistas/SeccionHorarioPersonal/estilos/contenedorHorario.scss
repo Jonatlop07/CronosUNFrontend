@@ -1,63 +1,77 @@
 @import "../../../../scss/variables";
-@import '../../../../scss/mixins';
-@function aleatorio($numero, $desplazamiento){
-    @return  random($numero) + $desplazamiento;
+@import "../../../../scss/mixins";
+@function aleatorio($numero, $desplazamiento) {
+  @return random($numero) + $desplazamiento;
 }
-.contenedor-horario{
-    display: flex;
-    flex-direction: column;
+.contenedor-horario {
+  display: flex;
+  flex-direction: column;
+  max-height: 50rem;
+  overflow: auto;
+  margin: 1rem;
+  width: 74vw;
+  border-radius: 1%;
+
+  #{&}-principal {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-column-gap: 0.25rem;
+    grid-row-gap: 0.25rem;
+    text-align: center;
+    font-size: 1.15rem;
+    @include pantalla-celular {
+      font-size: 0.7rem;
+    }
+  }
+  #{&}-contenido {
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-rows: repeat(15, 1fr);
+    grid-template-columns: repeat(8, 1fr);
+    grid-column-gap: 0.75rem;
+    grid-row-gap: 0.4rem;
     max-height: 50rem;
     overflow: auto;
     margin: 1rem;
-    width: 74vw;
+    box-shadow: 2px 2px 10px darken($color-uno, 15%),
+      -2px -2px 10px darken($color-uno, 15%);
     border-radius: 1%;
- 
-    #{&}-principal {
-       display: grid;
-       grid-template-columns: repeat(8, 1fr);
-       grid-column-gap: 0.25rem;
-       grid-row-gap: 0.25rem;
-       text-align: center;
-       font-size: 1.15rem;
-       @include pantalla-celular{
-           font-size: 0.7rem;
-       }
+    @include pantalla-celular {
+      grid-row-gap: 0.2rem;
+      grid-column-gap: 0.4rem;
     }
-    #{&}-contenido {
-        display: grid;
-        grid-auto-flow: column;
-        grid-template-rows: repeat(15, 1fr);
-        grid-template-columns: repeat(8,1fr);
-        grid-column-gap: 0.75rem;
-        grid-row-gap: 0.4rem;
-        max-height: 50rem;
-        overflow: auto;
-        margin: 1rem;
-        box-shadow: 2px 2px 10px darken($color-uno, 15%),
-        -2px -2px 10px darken($color-uno, 15%);
-        border-radius: 1%;
-        @include pantalla-celular{
-            grid-row-gap: 0.2rem;
-            grid-column-gap: 0.4rem;
-        }
-        &-hora{
-            box-shadow: 1px 1px 7px darken($color-uno, 15%),
-            -1px -1px 7px darken($color-uno, 15%);
-            text-align: center;
-            padding-top: 0.5rem;
-        }
-        &-materia{
-            font-size: 0.9rem;
-            padding: 0.3rem;
-            border-radius: 1%;
-            color: white;
-            background-color : $color-cuatro;
-            box-shadow: 1px 1px 7px darken($color-uno, 15%),
-            -1px -1px 7px darken($color-uno, 15%);
-            @include pantalla-celular{
-                width: 100%;
-                font-size: 0.5rem;
-            }
-        }
+    &-hora {
+      box-shadow: 1px 1px 7px darken($color-uno, 15%),
+        -1px -1px 7px darken($color-uno, 15%);
+      text-align: center;
+      padding-top: 0.5rem;
     }
+    &-materia {
+      font-size: 0.9rem;
+      padding: 0.3rem;
+      border-radius: 1%;
+      color: white;
+      background-color: $color-cuatro;
+      box-shadow: 1px 1px 7px darken($color-uno, 15%),
+        -1px -1px 7px darken($color-uno, 15%);
+      height: 100%;
+      &-boton {
+        color: white;
+        background: none;
+        color: inherit;
+        height: 100%;
+        width: 100%;
+        border: 0;
+        font: inherit;
+        line-height: normal;
+        overflow: visible;
+        padding: 0;
+        cursor: pointer;
+      }
+      @include pantalla-celular {
+        width: 100%;
+        font-size: 0.5rem;
+      }
+    }
+  }
 }

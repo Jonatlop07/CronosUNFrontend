@@ -1,17 +1,18 @@
 @import "../../../../scss/variables";
 @import "../../../../scss/mixins";
 
-.contenedor-modal-creditos {
+.contenedor-modal-horario {
   @include contenedor-ventana-modal();
   @include dimensiones(100%, 100%, 0, 20vh 30%);
 }
 
-.modal-creditos {
+.modal-horario {
   @include estilo-ventana-modal();
 
   #{&}-formulario {
     padding: 1rem 2rem;
     background: darken($color-uno, 0.5%);
+    color: $color-dos;
 
     &-texto {
       @include dimensiones(80%, 2rem, auto, auto);
@@ -33,12 +34,21 @@
   }
 
   #{&}-titulo {
-      color: $color-dos;
-      padding: 0.35rem 0 0 0;
+    color: $color-dos;
+    padding: 0.35rem 0 0 0;
   }
-  
+
   #{&}-subtitulo {
-      color: $color-dos;
-      padding: 0 0 0.35rem 0;
+    color: $color-dos;
+    padding: 0 0 0.35rem 0;
+  }
+
+  #{&}-contenido {
+    margin-top: 2rem;
+    &-texto {
+      margin: 0 2rem;
+      text-align: left;
+      font-size: 1rem;
+    }
   }
 }

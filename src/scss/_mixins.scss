@@ -26,12 +26,21 @@
 @mixin boton-general($color-fondo) {
    padding: 0.5rem 1rem;
    background: $color-fondo;
-   border-radius: 15%;
+   border-radius: 10%;
+   border: none;
+   box-shadow: 4px 4px 3px darken($color-uno, 20%);
 
    &:hover {
       cursor: pointer;
       background: darken($color-fondo, 25%);
       color: lighten($color-fondo, 75%);
+      box-shadow: 2px 2px 1.5px darken($color-uno, 50%);
+   }
+
+   &:focus,
+   & select:focus {
+      outline: none;
+      border: none;
    }
 }
 
@@ -115,7 +124,6 @@
 @mixin enunciado-ventana-modal() {
    margin: 1rem 0.25rem;
    padding: 0.25rem 0.5rem;
-   font-weight: bold;
 }
 
 @mixin estilo-ventana-modal() {
@@ -125,6 +133,14 @@
    text-align: center;
    box-shadow: 2px 0px 2px darken($color-uno, 15%),
       -2px -2px 2px darken($color-uno, 15%);
+}
+
+@mixin estilo-titulo-modal() {
+   font-size: 1.15rem;
+   margin: 1rem 1rem;
+   padding: 1rem;
+   color: $color-dos;
+   font-weight: bolder;
 }
 
 @mixin configuracion-contenedor($altura-maxima) {

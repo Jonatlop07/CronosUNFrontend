@@ -1,0 +1,64 @@
+@import "./modalEliminacionEntrada";
+@import "./modalRegistroEntrada";
+@import "../../estilos/modalFiltro";
+
+.panel-opciones-diario {
+   #{&}-grupo {
+      @include disposicion-flex(row);
+      align-items: center;
+
+      &-opciones {
+         @include disposicion-flex(column);
+         width: 100%;
+         margin-top: 1rem;
+
+         &-btn {
+            margin: 0.25rem 0;
+
+            &-icono {
+               @include icono-etiqueta(
+                  darken($color-uno, 5%),
+                  lighten($color-uno, 5%),
+                  1.15rem
+               );
+            }
+         }
+      }
+
+      &-info {
+         margin: auto;
+
+         &-btn {
+            @include boton-icono($color-tres, $color-uno, 1.5rem);
+         }
+      }
+
+      @include pantalla-tablet {
+         &-opciones {
+            @include disposicion-flex(row);
+
+            &-btn {
+               margin: 1rem auto;
+
+               &-icono {
+                  font-size: 0.9rem;
+               }
+            }
+         }
+      }
+
+      @include pantalla-celular {
+         &-opciones {
+            @include disposicion-flex(row);
+            width: 100%;
+
+            &-btn {
+               margin: 1.5rem auto;
+               &-icono {
+                  font-size: 0.9rem;
+               }
+            }
+         }
+      }
+   }
+}

@@ -1,0 +1,8 @@
+.estadisticas-portafolio {
+   padding-top: 1rem;
+   animation: transicion-ventana-interna 3s;
+
+   #{&}-titulo {
+      font-size: 1.25rem;
+   }
+}

@@ -1,0 +1,188 @@
+.proyecto {
+   @include disposicion-flex(column);
+   @include dimensiones(auto, 22.5rem, 1rem, 1rem);
+   @include configuracion-contenedor(22.5rem);
+   font-size: 0.9rem;
+   border: 0.1rem solid rgba(147, 214, 243, 0.89);
+   background: lighten($color-uno, 5%);
+   box-shadow: -0.2rem -0.15rem 0.1rem darken($color-uno, 30%);
+   @include barra-scroll(0, 20%);
+
+   #{&}-titulo {
+      font-weight: bold;
+      font-size: medium;
+   }
+
+   #{&}-titulo,
+   #{&}-descripcion,
+   #{&}-imagen {
+      margin: 0.5rem 0.25rem;
+      text-align: center;
+   }
+
+   #{&}-imagen {
+      min-height: 6rem;
+      max-height: 6rem;
+      margin-bottom: 0.5rem;
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+   }
+
+   #{&}-opciones {
+      margin: auto 0;
+      @include disposicion-flex(row);
+
+      &-editar {
+         @include boton-icono($color-uno, $color-tres, 1.25rem);
+         @include dimensiones(
+            10%,
+            fit-content,
+            0.5rem 2.5% 0.5rem 10%,
+            0.125rem
+         );
+         background: $color-dos;
+      }
+
+      &-estado {
+         width: 40%;
+         background: lighten($color-uno, 1%);
+         min-height: 1.7rem;
+         border: none;
+         box-shadow: 2px 2px 7px darken($color-uno, 15%),
+            -2px -2px 7px darken($color-uno, 15%);
+
+         &:hover {
+            cursor: pointer;
+         }
+
+         &:focus,
+         & select:focus {
+            outline: none;
+            border: none;
+         }
+      }
+
+      &-privacidad {
+         position: relative;
+         display: inline-block;
+         @include dimensiones(2rem, 1rem, 0 10% 0 0, 0);
+
+         &-caja-seleccion {
+            opacity: 0;
+            width: 0;
+            height: 0;
+         }
+
+         &-deslizador {
+            @include deslizador(#ccc, 2rem);
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            box-shadow: 0 0 1px $color-tres;
+            background-color: $color-tres;
+         }
+
+         &-deslizador:before {
+            @include deslizador(white, 50%);
+            content: "";
+            height: 0.87rem;
+            width: 0.75rem;
+            left: 0.13rem;
+            bottom: 0.1rem;
+         }
+
+         &-etiqueta {
+            margin-top: 0.5rem;
+         }
+
+         &-caja-seleccion:checked {
+            + .proyecto-opciones-privacidad-deslizador {
+               background-color: $color-cuatro;
+            }
+         }
+
+         &-caja-seleccion:focus {
+            + .proyecto-opciones-privacidad-deslizador {
+               box-shadow: 0 0 1px $color-cuatro;
+            }
+         }
+
+         &-caja-seleccion:checked {
+            + .proyecto-opciones-privacidad-deslizador:before {
+               transform: translateX(1rem);
+            }
+         }
+      }
+
+      &-estado,
+      &-privacidad {
+         margin: 0.5rem 2.5%;
+      }
+   }
+
+   @include pantalla-tablet {
+      @include dimensiones(auto, 22.5rem, 1rem, 1rem);
+      @include configuracion-contenedor(22.5rem);
+
+      #{&}-imagen {
+         margin: 0.5rem 10%;
+         min-height: 9rem;
+         max-height: 9rem;
+      }
+
+      #{&}-opciones {
+         @include disposicion-flex(column);
+
+         &-editar {
+            @include boton-icono($color-uno, $color-tres, 1.25rem);
+            @include dimensiones(fit-content, auto, 0, 0.125rem);
+            background: $color-dos;
+         }
+
+         &-estado {
+            width: fit-content;
+         }
+
+         &-editar,
+         &-estado,
+         &-privacidad {
+            margin: 0.5rem auto;
+         }
+      }
+   }
+
+   @include pantalla-celular {
+      @include dimensiones(auto, 28rem, 1rem, 1rem);
+      @include configuracion-contenedor(28rem);
+
+      #{&}-imagen {
+         margin: 0.5rem 15%;
+         min-height: 9rem;
+         max-height: 9rem;
+      }
+
+      #{&}-opciones {
+         @include disposicion-flex(column);
+         align-items: center;
+
+         &-editar {
+            @include boton-icono($color-uno, $color-tres, 1.25rem);
+            @include dimensiones(fit-content, auto, 0, 0.125rem);
+            background: $color-dos;
+         }
+
+         &-estado {
+            width: fit-content;
+         }
+
+         &-editar,
+         &-estado,
+         &-privacidad {
+            margin: 0.5rem auto;
+         }
+      }
+   }
+}

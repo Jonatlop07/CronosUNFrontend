@@ -1,0 +1,30 @@
+@import "./panelOpcionesPortafolio";
+@import "./contenedorDeProyectos";
+
+.subseccion-portafolio {
+   @include disposicion-flex(column);
+   @include dimensiones(48%, auto, 0 10% 5rem 4%, 0);
+
+   #{&}-nombre {
+      @include titulo-subseccion();
+   }
+
+   #{&}-principal {
+      background: linear-gradient(
+         to left top,
+         $color-tres,
+         $color-cuatro,
+         $color-dos
+      );
+      box-shadow: $sombra-borde-subsecciones;
+      animation: gradiente 3s ease infinite;
+   }
+
+   @include pantalla-tablet {
+      @include dimensiones(44vw, auto, 0 7% 5rem 3%, 0);
+   }
+
+   @include pantalla-celular {
+      @include dimensiones(85vw, auto, 0 7.5% 5rem 7.5%, 0);
+   }
+}

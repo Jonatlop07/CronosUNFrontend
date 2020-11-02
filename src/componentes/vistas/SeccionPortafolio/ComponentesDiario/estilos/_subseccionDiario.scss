@@ -1,0 +1,30 @@
+@import "./panelOpcionesDiario";
+@import "./contenedorDiario";
+
+.subseccion-diario {
+   @include disposicion-flex(column);
+   @include dimensiones(24%, auto, 0 4% 5rem 10%, 0);
+
+   #{&}-nombre {
+      @include titulo-subseccion();
+   }
+
+   #{&}-principal {
+      background: linear-gradient(
+         to left top,
+         $color-tres,
+         $color-cuatro,
+         $color-dos
+      );
+      box-shadow: $sombra-borde-subsecciones;
+      animation: gradiente 3s ease infinite;
+   }
+
+   @include pantalla-tablet {
+      @include dimensiones(38vw, auto, 0 3vw 5rem 7vw, 0);
+   }
+
+   @include pantalla-celular {
+      @include dimensiones(85vw, auto, 0 7.5vw 5rem 7.5vw, 0);
+   }
+}

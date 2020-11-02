@@ -1,0 +1,24 @@
+@import "./proyecto";
+
+.contenedor-proyectos {
+   @include disposicion-flex(column);
+   @include configuracion-contenedor(50rem);
+   @include barra-scroll(10%, 0);
+
+   #{&}-principal {
+      @include cuadricula(2, 1rem, 0rem);
+   }
+
+   @include pantalla-tablet {
+      #{&}-principal {
+         @include cuadricula(1, 1rem, 0rem);
+      }
+   }
+
+   @include pantalla-celular {
+      @include configuracion-contenedor(30rem);
+      #{&}-principal {
+         @include cuadricula(1, 1rem, 0rem);
+      }
+   }
+}

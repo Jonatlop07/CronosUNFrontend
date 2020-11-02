@@ -1,0 +1,43 @@
+@import "../../../../scss/resets";
+@import "../../../../scss/variables";
+@import "../../../../scss/mixins";
+@import "./animaciones";
+
+$sombra-borde-subsecciones: -0.5rem -0.5rem 0.05rem lighten($color-dos, 20%);
+
+@import "./panelGeneralPortafolio";
+@import "./barraBusqueda";
+@import "../ComponentesDiario/estilos/subseccionDiario";
+@import "../ComponentesPortafolio/estilos/subseccionPortafolio";
+@import "./contenedorBotonesResultado";
+
+.seccion-portafolio {
+   @include disposicion-flex(column);
+   width: 100%;
+   background: $color-uno;
+
+   #{&}-subsecciones {
+      @include disposicion-flex(row);
+      animation: aparicion-subseccion 1s;
+   }
+
+   @include pantalla-celular {
+      #{&}-subsecciones {
+         @include disposicion-flex(column);
+      }
+   }
+}
+
+.remover {
+   animation: transicion-remover 2s;
+
+   @keyframes transicion-remover {
+      from {
+         transform: translateY(0vh);
+      }
+
+      to {
+         transform: translateY(100vh);
+      }
+   }
+}

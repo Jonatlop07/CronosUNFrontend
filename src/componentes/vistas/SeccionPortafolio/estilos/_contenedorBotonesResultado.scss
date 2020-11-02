@@ -1,0 +1,12 @@
+.contenedor-botones-resultado {
+   margin-bottom: 1rem;
+
+   & .boton-seleccionado {
+      margin: 0.5rem 0.25rem;
+      padding: 0.5rem 1rem;
+   }
+
+   & .boton-resultado {
+      @include boton-general($color-uno);
+   }
+}

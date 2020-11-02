@@ -1,0 +1,225 @@
+.contenedor-modal-filtro-entradas {
+   @include contenedor-ventana-modal();
+   @include dimensiones(100%, 100%, 0, 10vh 29%);
+   @include pantalla-tablet {
+      font-size: 14px;
+      @include dimensiones(100%, 100%, 0, 5vh 20%);
+   }
+
+   @include pantalla-celular {
+      font-size: 12px;
+      @include dimensiones(100%, 100%, 0, 10vh 10%);
+      @media (min-width: 500px) and (max-width: 800px) {
+         @include dimensiones(100%, 100%, 0, 10vh 20%);
+      }
+   }
+}
+
+.contenedor-modal-filtro-proyectos {
+   @include contenedor-ventana-modal();
+   @include dimensiones(100%, 100%, 0, 10vh 22.5%);
+
+   @include pantalla-tablet {
+      font-size: 14px;
+      @include dimensiones(100%, 100%, 0, 5vh 20%);
+   }
+
+   @include pantalla-celular {
+      font-size: 12px;
+      @include dimensiones(100%, 100%, 0, 10vh 10%);
+      @media (min-width: 500px) and (max-width: 800px) {
+         @include dimensiones(100%, 100%, 0, 10vh 15%);
+      }
+   }
+}
+
+.modal-filtro {
+   height: fit-content;
+   @include estilo-ventana-modal();
+   animation: divergencia-modal-filtro 1s forwards;
+
+   h5 {
+      @include estilo-titulo-modal();
+   }
+
+   button {
+      $color-dos-modificado: #246e8b;
+      @include boton-general($color-dos-modificado);
+      color: $color-uno;
+      margin: 1.25rem 0.5rem;
+      padding: 0.35rem 0.75rem;
+   }
+
+   #{&}-opciones,
+   #{&}-seleccion {
+      @include dimensiones(auto, auto, 0 1rem, 1rem 1rem);
+      height: auto;
+      margin: 0 1rem;
+      padding: 0.5rem 1rem;
+      border-radius: 0.2rem;
+      background: darken($color-uno, 0.5%);
+      animation: transicion-ventana-interna 2s;
+      @include barra-scroll(5%, 0%);
+      box-shadow: 2px 2px 10px darken($color-uno, 15%),
+         -2px -2px 10px darken($color-uno, 15%);
+   }
+
+   #{&}-seleccion {
+      max-height: 50vh;
+      overflow: auto;
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+
+      &-etiqueta,
+      &-etiqueta-parametro {
+         margin: 0.5rem 1.5rem;
+      }
+
+      &-etiqueta-parametro {
+         font-weight: bold;
+      }
+
+      &-caja-seleccion {
+         margin-top: 1rem;
+         margin-right: 0.5rem;
+         cursor: pointer;
+      }
+
+      &-radio {
+         margin: 0 1rem;
+         background-color: $color-dos;
+         cursor: pointer;
+      }
+
+      &-fecha,
+      &-hora {
+         margin-left: 1rem;
+         padding: 0.125rem 0.35rem;
+         background: $color-uno;
+         box-shadow: 2px 2px 7px darken($color-uno, 15%),
+            -2px -2px 7px darken($color-uno, 15%);
+         border: none;
+
+         &:focus,
+         & select:focus {
+            outline: none;
+            border: none;
+         }
+      }
+
+      &-agregar {
+         @include boton-general-alt($color-dos, $color-tres);
+         margin: 0.5rem;
+         padding: 0.1rem;
+         font-style: normal;
+         font-size: 0.9rem;
+         font-family: fontAwesome;
+      }
+
+      &-texto,
+      &-selector {
+         width: 50%;
+         margin-left: 0.5rem;
+         padding: 0.125rem 0.25rem;
+         color: $color-dos;
+         background: $color-uno;
+         border: none;
+         box-shadow: 2px 2px 7px darken($color-uno, 15%),
+            -2px -2px 7px darken($color-uno, 15%);
+
+         &:focus,
+         & select:focus {
+            outline: none;
+            border: none;
+         }
+      }
+
+      &-texto {
+         @include pantalla-celular {
+            width: 50%;
+            @media (min-width: 500px) and (max-width: 800px) {
+               width: 50%;
+            }
+         }
+      }
+
+      &-selector {
+         width: 20%;
+         cursor: pointer;
+         @include pantalla-tablet {
+            width: 40%;
+         }
+
+         @include pantalla-celular {
+            width: 60%;
+            @media (min-width: 500px) and (max-width: 800px) {
+               width: 35%;
+            }
+         }
+      }
+
+      &-categorias {
+         display: flex;
+         flex-direction: row;
+         &-btn {
+            @include boton-general-alt($color-dos, $color-tres);
+            margin: 0.5rem 2rem;
+            padding: 0.3rem;
+            font-style: normal;
+            font-size: 0.9rem;
+            font-family: fontAwesome;
+         }
+      }
+
+      &-fechas {
+         @include cuadricula(3, 0.25rem, 0.25rem);
+         margin: 0.5rem 3rem;
+
+         li {
+            display: flex;
+            flex-direction: row;
+
+            i {
+               @include boton-general-alt($color-dos, $color-cuatro);
+               padding: 0.125rem;
+               margin-left: 0.5rem;
+               font-size: 1.25rem; /* Set a font size */
+               font-family: fontAwesome;
+               font-style: normal;
+            }
+         }
+      }
+
+      &-fecha {
+         &::-webkit-datetime-edit-text {
+            color: $color-cuatro;
+            padding: 0 0.2em;
+         }
+         &::-webkit-datetime-edit-month-field,
+         &::-webkit-datetime-edit-day-field,
+         &::-webkit-datetime-edit-year-field {
+            color: $color-dos;
+         }
+         &::-webkit-inner-spin-button {
+            display: none;
+         }
+         &::-webkit-calendar-picker-indicator {
+            cursor: pointer;
+            filter: invert(0.6);
+         }
+      }
+
+      &-hora {
+         &::-webkit-datetime-edit-hour-field,
+         &::-webkit-datetime-edit-minute-field,
+         &::-webkit-datetime-edit-ampm-field {
+            color: $color-dos;
+         }
+         &::-webkit-calendar-picker-indicator {
+            cursor: pointer;
+            filter: invert(0.6);
+         }
+      }
+   }
+}

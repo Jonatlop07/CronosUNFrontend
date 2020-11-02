@@ -1,0 +1,497 @@
+@import "../../../../scss/variables";
+@import "./mixins";
+
+
+.seccion-inicio{
+
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(../../../../imagenes/52237_1_miscellaneous_digital_art_blue_black_blue_black_pattern.jpg);
+    background-size: 200%;
+    background-attachment: fixed;
+
+    animation: moverback 5s infinite alternate ease-in-out;
+    
+    @keyframes moverback{
+        0%{
+            background-position: left;
+        }
+        100%{
+            background-position: top;
+        }
+    }
+
+    @include pantalla-celular{
+            background-size: cover;
+    }
+    @include pantalla-tablet{
+        background-size: cover;
+    }
+}
+
+
+.header-Inicio{
+
+    position: relative;
+    width: 100%;
+    height: 100vh;
+
+    #{&}__imagen{
+
+        position: absolute;
+        margin: auto;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+      
+    }
+
+    #{&}__scroller{
+
+        width: 2.5rem;
+        height: 4rem;
+        border: 2px solid  white;
+        border-radius: 20px;
+        position: absolute;
+        bottom: 5rem;
+        left: 50%;
+        cursor: pointer;
+
+        &::before,&::after{
+            content: '';
+            position: absolute;
+            top: 30%;
+            left: 50%;
+            border: 2px solid white;
+            height: 1rem;
+            width: 1rem;
+            transform: translate(-50%, -100%) rotate(45deg);
+            border-top: transparent;
+            border-left: transparent;
+            animation: scrollerino 1.5s ease-in-out infinite; 
+            
+        }
+        &::after{
+            top: 40%;
+            animation-delay: 0.5s;
+        }
+        
+        @keyframes scrollerino {
+            0%{
+                opacity: 0;
+            }
+            33%{
+                opacity: 1;
+            }
+            66%{
+               opacity: 1; 
+            }
+            100%{
+                opacity: 0;
+                top: 90%;
+            }
+        }           
+    }
+
+    @include pantalla-celular{
+
+        #{&}__imagen{
+
+            position: absolute;
+            margin: auto;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            width: 20rem;
+            height: 10rem;
+        }
+
+        #{&}__scroller{
+
+            width: 2rem;
+            height: 3rem;
+            left: 47%;
+        }
+    }
+
+    @include pantalla-tablet{
+
+        #{&}__imagen{
+
+            position: absolute;
+            margin: auto;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            width: 30rem;
+            height: 15rem;
+        }
+    }
+
+
+
+}
+
+.inicio{
+
+    display: flex;
+    flex-direction: row;
+    height: 35rem;
+    width: 100%;
+    background: linear-gradient(
+        to bottom,
+        rgba($color_dos, 0.1),
+        rgba($color-dos, 0.5)
+    );
+
+    &:hover{
+
+        background: linear-gradient(
+        to bottom,
+        rgba($color_tres, 0.5),
+        rgba($color-dos, 0.5)
+        );
+    }
+    
+    
+    .inicio__contenedor1{
+
+        display: flex;
+        width: 100%;
+        height: 100%;
+        justify-content: center;
+        align-items: center;
+        transition: transform 1s;
+
+            &:hover{
+                transform: scale(1.2);
+   
+                }
+        
+        &__p{
+             
+            text-align: justify;
+            flex: 0 0 60%;
+            font-family: $fuente_principal;
+            font-weight: 400;
+            font-size: 1.8vw;
+            color : $color_uno;
+            
+        }
+    }
+    .inicio__contenedor2{
+
+        display: block;
+        width: 80%;
+        height: 100%;      
+
+        &__img{
+
+            width: 100%;
+            height: 100%;
+            opacity: 0.9;
+            background-color: white;
+
+        }
+
+    }
+
+    @include pantalla-celular {
+
+        height: 20rem;
+        .inicio__contenedor1{
+
+            &__p{
+                flex: 0 0 70%;
+                font-size: 3vw;
+            }
+
+            &:hover{
+                transform: scale(1);
+            }
+        }
+    }
+
+    @include pantalla-tablet{
+
+        height: 25rem;
+
+        .inicio__contenedor1{
+            &__p{
+            flex: 0 0 73%;
+            font-size: 2.5vw;
+            }
+        }
+    }
+}
+
+.inicio2{
+
+    display: flex;
+    flex-direction: row-reverse;
+    border-top: solid 3rem rgba($color-uno, $alpha: 0.6);
+    border-bottom: solid 3rem rgba($color-uno, $alpha: 0.6);
+    height: 43rem;
+    width: 100%;
+    background: linear-gradient(
+        to bottom,
+        rgba($color_dos, 0.1),
+        rgba($color-dos, 0.5)
+    ); 
+
+    &:hover{
+
+        background: linear-gradient(
+        to bottom,
+        rgba($color_tres, 0.5),
+        rgba($color-dos, 0.5)
+    );
+    }
+
+    .inicio2__contenedor1{
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        transition: transform 1s;
+        &:hover{
+            
+            transform: scale(1.2);
+                        
+        }
+        
+        &__par{
+
+            text-align: justify;
+            flex: 0 0 60%;
+            font-family: $fuente_principal;
+            font-weight: 400;
+            font-size: 1.8vw;
+            color : $color_uno;
+        
+        }
+
+    }
+
+    .inicio2__contenedor2{
+
+        display: block; 
+        width: 80%; 
+        height: 100%; 
+
+
+        &__imag{
+       
+            width: 100%;
+            height: 100%;
+            background-color: white;
+            opacity: 0.9;
+    
+        }
+    }
+
+    @include pantalla-celular {
+
+        height: 20rem;
+        border-top: solid 1rem rgba($color-uno, $alpha: 0.6);
+        border-bottom: solid 1rem rgba($color-uno, $alpha: 0.6);
+        .inicio2__contenedor1{
+            &:hover{
+                transform: scale(1);
+            }
+            &__par{
+                flex: 0 0 70%;
+                font-size: 3vw;
+            }
+        }
+    }
+
+    @include pantalla-tablet{
+
+        height: 25rem;
+        border-top: solid 2rem rgba($color-uno, $alpha: 0.6);
+        border-bottom: solid 2rem rgba($color-uno, $alpha: 0.6);
+        .inicio2__contenedor1{
+            &__par{
+            flex: 0 0 73%;
+            font-size: 2.5vw;
+            }
+        }
+    }  
+}
+
+.empieza-ya{
+
+    position: relative;
+    height: 100%;
+    text-align: center;
+    border-top: solid 1px $color-uno;
+    padding: 0.5rem;
+    overflow: hidden;
+
+    #{&}__prueba{
+
+        text-decoration: none;
+        font-weight: bold;
+        
+        color: $color_uno;
+        text-align: center;
+        font-size: 2.2rem;
+        font-family: $fuente_principal;
+
+        &:hover{
+
+            color: $color_uno;
+            -webkit-text-stroke: 1px $color_uno;
+            font-size: 2.4rem;
+        }
+
+    }
+
+    #{&}__span{
+        
+        font-size: 3rem;
+        -webkit-text-stroke: 2px rgba(white, $alpha: .8);
+        display: inline-block;
+        width: 100%;
+        animation: clock 3s ease infinite;
+        margin-top: 25px;
+        i{
+            font-style: normal;
+            font-family: fontAwesome; 
+            color: transparent;
+        }
+    }
+    
+    @keyframes clock{
+        0%{
+            transform: rotate(0deg);
+        }
+        50%{
+            transform: rotate(0deg);
+        }
+        100%{
+            transform: rotate(360deg);
+        }
+    }
+
+
+    @include pantalla-celular {
+
+        #{&}__prueba{
+            font-size: 1.2rem;
+            &:hover{
+                font-size: 1.3rem;
+            }
+        }
+        #{&}__span{
+            font-size: 2rem;
+        }
+    }
+
+    @include pantalla-tablet{
+
+        #{&}__prueba{
+            font-size: 1.5rem;
+            &:hover{
+                font-size: 1.6rem;
+            }
+        }
+        #{&}__span{
+            font-size: 2.5rem;
+        }
+    }
+    
+}
+
+.footer{
+
+    display: block;
+    border-top: 10px double $color-uno;
+    padding: 1rem;
+    width: 100%;
+    background: linear-gradient(
+        to top,
+        rgba($color_cuatro, 0.9),
+        rgba($color-dos, 0.5)
+    );
+    font-family: $fuente_principal;
+    font-size: 1.20rem;
+    font-weight: bold;
+    text-align: center;
+    color : $color-uno;
+
+    #{&}__texto-secundario{
+
+        text-decoration: none;
+        font-size: 1rem;
+        color : $color-uno;
+        margin-top: 0.25rem;
+         
+        &:hover{
+            color: rgba($color_uno, $alpha: 0.6);
+        }
+    }
+
+    #{&}__contactanos{
+
+        font-size: 1.5rem;
+        font-weight: bolder;
+        color: $color-uno;
+    
+    }
+    #{&}__contacto{
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: center;
+
+        &__correo{
+            
+            padding: 1rem;
+
+            i{
+                font-style: normal;
+                font-family: fontAwesome; 
+            }
+        }
+
+
+        &__facebook{
+        
+            padding: 1rem;
+            i{
+                font-style: normal;
+                font-family: fontAwesome; 
+            }
+        }
+    }
+
+    @include pantalla-celular{
+
+        font-size: 0.8rem;
+        #{&}__contactanos{
+            font-size: 1.2rem;
+        }
+        #{&}__texto-secundario{
+            font-size: 0.9rem;
+        }
+
+    }
+
+    @include pantalla-tablet{
+
+        font-size: 1rem;
+        #{&}__contactanos{
+            font-size: 1.5rem;
+        }
+        #{&}__texto-secundario{
+            font-size: 1rem;
+        }
+
+    }
+
+}
+

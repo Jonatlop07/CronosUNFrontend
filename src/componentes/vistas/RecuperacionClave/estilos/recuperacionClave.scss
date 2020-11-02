@@ -1,0 +1,63 @@
+@import './mixins';
+@import "../../../../scss/variables";
+
+.recuperacion-clave{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 50%;
+    text-align: center;
+    background: $color-dos;
+    margin: 10rem auto ;
+    box-shadow: 2px 2px 10px darken($color-uno, 15%),
+    -2px -2px 10px darken($color-uno, 15%);
+    @include pantalla-celular{
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        text-align: center;
+        background: $color-dos;
+        width: 80%;
+        margin: 10rem auto ;
+    }
+    
+    #{&}-boton-enviar{
+        @include boton-general($color-cuatro);
+        width: 22%;
+        margin: 1rem auto;
+        color: $color-uno;
+        font-size: 1.25rem;
+        @include pantalla-celular{
+            @include boton-general($color-cuatro);
+            width: 30%;
+            margin: 1rem auto;
+            color: $color-uno;
+            font-size: 1rem;
+        }
+    }
+    #{&}-titulo{
+        font-size: 5rem;
+        color: $color-uno;
+        @include pantalla-celular{
+            font-size: 3rem;
+        }
+    }
+    #{&}-etiqueta{
+        font-size: 2rem;
+        color: $color-uno;
+        padding-bottom: 1rem;
+        @include pantalla-celular{
+            font-size: 1.5rem;
+            padding-right: 5%;
+            padding-left: 5%;
+        }
+    }
+    #{&}-entrada{
+        width: 80%;
+        margin: 1rem auto;
+        font-size: 2rem;
+        @include pantalla-celular{
+            font-size: 1.5rem;
+        }
+    }
+}

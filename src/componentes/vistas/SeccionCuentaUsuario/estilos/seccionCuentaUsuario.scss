@@ -1,5 +1,7 @@
 @import './mixins';
 @import "../../../../scss/variables";
+@import "../../../../scss/resets";
+@import "../../../../scss/mixins";
 
 .contenedor{
     
@@ -80,6 +82,13 @@
             &-nombre{
                 margin: 12%;
                 font-size: 98%;
+                @include pantalla-tablet {
+                    margin: 14%;
+                }
+                @include pantalla-celular {
+                    margin: 17%;
+                }
+                
             }
         }
         &-parametro{
@@ -94,6 +103,7 @@
                 margin-left: 0%;
                 padding: 0.5rem;
             }
+        
         }
     }
     &-boton-enviar{
@@ -102,7 +112,7 @@
         padding: 1%;
         margin-top: 2%;
         margin-left: 45%;
-        font-size: 90%;
+        font-size: 0.9rem;
         
     }
 
@@ -117,7 +127,13 @@
         color:$color-uno;
         margin-left: 72%;
         font-size: 0.9rem;
-       
+        @include pantalla-celular {
+            margin-left: 50%;
+        }
+        
+        @include pantalla-tablet {
+            margin-left: 60%;
+        }
     }
     
 }

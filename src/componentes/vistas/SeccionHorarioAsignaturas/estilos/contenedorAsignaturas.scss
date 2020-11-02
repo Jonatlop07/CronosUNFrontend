@@ -1,0 +1,59 @@
+@import "../../../../scss/variables";
+@import './mixins';
+
+.contenedor-asignaturas{
+    display: flex;
+    flex-direction: row;
+    max-height: 50rem;
+    overflow: auto;
+    margin: 1rem;
+    box-shadow: 2px 2px 10px darken($color-uno, 15%),
+    -2px -2px 10px darken($color-uno, 15%);
+    padding: 1rem;
+    border-radius: 1%;
+    background-color: darken($color-uno,2.5%);
+    margin-top: 2rem;
+    #{&}-materia{
+        display: flex;
+        flex-direction: column;
+        max-height: 45rem;
+        overflow: auto;
+        box-shadow: 1px 1px 7px darken($color-uno, 15%),
+        -1px -1px 7px darken($color-uno, 15%);
+        border-radius: 1%;
+        padding: 1rem;
+        margin: 0.25rem 1rem;
+        background-color: darken($color-uno,1.5%);
+        &-nombre{
+            margin-bottom: 0.7rem;
+            font-size: 1.15rem;
+            @include pantalla-celular{
+                font-size: 1rem;
+            }
+        }
+        &-grupo{
+            display: flex;
+            flex-direction: column;
+            max-height: 45rem;
+            overflow: auto;
+            background-color: $color-uno;
+            box-shadow: 1px 1px 7px darken($color-uno, 15%),
+            -1px -1px 7px darken($color-uno, 15%);
+            border-radius: 1%;
+            padding: 1rem;
+            margin: 0.35rem 0;
+            &-boton{
+                @include boton-general($color-cuatro);
+                color:$color-uno;
+                margin: 0.75rem auto;
+                margin-bottom: 0.25rem;
+                @include pantalla-celular{
+                    font-size: 0.7rem;
+                }
+            }
+            @include pantalla-celular{
+                font-size: 0.7rem;
+            }
+        }
+    }
+}

@@ -67,144 +67,135 @@ const BarraHerramientas = (props) => {
    return (
       <div className="editor-barra-herramientas">
          <div className="editor-barra-herramientas-separador">
-            <select
-               onChange={(e) => {
-                  document.execCommand("styleWithCSS", false, true);
-                  document.execCommand(
-                     "fontName",
-                     false,
-                     e.currentTarget.value
-                  );
-               }}
-            >
-               {tiposFuente.map((tipoFuente, indice) => (
-                  <option key={`tp${indice}`} value={tipoFuente}>
-                     {tipoFuente}
+            <div className="editor-barra-herramientas-separador-componente">
+               <select
+                  onChange={(e) => {
+                     document.execCommand("styleWithCSS", false, true);
+                     document.execCommand(
+                        "fontName",
+                        false,
+                        e.currentTarget.value
+                     );
+                  }}
+               >
+                  {tiposFuente.map((tipoFuente, indice) => (
+                     <option key={`tp${indice}`} value={tipoFuente}>
+                        {tipoFuente}
+                     </option>
+                  ))}
+               </select>
+
+               <select
+                  className="editor-barra-herramientas-tamanio"
+                  onChange={(e) => {
+                     formatear("fontSize", e.currentTarget.value);
+                  }}
+               >
+                  <option>--predeterminado</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+               </select>
+
+               <select
+                  className="editor-barra-herramientas-tamanio"
+                  onChange={(e) => {
+                     formatear("formatBlock", e.currentTarget.value);
+                  }}
+               >
+                  <option
+                     className="editor-barra-herramientas-tamanio-encabezado-1"
+                     value="h1"
+                  >
+                     Encabezado 1
                   </option>
-               ))}
-            </select>
+                  <option
+                     className="editor-barra-herramientas-tamanio-encabezado-2"
+                     value="h2"
+                  >
+                     Encabezado 2
+                  </option>
+                  <option
+                     className="editor-barra-herramientas-tamanio-encabezado-3"
+                     value="h3"
+                  >
+                     Encabezado 3
+                  </option>
+                  <option
+                     className="editor-barra-herramientas-tamanio-encabezado-4"
+                     value="h4"
+                  >
+                     Encabezado 4
+                  </option>
+                  <option
+                     className="editor-barra-herramientas-tamanio-encabezado-5"
+                     value="h5"
+                  >
+                     Encabezado 5
+                  </option>
+                  <option
+                     className="editor-barra-herramientas-tamanio-encabezado-6"
+                     value="h6"
+                  >
+                     Encabezado 6
+                  </option>
+                  <option
+                     className="editor-barra-herramientas-tamanio-parrafo"
+                     value="p"
+                  >
+                     Párrafo
+                  </option>
+               </select>
+            </div>
+            <div className="editor-barra-herramientas-separador-componente">
+               <button
+                  className="fas fa-undo"
+                  onClick={(e) => formatear("undo")}
+               ></button>
+               <button
+                  className="fas fa-undo redo"
+                  onClick={(e) => formatear("redo")}
+               ></button>
 
-            <select
-               className="editor-barra-herramientas-tamanio"
-               onChange={(e) => {
-                  formatear("fontSize", e.currentTarget.value);
-               }}
-            >
-               <option>--predeterminado</option>
-               <option value="1">1</option>
-               <option value="2">2</option>
-               <option value="3">3</option>
-               <option value="4">4</option>
-               <option value="5">5</option>
-               <option value="6">6</option>
-               <option value="7">7</option>
-            </select>
-
-            <select
-               className="editor-barra-herramientas-tamanio"
-               onChange={(e) => {
-                  formatear("formatBlock", e.currentTarget.value);
-               }}
-            >
-               <option
-                  className="editor-barra-herramientas-tamanio-encabezado-1"
-                  value="h1"
-               >
-                  Encabezado 1
-               </option>
-               <option
-                  className="editor-barra-herramientas-tamanio-encabezado-2"
-                  value="h2"
-               >
-                  Encabezado 2
-               </option>
-               <option
-                  className="editor-barra-herramientas-tamanio-encabezado-3"
-                  value="h3"
-               >
-                  Encabezado 3
-               </option>
-               <option
-                  className="editor-barra-herramientas-tamanio-encabezado-4"
-                  value="h4"
-               >
-                  Encabezado 4
-               </option>
-               <option
-                  className="editor-barra-herramientas-tamanio-encabezado-5"
-                  value="h5"
-               >
-                  Encabezado 5
-               </option>
-               <option
-                  className="editor-barra-herramientas-tamanio-encabezado-6"
-                  value="h6"
-               >
-                  Encabezado 6
-               </option>
-               <option
-                  className="editor-barra-herramientas-tamanio-parrafo"
-                  value="p"
-               >
-                  Párrafo
-               </option>
-            </select>
-            <button
-               className="fas fa-undo"
-               onClick={(e) => formatear("undo")}
-            ></button>
-            <button
-               className="fas fa-undo redo"
-               onClick={(e) => formatear("redo")}
-            ></button>
-            <button
-               className="fas fa-bold"
-               onClick={(e) => formatear("bold")}
-            ></button>
-            <button
-               className="fas fa-italic"
-               onClick={(e) => formatear("italic")}
-            ></button>
-            <button
-               className="fas fa-underline"
-               onClick={(e) => formatear("underline")}
-            ></button>
-            <button
-               className="fas fa-font"
-               onClick={(e) => formatear("foreColor", colorFuente)}
-            ></button>
-            <input
-               type="color"
-               className="editor-barra-herramientas-seleccion-color"
-               value={colorFuente}
-               onChange={(e) => setColorFuente(e.currentTarget.value)}
-            />
-            <button
-               className="fas fa-paint-brush"
-               onClick={(e) => formatear("backColor", colorFondo)}
-            ></button>
-            <input
-               type="color"
-               className="editor-barra-herramientas-seleccion-color"
-               value={colorFondo}
-               onChange={(e) => setColorFondo(e.currentTarget.value)}
-            />
+               <button
+                  className="fas fa-bold"
+                  onClick={(e) => formatear("bold")}
+               ></button>
+               <button
+                  className="fas fa-italic"
+                  onClick={(e) => formatear("italic")}
+               ></button>
+               <button
+                  className="fas fa-underline"
+                  onClick={(e) => formatear("underline")}
+               ></button>
+               <button
+                  className="fas fa-font"
+                  onClick={(e) => formatear("foreColor", colorFuente)}
+               ></button>
+               <input
+                  type="color"
+                  className="editor-barra-herramientas-seleccion-color"
+                  value={colorFuente}
+                  onChange={(e) => setColorFuente(e.currentTarget.value)}
+               />
+               <button
+                  className="fas fa-paint-brush"
+                  onClick={(e) => formatear("backColor", colorFondo)}
+               ></button>
+               <input
+                  type="color"
+                  className="editor-barra-herramientas-seleccion-color"
+                  value={colorFondo}
+                  onChange={(e) => setColorFondo(e.currentTarget.value)}
+               />
+            </div>
          </div>
-
-         <div className="editor-barra-herramientas-separador">
-            <button
-               className="fas fa-subscript"
-               onClick={(e) => formatear("subscript")}
-            ></button>
-            <button
-               className="fas fa-superscript"
-               onClick={(e) => formatear("superscript")}
-            ></button>
-            <button className="fas fa-image"></button>
-            <button
-               className="fas fa-code"
-               onClick={(e) => agregarBloqueCodigo()}
-            ></button>
+         <div className="editor-barra-herramientas-separador-opciones">
             <button
                className="fas fa-align-left"
                onClick={(e) => formatear("justifyLeft")}
@@ -222,6 +213,14 @@ const BarraHerramientas = (props) => {
                onClick={(e) => formatear("justifyFull")}
             ></button>
             <button
+               className="fas fa-subscript"
+               onClick={(e) => formatear("subscript")}
+            ></button>
+            <button
+               className="fas fa-superscript"
+               onClick={(e) => formatear("superscript")}
+            ></button>
+            <button
                className="fas fa-list-ul"
                onClick={(e) => formatear("insertUnorderedList")}
             ></button>
@@ -236,6 +235,11 @@ const BarraHerramientas = (props) => {
             <button
                className="fas fa-outdent"
                onClick={(e) => formatear("outdent")}
+            ></button>
+            <button className="fas fa-image"></button>
+            <button
+               className="fas fa-code"
+               onClick={(e) => agregarBloqueCodigo()}
             ></button>
             <button
                className="fas fa-link"

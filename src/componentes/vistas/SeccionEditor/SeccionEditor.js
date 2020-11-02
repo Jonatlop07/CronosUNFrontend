@@ -24,6 +24,7 @@ const SeccionEditor = (props) => {
 
    return (
       <div className="editor">
+         <h5 className="editor-titulo">Edita tu proyecto</h5>
          <BarraHerramientas />
          <div
             className="editor-contenido"

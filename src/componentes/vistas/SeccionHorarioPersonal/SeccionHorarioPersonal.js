@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import "./estilos/seccionHorarioPersonal.scss";
 import ContenedorHorario from "./ContenedorHorario";
-import ModalPrueba from "./ModalPrueba";
 import ItemHorarioPersonal from './ItemHorarioPersonal';
 
 
@@ -40,18 +39,18 @@ const SeccionHorarioPersonal = (props) => {
                 <ContenedorHorario/>
                 </section>
                 <section className="contenedor-seccion-funciones">
-                    <h3 className = "contenedor-seccion-funciones-funcion"> Cambiar metodologia de estudio 
-                    <a href="!#" className="contenedor-seccion-funciones-tooltip-toggleA" aria-label="Cada metodologia genera un horario de estudio diferente. Escoge el que 
+                    <h3 className = "contenedor-seccion-funciones-funcion"> Cambiar metodología de estudio 
+                    <a href="!#" className="contenedor-seccion-funciones-tooltip-toggleA" aria-label="Cada metodología genera un horario de estudio diferente. Escoge el que 
                     mas te guste!" tabIndex="0">
                     <i className="fas fa-question-circle"></i></a></h3>  
                     <select>
-                        <option value="" disabled="disabled" defaultValue="selected">Escoge una metodologia</option>
-                        <option value="creditos"> Por numero de creditos</option>
+                        <option value="" disabled="disabled" defaultValue="selected">Escoge una metodología</option>
+                        <option value="creditos"> Por número de creditos</option>
                         <option value="pomodoro">Pomodoro</option>
                         <option value="flowtime">Flowtime</option>
                     </select>
-                    <h3 className = "contenedor-seccion-funciones-funcion"> Establecer nuevos creditos para mis materias
-                    <a href="!#" className="contenedor-seccion-funciones-tooltip-toggleB" aria-label="Cambia tu horario de acuerdo a la complejidad de cada materia medida en creditos." tabIndex="0">
+                    <h3 className = "contenedor-seccion-funciones-funcion"> Establecer nuevos créditos para mis materias
+                    <a href="!#" className="contenedor-seccion-funciones-tooltip-toggleB" aria-label="Cambia tu horario de acuerdo a la complejidad de cada materia medida en créditos." tabIndex="0">
                     <i className="fas fa-question-circle"></i></a></h3> 
                     <div className = "contenedor-seccion-funciones-creditos"> 
                         <ul>

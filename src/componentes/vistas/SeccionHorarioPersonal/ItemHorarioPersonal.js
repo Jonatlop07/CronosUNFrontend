@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import ModalPrueba from "./ModalPrueba";
+import ModalEditarCreditos from "./ModalEditarCreditos";
 
 const ItemHorarioPersonal = (props) => {
 
@@ -14,14 +14,14 @@ const terminarCambiandoCreditos =() =>{
         <li className="lista">
             <div className="contenedor-seccion-funciones-creditos-materias">
                 <h5 className = "contenedor-seccion-funciones-creditos-materias-indiv">
-                {props.nombre} - {props.creditos} creditos 
+                {props.nombre} - {props.creditos} créditos 
+                </h5>
                 <button onClick={()=>{setCambiandoCreditos(true)}}
                  className="contenedor-seccion-funciones-creditos-materias-boton"> 
-                Cambiar creditos </button>
-                {cambiandoCreditos && (<ModalPrueba 
+                Cambiar créditos </button>
+                {cambiandoCreditos && (<ModalEditarCreditos
                 cambiarCreditos = {setCreditos} 
-                terminarCambiandoCreditos={terminarCambiandoCreditos}/>)}
-                </h5>    
+                terminarCambiandoCreditos={terminarCambiandoCreditos}/>)}    
             </div>
         </li>
       );

@@ -12,8 +12,11 @@ const ItemHorarioPersonal = (props) => {
   return (
     <li className="lista">
       <div className="contenedor-seccion-funciones-creditos-materias">
-        <h5 className="contenedor-seccion-funciones-creditos-materias-indiv">
-          {props.nombre} - {props.creditos} créditos
+        <h5 className="contenedor-seccion-funciones-creditos-materias-indiv1">
+          {props.nombre}
+        </h5>
+        <h5 className="contenedor-seccion-funciones-creditos-materias-indiv2">
+          {props.creditos} créditos
         </h5>
         <button
           onClick={() => {

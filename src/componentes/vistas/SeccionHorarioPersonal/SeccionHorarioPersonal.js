@@ -7,34 +7,55 @@ const materias = [
   {
     nombre: "Algebra Lineal",
     creditos: 4,
+    dias:['Lunes','Miercoles'],
+    hora:'7-9',
+    profesor: 'Juan Rojas'
   },
   {
     nombre: "Ingenieria de software",
     creditos: 3,
+    dias:['Martes', 'Jueves'],
+    hora:'9-11',
+    profesor: 'Liz Capataz'
   },
   {
     nombre: "Sistemas Operativos",
     creditos: 2,
+    dias:['Miercoles', 'Viernes'],
+    hora:'11-13',
+    profesor: 'Santiago Niño'
   },
   {
     nombre: "Grafica Interactiva",
     creditos: 3,
+    dias:['Martes', 'Jueves'],
+    hora:'11-13',
+    profesor: 'Jaime Beltran'
   },
   {
     nombre: "Chino I",
     creditos: 2,
+    dias:['Lunes', 'Miercoles'],
+    hora:'14-16',
+    profesor: 'Jhon Gomez'
   },
 ];
 
 const SeccionHorarioPersonal = (props) => {
   const [materiasHorario, setMateriasHorario] = useState(materias);
 
+  const agregarAsignatura = (materia, grupo) => {
+    const horarioAux = [...materiasHorario];
+    horarioAux.push({materia, grupo});
+    setMateriasHorario(horarioAux);
+  }
+
   return (
     <div>
       <h5 className="titulo">Mi horario de estudio</h5>
       <div className="contenedor-seccion">
         <section className="contenedor-seccion-horario">
-          <ContenedorHorario />
+          <ContenedorHorario horario = {materiasHorario} agregarAsignatura = {agregarAsignatura}/>
         </section>
         <section className="contenedor-seccion-funciones">
           <h3 className="contenedor-seccion-funciones-funcion">

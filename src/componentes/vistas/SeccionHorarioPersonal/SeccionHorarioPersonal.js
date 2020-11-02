@@ -1,6 +1,8 @@
 import React, {useState} from 'react';
 import "./estilos/seccionHorarioPersonal.scss";
 import ContenedorHorario from "./ContenedorHorario";
+import ModalPrueba from "./ModalPrueba";
+import ItemHorarioPersonal from './ItemHorarioPersonal';
 
 
 const materias = [
@@ -19,13 +21,17 @@ const materias = [
     {
         nombre: "Grafica Interactiva",
         creditos: 3
+    },
+    {
+        nombre: "Chino I",
+        creditos: 2
     }
 ]
 
 const SeccionHorarioPersonal = (props) => {
     
-    const [materia, setCreditos] = useState(materias);
-    
+    const [materiasHorario, setMateriasHorario] = useState(materias);
+            
     return ( 
         <div>
             <h5 className="titulo">Mi horario de estudio</h5>
@@ -35,27 +41,21 @@ const SeccionHorarioPersonal = (props) => {
                 </section>
                 <section className="contenedor-seccion-funciones">
                     <h3 className = "contenedor-seccion-funciones-funcion"> Cambiar metodologia de estudio 
-                    <a href="#" class="contenedor-seccion-funciones-tooltip-toggleA" aria-label="Cada metodologia genera un horario de estudio diferente. Escoge el que 
-                    mas te guste!" tabindex="0">
-                    <i class="fas fa-question-circle"></i></a></h3>  
+                    <a href="!#" className="contenedor-seccion-funciones-tooltip-toggleA" aria-label="Cada metodologia genera un horario de estudio diferente. Escoge el que 
+                    mas te guste!" tabIndex="0">
+                    <i className="fas fa-question-circle"></i></a></h3>  
                     <select>
-                        <option value="" disabled="disabled" selected="selected">Escoge una metodologia</option>
+                        <option value="" disabled="disabled" defaultValue="selected">Escoge una metodologia</option>
                         <option value="creditos"> Por numero de creditos</option>
                         <option value="pomodoro">Pomodoro</option>
                         <option value="flowtime">Flowtime</option>
                     </select>
                     <h3 className = "contenedor-seccion-funciones-funcion"> Establecer nuevos creditos para mis materias
-                    <a href="#" class="contenedor-seccion-funciones-tooltip-toggleB" aria-label="Cambia tu horario de acuerdo a la complejidad de cada materia medida en creditos." tabindex="0">
-                    <i class="fas fa-question-circle"></i></a></h3> 
+                    <a href="!#" className="contenedor-seccion-funciones-tooltip-toggleB" aria-label="Cambia tu horario de acuerdo a la complejidad de cada materia medida en creditos." tabIndex="0">
+                    <i className="fas fa-question-circle"></i></a></h3> 
                     <div className = "contenedor-seccion-funciones-creditos"> 
                         <ul>
-                            {materia.map((item) =>(
-                                <div className="contenedor-seccion-funciones-creditos-materias">
-                                    <h5 className = "contenedor-seccion-funciones-creditos-materias-indiv">
-                                    {item.nombre} - {item.creditos} creditos 
-                                    <button className="contenedor-seccion-funciones-creditos-materias-boton"> Cambiar creditos </button>
-                                    </h5>
-                                </div>
+                            {materiasHorario.map((item, indice) =>(<ItemHorarioPersonal nombre={item.nombre} creditos={item.creditos} key={`mat${indice}`}/>
                             ))}
                         </ul>
                     </div>

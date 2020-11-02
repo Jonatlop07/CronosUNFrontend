@@ -5,7 +5,7 @@ import "./estilos/contenedorHorario.scss";
 const ContenedorHorario = (props) => {
     
     return ( 
-        <div className="contenedor-principal">
+        <div className="contenedor-horario">
             
         </div>
      );

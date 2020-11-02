@@ -1,0 +1,59 @@
+@import "../../../../scss/variables";
+@import './mixins';
+
+.contenedor-seccion {
+    #{&}-tutorial{
+        &-titulo{
+            font-size: 300%;
+            text-align: center;
+            color: $color-dos;
+            margin-bottom: 1%;
+            @include pantalla-celular{
+                font-size: 200%;
+            }
+            @include pantalla-tablet {
+                font-size: 250%;
+            }
+        }
+        &-texto{
+            max-height: 50rem;
+            overflow: auto;
+            margin: 1rem;
+            box-shadow: 2px 2px 10px darken($color-uno, 15%),
+            -2px -2px 10px darken($color-uno, 15%);
+            border-radius: 1%;
+            font-size:150%;
+            text-align:left;
+            margin-bottom: 1%;
+
+            @include pantalla-celular{
+                font-size: 100%;
+            }
+            @include pantalla-tablet{
+                font-size: 125%;
+            }
+        }
+    }
+    #{&}-boton-agregar {
+        @include boton-general($color-dos);
+        color: white;
+        font-size: 1rem;
+        @include pantalla-celular{
+            margin-left: 30%;
+            margin-right: 30%;
+            width: 40%;
+            font-size: 80%;
+        }
+        @include pantalla-tablet{
+            width: 20%;
+            margin-right: 30%;
+            margin-left: 40%;
+            font-size: 100%;
+        }
+        width: 15%;
+        margin-bottom: 1%;;
+        margin-left: 42%;
+        margin-right: 42%;
+        text-align: center;
+    }
+ }

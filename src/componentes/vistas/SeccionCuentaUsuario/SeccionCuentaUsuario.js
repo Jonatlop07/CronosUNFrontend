@@ -1,4 +1,5 @@
 import React from "react";
+
 import ImagenCuentaPorDefecto from "./Default.svg.png";
 import "./estilos/seccionCuentaUsuario.scss";
 

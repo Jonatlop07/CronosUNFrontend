@@ -24,6 +24,10 @@
     padding-left: 2rem;
     height: 49rem;
 
+    #{&}-horario {
+        width: 80%;
+    }
+
     #{&}-funciones{
 
         padding: 2rem;
@@ -35,7 +39,7 @@
             font-size: 1rem;
             font-weight: bold;
             text-align: justify;
-            margin-top: 5rem;
+            margin-top: 1rem;
             margin-bottom: 0.5rem;
         }
 
@@ -66,7 +70,7 @@
         &-descargar{
             @include boton-general($color-cuatro);
                 color:$color-uno;
-                margin: 4rem auto;
+                margin: 2rem auto;
                 border-radius: 20px;    
         }
 

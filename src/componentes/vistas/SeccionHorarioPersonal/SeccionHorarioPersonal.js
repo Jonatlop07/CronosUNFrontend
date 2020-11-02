@@ -33,7 +33,7 @@ const SeccionHorarioPersonal = (props) => {
     <div>
       <h5 className="titulo">Mi horario de estudio</h5>
       <div className="contenedor-seccion">
-        <section>
+        <section className="contenedor-seccion-horario">
           <ContenedorHorario />
         </section>
         <section className="contenedor-seccion-funciones">

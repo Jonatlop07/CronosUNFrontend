@@ -7,7 +7,7 @@ const SeccionInicio = (props) => {
         <div>
             
         </div>
-     );
+    );
 }
  
 export default SeccionInicio;

@@ -1,6 +1,4 @@
-
 import React from 'react';
-
 import "./estilos/seccionInicio.scss";
 import { Link, animateScroll as scroll } from "react-scroll";
 import ImagenLogo from "../../../imagenes/img_logo.png";

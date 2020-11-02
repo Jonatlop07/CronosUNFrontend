@@ -1,0 +1,59 @@
+@import "../../../../scss/variables";
+@import "../../../../scss/resets";
+@import "../../../../scss/mixins";
+
+.seccion-registro {
+  width: 35%;
+  min-width: 475px;
+  margin: 2.5rem auto 0 auto;
+  padding: 0.8rem;
+  text-align: center;
+  background-color: $color-dos;
+  box-shadow: 2px 2px 10px darken($color-tres, 15%),
+            -2px -2px 10px darken($color-tres, 15%);
+
+  #{&}-titulo {
+    padding: 0 0 1.5rem 0;
+    color:$color-uno;
+  }
+
+  #{&}-input {
+    width: 85%;
+    margin: 0.3rem;
+    padding: 0.5rem;
+    outline: none;
+    font-size: 1rem;
+  }
+
+  #{&}-boton {
+    @include boton-general($color-cuatro);
+    color: $color-uno ;
+    padding: 0.5rem;
+    margin: 1rem 0 1rem 0;
+    font-size: 1rem;
+  }
+
+  #{&}-info {
+    padding: 0;
+    color: $color-uno ;
+  }
+
+  @include pantalla-celular {
+    width: 90%;
+    min-width: 100px;
+    #{&}-info {
+      font-size: 13px;
+    }
+  }
+
+  @include pantalla-tablet {
+    width: 60%;
+    max-width: 475px;
+    #{&}-info {
+      font-size: 14px;
+    }
+  }
+}
+.seccion-registro-info-link{
+  color: $color-tres;
+}

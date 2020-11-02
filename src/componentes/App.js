@@ -11,8 +11,9 @@ import SeccionHorarioAsignaturas from "./vistas/SeccionHorarioAsignaturas/Seccio
 import SeccionHorarioPersonal from "./vistas/SeccionHorarioPersonal/SeccionHorarioPersonal.js";
 import SeccionPortafolio from "./vistas/SeccionPortafolio/SeccionPortafolio.js";
 import SeccionConsultaPortafolio from "./vistas/SeccionConsultaPortafolio/SeccionConsultaPortafolio.js";
+import SeccionInscripcionMaterias from "./vistas/SeccionInscripcionMaterias/SeccionInscripcionMaterias.js";
 import SeccionEditor from "./vistas/SeccionEditor/SeccionEditor";
-import PieDePagina from "./PieDePagina.js";
+import PieDePagina from './PieDePagina.js';
 
 import "./estilos/app.scss";
 
@@ -27,7 +28,9 @@ import {
   RUTA_SEC_PORTAFOLIO,
   RUTA_SEC_PROYECTOS_PUBLICOS,
   RUTA_SEC_EDITOR,
+  RUTA_SEC_INSCRIPCION_MATERIAS
 } from "../utilidad/rutas.js";
+
 
 function App() {
   return (
@@ -60,6 +63,9 @@ function App() {
         </Route>
         <Route exact path={RUTA_SEC_PROYECTOS_PUBLICOS}>
           <SeccionConsultaPortafolio />
+        </Route>
+        <Route exact path={RUTA_SEC_INSCRIPCION_MATERIAS}>
+          <SeccionInscripcionMaterias />
         </Route>
         <Route exact path={RUTA_SEC_EDITOR}>
           <SeccionEditor />

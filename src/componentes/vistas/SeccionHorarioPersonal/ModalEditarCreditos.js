@@ -7,8 +7,10 @@ const ModalEditarCreditos = (props) => {
     <div className="contenedor-modal-creditos">
       <div className="modal-creditos">
         <h3 className="modal-creditos-titulo">Nuevo número de créditos</h3>
+        <h4 className="modal-creditos-subtitulo">{props.nombre}</h4>
         <form className="modal-creditos-formulario">
-          <input type="text"
+          <input
+            type="text"
             className="modal-creditos-formulario-texto"
             placeholder="Número de créditos"
           />

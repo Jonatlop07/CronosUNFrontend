@@ -14,7 +14,7 @@
     background: darken($color-uno, 0.5%);
 
     &-texto {
-      @include dimensiones(100%, 2rem, auto, auto);
+      @include dimensiones(80%, 2rem, auto, auto);
       color: $color-dos;
       margin-bottom: 0.7rem;
       padding: 0.35rem;
@@ -34,6 +34,11 @@
 
   #{&}-titulo {
       color: $color-dos;
-      padding: 0.35rem;
+      padding: 0.35rem 0 0 0;
+  }
+  
+  #{&}-subtitulo {
+      color: $color-dos;
+      padding: 0 0 0.35rem 0;
   }
 }

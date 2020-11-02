@@ -1,112 +1,108 @@
 @import "../../../../scss/variables";
 @import "../../../../scss/mixins";
 
-.titulo{
-
-    margin-top: 2.5rem;
-    margin-bottom: 2rem;
-    font-size: 5vh;
-    font-weight: bold;
-    text-align: center;
-    font-family: $fuente-principal;
-    color: $color-dos;
-
+.titulo {
+  margin-top: 2.5rem;
+  margin-bottom: 2rem;
+  font-size: 5vh;
+  font-weight: bold;
+  text-align: center;
+  font-family: $fuente-principal;
+  color: $color-dos;
 }
 
-.lista{
-
-    list-style: none;
-
+.lista {
+  list-style: none;
 }
 
-.contenedor-seccion{
+.contenedor-seccion {
+  @include pantalla-celular {
+    display: initial;
+  }
+
+  @include pantalla-tablet {
+    display: initial;
+  }
+
+  display: flex;
+  padding: 0 0.5rem;
+
+  #{&}-horario {
+    width: 80%;
+  }
+
+  #{&}-funciones {
+    padding: 1rem;
     display: flex;
-    padding: 0 0.5rem;
+    flex-direction: column;
+    width: 100%;
 
-    #{&}-horario {
-        width: 80%;
+    &-funcion {
+      font-size: 1rem;
+      font-weight: bold;
+      margin-top: 0.5rem;
+      margin-bottom: 0.5rem;
     }
 
-    #{&}-funciones{
+    &-tooltip-toggleA {
+      @include tooltip(12rem, -6.3rem);
 
-        padding: 1rem;
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-
-        &-funcion{
-            font-size: 1rem;
-            font-weight: bold;
-            margin-top: 0.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        &-tooltip-toggleA{
-                
-            @include tooltip(12rem, -6.3rem);
-
-            i{
-                font-style: normal;
-                font-family: fontAwesome; 
-                padding-left: 0.5rem;
-             }
-                
-        }
-
-        &-tooltip-toggleB{
-                
-            @include tooltip(12rem, -6.3rem);
-
-            i{
-                font-style: normal;
-                font-family: fontAwesome; 
-                padding-left: 0.5rem;
-             }
-                
-        }
-
-        &-descargar{
-            @include boton-general($color-cuatro);
-                color:$color-uno;
-                margin: 2rem auto;
-                border-radius: 20px;    
-        }
-
-        &-creditos{
-            width: 100%;
-            height: fit-content;
-            box-shadow: 1px 1px 7px darken($color-uno, 15%),
-            -1px -1px 7px darken($color-uno, 15%);
-            
-            &-materias{
-                padding: 0.5rem;
-                padding-left: 1.1rem;
-                border: solid 1px $color-dos;
-                &-indiv1{
-                    font-size: 0.95rem;
-                }
-                &-indiv2{
-                    font-size: 0.85rem;
-                }
-                &-boton{
-                    display: inline-block;
-                    margin-top: 0.3rem;
-                    border: 0.1rem solid $color-dos;
-                    color: black;
-                    padding: 0.1rem 0.5rem;
-                    text-align: center;
-                    border-radius: 5px;
-                    background: $color-uno;
-
-                    &:hover {
-                        background: $color-dos;
-                        color: white;
-                             
-                       }
-
-                }
-            }
-        }
+      i {
+        font-style: normal;
+        font-family: fontAwesome;
+        padding-left: 0.5rem;
+      }
     }
 
+    &-tooltip-toggleB {
+      @include tooltip(12rem, -6.3rem);
+
+      i {
+        font-style: normal;
+        font-family: fontAwesome;
+        padding-left: 0.5rem;
+      }
+    }
+
+    &-descargar {
+      @include boton-general($color-cuatro);
+      color: $color-uno;
+      margin: 2rem auto;
+      border-radius: 20px;
+    }
+
+    &-creditos {
+      width: 100%;
+      height: fit-content;
+      box-shadow: 1px 1px 7px darken($color-uno, 15%),
+        -1px -1px 7px darken($color-uno, 15%);
+
+      &-materias {
+        padding: 0.5rem;
+        padding-left: 1.1rem;
+        border: solid 1px $color-dos;
+        &-indiv1 {
+          font-size: 0.95rem;
+        }
+        &-indiv2 {
+          font-size: 0.85rem;
+        }
+        &-boton {
+          display: inline-block;
+          margin-top: 0.3rem;
+          border: 0.1rem solid $color-dos;
+          color: black;
+          padding: 0.1rem 0.5rem;
+          text-align: center;
+          border-radius: 5px;
+          background: $color-uno;
+
+          &:hover {
+            background: $color-dos;
+            color: white;
+          }
+        }
+      }
+    }
+  }
 }

@@ -12,6 +12,14 @@
   width: 74vw;
   border-radius: 1%;
 
+  @include pantalla-celular {
+    width: 95vw;
+  }
+
+  @include pantalla-tablet {
+    width: 95vw;
+  }
+
   #{&}-principal {
     display: grid;
     grid-template-columns: repeat(8, 1fr);

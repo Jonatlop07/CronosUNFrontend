@@ -66,7 +66,7 @@ const SeccionInicio = (props) => {
                 </div>
             </footer>      
         </div>
-     );
+    );
 }
  
 export default SeccionInicio;

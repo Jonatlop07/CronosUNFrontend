@@ -1,13 +1,9 @@
-import React from 'react';
+import React from "react";
 
 import "./estilos/seccionCuentaUsuario.scss";
 
 const SeccionCuentaUsuario = (props) => {
-    return ( 
-        <div>
+   return <div></div>;
+};
 
-        </div>
-     );
-}
- 
 export default SeccionCuentaUsuario;

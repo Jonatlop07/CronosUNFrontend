@@ -1,63 +1,68 @@
-@import './mixins';
+@import "./mixins";
 @import "../../../../scss/variables";
+@import "../../../../scss/mixins";
 
-.recuperacion-clave{
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    width: 50%;
-    text-align: center;
-    background: $color-dos;
-    margin: 10rem auto ;
-    box-shadow: 2px 2px 10px darken($color-uno, 15%),
-    -2px -2px 10px darken($color-uno, 15%);
-    @include pantalla-celular{
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
-        text-align: center;
-        background: $color-dos;
-        width: 80%;
-        margin: 10rem auto ;
-    }
-    
-    #{&}-boton-enviar{
-        @include boton-general($color-cuatro);
-        width: 22%;
-        margin: 1rem auto;
-        color: $color-uno;
-        font-size: 1.25rem;
-        @include pantalla-celular{
-            @include boton-general($color-cuatro);
-            width: 30%;
-            margin: 1rem auto;
-            color: $color-uno;
-            font-size: 1rem;
-        }
-    }
-    #{&}-titulo{
-        font-size: 5rem;
-        color: $color-uno;
-        @include pantalla-celular{
-            font-size: 3rem;
-        }
-    }
-    #{&}-etiqueta{
-        font-size: 2rem;
-        color: $color-uno;
-        padding-bottom: 1rem;
-        @include pantalla-celular{
-            font-size: 1.5rem;
-            padding-right: 5%;
-            padding-left: 5%;
-        }
-    }
-    #{&}-entrada{
-        width: 80%;
-        margin: 1rem auto;
-        font-size: 2rem;
-        @include pantalla-celular{
-            font-size: 1.5rem;
-        }
-    }
+.recuperacion-clave {
+   display: flex;
+   justify-content: center;
+   flex-direction: column;
+   width: 35%;
+   text-align: center;
+   background: $color-dos;
+   margin: 2.5rem auto;
+   box-shadow: 2px 2px 5px darken($color-tres, 10%),
+      -2px -2px 5px darken($color-tres, 10%);
+
+   @include pantalla-celular {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      text-align: center;
+      background: $color-dos;
+      width: 80%;
+      margin: 5.5rem auto;
+   }
+
+   #{&}-boton-enviar {
+      @include boton-general($color-cuatro);
+      width: 22%;
+      margin: 1rem auto;
+      color: $color-uno;
+      font-size: 1rem;
+      @include pantalla-celular {
+         @include boton-general($color-cuatro);
+         width: 30%;
+         margin: 1rem auto;
+         color: $color-uno;
+         font-size: 1rem;
+      }
+   }
+   #{&}-titulo {
+      margin: 1rem 0 0 0;
+      padding: 0 0 1.5rem 0;
+      color: $color-uno;
+   }
+   #{&}-etiqueta {
+      color: $color-uno;
+      padding-bottom: 0.5rem;
+      font-size: 1.1rem;
+      @include pantalla-celular {
+         padding-right: 5%;
+         padding-left: 5%;
+      }
+   }
+   #{&}-entrada {
+      width: 80%;
+      margin: 1rem auto;
+      padding: 0.5rem 0.35rem;
+      font-size: 1.05rem;
+      @include pantalla-celular {
+         font-size: 13px;
+      }
+      &:focus,
+      & select:focus {
+         outline: none;
+         border: none;
+      }
+   }
 }

@@ -29,7 +29,7 @@
          $cambio-fondo: true
       );
       padding: 0.35rem;
-      background-color: $color-uno;
+      background: inherit;
 
       &:hover {
          animation: giro-boton 0.25s;

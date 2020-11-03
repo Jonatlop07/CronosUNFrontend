@@ -1,7 +1,11 @@
 @import "../../scss/variables";
+@import "../../scss/mixins";
 
 .barra-navegacion {
    background-color: $color-primario-barra-nav;
+   @include pantalla-celular {
+      margin-bottom: 3rem;
+   }
 
    ul {
       display: flex;
@@ -13,6 +17,53 @@
       }
    }
 
+   #{&}-inicio {
+      background-color: $color-primario-barra-nav;
+      @include pantalla-celular {
+         width: 100%;
+         position: fixed;
+         top: 0;
+         left: 0;
+      }
+   }
+
+   #{&}-secciones {
+      width: fit-content;
+      display: flex;
+      flex-direction: row;
+      @include pantalla-celular {
+         position: fixed;
+         top: 0;
+         right: 0;
+         z-index: 10;
+      }
+
+      i {
+         display: none;
+         @include boton-icono($color-secundario-barra-nav, $color-tres, 1.5rem);
+         margin: 0.5rem 0;
+         margin-bottom: 0;
+      }
+
+      @media (max-width: 800px) {
+         position: fixed;
+         flex-direction: column;
+         background-color: $color-primario-barra-nav;
+         right: 0;
+         text-align: right;
+
+         i {
+            display: inline;
+            text-align: right;
+         }
+
+         li {
+            margin: 0.25rem 1rem;
+            padding: 0;
+         }
+      }
+   }
+
    #{&}-enlace {
       text-decoration: none;
       font-weight: bold;
@@ -21,5 +72,11 @@
       &:hover {
          color: darken($color-secundario-barra-nav, 30%);
       }
+   }
+}
+
+.escondida {
+   @include pantalla-celular {
+      display: none;
    }
 }

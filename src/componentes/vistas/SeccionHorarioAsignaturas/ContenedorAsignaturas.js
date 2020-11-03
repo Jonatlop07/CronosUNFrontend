@@ -11,8 +11,8 @@ const ContenedorAsignaturas = (props) =>{
     }
     return(
         <div className="contenedor-asignaturas">
-                {props.ListaMaterias.map((materia) =>(
-                    <ContenedorMateria materia={materia} agregarAsignatura={agregarAsignatura} desagregarAsignatura={desagregarAsignatura}/>
+                {props.ListaMaterias.map((materia, indice) =>(
+                    <ContenedorMateria key={`contMat${indice}`} materia={materia} agregarAsignatura={agregarAsignatura} desagregarAsignatura={desagregarAsignatura}/>
                 ))}
         </div>
     );

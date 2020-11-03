@@ -1,139 +1,156 @@
-@import './mixins';
+@import "./mixins";
 @import "../../../../scss/variables";
 @import "../../../../scss/resets";
 @import "../../../../scss/mixins";
 
-.contenedor{
-    
-    display: flex;
-    justify-content: flex-start;
-    margin:auto;
-    
-    
+.contenedor {
+   display: flex;
+   justify-content: flex-start;
+   margin: auto;
+
+   @media (max-width: 600px) {
+      flex-direction: column;
+      justify-content: center;
+   }
+
+   @include pantalla-celular {
+      margin-top: 5rem;
+   }
 }
-.vista{
-    width: 20%;
-    margin: 3%;
-    margin-left: 10%;
-    
-    
-    #{&}-cuenta{
-        display: flex;
-        flex-direction: column;
-        padding:10%;
-        margin: 0%;
-        background-color: $color-dos;
-        margin-left: auto;
-        margin-right: auto;
-        border-radius: 5%;
-        box-shadow: 2px 2px 10px darken($color-tres, 15%),
-            -2px -2px 10px darken($color-tres, 15%);
-        &-imagen{
-            background-color: $color-uno;
-            border-radius: 50%;
-            width: 70%;
-            height: 70%;
-            margin-left: auto;
-            margin-right: auto;
-            margin-bottom: 10%;
-            
-        }
-        &-nombreUsuario{
-            text-align: center;
-            color: $color-uno;
-            margin-bottom: 8%;
-        }
-        &-boton{
-            margin-left: auto;
-            margin-right: auto;
-            font-size: 0.9rem;
-            width: fit-content;            
-            @include boton-general($color-cuatro);
-            color: $color-uno ;
-            
+
+.vista {
+   width: 20%;
+   margin: 3%;
+   margin-left: 10%;
+
+   @media (max-width: 600px) {
+      width: 50%;
+      margin: 3% auto;
+   }
+
+   #{&}-cuenta {
+      display: flex;
+      flex-direction: column;
+      padding: 10%;
+      margin: 0%;
+      background-color: $color-dos;
+      margin-left: auto;
+      margin-right: auto;
+      border-radius: 5%;
+      box-shadow: 2px 2px 10px darken($color-tres, 15%),
+         -2px -2px 10px darken($color-tres, 15%);
+
+      &-imagen {
+         background-color: $color-uno;
+         border-radius: 50%;
+         width: 70%;
+         height: 70%;
+         margin-left: auto;
+         margin-right: auto;
+         margin-bottom: 10%;
+      }
+
+      &-nombreUsuario {
+         text-align: center;
+         color: $color-uno;
+         margin-bottom: 8%;
+      }
+
+      &-boton {
+         margin-left: auto;
+         margin-right: auto;
+         font-size: 0.9rem;
+         width: fit-content;
+         @include boton-general($color-cuatro);
+         color: $color-uno;
+         padding: 0.5rem;
+      }
+   }
+}
+.editar-cuenta {
+   border-radius: 2%;
+   width: 50%;
+   color: $color-uno;
+   margin-top: 2%;
+   margin-bottom: 1%;
+   background-color: $color-dos;
+   padding: 2%;
+   box-shadow: 2px 2px 10px darken($color-tres, 15%),
+      -2px -2px 10px darken($color-tres, 15%);
+
+   @media (max-width: 600px) {
+      width: 90%;
+      margin: 3% auto;
+   }
+
+   #{&}-contenedor {
+      display: flex;
+      align-items: baseline;
+      justify-content: center;
+      &-etiqueta {
+         padding: 2%;
+         width: 35%;
+         display: flex;
+         flex-direction: column;
+
+         &-nombre {
+            margin: 12%;
+            font-size: 98%;
+            @include pantalla-tablet {
+               margin: 14%;
+            }
+            @include pantalla-celular {
+               margin: 17%;
+            }
+         }
+      }
+
+      &-parametro {
+         display: flex;
+         flex-direction: column;
+         width: 65%;
+         padding: 2%;
+
+         &-entrada {
+            width: 90%;
+            margin: 4.34%;
+            margin-left: 0%;
             padding: 0.5rem;
+         }
+      }
+   }
 
-        }
-    }
-
+   &-boton-enviar {
+      @include boton-general($color-cuatro);
+      color: $color-uno;
+      padding: 1%;
+      margin-top: 2%;
+      margin-left: 45%;
+      font-size: 0.9rem;
+   }
 }
-.editar-cuenta{
-    border-radius: 2%;
-    width: 50%;
-    color: $color-uno;
-    margin-top: 2%;
-    margin-bottom: 1%;
-    background-color: $color-dos;
-    padding: 2%;
-    box-shadow: 2px 2px 10px darken($color-tres, 15%),
-            -2px -2px 10px darken($color-tres, 15%);
 
-    #{&}-contenedor{
-        display: flex;
-        align-items: baseline;
-        justify-content: center;
-        &-etiqueta{
-            padding: 2%;
-            width: 35%;
-            display: flex;
-            flex-direction: column;
-            
-            
-            &-nombre{
-                margin: 12%;
-                font-size: 98%;
-                @include pantalla-tablet {
-                    margin: 14%;
-                }
-                @include pantalla-celular {
-                    margin: 17%;
-                }
-                
-            }
-        }
-        &-parametro{
-            display: flex;
-            flex-direction: column;
-            width: 65%;
-            padding: 2%;
-            
-            &-entrada{
-                width: 90%;
-                margin: 4.34%;
-                margin-left: 0%;
-                padding: 0.5rem;
-            }
-        
-        }
-    }
-    &-boton-enviar{
-        @include boton-general($color-cuatro);
-        color: $color-uno;
-        padding: 1%;
-        margin-top: 2%;
-        margin-left: 45%;
-        font-size: 0.9rem;
-        
-    }
+.eliminar-perfil {
+   #{&}-boton {
+      @include boton-general($color-cuatro);
+      color: $color-uno;
+      margin-left: 72%;
+      font-size: 0.9rem;
+      margin-top: 0.5rem;
+      margin-bottom: 4rem;
 
-}
-    
-    
+      @media (max-width: 600px) {
+         margin-left: 42%;
+         margin-top: 3.5rem;
+      }
 
-.eliminar-perfil{
-    
-    #{&}-boton{
-        @include boton-general($color-cuatro);
-        color:$color-uno;
-        margin-left: 72%;
-        font-size: 0.9rem;
-        @include pantalla-celular {
-            margin-left: 50%;
-        }
-        
-        @include pantalla-tablet {
-            margin-left: 60%;
-        }
-    }
-    
+      @media (min-width: 600px) and (max-width: 800px) {
+         margin-left: 68%;
+         margin-top: 3.5rem;
+      }
+
+      @media (min-width: 800px) and (max-width: 1100px) {
+         margin-left: 70%;
+      }
+   }
 }

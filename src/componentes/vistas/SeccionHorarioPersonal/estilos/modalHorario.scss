@@ -2,53 +2,75 @@
 @import "../../../../scss/mixins";
 
 .contenedor-modal-horario {
-  @include contenedor-ventana-modal();
-  @include dimensiones(100%, 100%, 0, 20vh 30%);
+   @include contenedor-ventana-modal();
+   @include dimensiones(100%, 100%, 0, 20vh 30%);
+   @include pantalla-tablet {
+      @include dimensiones(100%, 100%, 0, 20vh 25%);
+   }
+   @include pantalla-celular {
+      @include dimensiones(100%, 100%, 0, 20vh 10%);
+      @media (min-width: 500px) and (max-width: 800px) {
+         @include dimensiones(100%, 100%, 0, 20vh 20%);
+      }
+   }
 }
 
 .modal-horario {
-  @include estilo-ventana-modal();
+   @include estilo-ventana-modal();
 
-  #{&}-formulario {
-    padding: 1rem 2rem;
-    background: darken($color-uno, 0.5%);
-    color: $color-dos;
-
-    &-texto {
-      @include dimensiones(80%, 2rem, auto, auto);
+   #{&}-formulario {
+      padding: 1rem 2rem;
+      background: darken($color-uno, 0.5%);
       color: $color-dos;
-      margin-bottom: 0.7rem;
-      padding: 0.35rem;
-      font-size: 1rem;
-      background: $color-uno;
-      outline: none;
+
+      &-controles {
+         margin: 1rem;
+         margin-top: 0;
+         padding: 1rem;
+         box-shadow: 2px 2px 10px darken($color-uno, 15%),
+            -2px -2px 10px darken($color-uno, 15%);
+      }
+
+      &-texto {
+         @include dimensiones(80%, 2rem, auto, auto);
+         color: $color-dos;
+         margin-bottom: 0.7rem;
+         padding: 0.35rem;
+         font-size: 1rem;
+         background: $color-uno;
+         outline: none;
+         box-shadow: 2px 2px 10px darken($color-uno, 15%),
+            -2px -2px 10px darken($color-uno, 15%);
+      }
+
+      &-botones {
+         @include boton-general($color-dos);
+         margin: 0.5rem;
+         color: $color-uno;
+      }
+   }
+
+   #{&}-titulo {
+      @include estilo-titulo-modal();
+   }
+
+   #{&}-subtitulo {
+      color: $color-dos;
+      padding: 0 0 0.35rem 0;
+      margin-bottom: 1rem;
+   }
+
+   #{&}-contenido {
+      margin: 1rem 1rem;
+      margin-top: 0;
+      padding: 1rem 0;
       box-shadow: 2px 2px 10px darken($color-uno, 15%),
-        -2px -2px 10px darken($color-uno, 15%);
-    }
+         -2px -2px 10px darken($color-uno, 15%);
 
-    &-botones {
-      @include boton-general($color-dos);
-      margin: 0.5rem;
-      color: $color-uno;
-    }
-  }
-
-  #{&}-titulo {
-    color: $color-dos;
-    padding: 0.35rem 0 0 0;
-  }
-
-  #{&}-subtitulo {
-    color: $color-dos;
-    padding: 0 0 0.35rem 0;
-  }
-
-  #{&}-contenido {
-    margin-top: 2rem;
-    &-texto {
-      margin: 0 2rem;
-      text-align: left;
-      font-size: 1rem;
-    }
-  }
+      &-texto {
+         margin: 0 2rem;
+         text-align: left;
+         font-size: 1rem;
+      }
+   }
 }

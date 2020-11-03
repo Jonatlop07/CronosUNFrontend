@@ -14,7 +14,6 @@ $sombra-borde-subsecciones: -0.5rem -0.5rem 0.05rem lighten($color-dos, 20%);
 .seccion-portafolio {
    @include disposicion-flex(column);
    width: 100%;
-   background: $color-uno;
 
    #{&}-subsecciones {
       @include disposicion-flex(row);

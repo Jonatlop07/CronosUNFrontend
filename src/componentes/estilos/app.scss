@@ -1,2 +1,20 @@
 @import "../../scss/resets";
 @import "../../scss/variables";
+@import "../../scss/mixins";
+
+.App {
+   background-color: #fafafa;
+   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1600 900'%3E%3Cpolygon fill='%23196070' points='957 450 539 900 1396 900'/%3E%3Cpolygon fill='%231f788c' points='957 450 872.9 900 1396 900'/%3E%3Cpolygon fill='%23477784' points='-60 900 398 662 816 900'/%3E%3Cpolygon fill='%2322879c' points='337 900 398 662 816 900'/%3E%3Cpolygon fill='%236d8f99' points='1203 546 1552 900 876 900'/%3E%3Cpolygon fill='%232597ab' points='1203 546 1552 900 1162 900'/%3E%3Cpolygon fill='%2391a7ae' points='641 695 886 900 367 900'/%3E%3Cpolygon fill='%2329a7bb' points='587 900 641 695 886 900'/%3E%3Cpolygon fill='%23b5c0c3' points='1710 900 1401 632 1096 900'/%3E%3Cpolygon fill='%232db7ca' points='1710 900 1401 632 1365 900'/%3E%3Cpolygon fill='%23d9d9d9' points='1210 900 971 687 725 900'/%3E%3Cpolygon fill='%2332c8d9' points='943 900 1210 900 971 687'/%3E%3C/svg%3E");
+   background-attachment: fixed;
+   background-size: cover;
+   background-origin: content-box;
+   background-repeat: no-repeat;
+   background-position: center center;
+   height: 100vh;
+   overflow: auto;
+   overflow-x: hidden;
+   @include barra-scroll(10%, 0);
+}
+
+#root {
+}

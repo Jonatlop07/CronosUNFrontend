@@ -1,6 +1,6 @@
 .contenedor-modal-eliminacion-entrada {
    @include contenedor-ventana-modal();
-   @include dimensiones(100%, 100%, 0, 30vh 30%);
+   @include dimensiones(100%, 100%, 0, 20vh 30%);
 
    @include pantalla-tablet {
       font-size: 14px;

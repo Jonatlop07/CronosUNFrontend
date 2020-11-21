@@ -9,17 +9,16 @@ const ContenedorHorario = (props) => {
       const nuevasMaterias = [...materiasHorario];
       if (props.horarioActualizado != null) {
          props.horarioActualizado.forEach((materia) => {
-            const horainicial = parseInt(materia.grupo.hora.split("-")[0]);
-            const horafinal = parseInt(materia.grupo.hora.split("-")[1]);
-
             for (let i = 0; i < materia.grupo.dias.length; i++) {
+               const horainicial = parseInt(materia.grupo.horas[i].split("-")[0]);
+               const horafinal = parseInt(materia.grupo.horas[i].split("-")[1]);
                switch (materia.grupo.dias[i]) {
-                  case "Lunes":
+                  case "LUNES":
                      for (let j = horainicial; j < horafinal; j++) {
                         nuevasMaterias[0][j - 7] = materia;
                      }
                      break;
-                  case "Martes":
+                  case "MARTES":
                      for (let j = horainicial; j < horafinal; j++) {
                         nuevasMaterias[1][j - 7] = materia;
                         for (
@@ -36,7 +35,7 @@ const ContenedorHorario = (props) => {
                         }
                      }
                      break;
-                  case "Miercoles":
+                  case "MIÉRCOLES":
                      for (let j = horainicial; j < horafinal; j++) {
                         nuevasMaterias[2][j - 7] = materia;
                         for (
@@ -53,7 +52,7 @@ const ContenedorHorario = (props) => {
                         }
                      }
                      break;
-                  case "Jueves":
+                  case "JUEVES":
                      for (let j = horainicial; j < horafinal; j++) {
                         nuevasMaterias[3][j - 7] = materia;
                         for (
@@ -70,7 +69,7 @@ const ContenedorHorario = (props) => {
                         }
                      }
                      break;
-                  case "Viernes":
+                  case "VIERNES":
                      for (let j = horainicial; j < horafinal; j++) {
                         nuevasMaterias[4][j - 7] = materia;
                         for (
@@ -87,7 +86,7 @@ const ContenedorHorario = (props) => {
                         }
                      }
                      break;
-                  case "Sabado":
+                  case "SÁBADO":
                      for (let j = horainicial; j < horafinal; j++) {
                         nuevasMaterias[5][j - 7] = materia;
                         for (
@@ -111,12 +110,11 @@ const ContenedorHorario = (props) => {
       }
       if (props.materiasEliminadas != null) {
          props.materiasEliminadas.forEach((materia) => {
-            const horainicial = parseInt(materia.grupo.hora.split("-")[0]);
-            const horafinal = parseInt(materia.grupo.hora.split("-")[1]);
-
             for (let i = 0; i < materia.grupo.dias.length; i++) {
+               const horainicial = parseInt(materia.grupo.horas[i].split("-")[0]);
+               const horafinal = parseInt(materia.grupo.horas[i].split("-")[1]);
                switch (materia.grupo.dias[i]) {
-                  case "Lunes":
+                  case "LUNES":
                      for (let j = horainicial; j < horafinal; j++) {
                         nuevasMaterias[0][j - 7] = NaN;
                         props.materiasEliminadas.splice(0, 1);
@@ -135,7 +133,7 @@ const ContenedorHorario = (props) => {
                         }
                      }
                      break;
-                  case "Martes":
+                  case "MARTES":
                      for (let j = horainicial; j < horafinal; j++) {
                         nuevasMaterias[1][j - 7] = NaN;
                         props.materiasEliminadas.splice(0, 1);
@@ -154,7 +152,7 @@ const ContenedorHorario = (props) => {
                         }
                      }
                      break;
-                  case "Miercoles":
+                  case "MIÉRCOLES":
                      for (let j = horainicial; j < horafinal; j++) {
                         nuevasMaterias[2][j - 7] = NaN;
                         props.materiasEliminadas.splice(0, 1);
@@ -173,7 +171,7 @@ const ContenedorHorario = (props) => {
                         }
                      }
                      break;
-                  case "Jueves":
+                  case "JUEVES":
                      for (let j = horainicial; j < horafinal; j++) {
                         nuevasMaterias[3][j - 7] = NaN;
                         props.materiasEliminadas.splice(0, 1);
@@ -192,7 +190,7 @@ const ContenedorHorario = (props) => {
                         }
                      }
                      break;
-                  case "Viernes":
+                  case "VIERNES":
                      for (let j = horainicial; j < horafinal; j++) {
                         nuevasMaterias[4][j - 7] = NaN;
                         props.materiasEliminadas.splice(0, 1);
@@ -211,7 +209,7 @@ const ContenedorHorario = (props) => {
                         }
                      }
                      break;
-                  case "Sabado":
+                  case "SÁBADO":
                      for (let j = horainicial; j < horafinal; j++) {
                         nuevasMaterias[5][j - 7] = NaN;
                         props.materiasEliminadas.splice(0, 1);

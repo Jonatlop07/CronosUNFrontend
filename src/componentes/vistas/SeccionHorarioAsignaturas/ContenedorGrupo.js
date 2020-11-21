@@ -13,7 +13,8 @@ const ContenedorGrupo = (props) => {
    };
    return (
       <div className="contenedor-asignaturas-materia-grupo">
-         <p>Hora: {props.grupo.hora}</p>
+         <p>Grupo {props.grupo.numero}</p>
+         <p>Horas: {props.grupo.horas}</p>
          <p>Profesor: {props.grupo.profesor}</p>
          <p>Días: {props.grupo.dias}</p>
          {botonDeseleccionar === false ? (

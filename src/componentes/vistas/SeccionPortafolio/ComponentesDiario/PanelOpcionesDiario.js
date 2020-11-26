@@ -15,6 +15,11 @@ const PanelOpcionesDiario = (props) => {
       setFiltrandoEntradas(false);
    };
 
+   const filtrarEntradasDiario = (nuevosParametrosFiltro) => {
+      props.filtrarEntradasDiario(nuevosParametrosFiltro);
+      terminarFiltroEntradas();
+   };
+
    return (
       <div className="panel-opciones-diario">
          <div className="panel-opciones-diario-grupo">
@@ -47,12 +52,14 @@ const PanelOpcionesDiario = (props) => {
 
          {registrandoEntrada && (
             <ModalRegistroEntrada
+               registrarEntradaDiario={props.registrarEntradaDiario}
                terminarRegistroEntrada={terminarRegistroEntrada}
             />
          )}
          {filtrandoEntradas && (
             <ModalFiltroEntradas
                terminarFiltroEntradas={terminarFiltroEntradas}
+               filtrarEntradasDiario={filtrarEntradasDiario}
             />
          )}
       </div>

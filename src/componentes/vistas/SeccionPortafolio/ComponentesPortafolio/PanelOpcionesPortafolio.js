@@ -15,6 +15,16 @@ const PanelOpcionesPortafolio = (props) => {
       setFiltrandoProyectos(false);
    };
 
+   const registrarProyecto = (nuevoProyecto) => {
+      props.registrarProyecto(nuevoProyecto);
+      terminarRegistroNuevoProyecto();
+   };
+
+   const filtrarProyectos = (nuevosParametrosFiltro) => {
+      props.filtrarProyectos(nuevosParametrosFiltro);
+      terminarFiltroProyectos();
+   };
+
    return (
       <div className="panel-opciones-portafolio">
          <div className="panel-opciones-portafolio-grupo">
@@ -51,13 +61,17 @@ const PanelOpcionesPortafolio = (props) => {
 
          {creandoNuevoProyecto && (
             <ModalNuevoProyecto
+               categorias={props.categorias}
+               registrarProyecto={registrarProyecto}
                terminarRegistroNuevoProyecto={terminarRegistroNuevoProyecto}
             />
          )}
 
          {filtrandoProyectos && (
             <ModalFiltroProyectos
+               categorias={props.categorias}
                terminarFiltroProyectos={terminarFiltroProyectos}
+               filtrarProyectos={filtrarProyectos}
             />
          )}
       </div>

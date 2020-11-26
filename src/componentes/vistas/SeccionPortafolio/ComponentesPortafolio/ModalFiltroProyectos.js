@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom";
 
+import CategoriaFiltroEspecifico from "./CategoriaFiltroEspecifico.js";
+
 import { obtenerFechaActual } from "../../../../utilidad/funcionesFechaYHora.js";
 
 const ModalFiltroProyectos = (props) => {
@@ -10,21 +12,61 @@ const ModalFiltroProyectos = (props) => {
    const [filtroPorPrivacidad, setFiltroPorPrivacidad] = useState(false);
    const [filtroPorCategoria, setFiltroPorCategoria] = useState(false);
 
-   const [nombreProyecto, setNombreProyecto] = useState("");
+   const [titulo, setTitulo] = useState("");
    const [fechaInicial, setFechaInicial] = useState(obtenerFechaActual());
    const [fechaFinal, setFechaFinal] = useState(obtenerFechaActual());
    const [estadoProyecto, setEstadoProyecto] = useState("");
    const [esPublico, setEsPublico] = useState(false);
-   const [categorias, setCategorias] = useState([]);
+
+   const [categoriaActual, setCategoriaActual] = useState(props.categorias[0]);
+   const [categoriasSeleccionadas, setCategoriasSeleccionadas] = useState([]);
 
    const [nombreClaseContenedor, setNombreClaseContenedor] = useState(
       "modal-filtro"
    );
 
-   const confirmarFiltroProyectos = () => {
-      /* Modificar estado del componente superior correspondiente para mostrar
-      los proyectos filtrados */
+   const agregarCategoria = () => {
+      if (!categoriasSeleccionadas.includes(categoriaActual)) {
+         const nuevasCategoriasSeleccionadas = categoriasSeleccionadas.concat(
+            categoriaActual
+         );
+         setCategoriasSeleccionadas(nuevasCategoriasSeleccionadas);
+      }
+   };
 
+   const removerCategoria = (categoriaARemover) => {
+      const categorias = [...categoriasSeleccionadas];
+
+      for (let i = 0; i < categorias.length; i++) {
+         if (categorias[i] === categoriaARemover) {
+            categorias.splice(i, 1);
+         }
+      }
+
+      setCategoriasSeleccionadas(categorias);
+   };
+
+   const confirmarFiltroProyectos = () => {
+      const filtros = {};
+
+      if (filtroPorNombre) {
+         filtros.titulo = titulo;
+      }
+      if (filtroPorFecha) {
+         filtros.fechaInicio = fechaInicial;
+         filtros.fechaFin = fechaFinal;
+      }
+      if (filtroPorEstado) {
+         filtros.estado = estadoProyecto;
+      }
+      if (filtroPorPrivacidad) {
+         filtros.privado = !esPublico;
+      }
+      if (filtroPorCategoria) {
+         filtros.categorias = categoriasSeleccionadas;
+      }
+
+      props.filtrarProyectos(filtros);
       terminarFiltroProyectos();
    };
 
@@ -51,11 +93,11 @@ const ModalFiltroProyectos = (props) => {
                   Por nombre:
                </label>
                <label className="modal-filtro-seleccion-etiqueta">
-                  Nombre del proyecto:
+                  Titulo del proyecto:
                   <input
                      className="modal-filtro-seleccion-texto"
-                     value={nombreProyecto}
-                     onChange={(e) => setNombreProyecto(e.currentTarget.value)}
+                     value={titulo}
+                     onChange={(e) => setTitulo(e.currentTarget.value)}
                   />
                </label>
                <hr />
@@ -148,13 +190,40 @@ const ModalFiltroProyectos = (props) => {
                   Por categoría:
                </label>
                <div className="modal-filtro-seleccion-categorias">
+                  <select
+                     className="modal-filtro-seleccion-selector modal-filtro-seleccion-selector-categorias"
+                     value={categoriaActual}
+                     onChange={(e) => setCategoriaActual(e.currentTarget.value)}
+                  >
+                     {props.categorias.map((categoria, indice) => (
+                        <option key={`cat${indice}`} value={categoria}>
+                           {categoria}
+                        </option>
+                     ))}
+                  </select>
                   <i
                      className="modal-filtro-seleccion-categorias-btn fas fa-plus-square"
-                     onClick={(e) => {}}
+                     onClick={agregarCategoria}
                   >
                      Añadir categoría
                   </i>
                </div>
+               <label className="modal-filtro-seleccion-etiqueta">
+                  {categoriasSeleccionadas.length > 0
+                     ? "Categorias seleccionadas:"
+                     : "No hay categorias seleccionadas hasta el momento."}
+               </label>
+               <ul className="modal-filtro-seleccion-fechas">
+                  {categoriasSeleccionadas.map(
+                     (categoriaSeleccionada, indice) => (
+                        <CategoriaFiltroEspecifico
+                           key={`ca${indice}`}
+                           categoria={categoriaSeleccionada}
+                           removerCategoria={removerCategoria}
+                        />
+                     )
+                  )}
+               </ul>
             </div>
 
             <button onClick={confirmarFiltroProyectos}>Confirmar filtro</button>

@@ -1,71 +1,31 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 
 import EntradaDiario from "./EntradaDiario.js";
 
-const ContenedorDiario = (props) => {
-   const eliminarEntrada = (idEntrada) => {
-      /*Código para eliminar la entrada*/
-   };
-
+const ContenedorDiario = ({ entradasDiario, eliminarEntrada }) => {
    return (
       <div className="contenedor-diario">
-         <EntradaDiario
-            key="e1"
-            fecha="10/10/2020"
-            hora="15:15"
-            texto="Hoy estuve probando mi texto. Hoy estuve probando mi texto. Hoy estuve probando mi texto. Hoy estuve probando mi texto"
-            eliminarEntrada={eliminarEntrada}
-         />
-
-         <EntradaDiario
-            key="e2"
-            fecha="10/10/2020"
-            hora="15:15"
-            texto="Hoy estuve probando mi texto"
-            eliminarEntrada={eliminarEntrada}
-         />
-
-         <EntradaDiario
-            key="e3"
-            fecha="10/10/2020"
-            hora="15:15"
-            texto="Hoy estuve probando mi texto"
-            eliminarEntrada={eliminarEntrada}
-         />
-
-         <EntradaDiario
-            key="e4"
-            fecha="10/10/2020"
-            hora="15:15"
-            texto="Hoy estuve probando mi texto"
-            eliminarEntrada={eliminarEntrada}
-         />
-
-         <EntradaDiario
-            key="e5"
-            fecha="10/10/2020"
-            hora="15:15"
-            texto="Hoy estuve probando mi texto"
-            eliminarEntrada={eliminarEntrada}
-         />
-
-         <EntradaDiario
-            key="e6"
-            fecha="10/10/2020"
-            hora="15:15"
-            texto="Hoy estuve probando mi texto"
-            eliminarEntrada={eliminarEntrada}
-         />
-
-         <EntradaDiario
-            key="e7"
-            fecha="10/10/2020"
-            hora="15:15"
-            texto="Hoy estuve probando mi texto"
-            eliminarEntrada={eliminarEntrada}
-         />
+         {entradasDiario.map((entradaDiario, indice) => (
+            <EntradaDiario
+               key={`entrada${indice}`}
+               id={entradaDiario.id}
+               fecha={entradaDiario.fecha}
+               hora={entradaDiario.hora}
+               contenido={entradaDiario.contenido}
+               eliminarEntrada={eliminarEntrada}
+            />
+         ))}
       </div>
    );
+};
+
+ContenedorDiario.propTypes = {
+   entradasDiario: PropTypes.array.isRequired,
+};
+
+ContenedorDiario.defaultProps = {
+   entradasDiario: [],
 };
 
 export default ContenedorDiario;

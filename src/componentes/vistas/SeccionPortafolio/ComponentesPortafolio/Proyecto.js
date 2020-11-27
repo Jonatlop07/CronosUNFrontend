@@ -1,31 +1,39 @@
 import React, { useState } from "react";
 
-const Proyecto = (informacion) => {
+const Proyecto = ({ datos, actualizarProyecto }) => {
+   const [estado, setEstado] = useState(datos.estado);
+
    const consultarProyecto = () => {};
 
    const editarProyecto = () => {};
 
-   const cambiarEstado = async () => {
-      const RUTA_RECURSO = `https://localhost:8080/proyectos/${informacion.id}`;
-      const configuracion = {};
-      fetch(RUTA_RECURSO);
+   const cambiarEstado = async (e) => {
+      const datosProyecto = datos,
+         idProyecto = datos.id;
+      datosProyecto.estado = e.currentTarget.value;
+      delete datosProyecto.id;
+      actualizarProyecto(idProyecto, datosProyecto);
+      setEstado(e.currentTarget.value);
    };
 
-   const cambiarPrivacidad = async () => {
-      const RUTA_RECURSO = `https://localhost:8080/proyectos/${informacion.id}`;
-      const configuracion = {};
-      const respuesta = await fetch(RUTA_RECURSO);
+   const cambiarPrivacidad = async (e) => {
+      const datosProyecto = datos,
+         idProyecto = datos.id;
+      datosProyecto.privacidad = e.currentTarget.checked;
+      delete datosProyecto.id;
+      console.log(datosProyecto);
+      actualizarProyecto(idProyecto, datosProyecto);
    };
 
    return (
       <section className="proyecto">
          <h5 className="proyecto-titulo" onClick={consultarProyecto}>
-            {informacion.titulo}
+            {datos.titulo}
          </h5>
-         <p className="proyecto-descripcion">{informacion.descripcion}</p>
+         <p className="proyecto-descripcion">{datos.descripcion}</p>
          <figure
             className="proyecto-imagen"
-            style={{ backgroundImage: `url(${informacion.imagenFondo})` }}
+            style={{ backgroundImage: `url(${datos.imagenFondo})` }}
          >
             <img />
          </figure>
@@ -36,7 +44,7 @@ const Proyecto = (informacion) => {
             ></i>
             <select
                className="proyecto-opciones-estado"
-               value={informacion.estado}
+               value={estado}
                onChange={cambiarEstado}
             >
                <option value="Finalizado">Finalizado</option>
@@ -49,11 +57,11 @@ const Proyecto = (informacion) => {
                   className="proyecto-opciones-privacidad-caja-seleccion"
                   type="checkbox"
                   onChange={cambiarPrivacidad}
-                  defaultChecked={informacion.esPrivado}
+                  checked={datos.privacidad}
                />
                <span className="proyecto-opciones-privacidad-deslizador"></span>
                <label className="proyecto-opciones-privacidad-etiqueta">
-                  {informacion.esPrivado ? "Privado" : "Público"}
+                  {datos.privacidad ? "Privado" : "Público"}
                </label>
             </label>
          </div>

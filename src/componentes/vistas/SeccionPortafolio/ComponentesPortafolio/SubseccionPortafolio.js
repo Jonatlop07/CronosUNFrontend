@@ -36,6 +36,7 @@ const SubseccionPortafolio = (props) => {
          descripcion: proyecto.descripcion,
          estado: proyecto.estado,
          esPrivado: proyecto.privacidad,
+         fechaCreacion: proyecto.fechaCreacion,
          categoria: proyecto.categoria,
       }));
 
@@ -78,6 +79,24 @@ const SubseccionPortafolio = (props) => {
       obtenerProyectos(estadoPrincipal.parametrosFiltro);
    };
 
+   const actualizarProyecto = async (idProyecto, cambios) => {
+      const respuesta = await fetch(
+         `http://localhost:8080/proyectos/actualizacion/${idProyecto}`,
+         {
+            method: "PUT",
+            headers: {
+               "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+               ...cambios,
+               idUsuario: "1",
+            }),
+         }
+      ).catch((err) => console.log(err));
+
+      obtenerProyectos(estadoPrincipal.parametrosFiltro);
+   };
+
    const filtrarProyectos = (nuevosParametrosFiltro) => {
       console.log(nuevosParametrosFiltro);
       nuevosParametrosFiltro.idUsuario = "1";
@@ -115,6 +134,7 @@ const SubseccionPortafolio = (props) => {
             />
             <ContenedorDeProyectos
                proyectos={estadoPrincipal.listaProyectos}
+               actualizarProyecto={actualizarProyecto}
                eliminarProyecto={eliminarProyecto}
             />
             <ContenedorBotonesPaginas

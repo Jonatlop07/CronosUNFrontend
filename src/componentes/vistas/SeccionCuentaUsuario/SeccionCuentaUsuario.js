@@ -1,9 +1,34 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 import ImagenCuentaPorDefecto from "./Default.svg.png";
 import "./estilos/seccionCuentaUsuario.scss";
 
 const SeccionCuentaUsuario = (props) => {
+  const [nombre, setNombre] = useState("");
+  const [alias, setAlias] = useState("");
+  const [correo, setCorreo] = useState("");
+  const [clave, setClave] = useState("");
+  const [biografia, setBiografia] = useState("");
+
+  const obtenerInformacion = async () => {
+    const informacion = await fetch(
+      `http://localhost:8080/informacionUsuario?id=1`,
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    ).then((respuesta) => respuesta.json());
+    setNombre(informacion.nombre);
+    setAlias(informacion.alias);
+    setCorreo(informacion.correo);
+    setClave(informacion.clave);
+    setBiografia(informacion.biografia);
+    console.log(informacion);
+  };
+  useEffect(() => {
+    obtenerInformacion();
+  }, []);
   return (
     <div>
       <div className="contenedor">
@@ -24,9 +49,6 @@ const SeccionCuentaUsuario = (props) => {
                 Nombre
               </label>
               <label className="editar-cuenta-contenedor-etiqueta-nombre">
-                Apellido
-              </label>
-              <label className="editar-cuenta-contenedor-etiqueta-nombre">
                 Nombre de Usuario
               </label>
               <label className="editar-cuenta-contenedor-etiqueta-nombre">
@@ -43,37 +65,31 @@ const SeccionCuentaUsuario = (props) => {
               <input
                 type="text"
                 name="Nombre"
-                placeholder="NombreEjemplo"
+                placeholder={nombre}
                 className="editar-cuenta-contenedor-parametro-entrada"
-              />
-              <input
-                type="text"
-                name="Apellido"
-                placeholder="ApellidoEjemplo"
-                className="editar-cuenta-contenedor-parametro-entrada"
-              />
+              ></input>
               <input
                 type="text"
                 name="Nombre de Usuario"
-                placeholder="Nombre1234ejemplo"
+                placeholder={alias}
                 className="editar-cuenta-contenedor-parametro-entrada"
               />
               <input
                 type="text"
                 name="Correo"
-                placeholder="nombreEjemplo@correo.com"
+                placeholder={correo}
                 className="editar-cuenta-contenedor-parametro-entrada"
               />
               <input
                 type="text"
                 name="clave"
-                placeholder="***********"
+                placeholder={clave}
                 className="editar-cuenta-contenedor-parametro-entrada"
               />
               <input
                 type="text"
                 name="Biografia"
-                placeholder="Describete a ti mismo!"
+                placeholder={biografia}
                 className="editar-cuenta-contenedor-parametro-entrada"
               />
             </div>

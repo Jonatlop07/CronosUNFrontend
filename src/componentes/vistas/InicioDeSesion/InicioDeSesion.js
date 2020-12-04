@@ -5,10 +5,12 @@ import "./estilos/inicioDeSesion.scss";
 const InicioDeSesion = (props) => {
   const [alias, setAlias] = useState("");
   const [clave, setClave] = useState("");
+
   const handleInputChange = (event) => {
     setAlias(event.target.value);
     setClave(event.target.value);
   };
+
   const iniciarSesion = async (event) => {
     event.preventDefault();
     const token = await fetch("http://localhost:8080/autenticacion", {

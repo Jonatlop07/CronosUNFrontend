@@ -10,6 +10,7 @@ const Registro = (props) => {
   const [alias, setAlias] = useState();
   const [correo, setCorreo] = useState();
   const [clave, setClave] = useState();
+
   const handleInputChange = (event) => {
     setNombre(event.target.value);
     setApellido(event.target.value);
@@ -61,7 +62,7 @@ const Registro = (props) => {
             <input
               className="seccion-registro-input"
               type="text"
-              name="Alias"
+              name="alias"
               placeholder="Alias"
               onChange={handleInputChange}
             />
@@ -79,6 +80,7 @@ const Registro = (props) => {
               type="password"
               name="clave"
               placeholder="clave"
+              on
               onChange={handleInputChange}
             />
             <br />

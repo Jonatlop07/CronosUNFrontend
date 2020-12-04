@@ -12,7 +12,7 @@ const SeccionCuentaUsuario = (props) => {
 
   const obtenerInformacion = async () => {
     const informacion = await fetch(
-      `http://localhost:8080/informacionUsuario?id=1`,
+      `http://localhost:8080/informacionUsuario?id=${13}`,
       {
         headers: {
           "Content-Type": "application/json",
@@ -26,23 +26,85 @@ const SeccionCuentaUsuario = (props) => {
     setBiografia(informacion.biografia);
     console.log(informacion);
   };
+
+  const handleInputChangeNombre = (event) => {
+    setNombre(event.target.value);
+  };
+  const handleInputChangeAlias = (event) => {
+    setAlias(event.target.value);
+  };
+  const handleInputChangeCorreo = (event) => {
+    setCorreo(event.target.value);
+  };
+  const handleInputChangeClave = (event) => {
+    setClave(event.target.value);
+  };
+  const handleInputChangeBiografia = (event) => {
+    setBiografia(event.target.value);
+  };
+
+  const modificarUsuario = async (event) => {
+    event.preventDefault();
+    const informacionmodificada = await fetch(
+      `http://localhost:8080/modificacionUsuario`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          id: 13,
+          nombre: nombre,
+          correo: correo,
+          clave: clave,
+          alias: alias,
+          biografia: biografia,
+        }),
+      }
+    ).then((respuesta) => respuesta.json());
+    setNombre(informacionmodificada.nombre);
+    setAlias(informacionmodificada.alias);
+    setCorreo(informacionmodificada.correo);
+    setClave(informacionmodificada.clave);
+    setBiografia(informacionmodificada.biografia);
+    console.log(informacionmodificada);
+  };
+
+  const eliminarUsuario = async (event) => {
+    event.preventDefault();
+    const respuesta = await fetch(
+      `http://localhost:8080/EliminacionUsuario?id=${13}`,
+      {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          idUsuario: "13",
+        }),
+      }
+    );
+    console.log(respuesta);
+  };
+
   useEffect(() => {
     obtenerInformacion();
   }, []);
+
   return (
     <div>
       <div className="contenedor">
         <div className="vista">
           <div className="vista-cuenta">
             <img className="vista-cuenta-imagen" src={ImagenCuentaPorDefecto} />
-            <p className="vista-cuenta-nombreUsuario">Nombre de Usuario</p>
+            <p className="vista-cuenta-nombreUsuario">{nombre}</p>
             <button className="vista-cuenta-boton" type="submit">
               Actualizar Imagen
             </button>
           </div>
         </div>
 
-        <form className="editar-cuenta">
+        <form className="editar-cuenta" onSubmit={modificarUsuario}>
           <div className="editar-cuenta-contenedor">
             <div className="editar-cuenta-contenedor-etiqueta">
               <label className="editar-cuenta-contenedor-etiqueta-nombre">
@@ -63,33 +125,38 @@ const SeccionCuentaUsuario = (props) => {
             </div>
             <div className="editar-cuenta-contenedor-parametro">
               <input
+                onChange={handleInputChangeNombre}
                 type="text"
-                name="Nombre"
-                placeholder={nombre}
+                name="nombre"
+                value={nombre}
                 className="editar-cuenta-contenedor-parametro-entrada"
               ></input>
               <input
+                onChange={handleInputChangeAlias}
                 type="text"
-                name="Nombre de Usuario"
-                placeholder={alias}
+                name="alias"
+                value={alias}
                 className="editar-cuenta-contenedor-parametro-entrada"
               />
               <input
+                onChange={handleInputChangeCorreo}
                 type="text"
-                name="Correo"
-                placeholder={correo}
+                name="correo"
+                value={correo}
                 className="editar-cuenta-contenedor-parametro-entrada"
               />
               <input
+                onChange={handleInputChangeClave}
                 type="text"
                 name="clave"
-                placeholder={clave}
+                value={clave}
                 className="editar-cuenta-contenedor-parametro-entrada"
               />
               <input
+                onChange={handleInputChangeBiografia}
                 type="text"
-                name="Biografia"
-                placeholder={biografia}
+                name="biografia"
+                value={biografia}
                 className="editar-cuenta-contenedor-parametro-entrada"
               />
             </div>
@@ -102,7 +169,11 @@ const SeccionCuentaUsuario = (props) => {
         </form>
       </div>
       <div className="eliminar-perfil">
-        <button className="eliminar-perfil-boton" type="submit">
+        <button
+          onClick={eliminarUsuario}
+          className="eliminar-perfil-boton"
+          type="submit"
+        >
           Eliminar Perfil
         </button>
       </div>

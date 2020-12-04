@@ -6,16 +6,24 @@ import { RUTA_INICIO_SESION } from "../../../utilidad/rutas.js";
 
 const Registro = (props) => {
   const [nombre, setNombre] = useState();
-  const [apellidos, setApellido] = useState();
+  const [apellido, setApellido] = useState();
   const [alias, setAlias] = useState();
   const [correo, setCorreo] = useState();
   const [clave, setClave] = useState();
 
-  const handleInputChange = (event) => {
+  const handleInputChangeNombre = (event) => {
     setNombre(event.target.value);
+  };
+  const handleInputChangeApellido = (event) => {
     setApellido(event.target.value);
+  };
+  const handleInputChangeAlias = (event) => {
     setAlias(event.target.value);
+  };
+  const handleInputChangeCorreo = (event) => {
     setCorreo(event.target.value);
+  };
+  const handleInputChangeClave = (event) => {
     setClave(event.target.value);
   };
 
@@ -27,7 +35,7 @@ const Registro = (props) => {
         "content-type": "application/json",
       },
       body: JSON.stringify({
-        nombre: nombre + apellidos,
+        nombre: nombre + apellido,
         correo: correo,
         clave: clave,
         alias: alias,
@@ -47,7 +55,7 @@ const Registro = (props) => {
               type="text"
               name="nombre"
               placeholder="Nombre"
-              onChange={handleInputChange}
+              onChange={handleInputChangeNombre}
               autoFocus={true}
             />
             <br />
@@ -56,7 +64,7 @@ const Registro = (props) => {
               type="text"
               name="apellido"
               placeholder="apellido"
-              onChange={handleInputChange}
+              onChange={handleInputChangeApellido}
             />
             <br />
             <input
@@ -64,7 +72,7 @@ const Registro = (props) => {
               type="text"
               name="alias"
               placeholder="Alias"
-              onChange={handleInputChange}
+              onChange={handleInputChangeAlias}
             />
             <br />
             <input
@@ -72,7 +80,7 @@ const Registro = (props) => {
               type="email"
               name="correo"
               placeholder="Correo"
-              onChange={handleInputChange}
+              onChange={handleInputChangeCorreo}
             />
             <br />
             <input
@@ -81,7 +89,7 @@ const Registro = (props) => {
               name="clave"
               placeholder="clave"
               on
-              onChange={handleInputChange}
+              onChange={handleInputChangeClave}
             />
             <br />
             <input

@@ -12,7 +12,7 @@ const SeccionCuentaUsuario = (props) => {
 
   const obtenerInformacion = async () => {
     const informacion = await fetch(
-      `http://localhost:8080/informacionUsuario?id=${13}`,
+      `http://localhost:8080/informacionUsuario?id=${15}`,
       {
         headers: {
           "Content-Type": "application/json",
@@ -53,7 +53,7 @@ const SeccionCuentaUsuario = (props) => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          id: 13,
+          id: 15,
           nombre: nombre,
           correo: correo,
           clave: clave,
@@ -73,14 +73,14 @@ const SeccionCuentaUsuario = (props) => {
   const eliminarUsuario = async (event) => {
     event.preventDefault();
     const respuesta = await fetch(
-      `http://localhost:8080/EliminacionUsuario?id=${13}`,
+      `http://localhost:8080/EliminacionUsuario?id=${15}`,
       {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          idUsuario: "13",
+          idUsuario: "15",
         }),
       }
     );

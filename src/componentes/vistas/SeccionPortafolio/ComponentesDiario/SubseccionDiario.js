@@ -16,13 +16,20 @@ const SubseccionDiario = (props) => {
       const entradas = await fetch(`http://localhost:8080/entradasDiario`, {
          method: "POST",
          headers: {
+            Authorization: props.auth,
             "Content-Type": "application/json",
          },
          body: JSON.stringify(parametrosFiltro),
       }).then((respuesta) => respuesta.json());
 
       const consultaNumeroPaginas = await fetch(
-         `http://localhost:8080/entradasDiario/paginas?idUsuario=1`
+         `http://localhost:8080/entradasDiario/paginas?idUsuario=1`,
+         {
+            headers: {
+               Authorization: props.auth,
+               "Content-Type": "application/json",
+            },
+         }
       ).then((respuesta) => respuesta.json());
 
       const nuevasEntradas = entradas.map((entrada) => ({
@@ -57,6 +64,7 @@ const SubseccionDiario = (props) => {
          {
             method: "POST",
             headers: {
+               Authorization: props.auth,
                "Content-Type": "application/json",
             },
             body: JSON.stringify({
@@ -81,6 +89,7 @@ const SubseccionDiario = (props) => {
          {
             method: "DELETE",
             headers: {
+               Authorization: props.auth,
                "Content-Type": "application/json",
             },
             body: JSON.stringify({

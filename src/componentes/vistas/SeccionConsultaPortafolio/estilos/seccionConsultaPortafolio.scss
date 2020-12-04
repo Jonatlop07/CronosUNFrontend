@@ -1,0 +1,30 @@
+@import "../../../../scss/variables";
+@import "../../../../scss/mixins";
+@import "../../SeccionPortafolio/estilos/animaciones";
+
+@import "./contenedorDeProyectosPublicos";
+
+$sombra-borde-subsecciones: -0.5rem -0.5rem 0.05rem lighten($color-dos, 20%);
+
+.seccion-consulta-portafolio {
+   margin-bottom: 1rem;
+   #{&}-etiqueta {
+      @include titulo-subseccion();
+   }
+
+   #{&}-principal {
+      background: linear-gradient(
+         to left top,
+         $color-tres,
+         $color-cuatro,
+         $color-dos
+      );
+      box-shadow: $sombra-borde-subsecciones;
+      animation: gradiente 3s ease infinite;
+
+      width: 60%;
+      margin: 0rem auto;
+      padding: 1rem 0.5rem;
+      padding-bottom: 0.5rem;
+   }
+}

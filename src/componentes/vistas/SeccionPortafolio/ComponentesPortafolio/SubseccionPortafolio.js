@@ -15,30 +15,54 @@ const SubseccionPortafolio = (props) => {
 
    const obtenerProyectos = async (parametrosFiltro) => {
       const categorias = await fetch(
-         `http://localhost:8080/proyectos/categorias/1`
+         `http://localhost:8080/proyectos/categorias/1`,
+         {
+            headers: {
+               Authorization: props.auth,
+               "Content-Type": "application/json",
+            },
+         }
       ).then((respuesta) => respuesta.json());
 
       const proyectos = await fetch(`http://localhost:8080/proyectos`, {
          method: "POST",
          headers: {
+            Authorization: props.auth,
             "Content-Type": "application/json",
          },
          body: JSON.stringify(parametrosFiltro),
       }).then((respuesta) => respuesta.json());
 
       const consultaNumeroPaginas = await fetch(
-         `http://localhost:8080/proyectos/paginas?idUsuario=1`
+         `http://localhost:8080/proyectos/paginas?idUsuario=1`,
+         {
+            headers: {
+               Authorization: props.auth,
+               "Content-Type": "application/json",
+            },
+         }
       ).then((respuesta) => respuesta.json());
 
-      const listaProyectos = proyectos.map((proyecto) => ({
-         id: proyecto.id,
-         titulo: proyecto.titulo,
-         descripcion: proyecto.descripcion,
-         estado: proyecto.estado,
-         esPrivado: proyecto.privacidad,
-         fechaCreacion: proyecto.fechaCreacion,
-         categoria: proyecto.categoria,
-      }));
+      const listaProyectos = proyectos.map((proyecto) => {
+         const {
+            id,
+            titulo,
+            descripcion,
+            estado,
+            privacidad,
+            fechaCreacion,
+            categoria,
+         } = proyecto;
+         return {
+            id,
+            titulo,
+            descripcion,
+            estado,
+            privacidad,
+            fechaCreacion,
+            categoria,
+         };
+      });
 
       const nuevoEstadoPrincipal = {
          listaProyectos,
@@ -67,6 +91,7 @@ const SubseccionPortafolio = (props) => {
          {
             method: "POST",
             headers: {
+               Authorization: props.auth,
                "Content-Type": "application/json",
             },
             body: JSON.stringify({
@@ -85,6 +110,7 @@ const SubseccionPortafolio = (props) => {
          {
             method: "PUT",
             headers: {
+               Authorization: props.auth,
                "Content-Type": "application/json",
             },
             body: JSON.stringify({
@@ -110,6 +136,7 @@ const SubseccionPortafolio = (props) => {
          {
             method: "DELETE",
             headers: {
+               Authorization: props.auth,
                "Content-Type": "application/json",
             },
             body: JSON.stringify({

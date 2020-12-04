@@ -49,7 +49,7 @@ const ModalRegistroEntrada = (props) => {
                      autoFocus
                      required
                   >
-                     Enter details here...
+                     Ingrese el contenido de la nueva entrada de diario.
                   </textarea>
                </div>
 

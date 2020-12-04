@@ -1,11 +1,28 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
+
+import {
+   RUTA_SEC_EDITOR,
+   RUTA_SEC_VISUALIZACION_PROYECTO,
+} from "../../../../utilidad/rutas.js";
 
 const Proyecto = ({ datos, actualizarProyecto }) => {
    const [estado, setEstado] = useState(datos.estado);
 
-   const consultarProyecto = () => {};
+   const history = useHistory();
 
-   const editarProyecto = () => {};
+   const consultarProyecto = (e) => {
+      e.preventDefault();
+      history.push({
+         pathname: RUTA_SEC_VISUALIZACION_PROYECTO,
+         idProyecto: datos.id,
+      });
+   };
+
+   const editarProyecto = (e) => {
+      e.preventDefault();
+      history.push({ pathname: RUTA_SEC_EDITOR, idProyecto: datos.id });
+   };
 
    const cambiarEstado = async (e) => {
       const datosProyecto = datos,
@@ -30,13 +47,17 @@ const Proyecto = ({ datos, actualizarProyecto }) => {
          <h5 className="proyecto-titulo" onClick={consultarProyecto}>
             {datos.titulo}
          </h5>
-         <p className="proyecto-descripcion">{datos.descripcion}</p>
-         <figure
-            className="proyecto-imagen"
-            style={{ backgroundImage: `url(${datos.imagenFondo})` }}
-         >
-            <img />
-         </figure>
+         {datos.descripcion && (
+            <p className="proyecto-descripcion">{datos.descripcion}</p>
+         )}
+         {datos.imagenFondo && (
+            <figure
+               className="proyecto-imagen"
+               style={{ backgroundImage: `url(${datos.imagenFondo})` }}
+            >
+               <img />
+            </figure>
+         )}
          <div className="proyecto-opciones">
             <i
                className="proyecto-opciones-editar fad fa-edit"

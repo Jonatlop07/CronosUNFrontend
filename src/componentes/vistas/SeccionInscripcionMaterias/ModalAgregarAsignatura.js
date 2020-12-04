@@ -38,6 +38,7 @@ const ModalAgregarAsignaturas = (props) => {
         ).then((respuesta) => respuesta.json());
     }
     const analisisTexto = (texto) => {
+        console.log(texto)
         let resultado = ""
         for (let i = 8; i <= texto[9].length; i++){
             if (texto[9][i]!=undefined){
@@ -50,6 +51,7 @@ const ModalAgregarAsignaturas = (props) => {
             resultado=resultado.concat(texto[j])
             j++
         }
+        console.log(resultado)
         j = j+2
         let i=0
         while(texto[j][i]!='é'){

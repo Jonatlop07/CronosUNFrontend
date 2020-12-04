@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { horas, dias, materias } from "./materias.js";
+import { horas, dias, materias} from "./materias.js";
 import "./estilos/contenedorHorario.scss";
 
 const ContenedorHorario = (props) => {
    const [materiasHorario, setMateriasHorario] = useState(materias);
-
    const actualizarHorario = () => {
-      const nuevasMaterias = [...materiasHorario];
+      const nuevasMaterias = [...materiasHorario]
       if (props.horarioActualizado != null) {
          props.horarioActualizado.forEach((materia) => {
             for (let i = 0; i < materia.grupo.dias.length; i++) {
@@ -107,6 +106,7 @@ const ContenedorHorario = (props) => {
             }
          });
          setMateriasHorario(nuevasMaterias);
+         props.setHorarioEnvio(nuevasMaterias);
       }
       if (props.materiasEliminadas != null) {
          props.materiasEliminadas.forEach((materia) => {
@@ -233,35 +233,38 @@ const ContenedorHorario = (props) => {
          });
       }
       setMateriasHorario(nuevasMaterias);
+      props.setHorarioEnvio(nuevasMaterias);
    };
    useEffect(actualizarHorario, [props.horarioActualizado]);
    useEffect(actualizarHorario, [props.materiasEliminadas]);
 
    return (
       <div className="contenedor-horario">
-         <div className="contenedor-horario-principal">
-            {dias.map((dia) => (
-               <p className="contenedor-horario-principal-dia">{dia}</p>
-            ))}
-         </div>
-         <div className="contenedor-horario-contenido">
-            {horas.map((hora) => (
-               <p className="contenedor-horario-contenido-hora">{hora}</p>
-            ))}
-            {materiasHorario.map((materiasDia, indMatDia) =>
-               materiasDia.map((materiaDia, indice) => (
-                  <div key={`contAsig${indMatDia}_${indice}`}>
-                     {materiaDia.materia != null ? (
-                        <div className="contenedor-horario-contenido-materia">
-                           <p>{materiaDia.materia}</p>
-                           <p>Profesor:{materiaDia.grupo.profesor}</p>
-                        </div>
-                     ) : (
-                        <div></div>
-                     )}
-                  </div>
-               ))
-            )}
+         <div className ="contenedor-horario-ventana">
+            <div className="contenedor-horario-principal">
+               {dias.map((dia) => (
+                  <p className="contenedor-horario-principal-dia">{dia}</p>
+               ))}
+            </div>
+            <div className="contenedor-horario-contenido">
+               {horas.map((hora) => (
+                  <p className="contenedor-horario-contenido-hora">{hora}</p>
+               ))}
+               {materiasHorario.map((materiasDia, indMatDia) =>
+                  materiasDia.map((materiaDia, indice) => (
+                     <div key={`contAsig${indMatDia}_${indice}`}>
+                        {materiaDia.materia != null ? (
+                           <div className="contenedor-horario-contenido-materia">
+                              <p>{materiaDia.materia}</p>
+                              <p>Profesor:{materiaDia.grupo.profesor}</p>
+                           </div>
+                        ) : (
+                           <div></div>
+                        )}
+                     </div>
+                  ))
+               )}
+            </div>
          </div>
       </div>
    );

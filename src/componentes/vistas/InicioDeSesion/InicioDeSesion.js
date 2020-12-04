@@ -6,8 +6,10 @@ const InicioDeSesion = (props) => {
   const [alias, setAlias] = useState("");
   const [clave, setClave] = useState("");
 
-  const handleInputChange = (event) => {
+  const handleInputChangeAlias = (event) => {
     setAlias(event.target.value);
+  };
+  const handleInputChangeClave = (event) => {
     setClave(event.target.value);
   };
 
@@ -40,7 +42,7 @@ const InicioDeSesion = (props) => {
           name="Alias"
           className="inicio-sesion-formulario-entrada"
           placeholder="Alias"
-          onChange={handleInputChange}
+          onChange={handleInputChangeAlias}
         />
 
         <input
@@ -48,7 +50,7 @@ const InicioDeSesion = (props) => {
           name="clave"
           className="inicio-sesion-formulario-entrada"
           placeholder="Clave"
-          onChange={handleInputChange}
+          onChange={handleInputChangeClave}
         />
 
         <input

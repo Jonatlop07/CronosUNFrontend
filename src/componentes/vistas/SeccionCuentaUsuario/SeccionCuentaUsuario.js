@@ -4,6 +4,8 @@ import ImagenCuentaPorDefecto from "./Default.svg.png";
 import "./estilos/seccionCuentaUsuario.scss";
 
 const SeccionCuentaUsuario = (props) => {
+  const idUsario = 13;
+
   const [nombre, setNombre] = useState("");
   const [alias, setAlias] = useState("");
   const [correo, setCorreo] = useState("");
@@ -12,7 +14,7 @@ const SeccionCuentaUsuario = (props) => {
 
   const obtenerInformacion = async () => {
     const informacion = await fetch(
-      `http://localhost:8080/informacionUsuario?id=${15}`,
+      `http://localhost:8080/informacionUsuario?id=${idUsario}`,
       {
         headers: {
           "Content-Type": "application/json",
@@ -53,7 +55,7 @@ const SeccionCuentaUsuario = (props) => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          id: 15,
+          id: idUsario,
           nombre: nombre,
           correo: correo,
           clave: clave,
@@ -73,14 +75,14 @@ const SeccionCuentaUsuario = (props) => {
   const eliminarUsuario = async (event) => {
     event.preventDefault();
     const respuesta = await fetch(
-      `http://localhost:8080/EliminacionUsuario?id=${15}`,
+      `http://localhost:8080/EliminacionUsuario?id=${idUsario}`,
       {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          idUsuario: "15",
+          idUsuario: "idUsario",
         }),
       }
     );

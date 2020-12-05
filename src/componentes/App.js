@@ -13,22 +13,24 @@ import SeccionPortafolio from "./vistas/SeccionPortafolio/SeccionPortafolio.js";
 import SeccionConsultaPortafolio from "./vistas/SeccionConsultaPortafolio/SeccionConsultaPortafolio.js";
 import SeccionInscripcionMaterias from "./vistas/SeccionInscripcionMaterias/SeccionInscripcionMaterias.js";
 import SeccionEditor from "./vistas/SeccionEditor/SeccionEditor";
+import VisualizacionProyecto from "./vistas/SeccionPortafolio/ComponentesPortafolio/VisualizacionProyecto.js";
 import PieDePagina from "./PieDePagina.js";
 
 import "./estilos/app.scss";
 
 import {
-  RUTA_INICIO,
-  RUTA_INICIO_SESION,
-  RUTA_REGISTRO,
-  RUTA_REC_CLAVE,
-  RUTA_CUENTA_USUARIO,
-  RUTA_SEC_HORARIO_ASIG,
-  RUTA_SEC_HORARIO_PERSONAL,
-  RUTA_SEC_PORTAFOLIO,
-  RUTA_SEC_PROYECTOS_PUBLICOS,
-  RUTA_SEC_EDITOR,
-  RUTA_SEC_INSCRIPCION_MATERIAS,
+   RUTA_INICIO,
+   RUTA_INICIO_SESION,
+   RUTA_REGISTRO,
+   RUTA_REC_CLAVE,
+   RUTA_CUENTA_USUARIO,
+   RUTA_SEC_HORARIO_ASIG,
+   RUTA_SEC_HORARIO_PERSONAL,
+   RUTA_SEC_PORTAFOLIO,
+   RUTA_SEC_VISUALIZACION_PROYECTO,
+   RUTA_SEC_PROYECTOS_PUBLICOS,
+   RUTA_SEC_EDITOR,
+   RUTA_SEC_INSCRIPCION_MATERIAS,
 } from "../utilidad/rutas.js";
 
 function App() {
@@ -62,6 +64,9 @@ function App() {
         <Route exact path={RUTA_SEC_PORTAFOLIO}>
           <SeccionPortafolio />
         </Route>
+        <Route exact path={RUTA_SEC_VISUALIZACION_PROYECTO}>
+          <VisualizacionProyecto />
+        </Route>
         <Route exact path={RUTA_SEC_PROYECTOS_PUBLICOS}>
           <SeccionConsultaPortafolio />
         </Route>
@@ -75,6 +80,5 @@ function App() {
       <PieDePagina />
     </div>
   );
-}
 
 export default App;

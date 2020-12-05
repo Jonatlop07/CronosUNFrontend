@@ -1,0 +1,24 @@
+.comentario {
+   width: 60%;
+   margin: 1rem auto;
+   padding: 0.5rem 0.5rem;
+   color: $color-dos;
+   background: $color-uno;
+   border: none;
+   box-shadow: 2px 2px 7px darken($color-uno, 15%),
+      -2px -2px 7px darken($color-uno, 15%);
+   #{&}-informacion {
+      &-nombre-usuario {
+         font-weight: bold;
+         margin-right: 1rem;
+      }
+
+      &-fecha {
+         margin-left: 1rem;
+      }
+   }
+
+   #{&}-contenido {
+      margin-top: 1rem;
+   }
+}

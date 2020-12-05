@@ -18,6 +18,7 @@
       flex-direction: column;
       max-height: 45rem;
       overflow: auto;
+      min-width: 30%;
       box-shadow: 1px 1px 7px darken($color-uno, 15%),
          -1px -1px 7px darken($color-uno, 15%);
       border-radius: 1%;
@@ -34,7 +35,7 @@
       &-grupo {
          display: flex;
          flex-direction: column;
-         max-height: 45rem;
+         max-height: 15rem;
          overflow: auto;
          background-color: $color-uno;
          box-shadow: 1px 1px 7px darken($color-uno, 15%),
@@ -42,6 +43,7 @@
          border-radius: 1%;
          padding: 1rem;
          margin: 0.35rem 0;
+         min-height: 11rem;
          &-boton {
             @include boton-general($color-cuatro);
             color: $color-uno;

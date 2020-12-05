@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-
 import ModalAgregarAsignatura from "./ModalAgregarAsignatura.js";
+
 
 import "./estilos/SeccionInscripcionMaterias.scss";
 

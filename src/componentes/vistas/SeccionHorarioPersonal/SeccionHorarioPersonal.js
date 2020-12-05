@@ -1,90 +1,24 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./estilos/seccionHorarioPersonal.scss";
 import ContenedorHorario from "./ContenedorHorario";
 import ItemHorarioPersonal from "./ItemHorarioPersonal";
-
-const materias = [
-   {
-      nombre: "Algebra Lineal",
-      creditos: 4,
-      dias: ["Lunes", "Miercoles"],
-      hora: "7-9",
-      profesor: "Juan Rojas",
-   },
-   {
-      nombre: "Ingenieria de software",
-      creditos: 3,
-      dias: ["Martes", "Jueves"],
-      hora: "9-11",
-      profesor: "Liz Capataz",
-   },
-   {
-      nombre: "Sistemas Operativos",
-      creditos: 2,
-      dias: ["Miercoles", "Viernes"],
-      hora: "11-13",
-      profesor: "Santiago Niño",
-   },
-   {
-      nombre: "Grafica Interactiva",
-      creditos: 3,
-      dias: ["Martes", "Jueves"],
-      hora: "11-13",
-      profesor: "Jaime Beltran",
-   },
-   {
-      nombre: "Chino I",
-      creditos: 2,
-      dias: ["Lunes", "Miercoles"],
-      hora: "14-16",
-      profesor: "Jhon Gomez",
-   },
-   {
-      nombre: "Chino I",
-      creditos: 2,
-      dias: ["Lunes", "Miercoles"],
-      hora: "14-16",
-      profesor: "Jhon Gomez",
-   },
-   {
-      nombre: "Chino I",
-      creditos: 2,
-      dias: ["Lunes", "Miercoles"],
-      hora: "14-16",
-      profesor: "Jhon Gomez",
-   },
-   {
-      nombre: "Chino I",
-      creditos: 2,
-      dias: ["Lunes", "Miercoles"],
-      hora: "14-16",
-      profesor: "Jhon Gomez",
-   },
-   {
-      nombre: "Chino I",
-      creditos: 2,
-      dias: ["Lunes", "Miercoles"],
-      hora: "14-16",
-      profesor: "Jhon Gomez",
-   },
-   {
-      nombre: "Chino I",
-      creditos: 2,
-      dias: ["Lunes", "Miercoles"],
-      hora: "14-16",
-      profesor: "Jhon Gomez",
-   },
-];
+import {useLocation} from 'react-router-dom';
 
 const SeccionHorarioPersonal = (props) => {
-   const [materiasHorario, setMateriasHorario] = useState(materias);
 
+   const location = useLocation();
+   const [materiasHorario, setMateriasHorario] = useState([]);
    const agregarAsignatura = (materia, grupo) => {
       const horarioAux = [...materiasHorario];
       horarioAux.push({ materia, grupo });
       setMateriasHorario(horarioAux);
    };
 
+   const agregarMateriasHorario = () => {
+      setMateriasHorario(location.horarioEnvio);
+   }
+
+   useEffect(() => {agregarMateriasHorario()},[])
    return (
       <div>
          <h1 className="titulo">Mi horario de estudio</h1>
@@ -131,13 +65,13 @@ const SeccionHorarioPersonal = (props) => {
                </h3>
                <div className="contenedor-seccion-horario-personal-funciones-creditos">
                   <ul>
-                     {materiasHorario.map((item, indice) => (
+                     {materiasHorario && Array.isArray(materiasHorario) ?  materiasHorario.map((item, indice) => (
                         <ItemHorarioPersonal
                            nombre={item.nombre}
                            creditos={item.creditos}
                            key={`mat${indice}`}
                         />
-                     ))}
+                     )): <p>no</p>}
                   </ul>
                </div>
                <button className="contenedor-seccion-horario-personal-funciones-descargar">

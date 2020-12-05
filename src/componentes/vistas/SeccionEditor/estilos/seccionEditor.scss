@@ -1,6 +1,8 @@
 @import "../../../../scss/variables";
 @import "../../../../scss/mixins";
 
+@import "./informacionProyecto";
+
 .editor {
    @include dimensiones(auto, auto, 1.5rem 20%, 0);
    font-size: 1.5rem;

@@ -74,6 +74,13 @@
             color: $color-uno;
             margin-bottom: 1.25rem;
            }
+           &-restablecer{
+            $color-dos-modificado: #246e8b;
+            @include boton-general($color-dos-modificado);
+            @include enunciado-ventana-modal();
+            color: $color-uno;
+            margin-bottom: 1.25rem;
+           }
        }
     }
  }

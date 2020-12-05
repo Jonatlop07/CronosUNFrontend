@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Switch, Route } from "react-router-dom";
 
 import BarraNavegacion from "./BarraNavegacion.js";
@@ -34,50 +34,51 @@ import {
 } from "../utilidad/rutas.js";
 
 function App() {
-   return (
-      <div className="App">
-         <BarraNavegacion />
-         <Switch>
-            <Route exact path={RUTA_INICIO_SESION}>
-               <InicioDeSesion />
-            </Route>
-            <Route exact path={RUTA_REGISTRO}>
-               <Registro />
-            </Route>
-            <Route exact path={RUTA_REC_CLAVE}>
-               <RecuperacionClave />
-            </Route>
-            <Route exact path={RUTA_INICIO}>
-               <SeccionInicio />
-            </Route>
-            <Route exact path={RUTA_CUENTA_USUARIO}>
-               <SeccionCuentaUsuario />
-            </Route>
-            <Route exact path={RUTA_SEC_HORARIO_ASIG}>
-               <SeccionHorarioAsignaturas />
-            </Route>
-            <Route exact path={RUTA_SEC_HORARIO_PERSONAL}>
-               <SeccionHorarioPersonal />
-            </Route>
-            <Route exact path={RUTA_SEC_PORTAFOLIO}>
-               <SeccionPortafolio />
-            </Route>
-            <Route exact path={RUTA_SEC_VISUALIZACION_PROYECTO}>
-               <VisualizacionProyecto />
-            </Route>
-            <Route exact path={RUTA_SEC_PROYECTOS_PUBLICOS}>
-               <SeccionConsultaPortafolio />
-            </Route>
-            <Route exact path={RUTA_SEC_INSCRIPCION_MATERIAS}>
-               <SeccionInscripcionMaterias />
-            </Route>
-            <Route exact path={RUTA_SEC_EDITOR}>
-               <SeccionEditor />
-            </Route>
-         </Switch>
-         <PieDePagina />
-      </div>
-   );
-}
+  const [token, setToken] = useState("");
+  const [idUsuario, setIdUsuario] = useState("");
+  return (
+    <div className="App">
+      <BarraNavegacion />
+      <Switch>
+        <Route exact path={RUTA_INICIO_SESION}>
+          <InicioDeSesion auth={setToken} idUsuario={setIdUsuario} />
+        </Route>
+        <Route exact path={RUTA_REGISTRO}>
+          <Registro auth={setToken} idUsuario={setIdUsuario} />
+        </Route>
+        <Route exact path={RUTA_REC_CLAVE}>
+          <RecuperacionClave />
+        </Route>
+        <Route exact path={RUTA_INICIO}>
+          <SeccionInicio />
+        </Route>
+        <Route exact path={RUTA_CUENTA_USUARIO}>
+          <SeccionCuentaUsuario auth={token} idUsuario={idUsuario} />
+        </Route>
+        <Route exact path={RUTA_SEC_HORARIO_ASIG}>
+          <SeccionHorarioAsignaturas />
+        </Route>
+        <Route exact path={RUTA_SEC_HORARIO_PERSONAL}>
+          <SeccionHorarioPersonal />
+        </Route>
+        <Route exact path={RUTA_SEC_PORTAFOLIO}>
+          <SeccionPortafolio />
+        </Route>
+        <Route exact path={RUTA_SEC_VISUALIZACION_PROYECTO}>
+          <VisualizacionProyecto />
+        </Route>
+        <Route exact path={RUTA_SEC_PROYECTOS_PUBLICOS}>
+          <SeccionConsultaPortafolio />
+        </Route>
+        <Route exact path={RUTA_SEC_INSCRIPCION_MATERIAS}>
+          <SeccionInscripcionMaterias />
+        </Route>
+        <Route exact path={RUTA_SEC_EDITOR}>
+          <SeccionEditor />
+        </Route>
+      </Switch>
+      <PieDePagina />
+    </div>
+  );
 
 export default App;

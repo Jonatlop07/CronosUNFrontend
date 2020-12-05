@@ -18,6 +18,7 @@
       flex-direction: column;
       max-height: 45rem;
       overflow: auto;
+      min-width: 30%;
       box-shadow: 1px 1px 7px darken($color-uno, 15%),
          -1px -1px 7px darken($color-uno, 15%);
       border-radius: 1%;

@@ -1,19 +1,27 @@
 import React, { useState } from "react";
-
 import "./estilos/recuperacionClave.scss";
 
 const RecuperacionClave = (props) => {
    const [envioCorreo, setEnvioCorreo] = useState("");
    const handleInputChange = (event) => {
-      setEnvioCorreo({
-         ...envioCorreo,
-         [event.target.name]: event.target.value,
-      });
+      setEnvioCorreo(event.currentTarget.value);
    };
-   const enviarCorreo = (event) => {
+   const enviarCorreo = async (event) => {
       event.preventDefault();
-      console.log(envioCorreo);
-   };
+      event.currentTarget.reset();
+      const bearer = 'Bearer'+ auth;
+      const correo = await fetch(
+      `http://localhost:8080/recuperacionClave?correo=${envioCorreo}`, {
+            method: "POST", 
+            withCredentials: true, 
+            credentials : 'include',
+            headers:{
+               "Authorization": bearer,
+               "Content-Type": "application.json",
+            },
+         }
+      ).then((respuesta) => respuesta.json());
+      };
    return (
       <div className="recuperacion-clave">
          <h1 className="recuperacion-clave-titulo">CronosUN</h1>

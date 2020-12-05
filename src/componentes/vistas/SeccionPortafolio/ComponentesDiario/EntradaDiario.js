@@ -6,7 +6,7 @@ const EntradaDiario = (props) => {
    const [eliminandoEntrada, setEliminandoEntrada] = useState(false);
 
    const eliminarEntrada = () => {
-      props.eliminarEntrada(props.key);
+      props.eliminarEntrada(props.id);
       cancelarEliminacion();
    };
 
@@ -34,8 +34,7 @@ const EntradaDiario = (props) => {
                eliminarEntrada={eliminarEntrada}
             />
          )}
-
-         <p className="entrada-diario-contenido">{props.texto}</p>
+         <p className="entrada-diario-contenido">{props.contenido}</p>
       </div>
    );
 };

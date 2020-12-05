@@ -6,18 +6,19 @@ import {
 } from "../../../../utilidad/funcionesFechaYHora.js";
 
 const FiltroPorRango = (props) => {
-   const [fechaInicial, setFechaInicial] = useState(obtenerFechaActual());
-   const [fechaFinal, setFechaFinal] = useState(obtenerFechaActual());
-   const [horaInicial, setHoraInicial] = useState(obtenerHoraActual());
-   const [horaFinal, setHoraFinal] = useState(obtenerHoraActual());
+   const [fechaInicio, setFechaInicio] = useState(obtenerFechaActual());
+   const [fechaFin, setFechaFin] = useState(obtenerFechaActual());
+   const [horaInicio, setHoraInicio] = useState(obtenerHoraActual());
+   const [horaFin, setHoraFin] = useState(obtenerHoraActual());
 
    const realizarFiltroPorRango = () => {
-      props.realizarFiltroPorRango({
-         fechaInicial,
-         fechaFinal,
-         horaInicial,
-         horaFinal,
+      props.filtrarEntradasDiario({
+         fechaInicio,
+         fechaFin,
+         horaInicio: `${horaInicio}:00`,
+         horaFin: `${horaFin}:00`,
       });
+      terminarFiltroPorRango();
    };
 
    const terminarFiltroPorRango = () => {
@@ -33,8 +34,8 @@ const FiltroPorRango = (props) => {
                   className="modal-filtro-seleccion-fecha"
                   type="date"
                   name="fechaInicial"
-                  value={fechaInicial}
-                  onChange={(e) => setFechaInicial(e.currentTarget.value)}
+                  value={fechaInicio}
+                  onChange={(e) => setFechaInicio(e.currentTarget.value)}
                />
             </label>
 
@@ -44,8 +45,8 @@ const FiltroPorRango = (props) => {
                   className="modal-filtro-seleccion-fecha"
                   type="date"
                   name="fechaFinal"
-                  value={fechaFinal}
-                  onChange={(e) => setFechaFinal(e.currentTarget.value)}
+                  value={fechaFin}
+                  onChange={(e) => setFechaFin(e.currentTarget.value)}
                />
             </label>
 
@@ -55,8 +56,8 @@ const FiltroPorRango = (props) => {
                   className="modal-filtro-seleccion-hora"
                   type="time"
                   name="horaInicial"
-                  value={horaInicial}
-                  onChange={(e) => setHoraInicial(e.currentTarget.value)}
+                  value={horaInicio}
+                  onChange={(e) => setHoraInicio(e.currentTarget.value)}
                />
             </label>
 
@@ -66,8 +67,8 @@ const FiltroPorRango = (props) => {
                   className="modal-filtro-seleccion-hora"
                   type="time"
                   name="horaFinal"
-                  value={horaFinal}
-                  onChange={(e) => setHoraFinal(e.currentTarget.value)}
+                  value={horaFin}
+                  onChange={(e) => setHoraFin(e.currentTarget.value)}
                />
             </label>
          </div>

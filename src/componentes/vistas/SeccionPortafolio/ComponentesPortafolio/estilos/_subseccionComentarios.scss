@@ -1,0 +1,59 @@
+@import "./comentario";
+
+.subseccion-comentarios {
+   #{&}-titulo {
+      margin: 2rem auto;
+      display: block;
+      text-align: center;
+      font-size: 1.4rem;
+      color: $color-dos;
+   }
+   #{&}-nuevo {
+      width: 60%;
+      margin: 0rem 20%;
+
+      &:focus,
+      & select:focus {
+         outline: none;
+         border: none;
+      }
+
+      &-texto {
+         width: 100%;
+         padding: 0.5rem 0.5rem;
+         color: $color-dos;
+         background: $color-uno;
+         border: none;
+         box-shadow: 2px 2px 7px darken($color-uno, 15%),
+            -2px -2px 7px darken($color-uno, 15%);
+
+         &:focus,
+         & select:focus {
+            outline: none;
+            border: none;
+         }
+      }
+
+      &-envio {
+         margin-top: 0.5rem;
+         @include boton-icono-etiqueta(
+            $color-dos,
+            $color-uno,
+            1.25rem,
+            $cambio-fondo: true
+         );
+         padding: 0.35rem;
+         background: inherit;
+
+         &:hover {
+            animation: giro-boton 0.25s;
+         }
+
+         &:focus,
+         & select:focus {
+            outline: none;
+            border: none;
+         }
+      }
+   }
+}

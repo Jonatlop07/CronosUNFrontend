@@ -28,22 +28,8 @@ const ModalFiltroEntradas = (props) => {
       setConfigurandoFiltro(true);
    };
 
-   const realizarFiltroPorRango = (parametrosDeFiltro) => {
-      const {
-         fechaInicial,
-         fechaFinal,
-         horaInicial,
-         horaFinal,
-      } = parametrosDeFiltro;
-      /*Consultar las entradas*/
-
-      terminarFiltroEntradas();
-   };
-
-   const realizarFiltroEspecifico = (parametrosDeFiltro) => {
-      const { fechaEspecifica, horaEspecifica } = parametrosDeFiltro;
-      /*Consultar las entradas*/
-
+   const filtrarEntradasDiario = (nuevosParametrosFiltro) => {
+      props.filtrarEntradasDiario(nuevosParametrosFiltro);
       terminarFiltroEntradas();
    };
 
@@ -58,13 +44,13 @@ const ModalFiltroEntradas = (props) => {
             {configurandoFiltro ? (
                filtrandoPorRango ? (
                   <FiltroPorRango
-                     realizarFiltroPorRango={realizarFiltroPorRango}
                      cancelarConfiguracionFiltro={cancelarConfiguracionFiltro}
+                     filtrarEntradasDiario={props.filtrarEntradasDiario}
                   />
                ) : (
                   <FiltroEspecifico
-                     realizarFiltroEspecifico={realizarFiltroEspecifico}
                      cancelarConfiguracionFiltro={cancelarConfiguracionFiltro}
+                     filtrarEntradasDiario={props.filtrarEntradasDiario}
                   />
                )
             ) : (

@@ -1,10 +1,9 @@
-import { text } from '@fortawesome/fontawesome-svg-core';
-import React, {useState} from 'react';
+import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import {useHistory} from 'react-router-dom';
 import { RUTA_SEC_HORARIO_ASIG} from '../../../utilidad/rutas';
 
-import "./estilos/modalAgregarAsignaturas.scss"; 
+import "./estilos/modalAgregarAsignaturas.scss";
 
 const ModalAgregarAsignaturas = (props) => {
     const history = useHistory();
@@ -104,4 +103,4 @@ const ModalAgregarAsignaturas = (props) => {
     );
 } 
 
-export default ModalAgregarAsignaturas; 
+export default ModalAgregarAsignaturas;

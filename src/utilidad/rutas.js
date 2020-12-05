@@ -5,6 +5,7 @@ export const RUTA_INICIO = "/inicio";
 export const RUTA_SEC_HORARIO_ASIG = "/horarioAsignaturas";
 export const RUTA_SEC_HORARIO_PERSONAL = "/horarioPersonal";
 export const RUTA_SEC_PORTAFOLIO = "/portafolio";
+export const RUTA_SEC_VISUALIZACION_PROYECTO = "/portafolio/proyecto";
 export const RUTA_SEC_PROYECTOS_PUBLICOS = "/proyectos";
 export const RUTA_CUENTA_USUARIO = "/cuenta";
 export const RUTA_SEC_EDITOR = "/editor";

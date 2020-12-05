@@ -23,10 +23,11 @@ const ModalRegistroEntrada = (props) => {
    };
 
    const registrarEntradaDeDiario = () => {
-      const fechaActual = obtenerFechaActual(),
-         horaActual = obtenerHoraActual();
-      /*Se ingresa la entrada en la base de datos*/
-
+      props.registrarEntradaDiario({
+         fecha: obtenerFechaActual(),
+         hora: `${obtenerHoraActual()}:00`,
+         contenido: textoEntrada,
+      });
       terminarRegistroEntrada();
    };
 
@@ -34,7 +35,7 @@ const ModalRegistroEntrada = (props) => {
       <div className="contenedor-modal-registro-entrada">
          <div className={nombreClaseContenedor}>
             <h5>Nueva entrada</h5>
-            <form>
+            <div>
                <div className="modal-registro-entrada-formulario">
                   <textarea
                      className="modal-registro-entrada-formulario-texto"
@@ -48,23 +49,23 @@ const ModalRegistroEntrada = (props) => {
                      autoFocus
                      required
                   >
-                     Enter details here...
+                     Ingrese el contenido de la nueva entrada de diario.
                   </textarea>
                </div>
 
-               <input
+               <button
                   className="modal-registro-entrada-formulario-registrar"
-                  type="submit"
                   onClick={registrarEntradaDeDiario}
-                  value="Registrar"
-               />
+               >
+                  Registrar
+               </button>
                <button
                   className="modal-registro-entrada-formulario-cancelar"
                   onClick={terminarRegistroEntrada}
                >
                   Cancelar
                </button>
-            </form>
+            </div>
          </div>
       </div>,
       document.getElementById("modal")

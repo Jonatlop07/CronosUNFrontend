@@ -13,3 +13,5 @@ export const obtenerHoraActual = () => {
 
    return `${hora}:${minuto}`;
 };
+
+export const obtenerFechaActualPeticion = () => {};

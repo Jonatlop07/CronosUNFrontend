@@ -1,8 +1,8 @@
 import React from "react";
 
-const BotonResultadoEntradas = (props) => {
-   const manejarClickBoton = (evento) => {
-      props.seleccionarSeccion(props.numeroSeccion);
+const BotonPagina = (props) => {
+   const manejarClickBoton = () => {
+      props.seleccionarPagina(props.numeroPagina);
    };
 
    return (
@@ -13,9 +13,9 @@ const BotonResultadoEntradas = (props) => {
          disabled={props.bloquearClick}
          onClick={manejarClickBoton}
       >
-         {props.numeroSeccion}
+         {props.numeroPagina}
       </button>
    );
 };
 
-export default BotonResultadoEntradas;
+export default BotonPagina;

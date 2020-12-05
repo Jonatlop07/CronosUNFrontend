@@ -1,45 +1,92 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 
-const Proyecto = (props) => {
-   const [estadoProyecto, setEstadoProyecto] = useState("enProgreso");
-   const [esPublico, setEsPublico] = useState(false);
+import {
+   RUTA_SEC_EDITOR,
+   RUTA_SEC_VISUALIZACION_PROYECTO,
+} from "../../../../utilidad/rutas.js";
+
+const Proyecto = ({ datos, actualizarProyecto }) => {
+   const [estado, setEstado] = useState(datos.estado);
+
+   const history = useHistory();
+
+   const consultarProyecto = (e) => {
+      e.preventDefault();
+      history.push({
+         pathname: RUTA_SEC_VISUALIZACION_PROYECTO,
+         idProyecto: datos.id,
+      });
+   };
+
+   const editarProyecto = (e) => {
+      e.preventDefault();
+      history.push({ pathname: RUTA_SEC_EDITOR, idProyecto: datos.id });
+   };
+
+   const cambiarEstado = async (e) => {
+      const datosProyecto = datos,
+         idProyecto = datos.id;
+      datosProyecto.estado = e.currentTarget.value;
+      delete datosProyecto.id;
+      actualizarProyecto(idProyecto, datosProyecto);
+      setEstado(e.currentTarget.value);
+   };
+
+   const cambiarPrivacidad = async (e) => {
+      const datosProyecto = datos,
+         idProyecto = datos.id;
+      datosProyecto.privacidad = e.currentTarget.checked;
+      delete datosProyecto.id;
+      console.log(datosProyecto);
+      actualizarProyecto(idProyecto, datosProyecto);
+   };
 
    return (
-      <div className="proyecto">
-         <p className="proyecto-titulo">{props.titulo}</p>
-         <p className="proyecto-descripcion">{props.descripcion}</p>
-         <div
-            className="proyecto-imagen"
-            style={{ backgroundImage: `url(${props.imagenFondo})` }}
-         >
-            <img />
-         </div>
+      <section className="proyecto">
+         <h5 className="proyecto-titulo" onClick={consultarProyecto}>
+            {datos.titulo}
+         </h5>
+         {datos.descripcion && (
+            <p className="proyecto-descripcion">{datos.descripcion}</p>
+         )}
+         {datos.imagenFondo && (
+            <figure
+               className="proyecto-imagen"
+               style={{ backgroundImage: `url(${datos.imagenFondo})` }}
+            >
+               <img />
+            </figure>
+         )}
          <div className="proyecto-opciones">
-            <i className="proyecto-opciones-editar fad fa-edit"></i>
+            <i
+               className="proyecto-opciones-editar fad fa-edit"
+               onClick={editarProyecto}
+            ></i>
             <select
                className="proyecto-opciones-estado"
-               value={estadoProyecto}
-               onChange={(e) => setEstadoProyecto(e.currentTarget.value)}
+               value={estado}
+               onChange={cambiarEstado}
             >
-               <option value="finalizado">Finalizado</option>
-               <option value="enProgreso">En Progreso</option>
-               <option value="incompleto">Incompleto</option>
+               <option value="Finalizado">Finalizado</option>
+               <option value="En progreso">En progreso</option>
+               <option value="Incompleto">Incompleto</option>
             </select>
 
             <label className="proyecto-opciones-privacidad">
                <input
                   className="proyecto-opciones-privacidad-caja-seleccion"
                   type="checkbox"
-                  onChange={(e) => setEsPublico(!esPublico)}
-                  defaultChecked={esPublico}
+                  onChange={cambiarPrivacidad}
+                  checked={datos.privacidad}
                />
                <span className="proyecto-opciones-privacidad-deslizador"></span>
                <label className="proyecto-opciones-privacidad-etiqueta">
-                  {esPublico ? "Público" : "Privado"}
+                  {datos.privacidad ? "Privado" : "Público"}
                </label>
             </label>
          </div>
-      </div>
+      </section>
    );
 };
 

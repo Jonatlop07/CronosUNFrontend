@@ -1,0 +1,44 @@
+@import "../../../../../scss/mixins";
+@import "../../../../../scss/variables";
+
+@import "./subseccionComentarios";
+
+.visualizacion-proyecto {
+   @include disposicion-flex(column);
+   @include dimensiones(100%, 100%, 10vh auto 3rem auto, 1rem);
+
+   #{&}-titulo {
+      text-align: center;
+      color: $color-dos;
+   }
+
+   #{&}-principal {
+      width: 60%;
+      margin: 0 auto;
+      margin-top: 2rem;
+      padding: 1rem;
+      background-color: $color-uno;
+      box-shadow: 2px 2px 10px darken($color-uno, 15%),
+         -2px -2px 10px darken($color-uno, 15%);
+
+      @include pantalla-tablet {
+         width: 85%;
+      }
+
+      @include pantalla-celular {
+         width: 90%;
+      }
+
+      &-fecha {
+      }
+
+      &-categoria {
+         margin-top: 1rem;
+      }
+
+      &-contenido {
+         margin-top: 2rem;
+         font-size: 1.2rem;
+      }
+   }
+}

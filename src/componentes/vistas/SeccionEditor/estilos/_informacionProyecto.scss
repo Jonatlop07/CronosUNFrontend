@@ -1,0 +1,145 @@
+.informacion-proyecto {
+   @include disposicion-flex(column);
+   text-align: left;
+   #{&}-etiqueta {
+      font-size: 1.1rem;
+   }
+
+   #{&}-texto {
+      min-height: max-content;
+      margin: 1rem 0;
+      padding: 0.5rem;
+      border: none;
+      box-shadow: 2px 2px 7px darken($color-uno, 15%),
+         -2px -2px 7px darken($color-uno, 15%);
+
+      &::placeholder {
+         color: darken($color-uno, 50%);
+         @include pantalla-tablet {
+            font-size: 14px;
+         }
+
+         @include pantalla-celular {
+            font-size: 12px;
+         }
+      }
+
+      &:focus,
+      & select:focus {
+         outline: none;
+         border: none;
+      }
+   }
+
+   #{&}-selector {
+      min-height: max-content;
+      margin: 1rem 0;
+      padding: 0.5rem;
+      color: $color-dos;
+      background: $color-uno;
+      border: none;
+      box-shadow: 2px 2px 7px darken($color-uno, 15%),
+         -2px -2px 7px darken($color-uno, 15%);
+
+      &::placeholder {
+         color: darken($color-uno, 50%);
+         @include pantalla-tablet {
+            font-size: 14px;
+         }
+
+         @include pantalla-celular {
+            font-size: 12px;
+         }
+      }
+
+      &:focus,
+      & select:focus {
+         outline: none;
+         border: none;
+      }
+   }
+
+   #{&}-area-texto {
+      min-height: 30vh;
+      margin: 1rem 0;
+      padding: 0.5rem;
+      color: $color-dos;
+      background: $color-uno;
+      resize: none;
+      border: none;
+      box-shadow: 2px 2px 7px darken($color-uno, 15%),
+         -2px -2px 7px darken($color-uno, 15%);
+
+      &::placeholder {
+         color: darken($color-uno, 50%);
+         @include pantalla-tablet {
+            font-size: 14px;
+         }
+
+         @include pantalla-celular {
+            font-size: 12px;
+         }
+      }
+
+      &:focus,
+      & select:focus {
+         outline: none;
+         border: none;
+      }
+   }
+
+   #{&}-privacidad {
+      position: relative;
+      display: inline-block;
+      @include dimensiones(2rem, 1rem, 1rem 0, 0);
+      margin-bottom: 3rem;
+
+      &-caja-seleccion {
+         opacity: 0;
+         width: 0;
+         height: 0;
+      }
+
+      &-etiqueta {
+         font-size: 0.9rem;
+      }
+
+      &-deslizador {
+         @include deslizador(#ccc, 2rem);
+         cursor: pointer;
+         top: 0;
+         left: 0;
+         right: 0;
+         bottom: 0;
+         box-shadow: 0 0 1px $color-tres;
+         background-color: $color-tres;
+      }
+
+      &-deslizador:before {
+         @include deslizador(white, 50%);
+         content: "";
+         height: 0.87rem;
+         width: 0.75rem;
+         left: 0.13rem;
+         bottom: 0.1rem;
+      }
+
+      &-caja-seleccion:checked {
+         + .modal-nuevo-proyecto-formulario-privacidad-deslizador {
+            background-color: $color-cuatro;
+         }
+      }
+
+      &-caja-seleccion:focus {
+         + .modal-nuevo-proyecto-formulario-privacidad-deslizador {
+            box-shadow: 0 0 1px $color-cuatro;
+         }
+      }
+
+      &-caja-seleccion:checked {
+         + .modal-nuevo-proyecto-formulario-privacidad-deslizador:before {
+            transform: translateX(1rem);
+         }
+      }
+   }
+}

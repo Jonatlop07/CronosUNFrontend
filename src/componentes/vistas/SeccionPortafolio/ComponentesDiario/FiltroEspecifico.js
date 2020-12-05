@@ -31,7 +31,8 @@ const FiltroEspecifico = (props) => {
    };
 
    const realizarFiltroEspecifico = () => {
-      props.realizarFiltroEspecifico(fechasSeleccionadas);
+      props.filtrarEntradasDiario({ fechas: fechasSeleccionadas });
+      terminarFiltroEspecifico();
    };
 
    const terminarFiltroEspecifico = () => {

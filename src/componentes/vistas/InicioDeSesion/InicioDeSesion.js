@@ -3,11 +3,11 @@ import React, { useState } from "react";
 import "./estilos/inicioDeSesion.scss";
 
 const InicioDeSesion = (props) => {
-  const [alias, setAlias] = useState("");
+  const [correo, setCorreo] = useState("");
   const [clave, setClave] = useState("");
 
-  const handleInputChangeAlias = (event) => {
-    setAlias(event.target.value);
+  const handleInputChangeCorreo = (event) => {
+    setCorreo(event.target.value);
   };
   const handleInputChangeClave = (event) => {
     setClave(event.target.value);
@@ -15,19 +15,21 @@ const InicioDeSesion = (props) => {
 
   const iniciarSesion = async (event) => {
     event.preventDefault();
-    const token = await fetch("http://localhost:8080/autenticacion", {
+    const credenciales = await fetch("http://localhost:8080/autenticacion", {
       method: "POST",
+
       headers: {
         "content-type": "application/json",
       },
       body: JSON.stringify({
-        alias: alias,
+        correo: correo,
         clave: clave,
       }),
     }).then((respuesta) => respuesta.json());
-    props.auth(token);
+    props.auth(credenciales.jwttoken);
+    props.idUsuario(credenciales.idUsuario);
     console.log(props);
-    console.log(token);
+    console.log(credenciales);
   };
 
   return (
@@ -39,10 +41,10 @@ const InicioDeSesion = (props) => {
       >
         <input
           type="text"
-          name="Alias"
+          name="Correo"
           className="inicio-sesion-formulario-entrada"
-          placeholder="Alias"
-          onChange={handleInputChangeAlias}
+          placeholder="Correos"
+          onChange={handleInputChangeCorreo}
         />
 
         <input

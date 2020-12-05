@@ -26,7 +26,23 @@ const Registro = (props) => {
   const handleInputChangeClave = (event) => {
     setClave(event.target.value);
   };
+  const iniciarSesion = async () => {
+    const credenciales = await fetch("http://localhost:8080/autenticacion", {
+      method: "POST",
 
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({
+        correo: correo,
+        clave: clave,
+      }),
+    }).then((respuesta) => respuesta.json());
+    props.auth(credenciales.jwttoken);
+    props.idUsuario(credenciales.idUsuario);
+    console.log(props);
+    console.log(credenciales);
+  };
   const registrarUsuario = async (event) => {
     event.preventDefault();
     const id = await fetch("http://localhost:8080/registro", {
@@ -43,6 +59,7 @@ const Registro = (props) => {
       }),
     }).then((respuesta) => respuesta.json());
     console.log(id);
+    iniciarSesion();
   };
   return (
     <React.Fragment>
@@ -88,7 +105,6 @@ const Registro = (props) => {
               type="password"
               name="clave"
               placeholder="clave"
-              on
               onChange={handleInputChangeClave}
             />
             <br />

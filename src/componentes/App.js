@@ -33,15 +33,16 @@ import {
 
 function App() {
   const [token, setToken] = useState("");
+  const [idUsuario, setIdUsuario] = useState("");
   return (
     <div className="App">
       <BarraNavegacion />
       <Switch>
         <Route exact path={RUTA_INICIO_SESION}>
-          <InicioDeSesion auth={setToken} />
+          <InicioDeSesion auth={setToken} idUsuario={setIdUsuario} />
         </Route>
         <Route exact path={RUTA_REGISTRO}>
-          <Registro />
+          <Registro auth={setToken} idUsuario={setIdUsuario} />
         </Route>
         <Route exact path={RUTA_REC_CLAVE}>
           <RecuperacionClave />
@@ -50,7 +51,7 @@ function App() {
           <SeccionInicio />
         </Route>
         <Route exact path={RUTA_CUENTA_USUARIO}>
-          <SeccionCuentaUsuario auth={token} />
+          <SeccionCuentaUsuario auth={token} idUsuario={idUsuario} />
         </Route>
         <Route exact path={RUTA_SEC_HORARIO_ASIG}>
           <SeccionHorarioAsignaturas />

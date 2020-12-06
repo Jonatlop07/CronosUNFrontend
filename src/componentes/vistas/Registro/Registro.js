@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+
+import { RUTA_INICIO, RUTA_INICIO_SESION } from "../../../utilidad/rutas.js";
 
 import "./estilos/registro.scss";
-import { RUTA_INICIO_SESION } from "../../../utilidad/rutas.js";
 
 const Registro = (props) => {
    const [nombre, setNombre] = useState();
@@ -10,6 +11,8 @@ const Registro = (props) => {
    const [alias, setAlias] = useState();
    const [correo, setCorreo] = useState();
    const [clave, setClave] = useState();
+
+   const history = useHistory();
 
    const handleInputChangeNombre = (event) => {
       setNombre(event.target.value);
@@ -40,9 +43,9 @@ const Registro = (props) => {
       }).then((respuesta) => respuesta.json());
       props.auth(credenciales.jwttoken);
       props.idUsuario(credenciales.idUsuario);
-      console.log(props);
-      console.log(credenciales);
+      history.push(RUTA_INICIO);
    };
+
    const registrarUsuario = async (event) => {
       event.preventDefault();
       const id = await fetch("http://localhost:8080/registro", {

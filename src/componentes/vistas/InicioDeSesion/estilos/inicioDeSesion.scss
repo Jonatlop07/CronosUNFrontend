@@ -52,8 +52,12 @@
 
    #{&}-link {
       color: $color-uno;
-
       padding: 0;
+      text-decoration: none;
+
+      &:hover {
+         color: $color-tres;
+      }
    }
    @include pantalla-celular {
       width: 90%;

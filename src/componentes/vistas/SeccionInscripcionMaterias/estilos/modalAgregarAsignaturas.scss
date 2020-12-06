@@ -75,12 +75,31 @@
             margin-bottom: 1.25rem;
            }
            &-restablecer{
-            $color-dos-modificado: #246e8b;
-            @include boton-general($color-dos-modificado);
-            @include enunciado-ventana-modal();
-            color: $color-uno;
-            margin-bottom: 1.25rem;
+            &-boton{
+               $color-dos-modificado: #246e8b;
+               @include boton-general($color-dos-modificado);
+               @include enunciado-ventana-modal();
+               color: $color-uno;
+               margin-bottom: 1.25rem;
+            }
+            &-ayuda{              
+               @include tooltip(12rem, -7.5rem, #246e8b, 23px);
+               i{
+                  font-style: normal;
+                  font-family: fontAwesome;
+                  padding-left: 0.5rem;
+                  @include boton-icono(#246e8b, $color-dos, 1.3rem);
+               }
+            }
            }
        }
     }
+ }
+
+ a {
+
+   outline: none;
+   text-decoration: none;
+   color: $color-tres;
+
  }

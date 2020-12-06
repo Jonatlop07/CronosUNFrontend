@@ -78,7 +78,7 @@
       }
 
       &-tooltip-toggleA {
-         @include tooltip(12rem, -6.3rem);
+         @include tooltip(12rem, -6.3rem, black, 20px);
 
          i {
             font-style: normal;
@@ -88,7 +88,7 @@
       }
 
       &-tooltip-toggleB {
-         @include tooltip(12rem, -6.3rem);
+         @include tooltip(12rem, -6.3rem, black, 20px);
 
          i {
             font-style: normal;

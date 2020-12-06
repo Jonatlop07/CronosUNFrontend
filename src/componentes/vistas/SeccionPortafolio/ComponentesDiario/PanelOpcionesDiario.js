@@ -46,7 +46,10 @@ const PanelOpcionesDiario = (props) => {
                </div>
             </div>
             <div className="panel-opciones-diario-grupo-info">
-               <i className="panel-opciones-diario-grupo-info-btn fas fa-info-circle"></i>
+               <a className="panel-opciones-diario-grupo-info-btn" aria-label="Aquí puedes ver y registrar entradas de tu diario
+               e incluso filtrarlos por fechas para facilitar la búsqueda " tabIndex="0"> 
+               <i className="fas fa-info-circle"></i>
+               </a>
             </div>
          </div>
 

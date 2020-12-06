@@ -38,7 +38,7 @@ const Registro = (props) => {
         clave: clave,
       }),
     }).then((respuesta) => respuesta.json());
-    props.auth(credenciales.jwttoken);
+    props.auth("Bearer"+ credenciales.jwttoken);
     props.idUsuario(credenciales.idUsuario);
     console.log(props);
     console.log(credenciales);

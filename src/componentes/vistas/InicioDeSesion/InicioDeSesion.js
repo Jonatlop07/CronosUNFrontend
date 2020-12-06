@@ -17,7 +17,6 @@ const InicioDeSesion = (props) => {
     event.preventDefault();
     const credenciales = await fetch("http://localhost:8080/autenticacion", {
       method: "POST",
-
       headers: {
         "content-type": "application/json",
       },
@@ -26,7 +25,7 @@ const InicioDeSesion = (props) => {
         clave: clave,
       }),
     }).then((respuesta) => respuesta.json());
-    props.auth(credenciales.jwttoken);
+    props.auth("Bearer "+credenciales.jwttoken);
     props.idUsuario(credenciales.idUsuario);
     console.log(props);
     console.log(credenciales);

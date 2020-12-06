@@ -22,7 +22,6 @@ const ModalAgregarAsignaturas = (props) => {
     texto = texto.split(" ");
     const js = analisisTexto(texto);
     event.target.reset();
-    const bearer = "Bearer" + props.auth;
     const asignatura = await fetch(
       `http://localhost:8080/asignaturaOpciones/registro`,
       {
@@ -30,7 +29,7 @@ const ModalAgregarAsignaturas = (props) => {
         withCredentials: true,
         credentials: "include",
         headers: {
-          Authorization: bearer,
+          Authorization: props.auth,
           "Content-Type": "application/json",
         },
         body: js,

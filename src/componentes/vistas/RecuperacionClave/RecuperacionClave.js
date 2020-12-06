@@ -9,7 +9,6 @@ const RecuperacionClave = (props) => {
   const enviarCorreo = async (event) => {
     event.preventDefault();
     event.currentTarget.reset();
-    const bearer = "Bearer" + props.auth;
     const correo = await fetch(
       `http://localhost:8080/recuperacionClave?correo=${envioCorreo}`,
       {
@@ -17,8 +16,8 @@ const RecuperacionClave = (props) => {
         withCredentials: true,
         credentials: "include",
         headers: {
-          Authorization: bearer,
-          "Content-Type": "application.json",
+          Authorization: props.auth,
+          "Content-Type": "application/json",
         },
       }
     ).then((respuesta) => respuesta.json());

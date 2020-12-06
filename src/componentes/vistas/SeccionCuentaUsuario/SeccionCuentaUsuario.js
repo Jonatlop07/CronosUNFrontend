@@ -4,8 +4,9 @@ import ImagenCuentaPorDefecto from "./Default.svg.png";
 import "./estilos/seccionCuentaUsuario.scss";
 
 const SeccionCuentaUsuario = (props) => {
-  const idUsario = 13;
+  const idUsario = props.idUsuario;
 
+  console.log(props.auth)
   const [nombre, setNombre] = useState("");
   const [alias, setAlias] = useState("");
   const [correo, setCorreo] = useState("");
@@ -16,7 +17,10 @@ const SeccionCuentaUsuario = (props) => {
     const informacion = await fetch(
       `http://localhost:8080/informacionUsuario?id=${idUsario}`,
       {
+        withCredentials: true,
+        credentials: "include",
         headers: {
+          Authorization: props.auth,
           "Content-Type": "application/json",
         },
       }
@@ -51,7 +55,10 @@ const SeccionCuentaUsuario = (props) => {
       `http://localhost:8080/modificacionUsuario`,
       {
         method: "PUT",
+        withCredentials: true,
+        credentials: "include",
         headers: {
+          Authorization: props.auth,
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
@@ -78,7 +85,10 @@ const SeccionCuentaUsuario = (props) => {
       `http://localhost:8080/EliminacionUsuario?id=${idUsario}`,
       {
         method: "DELETE",
+        withCredentials: true,
+        credentials: "include",
         headers: {
+          Authorization: props.auth,
           "Content-Type": "application/json",
         },
         body: JSON.stringify({

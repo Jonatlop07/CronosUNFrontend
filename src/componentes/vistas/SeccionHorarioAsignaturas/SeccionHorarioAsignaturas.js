@@ -24,7 +24,7 @@ const SeccionHorarioAsignaturas = (props) => {
         credentials: "include",
         headers: {
           Authorization: bearer,
-          "Content-Type": "application.json",
+          "Content-Type": "application/json",
         },
       }
     ).then((respuesta) => respuesta.json());

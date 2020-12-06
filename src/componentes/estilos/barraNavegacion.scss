@@ -19,12 +19,6 @@
 
    #{&}-inicio {
       background-color: $color-primario-barra-nav;
-      @include pantalla-celular {
-         width: 100%;
-         position: fixed;
-         top: 0;
-         left: 0;
-      }
    }
 
    #{&}-secciones {

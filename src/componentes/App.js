@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 
 import BarraNavegacion from "./BarraNavegacion.js";
 import InicioDeSesion from "./vistas/InicioDeSesion/InicioDeSesion.js";
@@ -36,45 +36,106 @@ import {
 function App() {
    const [token, setToken] = useState("");
    const [idUsuario, setIdUsuario] = useState("");
+
+   const cerrarSesion = () => {
+      setToken("");
+   };
+
    return (
       <div className="App">
-         <BarraNavegacion />
+         <BarraNavegacion auth={token} cerrarSesion={cerrarSesion} />
          <Switch>
             <Route exact path={RUTA_INICIO_SESION}>
-               <InicioDeSesion auth={setToken} idUsuario={setIdUsuario} />
+               {token ? (
+                  <Redirect to={RUTA_INICIO} />
+               ) : (
+                  <InicioDeSesion auth={setToken} idUsuario={setIdUsuario} />
+               )}
             </Route>
             <Route exact path={RUTA_REGISTRO}>
-               <Registro auth={setToken} idUsuario={setIdUsuario} />
+               {token ? (
+                  <Redirect to={RUTA_INICIO} />
+               ) : (
+                  <Registro auth={setToken} idUsuario={setIdUsuario} />
+               )}
             </Route>
             <Route exact path={RUTA_REC_CLAVE}>
-               <RecuperacionClave auth={`Bearer ${token}`} />
+               {token ? (
+                  <Redirect to={RUTA_REC_CLAVE} />
+               ) : (
+                  <RecuperacionClave auth={`Bearer ${token}`} />
+               )}
             </Route>
             <Route exact path={RUTA_INICIO}>
-               <SeccionInicio auth={token} idUsuario={idUsuario} />
+               <SeccionInicio />
             </Route>
             <Route exact path={RUTA_CUENTA_USUARIO}>
-               <SeccionCuentaUsuario auth={token} idUsuario={idUsuario} />
+               {token ? (
+                  <SeccionCuentaUsuario auth={token} idUsuario={idUsuario} />
+               ) : (
+                  <Redirect to={RUTA_INICIO_SESION} />
+               )}
             </Route>
             <Route exact path={RUTA_SEC_HORARIO_ASIG}>
-               <SeccionHorarioAsignaturas auth={token} idUsuario={idUsuario} />
+               {token ? (
+                  <SeccionHorarioAsignaturas
+                     auth={token}
+                     idUsuario={idUsuario}
+                  />
+               ) : (
+                  <Redirect to={RUTA_INICIO_SESION} />
+               )}
             </Route>
             <Route exact path={RUTA_SEC_HORARIO_PERSONAL}>
-               <SeccionHorarioPersonal auth={token} idUsuario={idUsuario} />
+               {token ? (
+                  <SeccionHorarioPersonal auth={token} idUsuario={idUsuario} />
+               ) : (
+                  <Redirect to={RUTA_INICIO_SESION} />
+               )}
             </Route>
             <Route exact path={RUTA_SEC_PORTAFOLIO}>
-               <SeccionPortafolio auth={token} idUsuario={idUsuario} />
+               {token ? (
+                  <SeccionPortafolio auth={token} idUsuario={idUsuario} />
+               ) : (
+                  <Redirect to={RUTA_INICIO_SESION} />
+               )}
             </Route>
             <Route exact path={RUTA_SEC_VISUALIZACION_PROYECTO}>
-               <VisualizacionProyecto auth={token} idUsuario={idUsuario} />
+               {token ? (
+                  <VisualizacionProyecto auth={token} idUsuario={idUsuario} />
+               ) : (
+                  <Redirect to={RUTA_INICIO_SESION} />
+               )}
             </Route>
             <Route exact path={RUTA_SEC_PROYECTOS_PUBLICOS}>
-               <SeccionConsultaPortafolio auth={`Bearer ${token}`} idUsuario={idUsuario} />
+               {token ? (
+                  <SeccionConsultaPortafolio
+                     auth={`Bearer ${token}`}
+                     idUsuario={idUsuario}
+                  />
+               ) : (
+                  <Redirect to={RUTA_INICIO_SESION} />
+               )}
             </Route>
             <Route exact path={RUTA_SEC_INSCRIPCION_MATERIAS}>
-               <SeccionInscripcionMaterias auth={token} idUsuario={idUsuario} />
+               {token ? (
+                  <SeccionInscripcionMaterias
+                     auth={token}
+                     idUsuario={idUsuario}
+                  />
+               ) : (
+                  <Redirect to={RUTA_INICIO_SESION} />
+               )}
             </Route>
             <Route exact path={RUTA_SEC_EDITOR}>
-               <SeccionEditor auth={`Bearer ${token}`} idUsuario={idUsuario} />
+               {token ? (
+                  <SeccionEditor
+                     auth={`Bearer ${token}`}
+                     idUsuario={idUsuario}
+                  />
+               ) : (
+                  <Redirect to={RUTA_INICIO_SESION} />
+               )}
             </Route>
          </Switch>
          <PieDePagina />

@@ -1,10 +1,19 @@
 import React, { useState } from "react";
+import { Link, useHistory } from "react-router-dom";
+
+import {
+   RUTA_INICIO,
+   RUTA_REC_CLAVE,
+   RUTA_REGISTRO,
+} from "../../../utilidad/rutas";
 
 import "./estilos/inicioDeSesion.scss";
 
 const InicioDeSesion = (props) => {
    const [alias, setAlias] = useState("");
    const [clave, setClave] = useState("");
+
+   const history = useHistory();
 
    const handleInputChangeCorreo = (event) => {
       setAlias(event.target.value);
@@ -27,8 +36,7 @@ const InicioDeSesion = (props) => {
       }).then((respuesta) => respuesta.json());
       props.auth(credenciales.jwttoken);
       props.idUsuario(credenciales.idUsuario);
-      console.log(props);
-      console.log(credenciales);
+      history.push(RUTA_INICIO);
    };
 
    return (
@@ -60,8 +68,12 @@ const InicioDeSesion = (props) => {
                className="inicio-sesion-formulario-boton-enviar"
             />
          </form>
-         <p className="inicio-sesion-link">¿Olvidaste tu contraseña? </p>
-         <p className="inicio-sesion-link">¿No tienes cuenta?</p>
+         <Link className="inicio-sesion-link" to={RUTA_REC_CLAVE}>
+            ¿Olvidaste tu contraseña?{" "}
+         </Link>
+         <Link className="inicio-sesion-link" to={RUTA_REGISTRO}>
+            ¿No tienes una cuenta? Regístrate
+         </Link>
       </div>
    );
 };

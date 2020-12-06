@@ -16,12 +16,11 @@ const SeccionHorarioAsignaturas = (props) => {
     history.push({ pathname, horarioEnvio });
   };
   const cargarAsignaturas = async () => {
-    const bearer = "Bearer" + props.auth;
+    const bearer = "Bearer " + props.auth;
+
     const asignaturas = await fetch(
-      `http://localhost:8080/asignaturaOpciones?idUsuario=${1}`,
+      `http://localhost:8080/asignaturaOpciones?idUsuario=${props.idUsuario}`,
       {
-        withCredentials: true,
-        credentials: "include",
         headers: {
           Authorization: bearer,
           "Content-Type": "application/json",

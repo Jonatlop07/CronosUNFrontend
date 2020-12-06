@@ -13,8 +13,6 @@ const RecuperacionClave = (props) => {
       `http://localhost:8080/recuperacionClave?correo=${envioCorreo}`,
       {
         method: "POST",
-        withCredentials: true,
-        credentials: "include",
         headers: {
           Authorization: props.auth,
           "Content-Type": "application/json",

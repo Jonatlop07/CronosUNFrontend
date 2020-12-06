@@ -16,6 +16,7 @@ const SeccionConsultaPortafolio = (props) => {
    const location = useLocation();
 
    const obtenerPortafolioUsuario = async () => {
+      console.log(props.auth);
       const proyectos = await fetch(
          `http://localhost:8080/proyectos?correo=${location.correo}&numeroPagina=${numeroPagina}`,
          {

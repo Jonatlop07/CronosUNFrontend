@@ -6,7 +6,6 @@ import "./estilos/seccionCuentaUsuario.scss";
 const SeccionCuentaUsuario = (props) => {
   const idUsario = props.idUsuario;
 
-  console.log(props.auth)
   const [nombre, setNombre] = useState("");
   const [alias, setAlias] = useState("");
   const [correo, setCorreo] = useState("");
@@ -14,14 +13,14 @@ const SeccionCuentaUsuario = (props) => {
   const [biografia, setBiografia] = useState("");
 
   const obtenerInformacion = async () => {
+    const bearer = "Bearer " + props.auth;
     const informacion = await fetch(
       `http://localhost:8080/informacionUsuario?id=${idUsario}`,
       {
-        withCredentials: true,
-        credentials: "include",
+        method: "GET",
         headers: {
-          Authorization: props.auth,
-          "Content-Type": "application/json",
+          "Authorization": bearer,
+          "Content-Type": "application/json"
         },
       }
     ).then((respuesta) => respuesta.json());

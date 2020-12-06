@@ -13,8 +13,8 @@ const SeccionPortafolio = (props) => {
          <PanelGeneralPortafolio />
          <BarraBusqueda />
          <div className="seccion-portafolio-subsecciones">
-            <SubseccionDiario auth={`Bearer ${props.auth}`} />
-            <SubseccionPortafolio auth={`Bearer ${props.auth}`} />
+            <SubseccionDiario auth={`Bearer ${props.auth}`} idUsuario={props.idUsuario} />
+            <SubseccionPortafolio auth={`Bearer ${props.auth}`} idUsuario={props.idUsuario} />
          </div>
       </div>
    );

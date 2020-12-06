@@ -8,7 +8,7 @@ const SubseccionDiario = (props) => {
    const [estadoPrincipal, setEstadoPrincipal] = useState({
       entradasDiario: [],
       numeroTotalPaginas: 1,
-      parametrosFiltro: { idUsuario: "1" },
+      parametrosFiltro: { idUsuario: props.idUsuario },
    });
    const [numeroPagina, setNumeroPagina] = useState(0);
 
@@ -20,10 +20,10 @@ const SubseccionDiario = (props) => {
             "Content-Type": "application/json",
          },
          body: JSON.stringify(parametrosFiltro),
-      }).then((respuesta) => respuesta.json());
+      }).then((respuesta) => respuesta.json()).catch(err => console.log(err));
 
       const consultaNumeroPaginas = await fetch(
-         `http://localhost:8080/entradasDiario/paginas?idUsuario=1`,
+         `http://localhost:8080/entradasDiario/paginas?idUsuario=${props.idUsuario}`,
          {
             headers: {
                Authorization: props.auth,
@@ -69,7 +69,7 @@ const SubseccionDiario = (props) => {
             },
             body: JSON.stringify({
                ...entradaDiario,
-               idUsuario: "1",
+               idUsuario: props.idUsuario,
             }),
          }
       );
@@ -78,7 +78,7 @@ const SubseccionDiario = (props) => {
    };
 
    const filtrarEntradasDiario = (nuevosParametrosFiltro) => {
-      nuevosParametrosFiltro.idUsuario = "1";
+      nuevosParametrosFiltro.idUsuario = props.idUsuario;
       nuevosParametrosFiltro.numeroPagina = numeroPagina;
       obtenerEntradasDiario(nuevosParametrosFiltro);
    };
@@ -93,7 +93,7 @@ const SubseccionDiario = (props) => {
                "Content-Type": "application/json",
             },
             body: JSON.stringify({
-               idUsuario: "1",
+               idUsuario: props.idUsuario,
             }),
          }
       );

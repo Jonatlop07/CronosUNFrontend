@@ -9,13 +9,13 @@ const SubseccionPortafolio = (props) => {
       listaProyectos: [],
       categorias: [],
       numeroTotalPaginas: 1,
-      parametrosFiltro: { idUsuario: "1" },
+      parametrosFiltro: { idUsuario: props.idUsuario },
    });
    const [numeroPagina, setNumeroPagina] = useState(0);
 
    const obtenerProyectos = async (parametrosFiltro) => {
       const categorias = await fetch(
-         `http://localhost:8080/proyectos/categorias/1`,
+         `http://localhost:8080/proyectos/categorias/${props.idUsuario}`,
          {
             headers: {
                Authorization: props.auth,
@@ -34,7 +34,7 @@ const SubseccionPortafolio = (props) => {
       }).then((respuesta) => respuesta.json());
 
       const consultaNumeroPaginas = await fetch(
-         `http://localhost:8080/proyectos/paginas?idUsuario=1`,
+         `http://localhost:8080/proyectos/paginas?idUsuario=${props.idUsuario}`,
          {
             headers: {
                Authorization: props.auth,
@@ -96,7 +96,7 @@ const SubseccionPortafolio = (props) => {
             },
             body: JSON.stringify({
                ...proyecto,
-               idUsuario: "1",
+               idUsuario: props.idUsuario,
             }),
          }
       );
@@ -115,7 +115,7 @@ const SubseccionPortafolio = (props) => {
             },
             body: JSON.stringify({
                ...cambios,
-               idUsuario: "1",
+               idUsuario: props.idUsuario,
             }),
          }
       ).catch((err) => console.log(err));
@@ -125,7 +125,7 @@ const SubseccionPortafolio = (props) => {
 
    const filtrarProyectos = (nuevosParametrosFiltro) => {
       console.log(nuevosParametrosFiltro);
-      nuevosParametrosFiltro.idUsuario = "1";
+      nuevosParametrosFiltro.idUsuario = props.idUsuario;
       nuevosParametrosFiltro.numeroPagina = numeroPagina;
       obtenerProyectos(nuevosParametrosFiltro);
    };
@@ -140,7 +140,7 @@ const SubseccionPortafolio = (props) => {
                "Content-Type": "application/json",
             },
             body: JSON.stringify({
-               idUsuario: "1",
+               idUsuario: props.idUsuario,
             }),
          }
       );

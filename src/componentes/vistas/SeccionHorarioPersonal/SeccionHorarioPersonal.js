@@ -34,7 +34,7 @@ const SeccionHorarioPersonal = (props) => {
                   {" "}
                   Cambiar metodología de estudio
                   <a
-                     href="!#"
+                     
                      className="contenedor-seccion-horario-personal-funciones-tooltip-toggleA"
                      aria-label="Cada metodología genera un horario de estudio diferente. Escoge el que 
                     mas te guste!"
@@ -55,7 +55,6 @@ const SeccionHorarioPersonal = (props) => {
                   {" "}
                   Establecer nuevos créditos para mis materias
                   <a
-                     href="!#"
                      className="contenedor-seccion-horario-personal-funciones-tooltip-toggleB"
                      aria-label="Cambia tu horario de acuerdo a la complejidad de cada materia medida en créditos."
                      tabIndex="0"

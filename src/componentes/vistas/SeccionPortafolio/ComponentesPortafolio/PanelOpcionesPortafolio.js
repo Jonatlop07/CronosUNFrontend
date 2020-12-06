@@ -55,7 +55,11 @@ const PanelOpcionesPortafolio = (props) => {
                </div>
             </div>
             <div className="panel-opciones-portafolio-grupo-info">
-               <i className="panel-opciones-portafolio-grupo-info-btn fas fa-info-circle"></i>
+               <a className="panel-opciones-portafolio-grupo-info-btn" aria-label="Puedes registrar nuevos proyectos
+               para tu portafolio o buscar proyectos a partir de diferentes filtros " tabIndex="0">
+               <i className="fas fa-info-circle"></i>
+               </a>
+               
             </div>
          </div>
 

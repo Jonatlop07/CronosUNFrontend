@@ -232,10 +232,10 @@
    }
 }
 
-@mixin tooltip($ancho, $distancia) {
+@mixin tooltip($ancho, $distancia, $background, $centro) {
    position: relative;
    &::before {
-      background-color: #000;
+      background-color: $background;
       border-radius: 5px;
       color: #fff;
       font-size: 0.9rem;
@@ -258,10 +258,10 @@
    &::after {
       border-left: 5px solid transparent;
       border-right: 5px solid transparent;
-      border-top: 5px solid #000;
+      border-top: 5px solid $background;
       content: " ";
       font-size: 0;
-      left: 13px; //This centers the arrow above the element with the tooltip
+      left: $centro; //This centers the arrow above the element with the tooltip
       line-height: 0;
       margin-left: -5px;
       position: absolute;

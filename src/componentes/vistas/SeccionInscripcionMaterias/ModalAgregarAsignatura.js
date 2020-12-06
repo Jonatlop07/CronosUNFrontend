@@ -121,12 +121,19 @@ const ModalAgregarAsignaturas = (props) => {
             />
           </div>
         </form>
+        <div className="modal-agregar-asignatura-formulario-botones-restablecer">
         <input
           type="submit"
-          className="modal-agregar-asignatura-formulario-botones-restablecer"
+          className="modal-agregar-asignatura-formulario-botones-restablecer-boton"
           value="Restablecer Asignaturas"
           onClick={restablecerAsignaturas}
         />
+        <a className="modal-agregar-asignatura-formulario-botones-restablecer-ayuda" 
+        aria-label="Puedes reestablecer tu contenedor de asignaturas con sus determinados
+        grupos utilizando esta función" tabIndex="0"> 
+          <i className="fas fa-info-circle"></i>
+        </a>
+        </div>
       </div>
     </div>,
     document.getElementById("modal")

@@ -29,7 +29,17 @@
          margin: auto;
 
          &-btn {
-            @include boton-icono($color-tres, $color-uno, 1.5rem);
+            @include tooltip(12rem, -7.5rem, $color-tres, 23px);
+
+            i{
+               font-style: normal;
+               font-family: fontAwesome;
+               padding-left: 0.5rem;
+               @include boton-icono($color-tres, $color-uno, 1.5rem);
+
+            }
+
+
          }
       }
 

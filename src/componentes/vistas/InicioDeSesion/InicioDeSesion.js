@@ -34,6 +34,7 @@ const InicioDeSesion = (props) => {
             clave: clave,
          }),
       }).then((respuesta) => respuesta.json());
+      console.log(credenciales.jwttoken);
       props.auth(credenciales.jwttoken);
       props.idUsuario(credenciales.idUsuario);
       history.push(RUTA_INICIO);

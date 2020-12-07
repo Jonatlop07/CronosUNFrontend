@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import ModalAgregarAsignatura from "./ModalAgregarAsignatura.js";
 
-
 import "./estilos/SeccionInscripcionMaterias.scss";
 
 const SeccionInscripcionMaterias = (props) => {
@@ -17,7 +16,12 @@ const SeccionInscripcionMaterias = (props) => {
             </h1>
             <div className="contenedor-seccion-inscripcion-tutorial-texto">
                <p>Sigue este tutorial para inscribir tus asignaturas:</p>
-               <p>1: Ingresa al buscador de asignaturas en el SIA haciendo click <a href="https://sia.unal.edu.co/ServiciosApp/facespublico/public/servicioPublico.jsf?taskflowId=task-flow-AC_CatalogoAsignaturas">aquí</a></p>
+               <p>
+                  1: Ingresa al buscador de asignaturas en el SIA haciendo click{" "}
+                  <a href="https://sia.unal.edu.co/ServiciosApp/facespublico/public/servicioPublico.jsf?taskflowId=task-flow-AC_CatalogoAsignaturas">
+                     aquí
+                  </a>
+               </p>
                <p>
                   2: Ubica la asignatura que quieres inscribir e ingresa a su
                   descripción de grupos.
@@ -44,6 +48,8 @@ const SeccionInscripcionMaterias = (props) => {
          {agregandoAsignaturas && (
             <ModalAgregarAsignatura
                terminarAgregandoAsignaturas={terminarAgregandoAsignaturas}
+               auth={`Bearer ${props.auth}`}
+               idUsuario={props.idUsuario}
             />
          )}
       </div>

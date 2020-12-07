@@ -106,7 +106,7 @@ const SubseccionPortafolio = (props) => {
 
    const actualizarProyecto = async (idProyecto, cambios) => {
       const respuesta = await fetch(
-         `http://localhost:8080/proyectos/actualizacion/${idProyecto}`,
+         `http://localhost:8080/proyectos/actualizacion`,
          {
             method: "PUT",
             headers: {
@@ -115,10 +115,13 @@ const SubseccionPortafolio = (props) => {
             },
             body: JSON.stringify({
                ...cambios,
+               id: idProyecto,
                idUsuario: props.idUsuario,
             }),
          }
-      ).catch((err) => console.log(err));
+      )
+         .then((res) => res.json())
+         .catch((err) => console.log(err));
 
       obtenerProyectos(estadoPrincipal.parametrosFiltro);
    };

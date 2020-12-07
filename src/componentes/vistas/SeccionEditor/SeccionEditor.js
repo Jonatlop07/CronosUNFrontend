@@ -57,7 +57,7 @@ const SeccionEditor = (props) => {
 
    const obtenerCategorias = async () => {
       const categorias = await fetch(
-         `http://localhost:8080/proyectos/categorias/1`,
+         `http://localhost:8080/proyectos/categorias/${props.idUsuario}`,
          {
             headers: {
                Authorization: props.auth,
@@ -134,7 +134,7 @@ const SeccionEditor = (props) => {
                "Content-Type": "application/json",
             },
             body: JSON.stringify({
-               idUsuario: 1,
+               idUsuario: props.idUsuario,
                id,
                titulo,
                descripcion,

@@ -102,7 +102,10 @@ function App() {
             </Route>
             <Route exact path={RUTA_SEC_VISUALIZACION_PROYECTO}>
                {token ? (
-                  <VisualizacionProyecto auth={token} idUsuario={idUsuario} />
+                  <VisualizacionProyecto
+                     auth={`Bearer ${token}`}
+                     idUsuario={idUsuario}
+                  />
                ) : (
                   <Redirect to={RUTA_INICIO_SESION} />
                )}

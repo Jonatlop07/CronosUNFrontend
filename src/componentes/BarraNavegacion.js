@@ -75,30 +75,22 @@ const OpcionesAutenticado = (props) => {
          <li className={`barra-navegacion-enlace ${mostrandoOpciones}`}>
             <Link
                className="barra-navegacion-enlace"
+               to={RUTA_SEC_INSCRIPCION_MATERIAS}
+            >
+               Inscripción
+            </Link>
+         </li>
+         <li className={`barra-navegacion-enlace ${mostrandoOpciones}`}>
+            <Link
+               className="barra-navegacion-enlace"
                to={RUTA_SEC_HORARIO_ASIG}
             >
                Horario de asignaturas
             </Link>
          </li>
          <li className={`barra-navegacion-enlace ${mostrandoOpciones}`}>
-            <Link
-               className="barra-navegacion-enlace"
-               to={RUTA_SEC_HORARIO_PERSONAL}
-            >
-               Horario personal
-            </Link>
-         </li>
-         <li className={`barra-navegacion-enlace ${mostrandoOpciones}`}>
             <Link className="barra-navegacion-enlace" to={RUTA_SEC_PORTAFOLIO}>
                Portafolio
-            </Link>
-         </li>
-         <li className={`barra-navegacion-enlace ${mostrandoOpciones}`}>
-            <Link
-               className="barra-navegacion-enlace"
-               to={RUTA_SEC_INSCRIPCION_MATERIAS}
-            >
-               Inscripción
             </Link>
          </li>
          <li className={`barra-navegacion-enlace ${mostrandoOpciones}`}>

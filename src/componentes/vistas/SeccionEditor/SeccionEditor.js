@@ -8,65 +8,61 @@ import { obtenerFechaActual } from "../../../utilidad/funcionesFechaYHora.js";
 import "./estilos/seccionEditor.scss";
 
 const SeccionEditor = (props) => {
+   const usuario = props.auth.usuario;
+   const api = props.auth.api;
+   const location = useLocation();
+
    const [informacionProyecto, setInformacionProyecto] = useState({});
    const [categorias, setCategorias] = useState([]);
-   const location = useLocation();
 
    const obtenerProyecto = async () => {
       const idProyecto = location.idProyecto;
       if (idProyecto) {
-         const proyecto = await fetch(
-            `http://localhost:8080/proyectos/${idProyecto}`,
-            {
-               headers: {
-                  Authorization: props.auth,
-                  "Content-Type": "application/json",
-               },
+         const respuesta = await api.obtenerProyecto(idProyecto);
+
+         if (respuesta.ok) {
+            const proyecto = await respuesta.json();
+
+            const {
+               id,
+               titulo,
+               descripcion,
+               categoria,
+               contenido,
+               estado,
+               privacidad,
+               fechaCreacion,
+               fechaFinalizacion,
+            } = proyecto;
+
+            if (document.getElementById("editor") && contenido) {
+               document.getElementById("editor").innerHTML = contenido;
             }
-         ).then((respuesta) => respuesta.json());
 
-         const {
-            id,
-            titulo,
-            descripcion,
-            categoria,
-            contenido,
-            estado,
-            privacidad,
-            fechaCreacion,
-            fechaFinalizacion,
-         } = proyecto;
-
-         if (document.getElementById("editor") && contenido) {
-            document.getElementById("editor").innerHTML = contenido;
+            setInformacionProyecto({
+               id,
+               titulo,
+               descripcion,
+               categoria,
+               contenido,
+               estado,
+               privacidad,
+               fechaCreacion,
+               fechaFinalizacion,
+            });
+         } else {
          }
-
-         setInformacionProyecto({
-            id,
-            titulo,
-            descripcion,
-            categoria,
-            contenido,
-            estado,
-            privacidad,
-            fechaCreacion,
-            fechaFinalizacion,
-         });
       }
    };
 
    const obtenerCategorias = async () => {
-      const categorias = await fetch(
-         `http://localhost:8080/proyectos/categorias/${props.idUsuario}`,
-         {
-            headers: {
-               Authorization: props.auth,
-               "Content-Type": "application/json",
-            },
-         }
-      ).then((respuesta) => respuesta.json());
+      const respuesta = await api.obtenerCategorias(usuario.id);
 
-      setCategorias(categorias);
+      if (respuesta.ok) {
+         const categorias = await respuesta.json();
+         setCategorias(categorias);
+      } else {
+      }
    };
 
    useEffect(() => {
@@ -122,31 +118,23 @@ const SeccionEditor = (props) => {
          fechaFinalizacion,
       } = informacionProyecto;
 
-      console.log(id);
-
       const contenido = document.getElementById("editor").innerHTML;
-      const respuesta = await fetch(
-         `http://localhost:8080/proyectos/actualizacion`,
-         {
-            method: "PUT",
-            headers: {
-               Authorization: props.auth,
-               "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-               idUsuario: props.idUsuario,
-               id,
-               titulo,
-               descripcion,
-               categoria,
-               estado,
-               privacidad,
-               contenido,
-               fechaCreacion,
-               fechaFinalizacion,
-            }),
-         }
-      );
+
+      const respuesta = await api.actualizarProyecto(usuario.id, {
+         id,
+         titulo,
+         descripcion,
+         categoria,
+         estado,
+         privacidad,
+         contenido,
+         fechaCreacion,
+         fechaFinalizacion,
+      });
+
+      if (respuesta.ok) {
+      } else {
+      }
    };
 
    return (

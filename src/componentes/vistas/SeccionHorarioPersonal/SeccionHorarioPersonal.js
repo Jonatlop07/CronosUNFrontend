@@ -2,12 +2,13 @@ import React, { useEffect, useState } from "react";
 import "./estilos/seccionHorarioPersonal.scss";
 import ContenedorHorario from "./ContenedorHorario";
 import ItemHorarioPersonal from "./ItemHorarioPersonal";
-import {useLocation} from 'react-router-dom';
+import { useLocation } from "react-router-dom";
 
 const SeccionHorarioPersonal = (props) => {
-
    const location = useLocation();
+
    const [materiasHorario, setMateriasHorario] = useState([]);
+
    const agregarAsignatura = (materia, grupo) => {
       const horarioAux = [...materiasHorario];
       horarioAux.push({ materia, grupo });
@@ -16,9 +17,12 @@ const SeccionHorarioPersonal = (props) => {
 
    const agregarMateriasHorario = () => {
       setMateriasHorario(location.horarioEnvio);
-   }
+   };
 
-   useEffect(() => {agregarMateriasHorario()},[])
+   useEffect(() => {
+      agregarMateriasHorario();
+   }, []);
+
    return (
       <div>
          <h1 className="titulo">Mi horario de estudio</h1>
@@ -34,7 +38,6 @@ const SeccionHorarioPersonal = (props) => {
                   {" "}
                   Cambiar metodología de estudio
                   <a
-                     
                      className="contenedor-seccion-horario-personal-funciones-tooltip-toggleA"
                      aria-label="Cada metodología genera un horario de estudio diferente. Escoge el que 
                     mas te guste!"
@@ -64,13 +67,17 @@ const SeccionHorarioPersonal = (props) => {
                </h3>
                <div className="contenedor-seccion-horario-personal-funciones-creditos">
                   <ul>
-                     {materiasHorario && Array.isArray(materiasHorario) ?  materiasHorario.map((item, indice) => (
-                        <ItemHorarioPersonal
-                           nombre={item.nombre}
-                           creditos={item.creditos}
-                           key={`mat${indice}`}
-                        />
-                     )): <p>no</p>}
+                     {materiasHorario && Array.isArray(materiasHorario) ? (
+                        materiasHorario.map((item, indice) => (
+                           <ItemHorarioPersonal
+                              nombre={item.nombre}
+                              creditos={item.creditos}
+                              key={`mat${indice}`}
+                           />
+                        ))
+                     ) : (
+                        <p>no</p>
+                     )}
                   </ul>
                </div>
                <button className="contenedor-seccion-horario-personal-funciones-descargar">

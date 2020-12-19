@@ -7,6 +7,9 @@ import ContenedorBotonesPaginas from "../SeccionPortafolio/ContenedorBotonesPagi
 import "./estilos/seccionConsultaPortafolio.scss";
 
 const SeccionConsultaPortafolio = (props) => {
+   const api = props.auth.api;
+   const usuario = props.auth.usuario;
+
    const [estadoPrincipal, setEstadoPrincipal] = useState({
       proyectosPublicos: [],
       numeroTotalPaginas: 1,
@@ -16,44 +19,40 @@ const SeccionConsultaPortafolio = (props) => {
    const location = useLocation();
 
    const obtenerPortafolioUsuario = async () => {
-      console.log(props.auth);
-      const proyectos = await fetch(
-         `http://localhost:8080/proyectos?correo=${location.correo}&numeroPagina=${numeroPagina}`,
-         {
-            Authorization: props.auth,
-            "Content-Type": "application/json",
-         }
-      ).then((respuesta) => respuesta.json());
-
-      const consultaNumeroPaginas = await fetch(
-         `http://localhost:8080/proyectos/paginas?idUsuario=${proyectos[0].idUsuario}`
-      ).then((respuesta) => respuesta.json());
-
-      const listaProyectos = proyectos.map((proyecto) => {
-         const {
-            id,
-            titulo,
-            descripcion,
-            estado,
-            fechaCreacion,
-            categoria,
-         } = proyecto;
-         return {
-            id,
-            titulo,
-            descripcion,
-            estado,
-            fechaCreacion,
-            categoria,
-         };
+      const respuesta = await api.obtenerPortafolioUsuario(usuario.id, {
+         correo: location.correo,
+         numeroPagina,
+         tamanioPagina: 10,
       });
+      if (respuesta.ok) {
+         const { numeroPaginas, proyectos } = await respuesta.json();
+         const proyectosPublicos = proyectos.map((proyecto) => {
+            const {
+               id,
+               titulo,
+               descripcion,
+               estado,
+               fechaCreacion,
+               categoria,
+            } = proyecto;
+            return {
+               id,
+               titulo,
+               descripcion,
+               estado,
+               fechaCreacion,
+               categoria,
+            };
+         });
 
-      const nuevoEstadoPrincipal = {
-         proyectosPublicos: listaProyectos,
-         numeroTotalPaginas: consultaNumeroPaginas.numeroPaginas,
-      };
+         const nuevoEstadoPrincipal = {
+            proyectosPublicos,
+            numeroTotalPaginas: numeroPaginas,
+         };
 
-      setEstadoPrincipal(nuevoEstadoPrincipal);
+         setEstadoPrincipal(nuevoEstadoPrincipal);
+      } else {
+      }
    };
 
    const actualizarNumeroPagina = (nuevoNumeroPagina) => {
@@ -64,7 +63,7 @@ const SeccionConsultaPortafolio = (props) => {
 
    useEffect(() => {
       obtenerPortafolioUsuario();
-   });
+   }, []);
 
    return (
       <div className="seccion-consulta-portafolio">

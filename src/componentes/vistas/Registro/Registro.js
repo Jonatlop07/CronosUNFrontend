@@ -6,63 +6,46 @@ import { RUTA_INICIO, RUTA_INICIO_SESION } from "../../../utilidad/rutas.js";
 import "./estilos/registro.scss";
 
 const Registro = (props) => {
-   const [nombre, setNombre] = useState();
-   const [apellido, setApellido] = useState();
-   const [alias, setAlias] = useState();
-   const [correo, setCorreo] = useState();
-   const [clave, setClave] = useState();
+   const api = props.auth.api;
+
+   const [datosUsuario, setDatosUsuario] = useState({
+      nombre: "",
+      apellido: "",
+      alias: "",
+      correo: "",
+      clave: "",
+   });
 
    const history = useHistory();
 
-   const handleInputChangeNombre = (event) => {
-      setNombre(event.target.value);
-   };
-   const handleInputChangeApellido = (event) => {
-      setApellido(event.target.value);
-   };
-   const handleInputChangeAlias = (event) => {
-      setAlias(event.target.value);
-   };
-   const handleInputChangeCorreo = (event) => {
-      setCorreo(event.target.value);
-   };
-   const handleInputChangeClave = (event) => {
-      setClave(event.target.value);
-   };
-   const iniciarSesion = async () => {
-      const credenciales = await fetch("http://localhost:8080/autenticacion", {
-         method: "POST",
-
-         headers: {
-            "content-type": "application/json",
-         },
-         body: JSON.stringify({
-            alias: alias,
-            clave: clave,
-         }),
-      }).then((respuesta) => respuesta.json());
-      props.auth(credenciales.jwttoken);
-      props.idUsuario(credenciales.idUsuario);
-      history.push(RUTA_INICIO);
+   const handleInputChange = (event) => {
+      const { name, value } = event.currentTarget;
+      setDatosUsuario((datosAnteriores) => ({
+         ...datosAnteriores,
+         [name]: value,
+      }));
    };
 
    const registrarUsuario = async (event) => {
       event.preventDefault();
-      const id = await fetch("http://localhost:8080/registro", {
-         method: "POST",
-         headers: {
-            "Content-Type": "application/json",
-         },
-         body: JSON.stringify({
-            nombre: nombre + apellido,
-            correo: correo,
-            clave: clave,
-            alias: alias,
-            biografia: " Bienvenido ",
-         }),
-      }).then((respuesta) => respuesta.json());
-      console.log(id);
-      iniciarSesion();
+
+      const { nombre, apellido, alias, correo, clave } = datosUsuario;
+
+      const respuesta = await api.registrarUsuario({
+         nombre: `${nombre} ${apellido}`,
+         correo,
+         clave,
+         alias,
+         biografia: "Bienvenido ",
+      });
+
+      if (!respuesta.ok) {
+      } else {
+         const { jwttoken, usuario } = await api
+            .autenticarUsuario(alias, clave)
+            .then((respuesta) => respuesta.json());
+         props.autenticar(jwttoken, usuario);
+      }
    };
    return (
       <React.Fragment>
@@ -73,42 +56,47 @@ const Registro = (props) => {
                   <input
                      className="seccion-registro-input"
                      type="text"
+                     value={datosUsuario.nombre}
                      name="nombre"
                      placeholder="Nombre"
-                     onChange={handleInputChangeNombre}
+                     onChange={handleInputChange}
                      autoFocus={true}
                   />
                   <br />
                   <input
                      className="seccion-registro-input"
                      type="text"
+                     value={datosUsuario.apellido}
                      name="apellido"
-                     placeholder="apellido"
-                     onChange={handleInputChangeApellido}
+                     placeholder="Apellido"
+                     onChange={handleInputChange}
                   />
                   <br />
                   <input
                      className="seccion-registro-input"
                      type="text"
+                     value={datosUsuario.alias}
                      name="alias"
                      placeholder="Alias"
-                     onChange={handleInputChangeAlias}
+                     onChange={handleInputChange}
                   />
                   <br />
                   <input
                      className="seccion-registro-input"
                      type="email"
+                     value={datosUsuario.correo}
                      name="correo"
                      placeholder="Correo"
-                     onChange={handleInputChangeCorreo}
+                     onChange={handleInputChange}
                   />
                   <br />
                   <input
                      className="seccion-registro-input"
                      type="password"
                      name="clave"
-                     placeholder="clave"
-                     onChange={handleInputChangeClave}
+                     value={datosUsuario.clave}
+                     placeholder="Clave"
+                     onChange={handleInputChange}
                   />
                   <br />
                   <input

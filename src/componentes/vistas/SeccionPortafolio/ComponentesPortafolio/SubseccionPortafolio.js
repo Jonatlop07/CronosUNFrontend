@@ -5,69 +5,64 @@ import ContenedorDeProyectos from "./ContenedorDeProyectos.js";
 import ContenedorBotonesPaginas from "../ContenedorBotonesPaginas.js";
 
 const SubseccionPortafolio = (props) => {
+   const usuario = props.auth.usuario;
+   const api = props.auth.api;
+
    const [estadoPrincipal, setEstadoPrincipal] = useState({
-      listaProyectos: [],
+      proyectos: [],
       categorias: [],
       numeroTotalPaginas: 1,
-      parametrosFiltro: { idUsuario: props.idUsuario },
+      parametrosFiltro: {},
    });
    const [numeroPagina, setNumeroPagina] = useState(0);
 
    const obtenerProyectos = async (parametrosFiltro) => {
-      const categorias = await fetch(
-         `http://localhost:8080/proyectos/categorias/${props.idUsuario}`,
-         {
-            headers: {
-               Authorization: props.auth,
-               "Content-Type": "application/json",
-            },
-         }
-      ).then((respuesta) => respuesta.json());
+      let proyectos = [],
+         numeroTotalPaginas = 0,
+         categorias = [];
+      const respuestaProyectos = await api.obtenerProyectos(
+         usuario.id,
+         parametrosFiltro
+      );
 
-      const proyectos = await fetch(`http://localhost:8080/proyectos`, {
-         method: "POST",
-         headers: {
-            Authorization: props.auth,
-            "Content-Type": "application/json",
-         },
-         body: JSON.stringify(parametrosFiltro),
-      }).then((respuesta) => respuesta.json());
+      if (respuestaProyectos.ok) {
+         const contenidoRespuesta = await respuestaProyectos.json();
+         numeroTotalPaginas = contenidoRespuesta.numeroPaginas;
 
-      const consultaNumeroPaginas = await fetch(
-         `http://localhost:8080/proyectos/paginas?idUsuario=${props.idUsuario}`,
-         {
-            headers: {
-               Authorization: props.auth,
-               "Content-Type": "application/json",
-            },
-         }
-      ).then((respuesta) => respuesta.json());
+         proyectos = contenidoRespuesta.proyectos.map((proyecto) => {
+            const {
+               id,
+               titulo,
+               descripcion,
+               estado,
+               privacidad,
+               fechaCreacion,
+               categoria,
+            } = proyecto;
+            return {
+               id,
+               titulo,
+               descripcion,
+               estado,
+               privacidad,
+               fechaCreacion,
+               categoria,
+            };
+         });
+      } else {
+      }
 
-      const listaProyectos = proyectos.map((proyecto) => {
-         const {
-            id,
-            titulo,
-            descripcion,
-            estado,
-            privacidad,
-            fechaCreacion,
-            categoria,
-         } = proyecto;
-         return {
-            id,
-            titulo,
-            descripcion,
-            estado,
-            privacidad,
-            fechaCreacion,
-            categoria,
-         };
-      });
+      const respuestaCategorias = await api.obtenerCategorias(usuario.id);
+
+      if (respuestaCategorias.ok) {
+         categorias = await respuestaCategorias.json();
+      } else {
+      }
 
       const nuevoEstadoPrincipal = {
-         listaProyectos,
-         categorias: categorias,
-         numeroTotalPaginas: consultaNumeroPaginas.numeroPaginas,
+         proyectos,
+         categorias,
+         numeroTotalPaginas,
          parametrosFiltro,
       };
 
@@ -85,68 +80,39 @@ const SubseccionPortafolio = (props) => {
    };
 
    const registrarProyecto = async (proyecto) => {
-      console.log(proyecto);
-      const respuesta = await fetch(
-         `http://localhost:8080/proyectos/registro`,
-         {
-            method: "POST",
-            headers: {
-               Authorization: props.auth,
-               "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-               ...proyecto,
-               idUsuario: props.idUsuario,
-            }),
-         }
-      );
+      const respuesta = await api.registrarProyecto(usuario.id, proyecto);
+
+      if (respuesta.ok) {
+      } else {
+      }
 
       obtenerProyectos(estadoPrincipal.parametrosFiltro);
    };
 
    const actualizarProyecto = async (idProyecto, cambios) => {
-      const respuesta = await fetch(
-         `http://localhost:8080/proyectos/actualizacion`,
-         {
-            method: "PUT",
-            headers: {
-               Authorization: props.auth,
-               "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-               ...cambios,
-               id: idProyecto,
-               idUsuario: props.idUsuario,
-            }),
-         }
-      )
-         .then((res) => res.json())
-         .catch((err) => console.log(err));
+      const respuesta = await api.actualizarProyecto(usuario.id, {
+         ...cambios,
+         id: idProyecto,
+      });
+
+      if (respuesta.ok) {
+      } else {
+      }
 
       obtenerProyectos(estadoPrincipal.parametrosFiltro);
    };
 
    const filtrarProyectos = (nuevosParametrosFiltro) => {
-      console.log(nuevosParametrosFiltro);
-      nuevosParametrosFiltro.idUsuario = props.idUsuario;
       nuevosParametrosFiltro.numeroPagina = numeroPagina;
       obtenerProyectos(nuevosParametrosFiltro);
    };
 
    const eliminarProyecto = async (idProyecto) => {
-      const respuesta = await fetch(
-         `http://localhost:8080/proyectos/${idProyecto}`,
-         {
-            method: "DELETE",
-            headers: {
-               Authorization: props.auth,
-               "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-               idUsuario: props.idUsuario,
-            }),
-         }
-      );
+      const respuesta = await api.eliminarProyecto(usuario.id, idProyecto);
+
+      if (respuesta.ok) {
+      } else {
+      }
 
       obtenerProyectos(estadoPrincipal.parametrosFiltro);
    };
@@ -163,7 +129,7 @@ const SubseccionPortafolio = (props) => {
                filtrarProyectos={filtrarProyectos}
             />
             <ContenedorDeProyectos
-               proyectos={estadoPrincipal.listaProyectos}
+               proyectos={estadoPrincipal.proyectos}
                actualizarProyecto={actualizarProyecto}
                eliminarProyecto={eliminarProyecto}
             />

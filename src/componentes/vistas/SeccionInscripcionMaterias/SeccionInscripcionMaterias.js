@@ -5,9 +5,11 @@ import "./estilos/SeccionInscripcionMaterias.scss";
 
 const SeccionInscripcionMaterias = (props) => {
    const [agregandoAsignaturas, setAgregandoAsignaturas] = useState(false);
+
    const terminarAgregandoAsignaturas = () => {
       setAgregandoAsignaturas(false);
    };
+
    return (
       <div className="contenedor-seccion-inscripcion">
          <div className="contenedor-seccion-inscripcion-tutorial">
@@ -48,8 +50,7 @@ const SeccionInscripcionMaterias = (props) => {
          {agregandoAsignaturas && (
             <ModalAgregarAsignatura
                terminarAgregandoAsignaturas={terminarAgregandoAsignaturas}
-               auth={`Bearer ${props.auth}`}
-               idUsuario={props.idUsuario}
+               auth={props.auth}
             />
          )}
       </div>

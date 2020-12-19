@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Switch, Route, Redirect } from "react-router-dom";
+import { Switch, Route, Redirect, useHistory } from "react-router-dom";
 
 import BarraNavegacion from "./BarraNavegacion.js";
 import InicioDeSesion from "./vistas/InicioDeSesion/InicioDeSesion.js";
@@ -15,6 +15,8 @@ import SeccionInscripcionMaterias from "./vistas/SeccionInscripcionMaterias/Secc
 import SeccionEditor from "./vistas/SeccionEditor/SeccionEditor";
 import VisualizacionProyecto from "./vistas/SeccionPortafolio/ComponentesPortafolio/VisualizacionProyecto.js";
 import PieDePagina from "./PieDePagina.js";
+
+import Api from "../servicios/Api.js";
 
 import "./estilos/app.scss";
 
@@ -34,108 +36,116 @@ import {
 } from "../utilidad/rutas.js";
 
 function App() {
-   const [token, setToken] = useState("");
-   const [idUsuario, setIdUsuario] = useState("");
+   const history = useHistory();
+
+   const [auth, setAuth] = useState({
+      api: new Api(),
+      usuario: null,
+   });
+
+   const autenticar = (jwttoken, usuario) => {
+      setAuth((anteriorAuth) => {
+         anteriorAuth.api.token = jwttoken;
+         return {
+            api: anteriorAuth.api,
+            usuario,
+         };
+      });
+   };
 
    const cerrarSesion = () => {
-      setToken("");
+      setAuth((anteriorAuth) => {
+         anteriorAuth.api.token = null;
+         return {
+            api: anteriorAuth.api,
+            usuario: null,
+         };
+      });
    };
 
    return (
       <div className="App">
-         <BarraNavegacion auth={token} cerrarSesion={cerrarSesion} />
+         <BarraNavegacion auth={auth} cerrarSesion={cerrarSesion} />
          <Switch>
             <Route exact path={RUTA_INICIO_SESION}>
-               {token ? (
+               {auth.api.token ? (
                   <Redirect to={RUTA_INICIO} />
                ) : (
-                  <InicioDeSesion auth={setToken} idUsuario={setIdUsuario} />
+                  <InicioDeSesion auth={auth} autenticar={autenticar} />
                )}
             </Route>
             <Route exact path={RUTA_REGISTRO}>
-               {token ? (
+               {auth.api.token ? (
                   <Redirect to={RUTA_INICIO} />
                ) : (
-                  <Registro auth={setToken} idUsuario={setIdUsuario} />
+                  <Registro auth={auth} autenticar={autenticar} />
                )}
             </Route>
             <Route exact path={RUTA_REC_CLAVE}>
-               {token ? (
+               {auth.api.token ? (
                   <Redirect to={RUTA_REC_CLAVE} />
                ) : (
-                  <RecuperacionClave auth={`Bearer ${token}`} />
+                  <RecuperacionClave auth={auth} />
                )}
             </Route>
             <Route exact path={RUTA_INICIO}>
                <SeccionInicio />
             </Route>
             <Route exact path={RUTA_CUENTA_USUARIO}>
-               {token ? (
-                  <SeccionCuentaUsuario auth={token} idUsuario={idUsuario} />
+               {auth.api.token ? (
+                  <SeccionCuentaUsuario
+                     auth={auth}
+                     cerrarSesion={cerrarSesion}
+                  />
                ) : (
                   <Redirect to={RUTA_INICIO_SESION} />
                )}
             </Route>
             <Route exact path={RUTA_SEC_HORARIO_ASIG}>
-               {token ? (
-                  <SeccionHorarioAsignaturas
-                     auth={token}
-                     idUsuario={idUsuario}
-                  />
+               {auth.api.token ? (
+                  <SeccionHorarioAsignaturas auth={auth} />
                ) : (
                   <Redirect to={RUTA_INICIO_SESION} />
                )}
             </Route>
             <Route exact path={RUTA_SEC_HORARIO_PERSONAL}>
-               {token ? (
-                  <SeccionHorarioPersonal auth={token} idUsuario={idUsuario} />
+               {auth.api.token ? (
+                  <SeccionHorarioPersonal auth={auth} />
                ) : (
                   <Redirect to={RUTA_INICIO_SESION} />
                )}
             </Route>
             <Route exact path={RUTA_SEC_PORTAFOLIO}>
-               {token ? (
-                  <SeccionPortafolio auth={token} idUsuario={idUsuario} />
+               {auth.api.token ? (
+                  <SeccionPortafolio auth={auth} />
                ) : (
                   <Redirect to={RUTA_INICIO_SESION} />
                )}
             </Route>
             <Route exact path={RUTA_SEC_VISUALIZACION_PROYECTO}>
-               {token ? (
-                  <VisualizacionProyecto
-                     auth={`Bearer ${token}`}
-                     idUsuario={idUsuario}
-                  />
+               {auth.api.token ? (
+                  <VisualizacionProyecto auth={auth} />
                ) : (
                   <Redirect to={RUTA_INICIO_SESION} />
                )}
             </Route>
             <Route exact path={RUTA_SEC_PROYECTOS_PUBLICOS}>
-               {token ? (
-                  <SeccionConsultaPortafolio
-                     auth={`Bearer ${token}`}
-                     idUsuario={idUsuario}
-                  />
+               {auth.api.token ? (
+                  <SeccionConsultaPortafolio auth={auth} />
                ) : (
                   <Redirect to={RUTA_INICIO_SESION} />
                )}
             </Route>
             <Route exact path={RUTA_SEC_INSCRIPCION_MATERIAS}>
-               {token ? (
-                  <SeccionInscripcionMaterias
-                     auth={token}
-                     idUsuario={idUsuario}
-                  />
+               {auth.api.token ? (
+                  <SeccionInscripcionMaterias auth={auth} />
                ) : (
                   <Redirect to={RUTA_INICIO_SESION} />
                )}
             </Route>
             <Route exact path={RUTA_SEC_EDITOR}>
-               {token ? (
-                  <SeccionEditor
-                     auth={`Bearer ${token}`}
-                     idUsuario={idUsuario}
-                  />
+               {auth.api.token ? (
+                  <SeccionEditor auth={auth} />
                ) : (
                   <Redirect to={RUTA_INICIO_SESION} />
                )}

@@ -26,7 +26,7 @@ const BarraNavegacion = (props) => {
                   Inicio
                </Link>
             </li>
-            {props.auth ? (
+            {props.auth.api.token ? (
                <OpcionesAutenticado cerrarSesion={props.cerrarSesion} />
             ) : (
                <React.Fragment>

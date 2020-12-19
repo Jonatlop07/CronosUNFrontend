@@ -12,7 +12,10 @@ import {
 import "./estilos/visualizacionProyecto.scss";
 
 const VisualizacionProyecto = (props) => {
+   const usuario = props.auth.usuario;
+   const api = props.auth.api;
    const location = useLocation();
+
    const [estadoPrincipal, setEstadoPrincipal] = useState({
       contenidoProyecto: {},
       comentariosProyecto: [],
@@ -21,72 +24,70 @@ const VisualizacionProyecto = (props) => {
    const obtenerProyectoYComentarios = async () => {
       const idProyecto = await location.idProyecto;
 
-      const proyecto = await fetch(
-         `http://localhost:8080/proyectos/${idProyecto}`,
-         {
-            headers: {
-               Authorization: props.auth,
-               "Content-Type": "application/json",
-            },
+      const respuestaProyecto = await api.consultarProyecto(
+         usuario.id,
+         idProyecto
+      );
+
+      if (respuestaProyecto.ok) {
+         const proyecto = await respuestaProyecto.json();
+         const { titulo, fechaCreacion, categoria, contenido } = proyecto;
+
+         const respuestaComentarios = await api.obtenerComentarios(
+            idProyecto,
+            usuario.id
+         );
+
+         if (respuestaComentarios.ok) {
+            const comentarios = await respuestaComentarios.json();
+
+            const comentariosProyecto = comentarios.map((comentario) => ({
+               id: comentario.id,
+               nombreUsuario: comentario.nombreUsuario,
+               fecha: comentario.fecha,
+               hora: comentario.hora,
+               contenido: comentario.contenido,
+            }));
+
+            setEstadoPrincipal((anteriorEstadoPrincipal) => ({
+               contenidoProyecto: {
+                  titulo,
+                  fechaCreacion,
+                  categoria,
+                  contenido,
+               },
+               comentariosProyecto,
+            }));
+         } else {
+            setEstadoPrincipal((anteriorEstadoPrincipal) => ({
+               ...anteriorEstadoPrincipal,
+               contenidoProyecto: {
+                  titulo,
+                  fechaCreacion,
+                  categoria,
+                  contenido,
+               },
+            }));
          }
-      )
-         .then((respuesta) => respuesta.json())
-         .catch((error) => console.log(error));
-
-      const comentarios = await fetch(
-         `http://localhost:8080/proyectos/comentarios?idProyecto=${idProyecto}`,
-         {
-            headers: {
-               Authorization: props.auth,
-               "Content-Type": "application/json",
-            },
-         }
-      )
-         .then((respuesta) => respuesta.json())
-         .catch((err) => console.log(err));
-      console.log(comentarios);
-
-      const { titulo, fechaCreacion, categoria, contenido } = proyecto;
-
-      const comentariosProyecto = comentarios.map((comentario) => ({
-         id: comentario.id,
-         nombreUsuario: comentario.nombreUsuario,
-         fecha: comentario.fecha,
-         hora: comentario.hora,
-         contenido: comentario.contenido,
-      }));
-
-      const nuevoEstadoPrincipal = {
-         contenidoProyecto: {
-            titulo,
-            fechaCreacion,
-            categoria,
-            contenido,
-         },
-         comentariosProyecto,
-      };
-
-      setEstadoPrincipal(nuevoEstadoPrincipal);
+      } else {
+         console.log(respuestaProyecto);
+      }
    };
 
    const registrarComentario = async (nuevoComentario) => {
       const idProyecto = await location.idProyecto;
 
-      await fetch(`http://localhost:8080/proyectos/comentarios/registro`, {
-         method: "POST",
-         headers: {
-            Authorization: props.auth,
-            "Content-Type": "application/json",
-         },
-         body: JSON.stringify({
-            idUsuario: props.idUsuario,
-            idProyecto,
-            contenido: nuevoComentario,
-            fecha: obtenerFechaActual(),
-            hora: `${obtenerHoraActual()}:00`,
-         }),
+      const respuesta = await api.registrarComentario(usuario.id, {
+         idProyecto,
+         contenido: nuevoComentario,
+         fecha: obtenerFechaActual(),
+         hora: `${obtenerHoraActual()}:00`,
       });
-      obtenerProyectoYComentarios();
+
+      if (respuesta.ok) {
+         obtenerProyectoYComentarios();
+      } else {
+      }
    };
 
    useEffect(() => {

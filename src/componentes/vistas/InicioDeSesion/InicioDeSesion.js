@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import {
    RUTA_INICIO,
@@ -10,10 +10,10 @@ import {
 import "./estilos/inicioDeSesion.scss";
 
 const InicioDeSesion = (props) => {
+   const api = props.auth.api;
+
    const [alias, setAlias] = useState("");
    const [clave, setClave] = useState("");
-
-   const history = useHistory();
 
    const handleInputChangeCorreo = (event) => {
       setAlias(event.target.value);
@@ -24,20 +24,13 @@ const InicioDeSesion = (props) => {
 
    const iniciarSesion = async (event) => {
       event.preventDefault();
-      const credenciales = await fetch("http://localhost:8080/autenticacion", {
-         method: "POST",
-         headers: {
-            "content-type": "application/json",
-         },
-         body: JSON.stringify({
-            alias: alias,
-            clave: clave,
-         }),
-      }).then((respuesta) => respuesta.json());
-      console.log(credenciales.jwttoken);
-      props.auth(credenciales.jwttoken);
-      props.idUsuario(credenciales.idUsuario);
-      history.push(RUTA_INICIO);
+      const respuesta = await api.autenticarUsuario(alias, clave);
+
+      if (!respuesta.ok) {
+      } else {
+         const { jwttoken, usuario } = await respuesta.json();
+         props.autenticar(jwttoken, usuario);
+      }
    };
 
    return (
@@ -56,7 +49,7 @@ const InicioDeSesion = (props) => {
             />
 
             <input
-               type="text"
+               type="password"
                name="clave"
                className="inicio-sesion-formulario-entrada"
                placeholder="Clave"

@@ -6,12 +6,15 @@ import { RUTA_SEC_HORARIO_ASIG } from "../../../utilidad/rutas";
 import "./estilos/modalAgregarAsignaturas.scss";
 
 const ModalAgregarAsignaturas = (props) => {
+   const usuario = props.auth.usuario;
+   const api = props.auth.api;
    const history = useHistory();
 
    const routeChange = () => {
       let path = RUTA_SEC_HORARIO_ASIG;
       history.push(path);
    };
+
    const [envioFormulario, setEnvioFormulario] = useState({ asignatura: "" });
    const handleInputChange = (event) => {
       setEnvioFormulario({
@@ -19,23 +22,22 @@ const ModalAgregarAsignaturas = (props) => {
          asignatura: event.target.value,
       });
    };
+
    const enviarFormulario = async (event) => {
       event.preventDefault();
       let texto = envioFormulario.asignatura;
       texto = texto.split(" ");
-      const js = analisisTexto(texto);
+      const textoAnalizado = analisisTexto(texto);
       event.target.reset();
-      const asignatura = await fetch(
-         `http://localhost:8080/asignaturaOpciones/registro`,
-         {
-            method: "POST",
-            headers: {
-               Authorization: props.auth,
-               "Content-Type": "application/json",
-            },
-            body: js,
-         }
-      ).then((respuesta) => respuesta.json());
+      const respuesta = props.auth.api.agregarAsignaturaOpcion(
+         usuario.id,
+         textoAnalizado
+      );
+
+      if (respuesta.status === 201) {
+         const asignatura = await respuesta.json();
+      } else {
+      }
    };
    const analisisTexto = (texto) => {
       console.log(texto);
@@ -75,23 +77,18 @@ const ModalAgregarAsignaturas = (props) => {
          }
          j++;
       }
-      return JSON.stringify({
+      return {
          nombre: resultado,
          creditos: creditos,
          grupos: grupos,
-         idUsuario: props.idUsuario,
-      });
+      };
    };
    const restablecerAsignaturas = async () => {
-      const asignatura = await fetch(
-         `http://localhost:8080/asignaturaOpciones/restablecer?idUsuario=${props.idUsuario}`,
-         {
-            method: "DELETE",
-            headers: {
-               "Content-Type": "application/json",
-            },
-         }
-      ).then((respuesta) => respuesta.json());
+      const respuesta = api.restablecerOpcionesAsignaturas(usuario.id);
+
+      if (respuesta.ok) {
+      } else {
+      }
    };
    return ReactDOM.createPortal(
       <div className="contenedor-modal-agregar-asignatura">

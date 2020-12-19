@@ -5,47 +5,34 @@ import ContenedorDiario from "./ContenedorDiario.js";
 import ContenedorBotonesPaginas from "../ContenedorBotonesPaginas.js";
 
 const SubseccionDiario = (props) => {
+   const usuario = props.auth.usuario;
+   const api = props.auth.api;
+
    const [estadoPrincipal, setEstadoPrincipal] = useState({
       entradasDiario: [],
-      numeroTotalPaginas: 1,
-      parametrosFiltro: { idUsuario: props.idUsuario },
+      numeroPaginas: 1,
+      parametrosFiltro: {},
    });
    const [numeroPagina, setNumeroPagina] = useState(0);
 
    const obtenerEntradasDiario = async (parametrosFiltro) => {
-      const entradas = await fetch(`http://localhost:8080/entradasDiario`, {
-         method: "POST",
-         headers: {
-            Authorization: props.auth,
-            "Content-Type": "application/json",
-         },
-         body: JSON.stringify(parametrosFiltro),
-      }).then((respuesta) => respuesta.json()).catch(err => console.log(err));
+      const respuesta = await api.obtenerEntradasDiario(
+         usuario.id,
+         parametrosFiltro
+      );
 
-      const consultaNumeroPaginas = await fetch(
-         `http://localhost:8080/entradasDiario/paginas?idUsuario=${props.idUsuario}`,
-         {
-            headers: {
-               Authorization: props.auth,
-               "Content-Type": "application/json",
-            },
-         }
-      ).then((respuesta) => respuesta.json());
+      if (respuesta.ok) {
+         const { numeroPaginas, entradasDiario } = await respuesta.json();
 
-      const nuevasEntradas = entradas.map((entrada) => ({
-         id: entrada.id,
-         fecha: entrada.fecha,
-         hora: entrada.hora,
-         contenido: entrada.contenido,
-      }));
+         const nuevoEstadoPrincipal = {
+            entradasDiario,
+            numeroPaginas,
+            parametrosFiltro,
+         };
 
-      const nuevoEstadoPrincipal = {
-         entradasDiario: nuevasEntradas,
-         numeroTotalPaginas: consultaNumeroPaginas.numeroPaginas,
-         parametrosFiltro,
-      };
-
-      setEstadoPrincipal(nuevoEstadoPrincipal);
+         setEstadoPrincipal(nuevoEstadoPrincipal);
+      } else {
+      }
    };
 
    useEffect(() => {
@@ -58,47 +45,30 @@ const SubseccionDiario = (props) => {
       }
    };
 
-   const registrarEntradaDiario = async (entradaDiario) => {
-      const respuesta = await fetch(
-         `http://localhost:8080/entradasDiario/registro`,
-         {
-            method: "POST",
-            headers: {
-               Authorization: props.auth,
-               "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-               ...entradaDiario,
-               idUsuario: props.idUsuario,
-            }),
-         }
+   const registrarEntradaDiario = async (nuevaEntradaDiario) => {
+      const respuesta = await api.registrarEntradaDiario(
+         usuario.id,
+         nuevaEntradaDiario
       );
 
-      obtenerEntradasDiario(estadoPrincipal.parametrosFiltro);
+      if (respuesta.ok) {
+         obtenerEntradasDiario(estadoPrincipal.parametrosFiltro);
+      } else {
+      }
    };
 
    const filtrarEntradasDiario = (nuevosParametrosFiltro) => {
-      nuevosParametrosFiltro.idUsuario = props.idUsuario;
       nuevosParametrosFiltro.numeroPagina = numeroPagina;
       obtenerEntradasDiario(nuevosParametrosFiltro);
    };
 
    const eliminarEntrada = async (idEntrada) => {
-      const respuesta = await fetch(
-         `http://localhost:8080/entradasDiario/${idEntrada}`,
-         {
-            method: "DELETE",
-            headers: {
-               Authorization: props.auth,
-               "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-               idUsuario: props.idUsuario,
-            }),
-         }
-      );
+      const respuesta = await api.eliminarEntradaDiario(usuario.id, idEntrada);
 
-      obtenerEntradasDiario(estadoPrincipal.parametrosFiltro);
+      if (respuesta.ok) {
+         obtenerEntradasDiario(estadoPrincipal.parametrosFiltro);
+      } else {
+      }
    };
 
    return (

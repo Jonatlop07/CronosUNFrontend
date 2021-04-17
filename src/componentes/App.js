@@ -150,6 +150,9 @@ function App() {
                   <Redirect to={RUTA_INICIO_SESION} />
                )}
             </Route>
+            <Route path="/">
+               <Redirect to={RUTA_INICIO_SESION} />
+            </Route>
          </Switch>
          <PieDePagina />
       </div>

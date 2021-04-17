@@ -8,7 +8,7 @@ export default class Api {
       "Content-Type": "application/json",
    };
 
-   URL_BASE = "http://localhost:8080/api/v2";
+   URL_BASE = "https://cronosun-backend.herokuapp.com/api/v2";
 
    crearEncabezados() {
       return this.token
